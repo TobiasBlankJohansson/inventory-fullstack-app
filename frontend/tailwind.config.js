@@ -12,7 +12,7 @@ export default {
   			sm: 'calc(var(--radius) - 4px)'
   		},
   		colors: {
-  			background: 'hsl(var(--background))',
+  			background: '#9badc3',
   			foreground: 'hsl(var(--foreground))',
   			card: {
   				DEFAULT: 'hsl(var(--card))',
@@ -55,5 +55,9 @@ export default {
   		}
   	}
   },
-  plugins: ["tailwindcss-animate", daisyui, require("tailwindcss-animate")],
+  plugins: ["tailwindcss-animate", daisyui],
+  daisyui: {
+    themes: ["light", "dark"], 
+    darkTheme: "light",     
+  },
 };
