@@ -5,7 +5,7 @@ export function Navbar() {
 
   return (
     <>
-      <nav className="navbar bg-primary">
+      <nav className="navbar bg-primary w-full">
         <div className="navbar-start">
           <div className="dropdown">
             <button

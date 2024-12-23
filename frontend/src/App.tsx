@@ -5,11 +5,15 @@ import { Print } from "./components/print/Print";
 
 function App() {
   return (
-    <div className="h-screen">
+    <div className="h-screen flex flex-col">
       <Navbar></Navbar>
-      <Search></Search>
-      <Select></Select>
-      <Print></Print>
+      <main className="p-2 h-full w-full">
+        <section className="h-10 grid grid-flow-col grid-cols-3 gap-2">
+          <Search></Search>
+          <Select></Select>
+          <Print></Print>
+        </section>
+      </main>
     </div>
   );
 }
