@@ -38,7 +38,7 @@ export function Navbar() {
       </nav>
 
       {sideMenuShow && (
-        <>
+        <div className="z-10">
           <menu className="absolute top-0 w-4/6 h-screen bg-primary p-4">
             <h2 className="text-white font-medium text-2xl mb-5">
               Toobia Nordic
@@ -55,7 +55,7 @@ export function Navbar() {
               setSideMenuShow(false);
             }}
           ></button>
-        </>
+        </div>
       )}
     </>
   );
