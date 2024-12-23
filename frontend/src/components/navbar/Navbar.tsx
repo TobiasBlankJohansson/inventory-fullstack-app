@@ -27,13 +27,13 @@ export function Navbar() {
         </div>
         <div className="navbar-end"></div>
       </nav>
-      <menu className="h-fit bg-primary w-1/2">
+      <menu className="absolute top-0 w-4/6 h-screen bg-primary p-4">
+        <h2 className="text-white font-medium text-2xl mb-5">Toobia Nordic</h2>
         <ol className="text-2xl p-2">
-          <li className="text-white">Inventory</li>
-          <li className="text-white">Manage</li>
-          <li className="text-white"></li>
+          <li className="text-white mb-4">Inventory</li>
+          <li className="text-white mb-4">Manage</li>
+          <li className="text-white mb-4"></li>
         </ol>
-        <h2 className="text-white">Toobia Nordic</h2>
       </menu>
     </>
   );
