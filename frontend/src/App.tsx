@@ -1,6 +1,7 @@
 import { Search } from "./components/search/Search";
 import { Navbar } from "./components/navbar/Navbar";
 import { Select } from "./components/select/Select";
+import { Print } from "./components/print/Print";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Navbar></Navbar>
       <Search></Search>
       <Select></Select>
+      <Print></Print>
     </div>
   );
 }
