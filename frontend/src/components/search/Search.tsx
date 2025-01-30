@@ -1,4 +1,9 @@
-export function Search() {
+type inputSearch =  {
+setSearch:React.Dispatch<React.SetStateAction<string>>;
+}
+
+export function Search({setSearch}:inputSearch) {
+  
   return (
     <form className="h-full">
       <label className="input input-bordered flex items-center gap-2 h-full rounded-full">

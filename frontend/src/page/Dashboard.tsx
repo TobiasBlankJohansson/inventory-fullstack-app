@@ -31,7 +31,6 @@ const mockData: item[] = [
 
 export function Dashboard() {
   const [items, setItems] = useState<item[]>([]);
-
   useEffect(() => {
     setItems(() => getItems());
   }, []);
