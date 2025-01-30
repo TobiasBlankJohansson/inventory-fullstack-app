@@ -10,7 +10,7 @@ export function Select({ setStorageArea }: inputSelect) {
         onChange={(e) => setStorageArea(e.target.value)}
       >
         <option>All</option>
-        <option>Verksdagen</option>
+        <option>Verksdag</option>
         <option>Annex</option>
       </select>
     </div>
