@@ -9,6 +9,7 @@ import { useEffect, useMemo, useState } from "react";
 export function Dashboard() {
   const [items, setItems] = useState<item[]>([]);
   const [search, setSearch] = useState<string>("");
+  const [storageArea, setStorageArea] = useState<string>("All");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,20 +19,22 @@ export function Dashboard() {
     fetchData();
   }, []);
 
-  const itemList: item[] = useMemo(
-    () =>
-      items.filter((item) =>
-        item.name.toLowerCase().includes(search.toLowerCase())
-      ),
-    [search, items]
-  );
+  const itemList: item[] = useMemo(() => {
+    return items.filter((item) => {
+      const matchesSearch = item.name.toLowerCase().includes(search.toLowerCase());
+      const matchesStorage = storageArea === "All" || 
+        item.storageArea.toLowerCase().includes(storageArea.toLowerCase());
+  
+      return matchesSearch && matchesStorage;
+    });
+  }, [search, items, storageArea]);
 
   return (
     <div className="h-screen flex flex-col">
       <Navbar></Navbar>
       <section className="h-10 grid grid-flow-col grid-cols-3 gap-2 m-2 mb-0">
         <Search setSearch={setSearch}></Search>
-        <Select></Select>
+        <Select setStorageArea={setStorageArea}></Select>
         <Print></Print>
       </section>
       <Tabel items={itemList}></Tabel>
