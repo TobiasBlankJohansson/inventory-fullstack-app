@@ -5,7 +5,22 @@ type item = {
   storageArea: string;
 };
 
-export function Tabel() {
+type inputTable = {
+  items: item[];
+};
+
+const renderItemInTable = (items: item[]) => {
+  return items.map((item:item) => {
+    return <tr key={item.id}>
+      <th>{item.id}</th>
+      <th>{item.name}</th>
+      <th>{item.quantity}</th>
+      <th>{item.storageArea}</th>
+    </tr>;
+  });
+};
+
+export function Tabel({ items }: inputTable) {
   return (
     <>
       <div className="overflow-x-auto bg-white m-2 h-full rounded-lg">
@@ -19,54 +34,7 @@ export function Tabel() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th>1</th>
-              <td>Cy Ganderton</td>
-              <td>Quality Control Specialist</td>
-              <td>Blue</td>
-            </tr>
-            <tr>
-              <th>2</th>
-              <td>Hart Hagerty</td>
-              <td>Desktop Support Technician</td>
-              <td>Purple</td>
-            </tr>
-            <tr>
-              <th>3</th>
-              <td>Brice Swyre</td>
-              <td>Tax Accountant</td>
-              <td>Red</td>
-            </tr>
-            <tr>
-              <th>2</th>
-              <td>Hart Hagerty</td>
-              <td>Desktop Support Technician</td>
-              <td>Purple</td>
-            </tr>
-            <tr>
-              <th>2</th>
-              <td>Hart Hagerty</td>
-              <td>Desktop Support Technician</td>
-              <td>Purple</td>
-            </tr>
-            <tr>
-              <th>2</th>
-              <td>Hart Hagerty</td>
-              <td>Desktop Support Technician</td>
-              <td>Purple</td>
-            </tr>
-            <tr>
-              <th>2</th>
-              <td>Hart Hagerty</td>
-              <td>Desktop Support Technician</td>
-              <td>Purple</td>
-            </tr>
-            <tr>
-              <th>2</th>
-              <td>Hart Hagerty</td>
-              <td>Desktop Support Technician</td>
-              <td>Purple</td>
-            </tr>
+            {renderItemInTable(items)}
           </tbody>
         </table>
       </div>
