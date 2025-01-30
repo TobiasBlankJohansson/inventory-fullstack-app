@@ -1,14 +1,21 @@
+type item = {
+  id: string;
+  name: string;
+  quantity: string;
+  storageArea: string;
+};
+
 export function Tabel() {
   return (
     <>
       <div className="overflow-x-auto bg-white m-2 h-full rounded-lg">
-        <table className="table table-zebra">
+        <table className="table table-zebra table-pin-rows">
           <thead>
             <tr>
-              <th></th>
+              <th>Id</th>
               <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
+              <th>Quantity</th>
+              <th>Storage Area</th>
             </tr>
           </thead>
           <tbody>
