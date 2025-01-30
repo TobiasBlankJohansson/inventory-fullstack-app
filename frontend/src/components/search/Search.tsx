@@ -1,13 +1,22 @@
-type inputSearch =  {
-setSearch:React.Dispatch<React.SetStateAction<string>>;
-}
+type inputSearch = {
+  setSearch: React.Dispatch<React.SetStateAction<string>>;
+};
 
-export function Search({setSearch}:inputSearch) {
-  
+export function Search({ setSearch }: inputSearch) {
   return (
-    <form className="h-full">
+    <form
+      className="h-full"
+      onSubmit={(e) => {
+        e.preventDefault();
+      }}
+    >
       <label className="input input-bordered flex items-center gap-2 h-full rounded-full">
-        <input type="text" className="grow w-10" placeholder="Search" />
+        <input
+          type="text"
+          className="grow w-10"
+          placeholder="Search"
+          onChange={(e) => setSearch(e.target.value)}
+        />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
