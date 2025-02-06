@@ -1,6 +1,13 @@
 import { item } from "@/components/tabel/Tabel";
 
-export function getItems(): item[] {
+export async function getItems(): Promise<item[]> {
+
+  const response = await fetch("http://localhost:3000/api/items")
+  if (!response.ok) {
+    throw new Error();
+  }
+  const items: item[] = await response.json();
+  return items;
   const mockData: item[] = [
     { id: "1", name: "Screwdriver", quantity: "3", storageArea: "Annex" },
     { id: "2", name: "Hammer", quantity: "2", storageArea: "Verksdag" },
