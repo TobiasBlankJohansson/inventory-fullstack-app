@@ -9,7 +9,7 @@ export function Laptop(currentPage: number) {
         </div>
         <div className="navbar-center"></div>
         <div className="navbar-end">
-          <ol className="flex justify-between w-full text-xl">
+          <ol className="flex justify-between w-full text-xl mr-4">
             {navigation(currentPage)}
           </ol>
         </div>
