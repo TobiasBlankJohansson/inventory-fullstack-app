@@ -1,7 +1,11 @@
 import { useState } from "react";
-import { navigation } from "./Pages";
+import { Sidebar } from "./Sidebar";
 
-export function Navbar() {
+type importNavbar = {
+  pageNumber: number;
+};
+
+export function Navbar({pageNumber}:importNavbar) {
   const [sideMenuShow, setSideMenuShow] = useState<boolean>(false);
 
   return (
@@ -37,26 +41,7 @@ export function Navbar() {
         </div>
         <div className="navbar-end"></div>
       </nav>
-
-      {sideMenuShow && (
-        <div className="z-10">
-          <menu className="absolute top-0 w-4/6 h-screen bg-primary p-4">
-            <h2 className="text-white font-medium text-2xl mb-5">
-              Toobia Nordic
-            </h2>
-            <ol className="text-2xl p-2">
-              {navigation}
-              <li className="text-white mb-4"></li>
-            </ol>
-          </menu>
-          <button
-            className="absolute top-0 right-0 w-2/6 h-screen"
-            onClick={() => {
-              setSideMenuShow(false);
-            }}
-          ></button>
-        </div>
-      )}
+      <Sidebar sideMenuShow={sideMenuShow} setSideMenuShow={setSideMenuShow}  pageNumber={pageNumber}/>
     </>
   );
 }

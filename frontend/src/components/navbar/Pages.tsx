@@ -1,10 +1,16 @@
 import { Link } from "react-router-dom";
 
-export const navigation: JSX.Element[] = [
-  <li className="text-secondary mb-4">
-    <Link to="/">Inventory</Link>
-  </li>,
-  <li className="text-white mb-4">
-    <Link to="/manage">Manage</Link>
-  </li>,
-];
+export function navigation(pageNumber: number): JSX.Element[] {
+  return [
+    <li
+      className={("mb-4 " + (pageNumber === 0 ? "text-secondary" : "text-white"))}
+    >
+      <Link to="/">Inventory</Link>
+    </li>,
+    <li
+      className={"mb-4 " + (pageNumber === 1 ? "text-secondary" : "text-white")}
+    >
+      <Link to="/manage">Manage</Link>
+    </li>,
+  ];
+}

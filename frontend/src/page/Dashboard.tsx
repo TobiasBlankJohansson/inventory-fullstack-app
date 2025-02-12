@@ -31,7 +31,7 @@ export function Dashboard() {
 
   return (
     <div className="h-screen flex flex-col">
-      <Navbar></Navbar>
+      <Navbar pageNumber={0}></Navbar>
       <section className="h-10 grid grid-flow-col grid-cols-3 gap-2 m-2 mb-0">
         <Search setSearch={setSearch}></Search>
         <Select setStorageArea={setStorageArea}></Select>
