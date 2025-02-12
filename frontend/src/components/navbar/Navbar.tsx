@@ -3,9 +3,10 @@ import { Sidebar } from "./Sidebar";
 
 type importNavbar = {
   currentPage: number;
+  currentPageName: string;
 };
 
-export function Navbar({currentPage}:importNavbar) {
+export function Navbar({currentPage, currentPageName}:importNavbar) {
   const [sideMenuShow, setSideMenuShow] = useState<boolean>(false);
 
   return (
@@ -37,7 +38,7 @@ export function Navbar({currentPage}:importNavbar) {
           </div>
         </div>
         <div className="navbar-center">
-          <h1 className="text-white text-2xl">Inventory</h1>
+          <h1 className="text-white text-2xl">{currentPageName}</h1>
         </div>
         <div className="navbar-end"></div>
       </nav>
