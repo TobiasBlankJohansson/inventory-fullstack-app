@@ -8,9 +8,7 @@ export function NavItem(
 ): JSX.Element {
   return (
     <li
-      className={
-        "mb-4 " + (currentPage === page ? "text-secondary" : "text-white")
-      }
+      className={"" + (currentPage === page ? "text-secondary underline" : "text-white")}
     >
       <Link to={link}>{label}</Link>
     </li>

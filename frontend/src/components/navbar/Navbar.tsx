@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Sidebar } from "./Sidebar";
+import { navigation } from "./pages";
 
 type importNavbar = {
   currentPage: number;
@@ -16,7 +17,22 @@ export function Navbar({ currentPage, currentPageName }: importNavbar) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  return (
+  const laptop = (
+    <>
+      <nav className="navbar bg-primary w-full px-5">
+        <div className="navbar-start">
+          <h1 className="text-white text-3xl ml-2">Toobia Nordic</h1>
+        </div>
+        <div className="navbar-center"></div>
+        <div className="navbar-end">
+          <ol className="flex justify-between w-full text-xl">
+            {navigation(currentPage)}
+          </ol>
+        </div>
+      </nav>
+    </>
+  );
+  const phone = (
     <>
       <nav className="navbar bg-primary w-full">
         <div className="navbar-start">
@@ -56,4 +72,5 @@ export function Navbar({ currentPage, currentPageName }: importNavbar) {
       />
     </>
   );
+  return isLaptop ? laptop : phone;
 }
