@@ -1,15 +1,18 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Dashboard } from "./page/Dashboard";
 import { Manage } from "./page/Manage";
+import { ScreenProvider } from "./components/provider/ScreenContext";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/manage" element={<Manage />} />
-      </Routes>
-    </BrowserRouter>
+    <ScreenProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/manage" element={<Manage />} />
+        </Routes>
+      </BrowserRouter>
+    </ScreenProvider>
   );
 }
 

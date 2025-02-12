@@ -1,4 +1,4 @@
-import { navigation } from "./pages";
+import { navigation } from "./Pages";
 
 type importSidebar = {
   sideMenuShow: boolean;
