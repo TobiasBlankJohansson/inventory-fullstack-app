@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Sidebar } from "./Sidebar";
 
 type importNavbar = {
@@ -6,8 +6,15 @@ type importNavbar = {
   currentPageName: string;
 };
 
-export function Navbar({currentPage, currentPageName}:importNavbar) {
+export function Navbar({ currentPage, currentPageName }: importNavbar) {
   const [sideMenuShow, setSideMenuShow] = useState<boolean>(false);
+  const [isLaptop, setIsLaptop] = useState<boolean>(window.innerWidth >= 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsLaptop(window.innerWidth >= 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <>
@@ -42,7 +49,11 @@ export function Navbar({currentPage, currentPageName}:importNavbar) {
         </div>
         <div className="navbar-end"></div>
       </nav>
-      <Sidebar sideMenuShow={sideMenuShow} setSideMenuShow={setSideMenuShow}  currentPage={currentPage}/>
+      <Sidebar
+        sideMenuShow={sideMenuShow}
+        setSideMenuShow={setSideMenuShow}
+        currentPage={currentPage}
+      />
     </>
   );
 }
