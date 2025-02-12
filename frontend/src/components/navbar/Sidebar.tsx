@@ -3,13 +3,13 @@ import { navigation } from "./pages";
 type importSidebar = {
   sideMenuShow: boolean;
   setSideMenuShow: React.Dispatch<React.SetStateAction<boolean>>;
-  pageNumber: number;
+  currentPage: number;
 };
 
 export function Sidebar({
   sideMenuShow,
   setSideMenuShow,
-  pageNumber,
+  currentPage,
 }: importSidebar) {
   return (
     <>
@@ -20,7 +20,7 @@ export function Sidebar({
               Toobia Nordic
             </h2>
             <ol className="text-2xl p-2">
-              {navigation(pageNumber)}
+              {navigation(currentPage)}
               <li className="text-white mb-4"></li>
             </ol>
           </menu>

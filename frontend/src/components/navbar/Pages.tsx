@@ -1,16 +1,25 @@
 import { Link } from "react-router-dom";
 
-export function navigation(pageNumber: number): JSX.Element[] {
+export function navigation(currentPage: number): JSX.Element[] {
   return [
-    <li
-      className={("mb-4 " + (pageNumber === 0 ? "text-secondary" : "text-white"))}
-    >
-      <Link to="/">Inventory</Link>
-    </li>,
-    <li
-      className={"mb-4 " + (pageNumber === 1 ? "text-secondary" : "text-white")}
-    >
-      <Link to="/manage">Manage</Link>
-    </li>,
+    NavItem("Inventory", "/", 0, currentPage),
+    NavItem("Manage", "/manage", 1, currentPage),
   ];
+}
+
+function NavItem(
+  label: string,
+  link: string,
+  page: number,
+  currentPage: number
+): JSX.Element {
+  return (
+    <li
+      className={
+        "mb-4 " + (currentPage === page ? "text-secondary" : "text-white")
+      }
+    >
+      <Link to={link}>{label}</Link>
+    </li>
+  );
 }

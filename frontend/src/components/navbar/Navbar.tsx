@@ -2,10 +2,10 @@ import { useState } from "react";
 import { Sidebar } from "./Sidebar";
 
 type importNavbar = {
-  pageNumber: number;
+  currentPage: number;
 };
 
-export function Navbar({pageNumber}:importNavbar) {
+export function Navbar({currentPage}:importNavbar) {
   const [sideMenuShow, setSideMenuShow] = useState<boolean>(false);
 
   return (
@@ -41,7 +41,7 @@ export function Navbar({pageNumber}:importNavbar) {
         </div>
         <div className="navbar-end"></div>
       </nav>
-      <Sidebar sideMenuShow={sideMenuShow} setSideMenuShow={setSideMenuShow}  pageNumber={pageNumber}/>
+      <Sidebar sideMenuShow={sideMenuShow} setSideMenuShow={setSideMenuShow}  currentPage={currentPage}/>
     </>
   );
 }
