@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Sidebar } from "./Sidebar";
-import { navigation } from "./pages";
+import { navigation } from "./Pages";
+import { useScreen } from "../provider/ScreenContext";
 
 type importNavbar = {
   currentPage: number;
@@ -9,13 +10,7 @@ type importNavbar = {
 
 export function Navbar({ currentPage, currentPageName }: importNavbar) {
   const [sideMenuShow, setSideMenuShow] = useState<boolean>(false);
-  const [isLaptop, setIsLaptop] = useState<boolean>(window.innerWidth >= 768);
-
-  useEffect(() => {
-    const handleResize = () => setIsLaptop(window.innerWidth >= 768);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const { isLaptop } = useScreen();
 
   const laptop = (
     <>
