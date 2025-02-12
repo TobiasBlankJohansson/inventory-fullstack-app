@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export function Navbar() {
   const [sideMenuShow, setSideMenuShow] = useState<boolean>(false);
@@ -44,8 +45,12 @@ export function Navbar() {
               Toobia Nordic
             </h2>
             <ol className="text-2xl p-2">
-              <li className="text-secondary mb-4">Inventory</li>
-              <li className="text-white mb-4">Manage</li>
+              <li className="text-secondary mb-4">
+                <Link to="/">Inventory</Link>
+              </li>
+              <li className="text-white mb-4">
+                <Link to="/manage">Manage</Link>
+              </li>
               <li className="text-white mb-4"></li>
             </ol>
           </menu>
