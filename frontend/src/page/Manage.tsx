@@ -10,6 +10,11 @@ import { useEffect, useState } from "react";
 
 export function Manage() {
   const [items, setItems] = useState<item[]>([]);
+  const [storageArea, setStorageArea] = useState<string[]>([
+    "Verksdag",
+    "Annex",
+    "Bothuset",
+  ]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,7 +28,8 @@ export function Manage() {
     <div className="h-screen flex flex-col">
       <Navbar currentPage={1} currentPageName="Manage"></Navbar>
       <StorageArea
-        storageArea={["Verksdag", "Annex", "Bothuset"]}
+        storageArea={storageArea}
+        setStorageArea={setStorageArea}
       ></StorageArea>
       <Tabel
         renderHeadersInTable={renderHeadersInTableManage([
