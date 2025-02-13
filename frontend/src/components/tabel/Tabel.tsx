@@ -6,18 +6,17 @@ export type item = {
 };
 
 type inputTable = {
-  items: item[];
+  renderHeadersInTable: JSX.Element;
+  renderItemInTable: JSX.Element[];
 };
 
-export function Tabel({ items }: inputTable) {
+export function Tabel({ renderHeadersInTable, renderItemInTable }: inputTable) {
   return (
     <>
       <div className="overflow-x-auto bg-white m-2 h-full rounded-lg">
         <table className="table table-zebra table-pin-rows">
-          <thead>
-            {renderHeadersInTableDashboard(["Id","Name","Quantity","Storage Area"])}
-          </thead>
-          <tbody>{renderItemInTableDashboard(items)}</tbody>
+          <thead>{renderHeadersInTable}</thead>
+          <tbody>{renderItemInTable}</tbody>
         </table>
       </div>
     </>

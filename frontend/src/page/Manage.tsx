@@ -1,5 +1,6 @@
 import { getItems } from "@/api/InventoryApiService";
 import { Navbar } from "@/components/navbar/Navbar";
+import { renderHeadersInTableManage, renderItemInTableManage } from "@/components/tabel/Render";
 import { item, Tabel } from "@/components/tabel/Tabel";
 import { useEffect, useState } from "react";
 
@@ -23,7 +24,7 @@ export function Manage() {
         <li className="px-2 btn min-h-full h-full">Verksdag</li>
         <li className="px-2 btn min-h-full h-full">Verksdag</li>
       </ol>
-      <Tabel items={items}></Tabel>
+      <Tabel renderHeadersInTable={renderHeadersInTableManage(["Id","Name","Quantity","Storage Area"])} renderItemInTable={renderItemInTableManage(items)}></Tabel>
     </div>
   );
 }

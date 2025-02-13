@@ -1,6 +1,8 @@
 import { item } from "./Tabel";
 
-export const renderHeadersInTableDashboard = (header: string[]) => {
+export const renderHeadersInTableDashboard = (
+  header: string[]
+): JSX.Element => {
   return (
     <tr key={"tableDashboard"}>
       {header.map((head) => (
@@ -10,7 +12,7 @@ export const renderHeadersInTableDashboard = (header: string[]) => {
   );
 };
 
-export const renderItemInTableDashboard = (items: item[]) => {
+export const renderItemInTableDashboard = (items: item[]): JSX.Element[] => {
   return items.map((item: item) => {
     return (
       <tr key={item.id}>
@@ -23,7 +25,7 @@ export const renderItemInTableDashboard = (items: item[]) => {
   });
 };
 
-export const renderHeadersInTableManage = (header: string[]) => {
+export const renderHeadersInTableManage = (header: string[]): JSX.Element => {
   return (
     <tr key={"tableDashboard"}>
       {header.map((head) => (
@@ -36,7 +38,7 @@ export const renderHeadersInTableManage = (header: string[]) => {
   );
 };
 
-export const renderItemInTableManage = (items: item[]) => {
+export const renderItemInTableManage = (items: item[]): JSX.Element[] => {
   return items.map((item: item) => {
     return (
       <tr key={item.id}>
