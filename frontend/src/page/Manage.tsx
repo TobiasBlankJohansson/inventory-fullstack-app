@@ -22,7 +22,9 @@ export function Manage() {
   return (
     <div className="h-screen flex flex-col">
       <Navbar currentPage={1} currentPageName="Manage"></Navbar>
-      <StorageArea></StorageArea>
+      <StorageArea
+        storageArea={["Verksdag", "Annex", "Bothuset"]}
+      ></StorageArea>
       <Tabel
         renderHeadersInTable={renderHeadersInTableManage([
           "Id",
