@@ -21,17 +21,25 @@ export function StorageArea({ storageArea }: importStorageArea) {
         ))}
       </ol>
       <dialog id="my_modal_1" className="modal">
-        <div className="modal-box">
-          <h3 className="font-bold text-lg">Hello!</h3>
-          <p className="py-4">
-            Press ESC key or click the button below to close
-          </p>
-          <div className="modal-action">
-            <form method="dialog">
+        <div className="modal-box p-4 w-fit">
+          <form method="dialog">
+            <h3 className="font-bold text-lg">Storage area creation</h3>
+            <label className="form-control w-full max-w-xs">
+              <div className="label">
+                <span className="label-text">Storage area name</span>
+              </div>
+              <input
+                type="text"
+                placeholder="Type here"
+                className="input input-bordered w-full max-w-xs"
+                required
+              />
+            </label>
+            <div className="modal-action flex justify-between">
               <button className="btn">Add another one</button>
-              <button className="btn">Add</button>
-            </form>
-          </div>
+              <button className="btn">Save</button>
+            </div>
+          </form>
         </div>
       </dialog>
     </>
