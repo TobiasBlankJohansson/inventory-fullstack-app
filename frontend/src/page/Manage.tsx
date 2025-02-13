@@ -1,7 +1,18 @@
+import { getItems } from "@/api/InventoryApiService";
 import { Navbar } from "@/components/navbar/Navbar";
-import { Tabel } from "@/components/tabel/Tabel";
+import { item, Tabel } from "@/components/tabel/Tabel";
+import { useEffect, useState } from "react";
 
-export function Manage() {
+export function Manage() {  
+  const [items, setItems] = useState<item[]>([]);
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getItems();
+      setItems(data);
+    };
+    fetchData();
+  }, []);
   return (
     <div className="h-screen flex flex-col">
       <Navbar currentPage={1} currentPageName="Manage"></Navbar>
