@@ -3,6 +3,7 @@ import { Navbar } from "@/components/navbar/Navbar";
 import { Print } from "@/components/print/Print";
 import { Search } from "@/components/search/Search";
 import { Select } from "@/components/select/Select";
+import { renderHeadersInTableDashboard, renderItemInTableDashboard } from "@/components/tabel/Render";
 import { item, Tabel } from "@/components/tabel/Tabel";
 import { useEffect, useMemo, useState } from "react";
 
@@ -21,10 +22,13 @@ export function Dashboard() {
 
   const itemList: item[] = useMemo(() => {
     return items.filter((item) => {
-      const matchesSearch = item.name.toLowerCase().includes(search.toLowerCase());
-      const matchesStorage = storageArea === "All" || 
+      const matchesSearch = item.name
+        .toLowerCase()
+        .includes(search.toLowerCase());
+      const matchesStorage =
+        storageArea === "All" ||
         item.storageArea.toLowerCase().includes(storageArea.toLowerCase());
-  
+
       return matchesSearch && matchesStorage;
     });
   }, [search, items, storageArea]);
@@ -37,7 +41,15 @@ export function Dashboard() {
         <Select setStorageArea={setStorageArea}></Select>
         <Print></Print>
       </section>
-      <Tabel items={itemList}></Tabel>
+      <Tabel
+        renderHeadersInTable={renderHeadersInTableDashboard([
+          "Id",
+          "Name",
+          "Quantity",
+          "Storage Area",
+        ])}
+        renderItemInTable={renderItemInTableDashboard(itemList)}
+      ></Tabel>
     </div>
   );
 }
