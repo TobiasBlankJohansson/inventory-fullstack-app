@@ -1,8 +1,12 @@
 type importStorageArea = {
   storageArea: string[];
+  setStorageArea: React.Dispatch<React.SetStateAction<string[]>>;
 };
 
-export function StorageArea({ storageArea }: importStorageArea) {
+export function StorageArea({
+  storageArea,
+  setStorageArea,
+}: importStorageArea) {
   return (
     <>
       <ol className="flex h-12 gap-2 m-2 mb-0 overflow-scroll scrollbar-hide">
@@ -10,7 +14,9 @@ export function StorageArea({ storageArea }: importStorageArea) {
           className="px-2 w-10 text-xl btn min-h-full h-full"
           onClick={() =>
             (
-              document.getElementById("my_modal_1") as HTMLDialogElement
+              document.getElementById(
+                "storage_area_name_modal"
+              ) as HTMLDialogElement
             ).showModal()
           }
         >
@@ -20,15 +26,20 @@ export function StorageArea({ storageArea }: importStorageArea) {
           <li className="px-2 btn min-h-full h-full">{area}</li>
         ))}
       </ol>
-      <dialog id="my_modal_1" className="modal">
+
+      <dialog id="storage_area_name_modal" className="modal">
         <div className="modal-box p-4 w-fit">
-          <form method="dialog">
+          <form
+            method="dialog"
+            onSubmit={() => SaveStorageArea(setStorageArea)}
+          >
             <h3 className="font-bold text-lg">Storage area creation</h3>
             <label className="form-control w-full max-w-xs">
               <div className="label">
                 <span className="label-text">Storage area name</span>
               </div>
               <input
+                id="storage_area_name"
                 type="text"
                 placeholder="Type here"
                 className="input input-bordered w-full max-w-xs"
@@ -44,4 +55,15 @@ export function StorageArea({ storageArea }: importStorageArea) {
       </dialog>
     </>
   );
+}
+
+function SaveStorageArea(
+  setStorageArea: React.Dispatch<React.SetStateAction<string[]>>
+) {
+  const storageAreaInput: HTMLInputElement = document.getElementById(
+    "storage_area_name"
+  ) as HTMLInputElement;
+  const storageName = storageAreaInput.value;
+  setStorageArea((storageArea) => [...storageArea, storageName]);
+  storageAreaInput.value = "";
 }
