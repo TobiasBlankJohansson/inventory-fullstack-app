@@ -1,5 +1,6 @@
 import { getItems } from "@/api/InventoryApiService";
 import { Navbar } from "@/components/navbar/Navbar";
+import { StorageArea } from "@/components/storage_area/StorageArea";
 import {
   renderHeadersInTableManage,
   renderItemInTableManage,
@@ -21,13 +22,7 @@ export function Manage() {
   return (
     <div className="h-screen flex flex-col">
       <Navbar currentPage={1} currentPageName="Manage"></Navbar>
-      <ol className="flex h-12 gap-2 m-2 mb-0 overflow-scroll scrollbar-hide">
-        <li className="px-2 w-10 text-xl btn min-h-full h-full">+</li>
-        <li className="px-2 btn min-h-full h-full">Verksdag</li>
-        <li className="px-2 btn min-h-full h-full">Verksdag</li>
-        <li className="px-2 btn min-h-full h-full">Verksdag</li>
-        <li className="px-2 btn min-h-full h-full">Verksdag</li>
-      </ol>
+      <StorageArea></StorageArea>
       <Tabel
         renderHeadersInTable={renderHeadersInTableManage([
           "Id",
