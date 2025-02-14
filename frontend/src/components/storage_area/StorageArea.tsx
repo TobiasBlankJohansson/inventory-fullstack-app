@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 type importStorageArea = {
   storageArea: string[];
   setStorageArea: React.Dispatch<React.SetStateAction<string[]>>;
@@ -7,6 +9,8 @@ export function StorageArea({
   storageArea,
   setStorageArea,
 }: importStorageArea) {
+  const [addAnotherOne, setAddAnotherOne] = useState<boolean>(false);
+
   return (
     <>
       <ol className="flex h-12 gap-2 m-2 mb-0 overflow-scroll scrollbar-hide">
@@ -31,7 +35,14 @@ export function StorageArea({
         <div className="modal-box p-4 w-fit">
           <form
             method="dialog"
-            onSubmit={() => SaveStorageArea(setStorageArea)}
+            onSubmit={(event) =>
+              SaveStorageArea(
+                setStorageArea,
+                addAnotherOne,
+                setAddAnotherOne,
+                event
+              )
+            }
           >
             <h3 className="font-bold text-lg">Storage area creation</h3>
             <label className="form-control w-full max-w-xs">
@@ -47,7 +58,12 @@ export function StorageArea({
               />
             </label>
             <div className="modal-action flex justify-between">
-              <button className="btn">Add another one</button>
+              <button
+                className="btn"
+                onClick={() => setAddAnotherOne(() => true)}
+              >
+                Add another one
+              </button>
               <button className="btn">Save</button>
             </div>
           </form>
@@ -58,8 +74,15 @@ export function StorageArea({
 }
 
 function SaveStorageArea(
-  setStorageArea: React.Dispatch<React.SetStateAction<string[]>>
+  setStorageArea: React.Dispatch<React.SetStateAction<string[]>>,
+  addAnotherOne: boolean,
+  setAddAnotherOne: React.Dispatch<React.SetStateAction<boolean>>,
+  event?: React.FormEvent
 ) {
+  if (addAnotherOne) {
+    event?.preventDefault();
+    setAddAnotherOne(() => false);
+  }
   const storageAreaInput: HTMLInputElement = document.getElementById(
     "storage_area_name"
   ) as HTMLInputElement;
