@@ -1,4 +1,3 @@
-import { getItems } from "@/api/InventoryApiService";
 import { Navbar } from "@/components/navbar/Navbar";
 import { Print } from "@/components/print/Print";
 import { Search } from "@/components/search/Search";
@@ -7,34 +6,11 @@ import {
   renderHeadersInTableDashboard,
   renderItemInTableDashboard,
 } from "@/components/tabel/Render";
-import { item, Tabel } from "@/components/tabel/Tabel";
-import { useEffect, useMemo, useState } from "react";
+import { Tabel } from "@/components/tabel/Tabel";
+import { useDashboardData } from "@/hooks";
 
 export function Dashboard() {
-  const [items, setItems] = useState<item[]>([]);
-  const [search, setSearch] = useState<string>("");
-  const [storageArea, setStorageArea] = useState<string>("All");
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await getItems();
-      setItems(data);
-    };
-    fetchData();
-  }, []);
-
-  const itemList: item[] = useMemo(() => {
-    return items.filter((item) => {
-      const matchesSearch = item.name
-        .toLowerCase()
-        .includes(search.toLowerCase());
-      const matchesStorage =
-        storageArea === "All" ||
-        item.storageArea.toLowerCase().includes(storageArea.toLowerCase());
-
-      return matchesSearch && matchesStorage;
-    });
-  }, [search, items, storageArea]);
+  const { setSearch, setStorageArea, itemList } = useDashboardData();
 
   return (
     <div className="h-screen flex flex-col">
