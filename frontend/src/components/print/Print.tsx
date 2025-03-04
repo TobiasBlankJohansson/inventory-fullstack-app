@@ -1,7 +1,9 @@
+import { Button } from "../button";
+
 export function Print() {
   return (
     <>
-      <button className="btn min-h-full h-full">Print</button>
+      <Button className="min-h-full h-full">Print</Button>
     </>
   );
 }

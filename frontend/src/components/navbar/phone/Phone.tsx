@@ -4,6 +4,7 @@ import { Button } from "../../button";
 
 export function Phone(currentPageName: string, currentPage: number) {
   const [sideMenuShow, setSideMenuShow] = useState<boolean>(false);
+  console.log(sideMenuShow);
   return (
     <>
       <nav className="navbar bg-primary w-full">
@@ -14,7 +15,6 @@ export function Phone(currentPageName: string, currentPage: number) {
               onClick={() => {
                 setSideMenuShow(true);
               }}
-              variant="primary"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

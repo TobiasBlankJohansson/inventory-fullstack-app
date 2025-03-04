@@ -17,7 +17,6 @@ export function Sidebar({ setSideMenuShow, currentPage }: importSidebar) {
         </ol>
       </menu>
       <Button
-        variant="primary"
         className="btn-ghost absolute top-0 right-0 w-2/6 h-screen"
         onClick={() => {
           setSideMenuShow(false);
