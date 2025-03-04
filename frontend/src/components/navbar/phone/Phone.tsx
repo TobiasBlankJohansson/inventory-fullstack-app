@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Sidebar } from "./Sidebar";
-import { Button } from "../button";
+import { Button } from "../../button";
 
 export function Phone(currentPageName: string, currentPage: number) {
   const [sideMenuShow, setSideMenuShow] = useState<boolean>(false);

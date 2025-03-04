@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useScreen } from "../provider/ScreenContext";
+import { useScreen } from "../../provider/ScreenContext";
 
 export function NavItem(
   label: string,
@@ -10,7 +10,10 @@ export function NavItem(
   const { isLaptop } = useScreen();
   return (
     <li
-      className={(!isLaptop && "mb-4 ") + (currentPage === page ? " text-secondary underline" : " text-white")}
+      className={
+        (!isLaptop && "mb-4 ") +
+        (currentPage === page ? " text-secondary underline" : " text-white")
+      }
     >
       <Link to={link}>{label}</Link>
     </li>

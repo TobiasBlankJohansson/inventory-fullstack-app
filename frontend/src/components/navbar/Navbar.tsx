@@ -1,6 +1,6 @@
 import { useScreen } from "../provider/ScreenContext";
-import { Laptop } from "./Laptop";
-import { Phone } from "./Phone";
+import { Laptop } from "./laptop/Laptop";
+import { Phone } from "./phone/Phone";
 
 type importNavbar = {
   currentPage: number;

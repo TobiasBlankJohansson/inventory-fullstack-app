@@ -1,4 +1,4 @@
-import { navigation } from "./Pages";
+import { Navigation } from "../Navigation";
 
 export function Laptop(currentPage: number) {
   return (
@@ -10,7 +10,7 @@ export function Laptop(currentPage: number) {
         <div className="navbar-center"></div>
         <div className="navbar-end">
           <ol className="flex justify-between w-full text-xl mr-4">
-            {navigation(currentPage)}
+            {Navigation(currentPage)}
           </ol>
         </div>
       </nav>

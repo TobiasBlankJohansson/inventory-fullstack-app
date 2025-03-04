@@ -1,4 +1,5 @@
-import { navigation } from "./Pages";
+import { Button } from "@/components/button";
+import { Navigation } from "../Navigation";
 
 type importSidebar = {
   sideMenuShow: boolean;
@@ -20,16 +21,19 @@ export function Sidebar({
               Toobia Nordic
             </h2>
             <ol className="text-2xl p-2">
-              {navigation(currentPage)}
+              {Navigation(currentPage)}
               <li className="text-white mb-4"></li>
             </ol>
           </menu>
-          <button
-            className="absolute top-0 right-0 w-2/6 h-screen"
+          <Button
+            variant="primary"
+            className="btn-ghost absolute top-0 right-0 w-2/6 h-screen"
             onClick={() => {
               setSideMenuShow(false);
             }}
-          ></button>
+          >
+            {" "}
+          </Button>
         </div>
       )}
     </>
