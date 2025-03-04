@@ -17,7 +17,7 @@ export const Button = ({
 }: Props) => {
   return (
     <button
-      className={`btn ${variant} ${className}`}
+      className={`btn bg_button_${variant} ${className}`}
       onClick={onClick}
       disabled={disabled}
     >
