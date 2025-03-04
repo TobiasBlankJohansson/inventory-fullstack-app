@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Sidebar } from "./Sidebar";
+import { Button } from "../button";
 
 export function Phone(currentPageName: string, currentPage: number) {
   const [sideMenuShow, setSideMenuShow] = useState<boolean>(false);
@@ -8,11 +9,12 @@ export function Phone(currentPageName: string, currentPage: number) {
       <nav className="navbar bg-primary w-full">
         <div className="navbar-start">
           <div className="dropdown">
-            <button
-              className="btn btn-ghost btn-circle"
+            <Button
+              className="btn-ghost btn-circle"
               onClick={() => {
                 setSideMenuShow(true);
               }}
+              variant="primary"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +30,7 @@ export function Phone(currentPageName: string, currentPage: number) {
                   d="M4 6h16M4 12h16M4 18h16"
                 />
               </svg>
-            </button>
+            </Button>
           </div>
         </div>
         <div className="navbar-center">

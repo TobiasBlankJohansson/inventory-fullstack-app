@@ -12,13 +12,20 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
-        primary: "#2C3E50", 
-        secondary: "#C48400", 
-        success: "#10B981", 
+        primary: "#2C3E50",
+        secondary: "#C48400",
+        success: "#10B981",
         warning: "#F59E0B",
-        error: "#EF4444", 
-        info: "#3B82F6", 
+        error: "#EF4444",
+        info: "#3B82F6",
         background: "#9BADC3",
+
+        button_primary: "#2C3E50",
+        button_secondary: "#C48400",
+        button_success: "#10B981",
+        button_warning: "#F59E0B",
+        button_error: "#EF4444",
+        button_info: "#3B82F6",
 
         foreground: "hsl(var(--foreground))",
         card: {

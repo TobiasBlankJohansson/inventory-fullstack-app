@@ -4,7 +4,7 @@ type Props = {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   children: React.ReactNode;
   variant: Variant;
-  className?: Variant;
+  className?: string;
   disabled?: boolean;
 };
 
