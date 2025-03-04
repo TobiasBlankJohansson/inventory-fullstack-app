@@ -2,8 +2,11 @@ import { getItems } from "@/api/InventoryApiService";
 import { Navbar } from "@/components/navbar/Navbar";
 import { Print } from "@/components/print/Print";
 import { Search } from "@/components/search/Search";
-import { Select } from "@/components/select/Select";
-import { renderHeadersInTableDashboard, renderItemInTableDashboard } from "@/components/tabel/Render";
+import { SelectStorage } from "@/components/select/select-storage";
+import {
+  renderHeadersInTableDashboard,
+  renderItemInTableDashboard,
+} from "@/components/tabel/Render";
 import { item, Tabel } from "@/components/tabel/Tabel";
 import { useEffect, useMemo, useState } from "react";
 
@@ -38,7 +41,7 @@ export function Dashboard() {
       <Navbar currentPage={0} currentPageName="Dashboard"></Navbar>
       <section className="h-10 grid grid-flow-col grid-cols-3 gap-2 m-2 mb-0">
         <Search setSearch={setSearch}></Search>
-        <Select setStorageArea={setStorageArea}></Select>
+        <SelectStorage setStorageArea={setStorageArea}></SelectStorage>
         <Print></Print>
       </section>
       <Tabel

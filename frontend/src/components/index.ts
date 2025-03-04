@@ -6,4 +6,3 @@ export * from "./search";
 export * from "./select";
 export * from "./storage_area";
 export * from "./tabel";
-export * from "./ui";

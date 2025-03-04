@@ -21,8 +21,10 @@ export function Phone(currentPageName: string, currentPage: number) {
                 className="h-8 w-8 text-white"
                 fill="none"
                 viewBox="0 0 24 24"
+                aria-label="Open sidebar menu"
                 stroke="currentColor"
               >
+                <title>Menu</title>
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -36,7 +38,6 @@ export function Phone(currentPageName: string, currentPage: number) {
         <div className="navbar-center">
           <h1 className="text-white text-2xl">{currentPageName}</h1>
         </div>
-        <div className="navbar-end"></div>
       </nav>
       {sideMenuShow && (
         <Sidebar setSideMenuShow={setSideMenuShow} currentPage={currentPage} />

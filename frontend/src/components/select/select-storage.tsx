@@ -2,7 +2,7 @@ type inputSelect = {
   setStorageArea: React.Dispatch<React.SetStateAction<string>>;
 };
 
-export function Select({ setStorageArea }: inputSelect) {
+export function SelectStorage({ setStorageArea }: inputSelect) {
   return (
     <div className="h-10">
       <select
