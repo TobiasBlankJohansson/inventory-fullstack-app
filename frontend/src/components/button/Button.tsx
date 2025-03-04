@@ -2,7 +2,7 @@ type Variant = "primary" | "secondary" | "info" | "warning" | "success";
 
 type Props = {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   variant: Variant;
   className?: string;
   disabled?: boolean;

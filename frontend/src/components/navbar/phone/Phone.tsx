@@ -38,11 +38,9 @@ export function Phone(currentPageName: string, currentPage: number) {
         </div>
         <div className="navbar-end"></div>
       </nav>
-      <Sidebar
-        sideMenuShow={sideMenuShow}
-        setSideMenuShow={setSideMenuShow}
-        currentPage={currentPage}
-      />
+      {sideMenuShow && (
+        <Sidebar setSideMenuShow={setSideMenuShow} currentPage={currentPage} />
+      )}
     </>
   );
 }
