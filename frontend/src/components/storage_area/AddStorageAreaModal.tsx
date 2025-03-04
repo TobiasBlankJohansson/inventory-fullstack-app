@@ -46,6 +46,7 @@ export function AddStorageAreaModal({setStorageArea}:importAddStorageAreaModal) 
     </div>
   </dialog>
 }
+
 function SaveStorageArea(
     setStorageArea: React.Dispatch<React.SetStateAction<string[]>>,
     addAnotherOne: boolean,
