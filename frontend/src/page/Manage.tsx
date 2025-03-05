@@ -20,7 +20,7 @@ export function Manage() {
       <Navbar currentPage={1} currentPageName="Manage"></Navbar>
       <BodyContainer>
         <div className="flex mt">
-          <div className="mt-2 w-60">
+          <div className="w-60">
             <Search setSearch={setSearch}></Search>
           </div>
           <StorageArea

@@ -14,7 +14,7 @@ export function StorageArea({
 }: importStorageArea) {
   return (
     <>
-      <ol className="flex h-12 gap-2 m-2 mb-0 overflow-scroll scrollbar-hide">
+      <ol className="flex h-12 gap-2 ml-2 overflow-scroll scrollbar-hide">
         <li
           key="storage_add"
           className="btn px-2 w-10 text-xl min-h-full h-full bg-button_primary hover:bg-button_primary_hover text-white"
