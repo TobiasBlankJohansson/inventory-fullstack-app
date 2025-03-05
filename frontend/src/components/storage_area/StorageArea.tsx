@@ -1,16 +1,16 @@
-import { Button } from "../button";
 import { CreateStorage } from "../modal/CreateStorage";
+import { AreaItem } from "./AreaItem";
 
 type importStorageArea = {
   storageArea: string[];
   setStorageArea: React.Dispatch<React.SetStateAction<string[]>>;
+  setSelected: React.Dispatch<React.SetStateAction<string[]>>;
 };
-
-
 
 export function StorageArea({
   storageArea,
   setStorageArea,
+  setSelected,
 }: importStorageArea) {
   return (
     <>
@@ -27,11 +27,7 @@ export function StorageArea({
           +
         </li>
         {storageArea.map((area) => (
-          <li key={"storage_" + area}>
-            <Button className="px-2 min-h-full h-full hover:bg-button_secondary hover:text-white">
-              {area}
-            </Button>
-          </li>
+          <AreaItem area={area} setSelected={setSelected} />
         ))}
       </ol>
       <CreateStorage setStorageArea={setStorageArea} />
