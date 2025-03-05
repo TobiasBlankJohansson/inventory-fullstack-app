@@ -1,41 +1,21 @@
-import { getItems } from "@/api/InventoryApiService";
-import { Item } from "@/types";
-import { useState, useEffect, useMemo } from "react";
+import { useState } from "react";
+import { useFilterItems } from "../filter-items";
+import { useFetchItems } from "../fetch-items";
 
 export function useDashboardData() {
-  const [items, setItems] = useState<Item[]>([]);
+  const { items, setItems } = useFetchItems();
   const [search, setSearch] = useState<string>("");
-  const [storageArea, setStorageArea] = useState<string>("All");
+  const [selected, setSelected] = useState<string[]>(["All"]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await getItems();
-      setItems(data);
-    };
-    fetchData().catch((error) =>
-      console.error("Failed to fetch items:", error)
-    );
-  }, []);
-
-  const itemList = useMemo(() => {
-    return items.filter((item) => {
-      const matchesSearch = item.name
-        .toLowerCase()
-        .includes(search.toLowerCase());
-      const matchesStorage =
-        storageArea === "All" ||
-        item.storageArea.toLowerCase().includes(storageArea.toLowerCase());
-      return matchesSearch && matchesStorage;
-    });
-  }, [search, items, storageArea]);
+  const itemList = useFilterItems(items, search, selected);
 
   return {
     items,
     setItems,
     search,
     setSearch,
-    storageArea,
-    setStorageArea,
+    selected,
+    setSelected,
     itemList,
   };
 }

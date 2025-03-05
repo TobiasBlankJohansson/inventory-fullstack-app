@@ -14,7 +14,7 @@ import { useDashboardData } from "@/hooks";
 import { getItemHeaders } from "@/util";
 
 export function Dashboard() {
-  const { setSearch, setStorageArea, itemList } = useDashboardData();
+  const { setSearch, setSelected, itemList } = useDashboardData();
 
   return (
     <ScreenContainer>
@@ -22,7 +22,7 @@ export function Dashboard() {
       <BodyContainer>
         <section className="h-10 grid grid-flow-col grid-cols-3 gap-2 m-2 mb-0">
           <Search setSearch={setSearch}></Search>
-          <SelectStorage setStorageArea={setStorageArea}></SelectStorage>
+          <SelectStorage setStorageArea={setSelected}></SelectStorage>
           <Print itemList={itemList}></Print>
         </section>
         <Tabel
