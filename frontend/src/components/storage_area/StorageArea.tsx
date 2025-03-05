@@ -6,6 +6,21 @@ type importStorageArea = {
   setStorageArea: React.Dispatch<React.SetStateAction<string[]>>;
 };
 
+const onClick = (
+  select: boolean,
+  setSelect: React.Dispatch<React.SetStateAction<boolean>>,
+  area: string,
+  setSelected: React.Dispatch<React.SetStateAction<string[]>>,
+  selected: string[]
+) => {
+  setSelect(() => !select);
+  if (!select) {
+    setSelected([...selected, area]);
+  } else {
+    setSelected(selected.filter(item => item !== area));
+  }
+};
+
 export function StorageArea({
   storageArea,
   setStorageArea,
