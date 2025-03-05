@@ -9,6 +9,7 @@ export const useManageData = () => {
     "Annex",
     "Bothuset",
   ]);
+  const [selected, setSelected] = useState<string[]>([]);
   const [search, setSearch] = useState<string>("");
 
   useEffect(() => {
@@ -28,10 +29,14 @@ export const useManageData = () => {
       const matchesSearch = item.name
         .toLowerCase()
         .includes(search.toLowerCase());
-
-      return matchesSearch;
+      const matchesStorage =
+        selected.length === 0 ||
+        selected
+          .map((s) => s.toLowerCase())
+          .includes(item.storageArea.toLowerCase());
+      return matchesSearch && matchesStorage;
     });
-  }, [search, items]);
+  }, [search, items, selected]);
 
   return {
     itemList,
@@ -40,5 +45,7 @@ export const useManageData = () => {
     setStorageArea,
     search,
     setSearch,
+    selected,
+    setSelected,
   };
 };

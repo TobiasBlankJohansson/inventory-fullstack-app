@@ -12,7 +12,8 @@ import { useManageData } from "@/hooks";
 import { getItemHeaders } from "@/util";
 
 export function Manage() {
-  const { itemList, storageArea, setStorageArea, setSearch } = useManageData();
+  const { itemList, storageArea, setStorageArea, setSearch, setSelected } =
+    useManageData();
 
   return (
     <ScreenContainer>
@@ -25,6 +26,7 @@ export function Manage() {
           <StorageArea
             storageArea={storageArea}
             setStorageArea={setStorageArea}
+            setSelected={setSelected}
           ></StorageArea>
         </div>
         <Tabel
