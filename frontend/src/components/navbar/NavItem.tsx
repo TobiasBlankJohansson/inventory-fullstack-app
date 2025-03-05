@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useScreen } from "../../provider/ScreenContext";
+import { useScreen } from "../provider/ScreenContext";
 
 export function NavItem(
   label: string,
@@ -10,7 +10,7 @@ export function NavItem(
   const { isLaptop } = useScreen();
   return (
     <li
-      id={"navitem_" + page}
+      key={"navitem_" + page}
       className={
         (!isLaptop && "mb-4 ") +
         (currentPage === page ? " text-secondary underline" : " text-white")

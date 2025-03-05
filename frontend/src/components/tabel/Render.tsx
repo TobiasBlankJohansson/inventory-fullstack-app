@@ -23,7 +23,11 @@ export const renderTableItems = (
   includeCheckbox: boolean = false
 ): JSX.Element[] => {
   if (!items || items.length === 0) {
-    return [<tr key="empty"><td colSpan={includeCheckbox ? 5 : 4}>No items found</td></tr>];
+    return [
+      <tr key="empty">
+        <td colSpan={includeCheckbox ? 5 : 4}>No items found</td>
+      </tr>,
+    ];
   }
   return items.map((item) => (
     <tr key={item.id}>
