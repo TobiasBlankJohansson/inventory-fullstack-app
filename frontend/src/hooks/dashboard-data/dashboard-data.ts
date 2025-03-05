@@ -1,5 +1,5 @@
 import { getItems } from "@/api/InventoryApiService";
-import { item } from "@/components";
+import { item } from "@/types";
 import { useState, useEffect, useMemo } from "react";
 
 export function useDashboardData() {

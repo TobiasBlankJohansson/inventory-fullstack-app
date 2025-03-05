@@ -1,4 +1,4 @@
-import { item } from "./Tabel";
+import { item } from "@/types";
 
 export const renderHeadersInTableDashboard = (
   header: string[]

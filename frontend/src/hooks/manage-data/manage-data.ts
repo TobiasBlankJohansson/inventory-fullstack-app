@@ -1,6 +1,6 @@
 import { getItems } from "@/api/InventoryApiService";
-import { item } from "@/components";
-import { useState, useEffect } from "react";
+import { item } from "@/types"
+;import { useState, useEffect } from "react";
 
 export const useManageData = () => {
   const [items, setItems] = useState<item[]>([]);

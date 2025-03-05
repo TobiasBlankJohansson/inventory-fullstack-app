@@ -1,4 +1,4 @@
-import { item } from "@/components/tabel/Tabel";
+import { item } from "@/types";
 
 export async function getItems(): Promise<item[]> {
   return mockData;

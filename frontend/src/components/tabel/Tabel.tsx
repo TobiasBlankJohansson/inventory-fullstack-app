@@ -1,10 +1,3 @@
-export type item = {
-  id: string;
-  name: string;
-  quantity: string;
-  storageArea: string;
-};
-
 type inputTable = {
   renderHeadersInTable: JSX.Element;
   renderItemInTable: JSX.Element[];
