@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Dashboard } from "./page/Dashboard";
 import { Manage } from "./page/Manage";
-import { ScreenProvider } from "./components/provider/ScreenContext";
+import { ScreenProvider } from "./components";
 
 function App() {
   return (
