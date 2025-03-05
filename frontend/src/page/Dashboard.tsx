@@ -4,10 +4,7 @@ import { Navbar } from "@/components";
 import { Print } from "@/components";
 import { Search } from "@/components";
 import { SelectStorage } from "@/components";
-import {
-  renderHeadersInTableDashboard,
-  renderItemInTableDashboard,
-} from "@/components";
+
 import { Tabel } from "@/components";
 import { useDashboardData } from "@/hooks";
 

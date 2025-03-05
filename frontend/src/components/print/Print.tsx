@@ -25,10 +25,8 @@ export function Print({ itemList }: Props) {
   };
 
   return (
-    <>
       <Button className="min-h-full h-full" onClick={handlePrint}>
         Print
       </Button>
-    </>
   );
 }

@@ -1,55 +1,41 @@
 import { item } from "@/types";
 
-export const renderHeadersInTableDashboard = (
-  header: string[]
+export const renderTableHeaders = (
+  headers: string[],
+  includeActionColumn: boolean = false
 ): JSX.Element => {
   return (
-    <tr key={"tableDashboard"}>
-      {header.map((head) => (
-        <th>{head}</th>
+    <tr>
+      {headers.map((head, index) => (
+        <th key={index}>{head}</th>
       ))}
-    </tr>
-  );
-};
-
-export const renderItemInTableDashboard = (items: item[]): JSX.Element[] => {
-  return items.map((item: item) => {
-    return (
-      <tr key={item.id}>
-        <th>{item.id}</th>
-        <th>{item.name}</th>
-        <th>{item.quantity}</th>
-        <th>{item.storageArea}</th>
-      </tr>
-    );
-  });
-};
-
-export const renderHeadersInTableManage = (header: string[]): JSX.Element => {
-  return (
-    <tr key={"tableDashboard"}>
-      {header.map((head) => (
-        <th>{head}</th>
-      ))}
-      <th>
-        <div className="btn-ghost flex justify-center text-xl px-2">+</div>
-      </th>
-    </tr>
-  );
-};
-
-export const renderItemInTableManage = (items: item[]): JSX.Element[] => {
-  return items.map((item: item) => {
-    return (
-      <tr key={item.id}>
-        <th>{item.id}</th>
-        <th>{item.name}</th>
-        <th>{item.quantity}</th>
-        <th>{item.storageArea}</th>
-        <th className="flex justify-center">
-          <input type="checkbox" className="checkbox" />
+      {includeActionColumn && (
+        <th>
+          <div className="btn-ghost flex justify-center text-xl px-2">+</div>
         </th>
-      </tr>
-    );
-  });
+      )}
+    </tr>
+  );
+};
+
+export const renderTableItems = (
+  items: item[],
+  includeCheckbox: boolean = false
+): JSX.Element[] => {
+  if (!items || items.length === 0) {
+    return [<tr key="empty"><td colSpan={includeCheckbox ? 5 : 4}>No items found</td></tr>];
+  }
+  return items.map((item) => (
+    <tr key={item.id}>
+      <td>{item.id}</td>
+      <td>{item.name}</td>
+      <td>{item.quantity}</td>
+      <td>{item.storageArea}</td>
+      {includeCheckbox && (
+        <td className="flex justify-center">
+          <input type="checkbox" className="checkbox" />
+        </td>
+      )}
+    </tr>
+  ));
 };
