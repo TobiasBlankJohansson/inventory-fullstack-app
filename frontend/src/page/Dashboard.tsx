@@ -26,7 +26,7 @@ export function Dashboard() {
           <Print itemList={itemList}></Print>
         </section>
         <Tabel
-          renderHeadersInTable={renderTableHeaders(getItemHeaders(itemList[0]))}
+          renderHeadersInTable={renderTableHeaders(getItemHeaders(itemList))}
           renderItemInTable={renderTableItems(itemList)}
         ></Tabel>
       </BodyContainer>
