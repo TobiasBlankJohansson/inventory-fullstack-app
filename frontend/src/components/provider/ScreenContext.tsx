@@ -11,7 +11,11 @@ export function ScreenProvider({ children }: { children: React.ReactNode }) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  return <ScreenContext.Provider value={{ isLaptop }}>{children}</ScreenContext.Provider>;
+  return (
+    <ScreenContext.Provider value={{ isLaptop }}>
+      {children}
+    </ScreenContext.Provider>
+  );
 }
 
 export function useScreen() {

@@ -1,3 +1,4 @@
+import { useScreen } from "@/components";
 import { Navbar } from "@/components/navbar/Navbar";
 import { Print } from "@/components/print/Print";
 import { Search } from "@/components/search/Search";
@@ -15,20 +16,22 @@ export function Dashboard() {
   return (
     <div className="h-screen flex flex-col">
       <Navbar currentPage={0} currentPageName="Dashboard"></Navbar>
-      <section className="h-10 grid grid-flow-col grid-cols-3 gap-2 m-2 mb-0">
-        <Search setSearch={setSearch}></Search>
-        <SelectStorage setStorageArea={setStorageArea}></SelectStorage>
-        <Print></Print>
-      </section>
-      <Tabel
-        renderHeadersInTable={renderHeadersInTableDashboard([
-          "Id",
-          "Name",
-          "Quantity",
-          "Storage Area",
-        ])}
-        renderItemInTable={renderItemInTableDashboard(itemList)}
-      ></Tabel>
+      <div className={"h-[calc(100vh-64px)] flex flex-col min-[768px]:mx-20"}>
+        <section className="h-10 grid grid-flow-col grid-cols-3 gap-2 m-2 mb-0">
+          <Search setSearch={setSearch}></Search>
+          <SelectStorage setStorageArea={setStorageArea}></SelectStorage>
+          <Print></Print>
+        </section>
+        <Tabel
+          renderHeadersInTable={renderHeadersInTableDashboard([
+            "Id",
+            "Name",
+            "Quantity",
+            "Storage Area",
+          ])}
+          renderItemInTable={renderItemInTableDashboard(itemList)}
+        ></Tabel>
+      </div>
     </div>
   );
 }
