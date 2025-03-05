@@ -1,6 +1,6 @@
 import { getItems } from "@/api/InventoryApiService";
-import { item } from "@/types"
-;import { useState, useEffect } from "react";
+import { item } from "@/types";
+import { useState, useEffect, useMemo } from "react";
 
 export const useManageData = () => {
   const [items, setItems] = useState<item[]>([]);
@@ -9,6 +9,7 @@ export const useManageData = () => {
     "Annex",
     "Bothuset",
   ]);
+  const [search, setSearch] = useState<string>("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,10 +23,22 @@ export const useManageData = () => {
     fetchData();
   }, []);
 
+  const itemList = useMemo(() => {
+    return items.filter((item) => {
+      const matchesSearch = item.name
+        .toLowerCase()
+        .includes(search.toLowerCase());
+
+      return matchesSearch;
+    });
+  }, [search, items]);
+
   return {
-    items,
+    itemList,
     setItems,
     storageArea,
     setStorageArea,
+    search,
+    setSearch,
   };
 };
