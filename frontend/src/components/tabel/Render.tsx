@@ -1,10 +1,12 @@
 import { Item } from "@/types";
+import { Button } from "../button";
 
 export const renderTableHeaders = (
   headers: string[],
   includeActionColumn: boolean = false,
   checkedItems: string[] = [],
-  onDelete: () => void = () => {}
+  onDelete: () => void = () => {},
+  onCreate: () => void = () => {}
 ): JSX.Element => {
   const hasCheckedItems = checkedItems.length > 0;
 
@@ -14,13 +16,15 @@ export const renderTableHeaders = (
         <th key={index}>{head}</th>
       ))}
       {includeActionColumn && (
-        <th>
-          <div
-            className="btn-ghost flex justify-center text-xl px-2 cursor-pointer"
-            onClick={hasCheckedItems ? onDelete : undefined}
+        <th className="flex justify-center p-0 py-2">
+          <Button
+            className={`btn-ghost flex justify-center text-2xl px-5 min-h-8 h-8 cursor-pointer ${
+              hasCheckedItems ? "text-warning" : "text-success"
+            }`}
+            onClick={hasCheckedItems ? onDelete : onCreate}
           >
             {hasCheckedItems ? "−" : "+"}
-          </div>
+          </Button>
         </th>
       )}
     </tr>
