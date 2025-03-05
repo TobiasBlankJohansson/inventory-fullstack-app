@@ -1,14 +1,14 @@
 import { ScreenContainer } from "@/components";
-import { BodyContainer } from "@/components/container/BodyContainer";
-import { Navbar } from "@/components/navbar/Navbar";
-import { Print } from "@/components/print/Print";
-import { Search } from "@/components/search/Search";
-import { SelectStorage } from "@/components/select/select-storage";
+import { BodyContainer } from "@/components";
+import { Navbar } from "@/components";
+import { Print } from "@/components";
+import { Search } from "@/components";
+import { SelectStorage } from "@/components";
 import {
   renderHeadersInTableDashboard,
   renderItemInTableDashboard,
-} from "@/components/tabel/Render";
-import { Tabel } from "@/components/tabel/Tabel";
+} from "@/components";
+import { Tabel } from "@/components";
 import { useDashboardData } from "@/hooks";
 
 export function Dashboard() {

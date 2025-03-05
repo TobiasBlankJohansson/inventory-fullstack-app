@@ -1,4 +1,4 @@
-import { AddStorageAreaModal } from "./AddStorageAreaModal";
+import { CreateStorage } from "../model/CreateStorage";
 
 type importStorageArea = {
   storageArea: string[];
@@ -17,7 +17,7 @@ export function StorageArea({
           onClick={() =>
             (
               document.getElementById(
-                "storage_area_name_modal"
+                "create_storage"
               ) as HTMLDialogElement
             ).showModal()
           }
@@ -28,7 +28,7 @@ export function StorageArea({
           <li className="px-2 btn min-h-full h-full">{area}</li>
         ))}
       </ol>
-      <AddStorageAreaModal setStorageArea={setStorageArea} />
+      <CreateStorage setStorageArea={setStorageArea} />
     </>
   );
 }

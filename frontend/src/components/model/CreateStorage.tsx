@@ -1,32 +1,25 @@
 import { useState } from "react";
 import { Button } from "../button";
 
-type importAddStorageAreaModal = {
+type Props = {
   setStorageArea: React.Dispatch<React.SetStateAction<string[]>>;
 };
 
-export function AddStorageAreaModal({
-  setStorageArea,
-}: importAddStorageAreaModal) {
+export function CreateStorage({ setStorageArea }: Props) {
   const [addAnotherOne, setAddAnotherOne] = useState<boolean>(false);
   return (
-    <dialog id="storage_area_name_modal" className="modal">
+    <dialog id="create_storage" className="modal">
       <div className="modal-box px-10 py-6 w-fit bg-background">
         <form
           method="dialog"
           onSubmit={(event) =>
-            SaveStorageArea(
-              setStorageArea,
-              addAnotherOne,
-              setAddAnotherOne,
-              event
-            )
+            SaveStorage(setStorageArea, addAnotherOne, setAddAnotherOne, event)
           }
         >
-          <h3 className="font-bold text-lg">Storage area creation</h3>
+          <h3 className="font-bold text-lg text-gray-200">Storage area creation</h3>
           <label className="form-control w-full max-w-xs">
             <div className="label">
-              <span className="label-text">Storage area name</span>
+              <span className="label-text text-gray-200">Storage area name</span>
             </div>
             <input
               id="storage_area_name"
@@ -43,7 +36,9 @@ export function AddStorageAreaModal({
             >
               Add another one
             </Button>
-            <Button className="btn bg-button_secondary hover:bg-button_warning_hover border-button_secondary text-white">Save</Button>
+            <Button className="btn bg-button_secondary hover:bg-button_warning_hover border-button_secondary text-white">
+              Save
+            </Button>
           </div>
         </form>
       </div>
@@ -51,7 +46,7 @@ export function AddStorageAreaModal({
   );
 }
 
-function SaveStorageArea(
+function SaveStorage(
   setStorageArea: React.Dispatch<React.SetStateAction<string[]>>,
   addAnotherOne: boolean,
   setAddAnotherOne: React.Dispatch<React.SetStateAction<boolean>>,
