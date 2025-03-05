@@ -1,4 +1,8 @@
-import { renderTableHeaders, renderTableItems, ScreenContainer } from "@/components";
+import {
+  renderTableHeaders,
+  renderTableItems,
+  ScreenContainer,
+} from "@/components";
 import { BodyContainer } from "@/components";
 import { Navbar } from "@/components";
 import { Print } from "@/components";
@@ -7,6 +11,7 @@ import { SelectStorage } from "@/components";
 
 import { Tabel } from "@/components";
 import { useDashboardData } from "@/hooks";
+import { getItemHeaders } from "@/util";
 
 export function Dashboard() {
   const { setSearch, setStorageArea, itemList } = useDashboardData();
@@ -21,12 +26,7 @@ export function Dashboard() {
           <Print itemList={itemList}></Print>
         </section>
         <Tabel
-          renderHeadersInTable={renderTableHeaders([
-            "Id",
-            "Name",
-            "Quantity",
-            "Storage Area",
-          ])}
+          renderHeadersInTable={renderTableHeaders(getItemHeaders(itemList[0]))}
           renderItemInTable={renderTableItems(itemList)}
         ></Tabel>
       </BodyContainer>
