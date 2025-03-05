@@ -1,9 +1,9 @@
 import { getItems } from "@/api/InventoryApiService";
-import { item } from "@/types";
+import { Item } from "@/types";
 import { useState, useEffect, useMemo } from "react";
 
 export function useDashboardData() {
-  const [items, setItems] = useState<item[]>([]);
+  const [items, setItems] = useState<Item[]>([]);
   const [search, setSearch] = useState<string>("");
   const [storageArea, setStorageArea] = useState<string>("All");
 

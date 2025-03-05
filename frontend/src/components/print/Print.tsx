@@ -1,11 +1,11 @@
 import jsPDF from "jspdf";
 import { Button } from "../button";
-import { item } from "@/types";
+import { Item } from "@/types";
 import autoTable from "jspdf-autotable";
 import { capitalize, getItemKeys } from "@/util";
 
 type Props = {
-  itemList: item[];
+  itemList: Item[];
 };
 
 export function Print({ itemList }: Props) {
@@ -25,8 +25,8 @@ export function Print({ itemList }: Props) {
   };
 
   return (
-      <Button className="min-h-full h-full" onClick={handlePrint}>
-        Print
-      </Button>
+    <Button className="min-h-full h-full" onClick={handlePrint}>
+      Print
+    </Button>
   );
 }

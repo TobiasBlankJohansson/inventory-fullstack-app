@@ -1,4 +1,4 @@
-import { item } from "@/types";
+import { Item } from "@/types";
 
 export const renderTableHeaders = (
   headers: string[],
@@ -28,7 +28,7 @@ export const renderTableHeaders = (
 };
 
 export const renderTableItems = (
-  items: item[],
+  items: Item[],
   includeCheckbox: boolean = false,
   checkedItems: string[] = [],
   setCheckedItems: React.Dispatch<React.SetStateAction<string[]>> = () => {}

@@ -1,9 +1,9 @@
 import { getItems } from "@/api/InventoryApiService";
-import { item } from "@/types";
+import { Item } from "@/types";
 import { useState, useEffect, useMemo } from "react";
 
 export const useManageData = () => {
-  const [items, setItems] = useState<item[]>([]);
+  const [items, setItems] = useState<Item[]>([]);
   const [storageArea, setStorageArea] = useState<string[]>([
     "Verksdag",
     "Annex",
