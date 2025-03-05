@@ -18,7 +18,7 @@ export default {
         warning: "#F59E0B",
         error: "#EF4444",
         info: "#3B82F6",
-        background: "#8A939C",
+        background: "#DADDE0",
 
         button_primary: "#2C3E50",
         button_primary_hover: "#374C64",

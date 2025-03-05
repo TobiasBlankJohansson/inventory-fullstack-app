@@ -16,10 +16,10 @@ export function CreateStorage({ setStorageArea }: Props) {
             SaveStorage(setStorageArea, addAnotherOne, setAddAnotherOne, event)
           }
         >
-          <h3 className="font-bold text-lg text-gray-200">Storage area creation</h3>
+          <h3 className="font-bold text-lg ">Storage area creation</h3>
           <label className="form-control w-full max-w-xs">
             <div className="label">
-              <span className="label-text text-gray-200">Storage area name</span>
+              <span className="label-text ">Storage area name</span>
             </div>
             <input
               id="storage_area_name"
