@@ -1,4 +1,4 @@
-import { ScreenContainer } from "@/components";
+import { renderTableHeaders, renderTableItems, ScreenContainer } from "@/components";
 import { BodyContainer } from "@/components";
 import { Navbar } from "@/components";
 import { Print } from "@/components";
@@ -21,13 +21,13 @@ export function Dashboard() {
           <Print itemList={itemList}></Print>
         </section>
         <Tabel
-          renderHeadersInTable={renderHeadersInTableDashboard([
+          renderHeadersInTable={renderTableHeaders([
             "Id",
             "Name",
             "Quantity",
             "Storage Area",
           ])}
-          renderItemInTable={renderItemInTableDashboard(itemList)}
+          renderItemInTable={renderTableItems(itemList)}
         ></Tabel>
       </BodyContainer>
     </ScreenContainer>
