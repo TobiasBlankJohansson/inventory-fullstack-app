@@ -1,4 +1,3 @@
-import { getItems } from "@/api/InventoryApiService";
 import { ScreenContainer } from "@/components";
 import { BodyContainer } from "@/components/container/BodyContainer";
 import { Navbar } from "@/components/navbar/Navbar";
@@ -7,24 +6,11 @@ import {
   renderHeadersInTableManage,
   renderItemInTableManage,
 } from "@/components/tabel/Render";
-import { item, Tabel } from "@/components/tabel/Tabel";
-import { useEffect, useState } from "react";
+import { Tabel } from "@/components/tabel/Tabel";
+import { useManageData } from "@/hooks";
 
 export function Manage() {
-  const [items, setItems] = useState<item[]>([]);
-  const [storageArea, setStorageArea] = useState<string[]>([
-    "Verksdag",
-    "Annex",
-    "Bothuset",
-  ]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await getItems();
-      setItems(data);
-    };
-    fetchData();
-  }, []);
+  const { items, storageArea, setStorageArea } = useManageData();
 
   return (
     <ScreenContainer>
