@@ -1,4 +1,5 @@
 import { getItems } from "@/api/InventoryApiService";
+import { ScreenContainer } from "@/components";
 import { BodyContainer } from "@/components/container/BodyContainer";
 import { Navbar } from "@/components/navbar/Navbar";
 import { StorageArea } from "@/components/storage_area/StorageArea";
@@ -26,7 +27,7 @@ export function Manage() {
   }, []);
 
   return (
-    <div className="h-screen flex flex-col">
+    <ScreenContainer>
       <Navbar currentPage={1} currentPageName="Manage"></Navbar>
       <BodyContainer>
         <StorageArea
@@ -43,6 +44,6 @@ export function Manage() {
           renderItemInTable={renderItemInTableManage(items)}
         ></Tabel>
       </BodyContainer>
-    </div>
+    </ScreenContainer>
   );
 }

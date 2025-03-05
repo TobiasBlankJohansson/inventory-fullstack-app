@@ -1,3 +1,4 @@
+import { ScreenContainer } from "@/components";
 import { BodyContainer } from "@/components/container/BodyContainer";
 import { Navbar } from "@/components/navbar/Navbar";
 import { Print } from "@/components/print/Print";
@@ -14,7 +15,7 @@ export function Dashboard() {
   const { setSearch, setStorageArea, itemList } = useDashboardData();
 
   return (
-    <div className="h-screen flex flex-col">
+    <ScreenContainer>
       <Navbar currentPage={0} currentPageName="Dashboard"></Navbar>
       <BodyContainer>
         <section className="h-10 grid grid-flow-col grid-cols-3 gap-2 m-2 mb-0">
@@ -32,6 +33,6 @@ export function Dashboard() {
           renderItemInTable={renderItemInTableDashboard(itemList)}
         ></Tabel>
       </BodyContainer>
-    </div>
+    </ScreenContainer>
   );
 }
