@@ -1,4 +1,3 @@
-import { useScreen } from "@/components";
 import { Navbar } from "@/components/navbar/Navbar";
 import { Print } from "@/components/print/Print";
 import { Search } from "@/components/search/Search";
