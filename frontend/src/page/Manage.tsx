@@ -12,8 +12,16 @@ import { useManageData } from "@/hooks";
 import { getItemHeaders } from "@/util";
 
 export function Manage() {
-  const { itemList, storageArea, setStorageArea, setSearch, setSelected } =
-    useManageData();
+  const {
+    itemList,
+    checkedItems,
+    storageArea,
+    setStorageArea,
+    setSearch,
+    setSelected,
+    handleDelete,
+    setCheckedItems,
+  } = useManageData();
 
   return (
     <ScreenContainer>
@@ -32,9 +40,16 @@ export function Manage() {
         <Tabel
           renderHeadersInTable={renderTableHeaders(
             getItemHeaders(itemList),
-            true
+            true,
+            checkedItems,
+            handleDelete
           )}
-          renderItemInTable={renderTableItems(itemList, true)}
+          renderItemInTable={renderTableItems(
+            itemList,
+            true,
+            checkedItems,
+            setCheckedItems
+          )}
         ></Tabel>
       </BodyContainer>
     </ScreenContainer>

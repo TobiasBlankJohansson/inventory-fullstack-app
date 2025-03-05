@@ -11,6 +11,7 @@ export const useManageData = () => {
   ]);
   const [selected, setSelected] = useState<string[]>([]);
   const [search, setSearch] = useState<string>("");
+  const [checkedItems, setCheckedItems] = useState<string[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,6 +24,11 @@ export const useManageData = () => {
     };
     fetchData();
   }, []);
+
+  const handleDelete = () => {
+    setItems((prev) => prev.filter((item) => !checkedItems.includes(item.id)));
+    setCheckedItems([]);
+  };
 
   const itemList = useMemo(() => {
     return items.filter((item) => {
@@ -47,5 +53,8 @@ export const useManageData = () => {
     setSearch,
     selected,
     setSelected,
+    checkedItems,
+    setCheckedItems,
+    handleDelete,
   };
 };

@@ -3,8 +3,8 @@ import { item } from "@/types";
 export const renderTableHeaders = (
   headers: string[],
   includeActionColumn: boolean = false,
-  checkedItems: string[] | number[],
-  onDelete: () => void
+  checkedItems: string[] = [],
+  onDelete: () => void = () => {}
 ): JSX.Element => {
   const hasCheckedItems = checkedItems.length > 0;
 
@@ -30,8 +30,8 @@ export const renderTableHeaders = (
 export const renderTableItems = (
   items: item[],
   includeCheckbox: boolean = false,
-  checkedItems: string[],
-  setCheckedItems: React.Dispatch<React.SetStateAction<(string | number)[]>>
+  checkedItems: string[] = [],
+  setCheckedItems: React.Dispatch<React.SetStateAction<string[]>> = () => {}
 ): JSX.Element[] => {
   if (!items || items.length === 0) {
     return [
