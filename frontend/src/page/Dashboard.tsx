@@ -21,7 +21,7 @@ export function Dashboard() {
         <section className="h-10 grid grid-flow-col grid-cols-3 gap-2 m-2 mb-0">
           <Search setSearch={setSearch}></Search>
           <SelectStorage setStorageArea={setStorageArea}></SelectStorage>
-          <Print></Print>
+          <Print itemList={itemList}></Print>
         </section>
         <Tabel
           renderHeadersInTable={renderHeadersInTableDashboard([
