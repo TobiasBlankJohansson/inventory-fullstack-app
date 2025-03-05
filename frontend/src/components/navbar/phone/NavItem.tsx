@@ -10,6 +10,7 @@ export function NavItem(
   const { isLaptop } = useScreen();
   return (
     <li
+      id={"navitem_" + page}
       className={
         (!isLaptop && "mb-4 ") +
         (currentPage === page ? " text-secondary underline" : " text-white")
