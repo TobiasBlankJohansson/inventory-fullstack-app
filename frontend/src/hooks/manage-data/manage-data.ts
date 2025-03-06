@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useFilterItems } from "../filter-items";
 import { useFetchItems } from "../fetch-items";
-import { Item } from "@/types";
 
 export const useManageData = () => {
   const { items, setItems } = useFetchItems();
@@ -21,8 +20,8 @@ export const useManageData = () => {
     setItems((prev) => prev.filter((item) => !checkedItems.includes(item.id)));
     setCheckedItems([]);
   };
-  const handleCreate = (item: Item) => {
-    setItems((prev) => [...prev, item]);
+  const handleCreate = () => {
+    (document.getElementById("create_item") as HTMLDialogElement).showModal();
   };
 
   return {

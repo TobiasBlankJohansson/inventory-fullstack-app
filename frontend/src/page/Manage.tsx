@@ -5,6 +5,7 @@ import {
   Search,
 } from "@/components";
 import { BodyContainer } from "@/components/container/BodyContainer";
+import { CreateItem } from "@/components/modal/CreateItem";
 import { Navbar } from "@/components/navbar/Navbar";
 import { StorageArea } from "@/components/storage_area/StorageArea";
 import { Tabel } from "@/components/tabel/Tabel";
@@ -16,11 +17,13 @@ export function Manage() {
     itemList,
     checkedItems,
     storageArea,
+    setItems,
     setStorageArea,
     setSearch,
     setSelected,
     handleDelete,
     setCheckedItems,
+    handleCreate,
   } = useManageData();
 
   return (
@@ -42,7 +45,8 @@ export function Manage() {
             getItemHeaders(itemList),
             true,
             checkedItems,
-            handleDelete
+            handleDelete,
+            handleCreate
           )}
           renderItemInTable={renderTableItems(
             itemList,
@@ -52,6 +56,7 @@ export function Manage() {
           )}
         ></Tabel>
       </BodyContainer>
+      <CreateItem setItems={setItems} storageAreas={storageArea} />
     </ScreenContainer>
   );
 }
