@@ -17,30 +17,28 @@ export const ItemEditor = () => {
   };
   const storageAreas: string[] = ["Annex", "Verksdag"];
 
+
+  
   return (
     <ScreenContainer>
       <Navbar currentPageName="item"></Navbar>
       <BodyContainer>
-        <section className="bg-white my-5 w-full h-full rounded-xl">
+        <section className="bg-white my-5 h-full rounded-xl min-[768px]:mx-20 min-[1024px]:mx-60 overflow-scroll scrollbar-hide">
           <form className="flex flex-col items-center h-full w-full flex-grow justify-between">
-            <h1 className="flex flex-col items-center w-full text-3xl my-8">
-              {item.name}
-            </h1>
-            <div className="flex flex-col items-center space-y-5">
-              {FORM_FIELDS_ITEM.map((field) => (
-                <FormFieldItem
-                  key={field.key}
-                  field={field}
-                  value={item[field.key]}
-                  options={field.type === "select" ? storageAreas : undefined}
-                />
-              ))}
-            </div>
-            <div className="modal-action flex justify-between mb-8">
-              <Button className="btn w-40 bg-button_primary hover:bg-button_primary_hover border-button_primary text-white">
-                Add another one
+            <h1 className="text-3xl my-8">{item.name}</h1>
+            {FORM_FIELDS_ITEM.map((field) => (
+              <FormFieldItem
+                key={field.key}
+                field={field}
+                value={item[field.key]}
+                options={field.type === "select" ? storageAreas : undefined}
+              />
+            ))}
+            <div className="modal-action flex justify-between pb-8">
+              <Button className="btn w-40 bg-button_warning hover:bg-button_warning_hover border-button_warning text-white">
+                Delete
               </Button>
-              <Button className="btn w-40 bg-button_secondary hover:bg-button_warning_hover border-button_secondary text-white">
+              <Button className="btn w-40 bg-button_info hover:bg-button_info_hover border-button_info text-white">
                 Save
               </Button>
             </div>
