@@ -1,6 +1,6 @@
 import { FormFieldConfig } from "@/types";
 
-export const FormField = ({
+export const FormFieldItem = ({
   field,
   options,
 }: {
