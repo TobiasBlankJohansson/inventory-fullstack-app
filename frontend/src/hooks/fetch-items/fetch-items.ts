@@ -4,7 +4,6 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const useFetchItems = () => {
   const queryClient = useQueryClient();
-
   const {
     data: items = [],
     isLoading,
@@ -21,6 +20,5 @@ export const useFetchItems = () => {
       return updateFn(oldItems);
     });
   };
-
   return { items, setItems, isLoading, error, refetch };
 };

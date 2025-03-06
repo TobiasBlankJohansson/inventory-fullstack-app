@@ -1,24 +1,28 @@
 import { getStorageArea } from "@/api/InventoryApiService";
-import { useEffect, useState } from "react";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 
-export const useFetchStorage = (startValue?: string) => {
-  const [storageArea, setStorageArea] = useState<string[]>([]);
+export const useFetchStorage = () => {
+  const queryClient = useQueryClient();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const storageArrey = [];
-        if (startValue) {
-          storageArrey.push(startValue);
-        }
-        const data = await getStorageArea();
-        setStorageArea(storageArrey.concat(data));
-      } catch (error) {
-        console.error("Failed to fetch storage:", error);
+  const {
+    data: storageArea = [],
+    isLoading,
+    error,
+    refetch,
+  } = useQuery<string[], Error>({
+    queryKey: ["storageArea"],
+    queryFn: getStorageArea,
+    staleTime: 5 * 60 * 1000,
+  });
+
+  const setStorageArea = (updateFn: (prevStorage: string[]) => string[]) => {
+    queryClient.setQueryData<string[]>(
+      ["storageArea"],
+      (oldStorage = []) => {
+        return updateFn(oldStorage);
       }
-    };
-    fetchData();
-  }, [startValue]);
+    );
+  };
 
-  return { storageArea, setStorageArea };
+  return { storageArea, setStorageArea, isLoading, error, refetch };
 };
