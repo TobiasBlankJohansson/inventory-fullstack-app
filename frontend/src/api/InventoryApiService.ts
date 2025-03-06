@@ -1,7 +1,6 @@
 import { Item } from "@/types";
 
 export async function getItems(): Promise<Item[]> {
-  return mockDataItems;
   const response = await fetch("http://localhost:3000/api/items");
   if (!response.ok) {
     throw new Error();
