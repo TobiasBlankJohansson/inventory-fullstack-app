@@ -2,9 +2,11 @@ import { FormFieldConfig } from "@/types";
 
 export const FormFieldItem = ({
   field,
+  value,
   options,
 }: {
   field: FormFieldConfig;
+  value?: string;
   options?: string[];
 }) => (
   <label className="form-control w-full max-w-xs">
@@ -17,7 +19,7 @@ export const FormFieldItem = ({
         name={`item_${field.key}`}
         className="select select-bordered w-full max-w-xs"
         required
-        defaultValue=""
+        defaultValue={value ? value : ""}
       >
         <option value="" disabled>
           Select {field.label.toLowerCase()}
@@ -35,6 +37,7 @@ export const FormFieldItem = ({
         type={field.type}
         placeholder={field.placeholder}
         className="input input-bordered w-full max-w-xs"
+        defaultValue={value ? value : ""}
         required
       />
     )}

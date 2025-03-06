@@ -41,6 +41,7 @@ export function CreateStorage({ setStorageArea }: Props) {
               Save
             </Button>
           </div>
+          
         </form>
       </div>
     </dialog>
