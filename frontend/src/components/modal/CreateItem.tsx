@@ -31,7 +31,7 @@ export function CreateItem<T extends Item>({ setItems, storageAreas }: Props<T>)
         <form
           method="dialog"
           onSubmit={(event) =>
-            saveItem(setItems, addAnotherOne, setAddAnotherOne, fields, storageAreas, event)
+            saveItem(setItems, addAnotherOne, setAddAnotherOne, fields, event)
           }
         >
           <h3 className="font-bold text-lg">Item creation</h3>
@@ -98,7 +98,6 @@ function saveItem<T extends Item>(
   addAnotherOne: boolean,
   setAddAnotherOne: React.Dispatch<React.SetStateAction<boolean>>,
   fields: (keyof T)[],
-  storageAreas: string[],
   event?: React.FormEvent
 ) {
   if (addAnotherOne) {
