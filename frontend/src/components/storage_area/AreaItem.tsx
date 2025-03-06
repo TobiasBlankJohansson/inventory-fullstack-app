@@ -21,7 +21,7 @@ export const AreaItem = ({ area, setSelected }: Props) => {
       <Button
         onClick={handleClick}
         className={`px-2 min-h-full h-full hover:bg-button_secondary hover:text-white ${
-          select && "bg-button_secondary text-white"
+          select && "bg-button_secondary text-white border-button_secondary"
         }`}
       >
         {area}
