@@ -1,5 +1,6 @@
 import { Item } from "@/types";
 import { Button } from "../button";
+import { Link } from "react-router-dom";
 
 export const renderTableHeaders = (
   headers: string[],
@@ -57,7 +58,11 @@ export const renderTableItems = (
     return (
       <tr key={item.id}>
         <td>{item.id}</td>
-        <td>{item.name}</td>
+        <td>
+          <Link to={"/item-editor?id=" + item.id} className="link text-info">
+            {item.name}
+          </Link>
+        </td>
         <td>{item.quantity}</td>
         <td>{item.storageArea}</td>
         {includeCheckbox && (
