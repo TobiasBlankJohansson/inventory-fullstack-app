@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "../button";
+import { postStorageArea } from "@/api/InventoryApiService";
 
 type Props = {
   setStorageArea: React.Dispatch<React.SetStateAction<string[]>>;
@@ -46,20 +47,21 @@ export function CreateStorage({ setStorageArea }: Props) {
   );
 }
 
-function SaveStorage(
+async function SaveStorage(
   setStorageArea: React.Dispatch<React.SetStateAction<string[]>>,
   addAnotherOne: boolean,
   setAddAnotherOne: React.Dispatch<React.SetStateAction<boolean>>,
   event?: React.FormEvent
 ) {
-  if (addAnotherOne) {
-    event?.preventDefault();
-    setAddAnotherOne(() => false);
-  }
   const storageAreaInput: HTMLInputElement = document.getElementById(
     "storage_area_name"
   ) as HTMLInputElement;
   const storageName = storageAreaInput.value;
+  if(await postStorageArea(storageName))
   setStorageArea((storageArea) => [...storageArea, storageName]);
   storageAreaInput.value = "";
+  if (addAnotherOne) {
+    event?.preventDefault();
+    setAddAnotherOne(() => false);
+  }
 }

@@ -8,3 +8,4 @@ export * from "./storage_area";
 export * from "./tabel";
 export * from "./container";
 export * from "./modal";
+export * from "./forms"
