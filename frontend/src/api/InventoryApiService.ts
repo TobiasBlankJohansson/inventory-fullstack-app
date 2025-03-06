@@ -1,7 +1,7 @@
 import { Item } from "@/types";
 
 export async function getItems(): Promise<Item[]> {
-  return mockData;
+  return mockDataItems;
   const response = await fetch("http://localhost:3000/api/items");
   if (!response.ok) {
     throw new Error();
@@ -9,7 +9,20 @@ export async function getItems(): Promise<Item[]> {
   const items: Item[] = await response.json();
   return items;
 }
-const mockData: Item[] = [
+
+export async function getStorageArea(): Promise<string[]> {
+  return mockDataStorageArea;
+  const response = await fetch("http://localhost:3000/api/storage-area");
+  if (!response.ok) {
+    throw new Error();
+  }
+  const storageArea: string[] = await response.json();
+  return storageArea;
+}
+
+const mockDataStorageArea: string[] = ["Annex", "Verksdag"];
+
+const mockDataItems: Item[] = [
   { id: "1", name: "Screwdriver", quantity: "3", storageArea: "Annex" },
   { id: "2", name: "Hammer", quantity: "2", storageArea: "Verksdag" },
   { id: "3", name: "Wrench", quantity: "5", storageArea: "Annex" },

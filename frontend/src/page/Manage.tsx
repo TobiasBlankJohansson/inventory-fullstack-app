@@ -25,7 +25,6 @@ export function Manage() {
     setCheckedItems,
     handleCreate,
   } = useManageData();
-
   return (
     <ScreenContainer>
       <Navbar currentPage={1} currentPageName="Manage"></Navbar>

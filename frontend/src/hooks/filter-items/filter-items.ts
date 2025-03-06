@@ -18,7 +18,6 @@ export const useFilterItems = (
         selected
           .map((s) => s.toLowerCase())
           .includes(item.storageArea.toLowerCase());
-
       return matchesSearch && matchesStorage;
     });
   }, [items, search, selected]);
