@@ -18,10 +18,15 @@ export function CreateItem<T extends Item>({
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
+    console.log(formData);
     const newItem = Object.fromEntries(
-      FORM_FIELDS_ITEM.map(({ key }) => [key, formData.get(`item_${key}`)])
+      FORM_FIELDS_ITEM.map(({ key }) => {
+        console.log(`item_${key}`);
+        console.log([key, formData.get(`item_${key}`)]);
+        return [key, formData.get(`item_${key}`)];
+      })
     ) as T;
-
+    console.log(newItem);
     setItems((prevItems) => [...prevItems, newItem]);
 
     if (addAnotherOne) {

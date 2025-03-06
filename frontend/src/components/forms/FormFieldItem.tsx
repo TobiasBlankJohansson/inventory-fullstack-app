@@ -13,7 +13,8 @@ export const FormFieldItem = ({
     </div>
     {field.type === "select" ? (
       <select
-        id={`item_${field.key}`}
+        key={`item_${field.key}`}
+        name={`item_${field.key}`}
         className="select select-bordered w-full max-w-xs"
         required
         defaultValue=""
@@ -29,7 +30,8 @@ export const FormFieldItem = ({
       </select>
     ) : (
       <input
-        id={`item_${field.key}`}
+        key={`item_${field.key}`}
+        name={`item_${field.key}`}
         type={field.type}
         placeholder={field.placeholder}
         className="input input-bordered w-full max-w-xs"
