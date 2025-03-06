@@ -17,7 +17,7 @@ export const AreaItem = ({ area, setSelected }: Props) => {
   };
 
   return (
-    <li key={`storage_${area}`}>
+    <li>
       <Button
         onClick={handleClick}
         className={`px-2 min-h-full h-full hover:bg-button_secondary hover:text-white ${

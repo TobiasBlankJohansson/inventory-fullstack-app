@@ -27,7 +27,11 @@ export function StorageArea({
           +
         </li>
         {storageArea.map((area) => (
-          <AreaItem area={area} setSelected={setSelected} />
+          <AreaItem
+            key={"area_" + area}
+            area={area}
+            setSelected={setSelected}
+          />
         ))}
       </ol>
       <CreateStorage setStorageArea={setStorageArea} />

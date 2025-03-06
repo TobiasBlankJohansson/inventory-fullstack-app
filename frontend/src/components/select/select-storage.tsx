@@ -11,7 +11,7 @@ export function SelectStorage({ setSelected, storageArea }: inputSelect) {
         onChange={(e) => setSelected([e.target.value])}
       >
         {storageArea.map((storage) => (
-          <option>{storage}</option>
+          <option key={"storage_" + storage}>{storage}</option>
         ))}
       </select>
     </div>

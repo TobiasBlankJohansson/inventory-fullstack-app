@@ -10,6 +10,10 @@ export async function getItems(): Promise<Item[]> {
   return items;
 }
 
+export async function postItem(item: Item): Promise<boolean> {
+  return true;
+}
+
 export async function getStorageArea(): Promise<string[]> {
   return mockDataStorageArea;
   const response = await fetch("http://localhost:3000/api/storage-area");
@@ -19,7 +23,9 @@ export async function getStorageArea(): Promise<string[]> {
   const storageArea: string[] = await response.json();
   return storageArea;
 }
-
+export async function postStorageArea(storageArea: string): Promise<boolean> {
+  return true;
+}
 const mockDataStorageArea: string[] = ["Annex", "Verksdag"];
 
 const mockDataItems: Item[] = [
