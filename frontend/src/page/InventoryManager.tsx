@@ -12,7 +12,7 @@ import { Tabel } from "@/components/tabel/Tabel";
 import { useManageData } from "@/hooks";
 import { getItemHeaders } from "@/util";
 
-export function Manage() {
+export function InventoryManage() {
   const {
     itemList,
     checkedItems,
@@ -27,7 +27,7 @@ export function Manage() {
   } = useManageData();
   return (
     <ScreenContainer>
-      <Navbar currentPage={1} currentPageName="Manage"></Navbar>
+      <Navbar currentPage={1} currentPageName="Inventory Manage"></Navbar>
       <BodyContainer>
         <div className="flex mt">
           <div className="w-60">
