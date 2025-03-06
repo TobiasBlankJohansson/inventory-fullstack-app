@@ -1,12 +1,10 @@
 import { Item } from "@/types";
 
 export async function getItems(): Promise<Item[]> {
-  const response = await fetch("http://localhost:3000/api/items");
-  if (!response.ok) {
-    throw new Error();
-  }
-  const items: Item[] = await response.json();
-  return items;
+  return mockDataItems;
+  return await fetch("http://localhost:3000/api/items").then((res) =>
+    res.json()
+  );
 }
 
 export async function postItem(item: Item): Promise<boolean> {
@@ -15,12 +13,9 @@ export async function postItem(item: Item): Promise<boolean> {
 
 export async function getStorageArea(): Promise<string[]> {
   return mockDataStorageArea;
-  const response = await fetch("http://localhost:3000/api/storage-area");
-  if (!response.ok) {
-    throw new Error();
-  }
-  const storageArea: string[] = await response.json();
-  return storageArea;
+  return await fetch("http://localhost:3000/api/items").then((res) =>
+    res.json()
+  );
 }
 export async function postStorageArea(storageArea: string): Promise<boolean> {
   return true;

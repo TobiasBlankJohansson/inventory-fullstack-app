@@ -1,21 +1,26 @@
 import { getItems } from "@/api/InventoryApiService";
 import { Item } from "@/types";
-import { useEffect, useState } from "react";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const useFetchItems = () => {
-    const [items, setItems] = useState<Item[]>([]);
-  
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const data = await getItems();
-          setItems(data);
-        } catch (error) {
-          console.error("Failed to fetch items:", error);
-        }
-      };
-      fetchData();
-    }, []);
-  
-    return { items, setItems };
+  const queryClient = useQueryClient();
+
+  const {
+    data: items = [],
+    isLoading,
+    error,
+    refetch,
+  } = useQuery<Item[], Error>({
+    queryKey: ["items"],
+    queryFn: getItems,
+    staleTime: 5 * 60 * 1000,
+  });
+
+  const setItems = (updateFn: (prevItems: Item[]) => Item[]) => {
+    queryClient.setQueryData<Item[]>(["items"], (oldItems = []) => {
+      return updateFn(oldItems);
+    });
   };
+
+  return { items, setItems, isLoading, error, refetch };
+};

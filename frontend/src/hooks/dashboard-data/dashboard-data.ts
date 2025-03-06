@@ -4,7 +4,7 @@ import { useFetchItems } from "../fetch-items";
 import { useFetchStorage } from "../fetch-storage";
 
 export function useDashboardData() {
-  const { items, setItems } = useFetchItems();
+  const { items, setItems, isLoading, error, refetch } = useFetchItems();
   const { storageArea } = useFetchStorage("All");
   const [search, setSearch] = useState<string>("");
   const [selected, setSelected] = useState<string[]>(["All"]);
@@ -20,5 +20,8 @@ export function useDashboardData() {
     setSelected,
     itemList,
     storageArea,
+    isLoading,
+    error,
+    refetch,
   };
 }
