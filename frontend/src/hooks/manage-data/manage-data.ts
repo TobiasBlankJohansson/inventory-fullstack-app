@@ -1,14 +1,11 @@
 import { useState } from "react";
 import { useFilterItems } from "../filter-items";
 import { useFetchItems } from "../fetch-items";
+import { useFetchStorage } from "../fetch-storage";
 
 export const useManageData = () => {
   const { items, setItems } = useFetchItems();
-  const [storageArea, setStorageArea] = useState<string[]>([
-    "Verksdag",
-    "Annex",
-    "Bothuset",
-  ]);
+  const { storageArea, setStorageArea } = useFetchStorage();
 
   const [selected, setSelected] = useState<string[]>([]);
   const [search, setSearch] = useState<string>("");
