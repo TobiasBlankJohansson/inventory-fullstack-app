@@ -4,10 +4,12 @@ export const FormFieldItem = ({
   field,
   value,
   options,
+  edit,
 }: {
   field: FormFieldConfig;
   value?: string;
   options?: string[];
+  edit?: boolean;
 }) => (
   <label className="form-control w-full max-w-xs">
     <div className="label">
@@ -20,6 +22,7 @@ export const FormFieldItem = ({
         className="select select-bordered w-full max-w-xs"
         required
         defaultValue={value ? value : ""}
+        disabled={edit}
       >
         <option value="" disabled>
           Select {field.label.toLowerCase()}
@@ -39,6 +42,7 @@ export const FormFieldItem = ({
         className="input input-bordered w-full max-w-xs"
         defaultValue={value ? value : ""}
         required
+        readOnly={edit}
       />
     )}
   </label>

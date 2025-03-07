@@ -11,6 +11,8 @@ export async function postItem(item: Item): Promise<boolean> {
   return true;
 }
 
+
+
 export async function getStorageArea(): Promise<string[]> {
   return mockDataStorageArea;
   return await fetch("http://localhost:3000/api/items").then((res) =>
