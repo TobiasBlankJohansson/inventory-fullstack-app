@@ -20,7 +20,9 @@ export const renderTableHeaders = (
         <th className="flex justify-center p-0 py-2">
           <Button
             className={`btn-ghost flex justify-center px-5 w-24 min-h-8 h-8 ${
-              hasCheckedItems ? "text-warning btn-outline" : "text-success"
+              hasCheckedItems
+                ? "bg-button_warning text-white hover:bg-button_warning_hover"
+                : "text-success btn-outline hover:bg-button_success_hover hover:border-button_success"
             }`}
             onClick={hasCheckedItems ? onDelete : onCreate}
           >
