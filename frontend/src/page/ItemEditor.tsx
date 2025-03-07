@@ -16,8 +16,6 @@ export const ItemEditor = () => {
     storageArea: "Annex",
   };
   const storageAreas: string[] = ["Annex", "Verksdag"];
-
-
   
   return (
     <ScreenContainer>
@@ -34,8 +32,8 @@ export const ItemEditor = () => {
                 options={field.type === "select" ? storageAreas : undefined}
               />
             ))}
-            <div className="modal-action flex justify-between pb-8">
-              <Button className="btn w-40 bg-button_warning hover:bg-button_warning_hover border-button_warning text-white">
+            <div className="modal-action flex justify-between pb-8 w-80">
+              <Button className="w-20 text-button_warning hover:bg-button_warning btn-outline">
                 Delete
               </Button>
               <Button className="btn w-40 bg-button_info hover:bg-button_info_hover border-button_info text-white">

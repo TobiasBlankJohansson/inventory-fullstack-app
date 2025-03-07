@@ -19,12 +19,12 @@ export const renderTableHeaders = (
       {includeActionColumn && (
         <th className="flex justify-center p-0 py-2">
           <Button
-            className={`btn-ghost flex justify-center text-2xl px-5 min-h-8 h-8 ${
-              hasCheckedItems ? "text-warning" : "text-success"
+            className={`btn-ghost flex justify-center px-5 w-24 min-h-8 h-8 ${
+              hasCheckedItems ? "text-warning btn-outline" : "text-success"
             }`}
             onClick={hasCheckedItems ? onDelete : onCreate}
           >
-            {hasCheckedItems ? "−" : "+"}
+            {hasCheckedItems ? "Delete item" : "New item"}
           </Button>
         </th>
       )}

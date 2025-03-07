@@ -26,7 +26,7 @@ export default {
         button_secondary_hover: "#E19E19",
         button_success: "#1A9670",
         button_success_hover: "#28A882",
-        button_warning: "#E8900A",
+        button_warning: "#F5650B",
         button_warning_hover: "#F2A31E",
         button_error: "#EF4444",
         button_error_hover: "#F55A5A",
