@@ -11,7 +11,13 @@ export async function postItem(item: Item): Promise<boolean> {
   return true;
 }
 
+export async function putItem(item: Item): Promise<boolean> {
+  return true;
+}
 
+export async function deleteItem(id: string): Promise<boolean> {
+  return true;
+}
 
 export async function getStorageArea(): Promise<string[]> {
   return mockDataStorageArea;
