@@ -8,17 +8,11 @@ import {
 import { FORM_FIELDS_ITEM } from "@/constants";
 import { useItemEditorData } from "@/hooks";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 export const ItemEditor = () => {
   const [edit, setEdit] = useState(false);
-  const { item } = useItemEditorData("1");
-  const navigate = useNavigate();
+  const { item, onDelete } = useItemEditorData("2");
   const storageAreas: string[] = ["Annex", "Verksdag"];
-
-  const onDelete = () => {
-    navigate("/");
-  };
   const onSave = () => {
     setEdit(false);
   };
