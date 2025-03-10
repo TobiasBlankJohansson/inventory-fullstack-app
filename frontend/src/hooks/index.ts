@@ -3,3 +3,4 @@ export * from "./manage-data";
 export * from "./fetch-items";
 export * from "./filter-items";
 export * from "./fetch-storage";
+export * from "./item-editor-data";

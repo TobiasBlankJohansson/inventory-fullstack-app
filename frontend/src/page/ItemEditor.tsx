@@ -6,18 +6,13 @@ import {
   ScreenContainer,
 } from "@/components";
 import { FORM_FIELDS_ITEM } from "@/constants";
-import { Item } from "@/types";
+import { useItemEditorData } from "@/hooks";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const ItemEditor = () => {
   const [edit, setEdit] = useState(false);
-  const item: Item = {
-    id: "1",
-    name: "Screwdriver",
-    quantity: "3",
-    storageArea: "Annex",
-  };
+  const { item } = useItemEditorData("1");
   const navigate = useNavigate();
   const storageAreas: string[] = ["Annex", "Verksdag"];
 

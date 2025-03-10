@@ -12,7 +12,6 @@ export const useFetchStorage = () => {
   } = useQuery<string[], Error>({
     queryKey: ["storageArea"],
     queryFn: getStorageArea,
-    staleTime: 5 * 60 * 1000,
   });
 
   const setStorageArea = (updateFn: (prevStorage: string[]) => string[]) => {

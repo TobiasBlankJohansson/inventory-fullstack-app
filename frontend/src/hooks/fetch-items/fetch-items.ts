@@ -12,7 +12,6 @@ export const useFetchItems = () => {
   } = useQuery<Item[], Error>({
     queryKey: ["items"],
     queryFn: getItems,
-    staleTime: 5 * 60 * 1000,
   });
 
   const setItems = (updateFn: (prevItems: Item[]) => Item[]) => {
