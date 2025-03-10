@@ -3,7 +3,7 @@ import { AreaItem } from "./AreaItem";
 
 type importStorageArea = {
   storageArea: string[];
-  setStorageArea: React.Dispatch<React.SetStateAction<string[]>>;
+  setStorageArea: (updateFn: (prevStorage: string[]) => string[]) => void;
   setSelected: React.Dispatch<React.SetStateAction<string[]>>;
 };
 

@@ -3,7 +3,7 @@ import { Button } from "../button";
 import { postStorageArea } from "@/api/InventoryApiService";
 
 type Props = {
-  setStorageArea: React.Dispatch<React.SetStateAction<string[]>>;
+  setStorageArea: (updateFn: (prevStorage: string[]) => string[]) => void;
 };
 
 export function CreateStorage({ setStorageArea }: Props) {
@@ -41,7 +41,6 @@ export function CreateStorage({ setStorageArea }: Props) {
               Save
             </Button>
           </div>
-          
         </form>
       </div>
     </dialog>
@@ -49,7 +48,7 @@ export function CreateStorage({ setStorageArea }: Props) {
 }
 
 async function SaveStorage(
-  setStorageArea: React.Dispatch<React.SetStateAction<string[]>>,
+  setStorageArea: (updateFn: (prevStorage: string[]) => string[]) => void,
   addAnotherOne: boolean,
   setAddAnotherOne: React.Dispatch<React.SetStateAction<boolean>>,
   event?: React.FormEvent
@@ -58,8 +57,8 @@ async function SaveStorage(
     "storage_area_name"
   ) as HTMLInputElement;
   const storageName = storageAreaInput.value;
-  if(await postStorageArea(storageName))
-  setStorageArea((storageArea) => [...storageArea, storageName]);
+  if (await postStorageArea(storageName))
+    setStorageArea((storageArea) => [...storageArea, storageName]);
   storageAreaInput.value = "";
   if (addAnotherOne) {
     event?.preventDefault();

@@ -5,7 +5,7 @@ import { FORM_FIELDS_ITEM } from "@/constants";
 import { FormFieldItem } from "../forms";
 
 type Props<T> = {
-  setItems: React.Dispatch<React.SetStateAction<T[]>>;
+  setItems: (updateFn: (prevItems: T[]) => T[]) => void;
   storageAreas: string[];
 };
 
