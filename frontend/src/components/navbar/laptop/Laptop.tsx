@@ -1,11 +1,11 @@
-import { Navigation } from "../Navigation";
+import {Navigation} from "../Navigation";
 
 export function Laptop(currentPage: number) {
   return (
     <>
       <nav className="navbar bg-primary w-full px-5">
         <div className="navbar-start">
-          <h1 className="text-white text-3xl ml-2">Toobia Nordic</h1>
+          <h1 className="text-white text-3xl ml-2">My Inventory</h1>
         </div>
         <div className="navbar-center"></div>
         <div className="navbar-end">

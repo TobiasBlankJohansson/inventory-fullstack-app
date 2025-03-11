@@ -23,18 +23,36 @@ export function CreateItem<T extends Item>(
     const newItem = Object.fromEntries(
       FORM_FIELDS_ITEM.map(({key}) => [key, formData.get(`item_${key}`)])
     ) as T;
-    if (!newItem.id || !newItem.name || !newItem.storageArea) {
+
+    if (!newItem.id || !newItem.name || !newItem.quantity || !newItem.storageArea) {
       setErrorMessage("Please fill in all required fields");
       return;
     }
+
+    if (newItem.id.length != 6) {
+      setErrorMessage("Id need to be 6 characters");
+      return;
+    }
+
+    if (parseInt(newItem.quantity) < 0) {
+      setErrorMessage("Quantity can't be negative");
+      return;
+    }
+
 
     const form = e.currentTarget;
 
     setItems((prevItems) => {
       const isIdUnique = !prevItems.some((item) => item.id === newItem.id);
+      const isNameUnique = !prevItems.some((item) => item.name === newItem.name);
 
       if (!isIdUnique) {
         setErrorMessage(`Item with ID "${newItem.id}" already exists`);
+        return prevItems;
+      }
+
+      if (!isNameUnique) {
+        setErrorMessage(`Item with name "${newItem.name}" already exists`);
         return prevItems;
       }
 
@@ -59,16 +77,14 @@ export function CreateItem<T extends Item>(
 
   return (
     <dialog id="create_item" className="modal">
-      <div className="modal-box px-10 py-6 w-fit bg-background">
+      <div className="modal-box px-10 py-6 w-96 bg-background">
         <form method="dialog" onSubmit={handleSubmit}>
           <h3 className="font-bold text-lg">Item Creation</h3>
-
           {errorMessage && (
-            <div className="alert alert-error mb-4">
+            <div className="alert alert-error my-4">
               <span>{errorMessage}</span>
             </div>
           )}
-
           {FORM_FIELDS_ITEM.map((field) => (
             <FormFieldItem
               key={field.key}
@@ -76,7 +92,6 @@ export function CreateItem<T extends Item>(
               options={field.type === "select" ? storageAreas : undefined}
             />
           ))}
-
           <div className="modal-action flex justify-between">
             <Button
               type="submit"
