@@ -26,8 +26,8 @@ export const useCreateItem = <T extends Item>(setItems: (updateFn: (prevItems: T
       setErrorMessage("Quantity can't be negative");
       return;
     }
-    const form = e.currentTarget;
 
+    const form = e.currentTarget;
     setItems((prevItems) => {
       const isIdUnique = !prevItems.some((item) => item.id === newItem.id);
       const isNameUnique = !prevItems.some((item) => item.name === newItem.name);
@@ -43,9 +43,9 @@ export const useCreateItem = <T extends Item>(setItems: (updateFn: (prevItems: T
       }
 
       mutate(newItem);
-      
       setErrorMessage(null);
       const updatedItems = [...prevItems, newItem];
+
       if (form) {
         form.reset();
       }
