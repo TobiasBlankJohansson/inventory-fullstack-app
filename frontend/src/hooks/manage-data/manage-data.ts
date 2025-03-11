@@ -1,11 +1,9 @@
-import { useState } from "react";
-import { useFilterItems } from "../filter-items";
-import { useFetchItems } from "../fetch-items";
-import { useFetchStorage } from "../fetch-storage";
+import {useState} from "react";
+import {useFetchItems, useFetchStorage, useFilterItems} from "@/hooks";
 
 export const useManageData = () => {
-  const { items, setItems } = useFetchItems();
-  const { storageArea, setStorageArea } = useFetchStorage();
+  const {items, setItems} = useFetchItems();
+  const {storageArea, setStorageArea} = useFetchStorage();
 
   const [selected, setSelected] = useState<string[]>([]);
   const [search, setSearch] = useState<string>("");
