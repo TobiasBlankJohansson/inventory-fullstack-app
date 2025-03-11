@@ -1,16 +1,19 @@
 import { useNavigate } from "react-router-dom";
 import { useFetchItems } from "../fetch-items";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { deleteItem } from "@/api/InventoryApiService";
+import { Item } from "@/types";
 
-const useDeleteItem = () => {
-  const queryClient = useQueryClient();
+const useDeleteItem = (
+  setItems: (updateFn: (prevItems: Item[]) => Item[]) => void,
+  id: string
+) => {
   const navigate = useNavigate();
 
   return useMutation({
     mutationFn: deleteItem,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["items"] });
+      setItems((prev: Item[]) => prev.filter((item) => item.id != id));
       navigate("/");
     },
     onError: (error) => {
@@ -20,9 +23,9 @@ const useDeleteItem = () => {
 };
 
 export const useItemEditorData = (id: string) => {
-  const { items } = useFetchItems();
+  const { items, setItems } = useFetchItems();
   const item = items.find((item) => item.id === id);
-  const { mutate } = useDeleteItem();
+  const { mutate } = useDeleteItem(setItems, id);
 
   const onDelete = () => {
     if (item) {
