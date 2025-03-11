@@ -8,10 +8,12 @@ import {
 import { FORM_FIELDS_ITEM } from "@/constants";
 import { useItemEditorData } from "@/hooks";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 export const ItemEditor = () => {
+  const  id  = new URLSearchParams(useLocation().search).get("id");
   const [edit, setEdit] = useState(false);
-  const { item, onDelete } = useItemEditorData("2");
+  const { item, onDelete } = useItemEditorData(id as string);
   const storageAreas: string[] = ["Annex", "Verksdag"];
   const onSave = () => {
     setEdit(false);
