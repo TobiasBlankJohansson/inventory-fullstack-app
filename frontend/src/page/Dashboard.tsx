@@ -20,7 +20,7 @@ export function Dashboard() {
     <ScreenContainer>
       <Navbar currentPage={0} currentPageName="Dashboard"></Navbar>
       <BodyContainer>
-        <section className="h-10 grid grid-flow-col grid-cols-3 gap-2 m-2 mb-0">
+        <section className="h-10 grid grid-flow-col grid-cols-3 gap-2">
           <Search setSearch={setSearch}></Search>
           <SelectStorage
             setSelected={setSelected}

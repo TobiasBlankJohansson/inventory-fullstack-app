@@ -7,8 +7,8 @@ export async function getItems(): Promise<Item[]> {
   );
 }
 
-export async function postItem(item: Item): Promise<boolean> {
-  return true;
+export async function postItem(item: Item): Promise<Item> {
+  return item;
 }
 
 export async function putItem(item: Item): Promise<boolean> {

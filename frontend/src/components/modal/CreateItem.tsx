@@ -1,18 +1,19 @@
-import { FormEvent, useState } from "react";
-import { Button } from "../button";
-import { Item } from "@/types";
-import { FORM_FIELDS_ITEM } from "@/constants";
-import { FormFieldItem } from "../forms";
+import {FormEvent, useState} from "react";
+import {Button} from "../button";
+import {Item} from "@/types";
+import {FORM_FIELDS_ITEM} from "@/constants";
+import {FormFieldItem} from "../forms";
 
 type Props<T> = {
   setItems: (updateFn: (prevItems: T[]) => T[]) => void;
   storageAreas: string[];
 };
 
-export function CreateItem<T extends Item>({
-  setItems,
-  storageAreas,
-}: Props<T>) {
+export function CreateItem<T extends Item>(
+  {
+    setItems,
+    storageAreas,
+  }: Props<T>) {
   const [addAnotherOne, setAddAnotherOne] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -20,7 +21,7 @@ export function CreateItem<T extends Item>({
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const newItem = Object.fromEntries(
-      FORM_FIELDS_ITEM.map(({ key }) => [key, formData.get(`item_${key}`)])
+      FORM_FIELDS_ITEM.map(({key}) => [key, formData.get(`item_${key}`)])
     ) as T;
     if (!newItem.id || !newItem.name || !newItem.storageArea) {
       setErrorMessage("Please fill in all required fields");

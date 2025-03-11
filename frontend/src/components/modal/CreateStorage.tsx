@@ -1,12 +1,12 @@
-import { useState } from "react";
-import { Button } from "../button";
-import { postStorageArea } from "@/api/InventoryApiService";
+import {useState} from "react";
+import {Button} from "../button";
+import {postStorageArea} from "@/api/InventoryApiService";
 
 type Props = {
   setStorageArea: (updateFn: (prevStorage: string[]) => string[]) => void;
 };
 
-export function CreateStorage({ setStorageArea }: Props) {
+export function CreateStorage({setStorageArea}: Props) {
   const [addAnotherOne, setAddAnotherOne] = useState<boolean>(false);
   return (
     <dialog id="create_storage" className="modal">
@@ -18,7 +18,8 @@ export function CreateStorage({ setStorageArea }: Props) {
           }
         >
           <h3 className="font-bold text-lg ">Storage area creation</h3>
-          <label className="form-control w-full max-w-xs">
+          <label
+            className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text ">Storage area name</span>
             </div>
@@ -37,7 +38,8 @@ export function CreateStorage({ setStorageArea }: Props) {
             >
               Add another one
             </Button>
-            <Button className="btn bg-button_secondary hover:bg-button_warning_hover border-button_secondary text-white">
+            <Button
+              className="btn bg-button_secondary hover:bg-button_warning_hover border-button_secondary text-white">
               Save
             </Button>
           </div>
