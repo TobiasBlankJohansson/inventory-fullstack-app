@@ -1,10 +1,12 @@
 import {FormEvent, useState} from "react";
 import {FORM_FIELDS_ITEM} from "@/constants.ts";
 import {Item} from "@/types";
+import {usePostItem} from "@/hooks/post-item";
 
 export const useCreateItem = <T extends Item>(setItems: (updateFn: (prevItems: T[]) => T[]) => void) => {
   const [addAnotherOne, setAddAnotherOne] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const {mutate} = usePostItem(setErrorMessage);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -40,6 +42,8 @@ export const useCreateItem = <T extends Item>(setItems: (updateFn: (prevItems: T
         return prevItems;
       }
 
+      mutate(newItem);
+      
       setErrorMessage(null);
       const updatedItems = [...prevItems, newItem];
       if (form) {
