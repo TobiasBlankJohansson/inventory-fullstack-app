@@ -1,26 +1,5 @@
-import { useNavigate } from "react-router-dom";
+import { useDeleteItem } from "../delete-item";
 import { useFetchItems } from "../fetch-items";
-import { useMutation } from "@tanstack/react-query";
-import { deleteItem } from "@/api/InventoryApiService";
-import { Item } from "@/types";
-
-const useDeleteItem = (
-  setItems: (updateFn: (prevItems: Item[]) => Item[]) => void,
-  id: string
-) => {
-  const navigate = useNavigate();
-
-  return useMutation({
-    mutationFn: deleteItem,
-    onSuccess: () => {
-      setItems((prev: Item[]) => prev.filter((item) => item.id != id));
-      navigate("/");
-    },
-    onError: (error) => {
-      console.error("Error deleting item:", error);
-    },
-  });
-};
 
 export const useItemEditorData = (id: string) => {
   const { items, setItems } = useFetchItems();
@@ -33,5 +12,5 @@ export const useItemEditorData = (id: string) => {
     }
   };
 
-  return { item, useDeleteItem, onDelete };
+  return { item, onDelete };
 };
