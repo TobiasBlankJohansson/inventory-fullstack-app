@@ -2,7 +2,7 @@ import {Item} from "@/types";
 import {useMutation} from "@tanstack/react-query";
 import {putItem} from "@/api/InventoryApiService.ts";
 
-export const useSaveItem = (
+export const usePutItem = (
   setItems: (updateFn: (prevItems: Item[]) => Item[]) => void,
   id: string
 ) => {

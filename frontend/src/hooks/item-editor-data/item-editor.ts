@@ -1,4 +1,4 @@
-import {useDeleteItem, useFetchItems, useSaveItem} from "@/hooks";
+import {useDeleteItem, useFetchItems, usePutItem} from "@/hooks";
 import {useState} from "react";
 import {Item} from "@/types";
 import {FORM_FIELDS_ITEM} from "@/constants.ts";
@@ -7,7 +7,7 @@ export const useItemEditorData = (id: string) => {
   const {items, setItems} = useFetchItems();
   const item = items.find((item) => item.id === id);
   const {mutate: deleteMutation} = useDeleteItem(setItems, id);
-  const {mutate: saveMutation} = useSaveItem(setItems, id);
+  const {mutate: saveMutation} = usePutItem(setItems, id);
   const [edit, setEdit] = useState(false);
 
   const onSave = <T extends Item>(e: React.FormEvent<HTMLFormElement>) => {
