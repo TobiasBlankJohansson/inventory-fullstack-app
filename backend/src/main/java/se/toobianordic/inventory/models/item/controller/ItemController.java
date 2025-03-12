@@ -34,4 +34,12 @@ public class ItemController {
         );
     }
 
+    @GetMapping("{id}")
+    public ResponseEntity<ItemDto> read(@PathVariable String id) {
+        return ResponseEntity.status(HttpStatus.OK).body(
+                ItemDto.fromItem(itemService.readById(id))
+        );
+    }
+
+
 }
