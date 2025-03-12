@@ -12,11 +12,15 @@ public class ItemService {
     public ItemService(ItemRepository itemRepository) {
     }
 
-    public List<Item> getItemList() {
+    public Item create(String id, String name, String quantity, String storageArea) {
+        return itemRepository.save(new Item(id, name, quantity, storageArea));
+    }
+
+    public List<Item> readList() {
         return itemRepository.findAll();
     }
 
-    public Item getItemById(String id) {
+    public Item readById(String id) {
         return itemRepository.findById(id).orElseThrow(NoSuchElementException::new);
     }
 
