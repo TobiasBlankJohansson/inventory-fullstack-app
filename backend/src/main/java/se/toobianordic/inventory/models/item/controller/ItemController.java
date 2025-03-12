@@ -47,4 +47,10 @@ public class ItemController {
                 dto.id(), dto.name(), dto.quantity(), dto.storageArea()
         )));
     }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<Boolean> delete(@PathVariable String id) {
+        itemService.delete(id);
+        return ResponseEntity.status(HttpStatus.OK).body(true);
+    }
 }
