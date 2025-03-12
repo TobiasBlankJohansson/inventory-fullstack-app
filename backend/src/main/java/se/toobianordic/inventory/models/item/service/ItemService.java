@@ -24,5 +24,11 @@ public class ItemService {
         return itemRepository.findById(id).orElseThrow(NoSuchElementException::new);
     }
 
-
+    public Item update(String id, String name, String quantity, String storageArea) {
+        Item existingItem = itemRepository.findById(id).orElseThrow();
+        existingItem.setName(name);
+        existingItem.setQuantity(quantity);
+        existingItem.setStorageArea(storageArea);
+        return itemRepository.save(existingItem);
+    }
 }
