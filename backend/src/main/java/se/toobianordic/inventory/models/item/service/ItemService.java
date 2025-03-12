@@ -31,4 +31,8 @@ public class ItemService {
         existingItem.setStorageArea(storageArea);
         return itemRepository.save(existingItem);
     }
+
+    public void delete(String id) {
+        itemRepository.deleteById(id);
+    }
 }
