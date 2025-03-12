@@ -17,7 +17,7 @@ public class ItemController {
     public ItemController(ItemService itemService) {
     }
 
-    @PostMapping
+    @PutMapping
     public ResponseEntity<ItemDto> update(@RequestBody ItemDto dto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(
                 ItemDto.fromItem(itemService.update(
@@ -41,5 +41,10 @@ public class ItemController {
         );
     }
 
-
+    @PostMapping
+    public ResponseEntity<ItemDto> create(@RequestBody ItemDto dto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(ItemDto.fromItem(itemService.create(
+                dto.id(), dto.name(), dto.quantity(), dto.storageArea()
+        )));
+    }
 }
