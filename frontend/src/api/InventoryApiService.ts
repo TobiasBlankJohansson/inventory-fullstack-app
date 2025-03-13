@@ -36,6 +36,7 @@ export async function postStorageArea(storageArea: string): Promise<boolean> {
   return true;
 }
 
+
 const mockDataStorageArea: string[] = ["Annex", "Verksdag"];
 
 const mockDataItems: Item[] = [
