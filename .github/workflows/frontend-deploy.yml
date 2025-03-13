@@ -21,4 +21,4 @@ jobs:
           docker push ghcr.io/<username>/<repo>-frontend:latest
       - name: Trigger Coolify Deploy
         run: |
-          curl -X GET "${{ secrets.COOLIFY_WEBHOOK }}" -H "Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}"
+          curl -X GET "${{ secrets.COOLIFY_WEBHOOK_FRONTEND }}" -H "Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}"
