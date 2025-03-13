@@ -1,0 +1,24 @@
+name: Deploy Frontend to Coolify
+on:
+  push:
+    paths:
+      - "frontend/**"
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and Push Frontend
+        run: |
+          cd frontend
+          docker build -t ghcr.io/<username>/<repo>-frontend:latest .
+          docker push ghcr.io/<username>/<repo>-frontend:latest
+      - name: Trigger Coolify Deploy
+        run: |
+          curl -X GET "${{ secrets.COOLIFY_WEBHOOK }}" -H "Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}"
