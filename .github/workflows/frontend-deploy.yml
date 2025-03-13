@@ -17,8 +17,8 @@ jobs:
       - name: Build and Push Frontend
         run: |
           cd frontend
-          docker build -t ghcr.io/<username>/<repo>-frontend:latest .
-          docker push ghcr.io/<username>/<repo>-frontend:latest
+          docker build -t ghcr.io/TobiasBlankJohansson/inventory-fullstack-app-frontend:latest .
+          docker push ghcr.io/TobiasBlankJohansson/inventory-fullstack-app-frontend:latest
       - name: Trigger Coolify Deploy
         run: |
           curl -X GET "${{ secrets.COOLIFY_WEBHOOK_FRONTEND }}" -H "Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}"
