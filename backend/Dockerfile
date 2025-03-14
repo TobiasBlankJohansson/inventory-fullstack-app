@@ -14,7 +14,7 @@ FROM eclipse-temurin:23-jre-alpine
 
 WORKDIR /app
 
-COPY --from=build /app/target/crm-0.0.1-SNAPSHOT.jar .
+COPY --from=build /app/target/inventory-0.0.1-SNAPSHOT.jar .
 
 EXPOSE 8080
 
