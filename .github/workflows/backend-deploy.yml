@@ -22,7 +22,7 @@ jobs:
       - name: Build and Push Backend
         run: |
           cd backend
-          docker build -t ghcr.io/tobiasblankjohansson/inventory-fullstack-app-backend:latest .
+          docker build -t ghcr.io/tobiasblankjohansson/inventory-fullstack-app-backend:latest --build-arg DB_URL --build-arg DB_USERNAME --build-arg DB_PASSWORD .
           docker push ghcr.io/tobiasblankjohansson/inventory-fullstack-app-backend:latest
       - name: Trigger Coolify Deploy
         run: |
