@@ -9,9 +9,10 @@ import java.util.NoSuchElementException;
 
 @Service
 public class ItemService {
-    private ItemRepository itemRepository;
+    private final ItemRepository itemRepository;
 
     public ItemService(ItemRepository itemRepository) {
+        this.itemRepository = itemRepository;
     }
 
     public Item create(String id, String name, String quantity, String storageArea) {

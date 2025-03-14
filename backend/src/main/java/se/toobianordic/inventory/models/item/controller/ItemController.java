@@ -12,9 +12,10 @@ import java.util.List;
 @Controller
 @RequestMapping("api/v1/inventory")
 public class ItemController {
-    private ItemService itemService;
+    private final ItemService itemService;
 
-    public ItemController(ItemService itemService) {
+    public ItemController( ItemService itemService) {
+        this.itemService = itemService;
     }
 
     @PutMapping
