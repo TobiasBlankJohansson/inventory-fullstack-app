@@ -1,0 +1,29 @@
+name: Deploy Backend to Coolify
+on:
+  push:
+    paths:
+      - "backend/**"
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v3
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and Push Backend
+        run: |
+          cd backend
+          docker build -t ghcr.io/tobiasblankjohansson/inventory-fullstack-app-backend:latest .
+          docker push ghcr.io/tobiasblankjohansson/inventory-fullstack-app-backend:latest
+      - name: Trigger Coolify Deploy
+        run: |
+          curl -X GET "${{ secrets.COOLIFY_WEBHOOK_BACKEND }}" -H "Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}"
