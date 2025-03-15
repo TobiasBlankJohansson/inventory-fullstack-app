@@ -4,10 +4,6 @@ WORKDIR /app
 
 COPY . .
 
-ARG DB_URL DB_USERNAME DB_PASSWORD
-
-ENV DB_URL=${DB_URL} DB_USERNAME=${DB_USERNAME} DB_PASSWORD=${DB_PASSWORD}
-
 RUN mvn clean package --no-transfer-progress
 
 FROM eclipse-temurin:23-jre-alpine
