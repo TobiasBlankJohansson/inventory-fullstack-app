@@ -1,4 +1,4 @@
-import { getStorageArea } from "@/api/InventoryApiService";
+import { getStorageArea } from "@/api/StorageFetch";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const useFetchStorage = () => {
@@ -15,12 +15,9 @@ export const useFetchStorage = () => {
   });
 
   const setStorageArea = (updateFn: (prevStorage: string[]) => string[]) => {
-    queryClient.setQueryData<string[]>(
-      ["storageArea"],
-      (oldStorage = []) => {
-        return updateFn(oldStorage);
-      }
-    );
+    queryClient.setQueryData<string[]>(["storageArea"], (oldStorage = []) => {
+      return updateFn(oldStorage);
+    });
   };
 
   return { storageArea, setStorageArea, isLoading, error, refetch };
