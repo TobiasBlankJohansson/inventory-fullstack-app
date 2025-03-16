@@ -14,7 +14,7 @@ import { useDashboardData } from "@/hooks";
 import { getItemHeaders } from "@/util";
 
 export function Dashboard() {
-  const { setSearch, itemList, setSelected, storageArea } = useDashboardData();
+  const { setSearch, itemList, setSelectedResponsible, storageArea } = useDashboardData();
 
   return (
     <ScreenContainer>
@@ -39,7 +39,7 @@ export function Dashboard() {
           renderItemInTable={renderTableItems(itemList)}
         ></Tabel>
       </BodyContainer>
-      <Filter setSelected={setSelected} storageArea={storageArea}></Filter>
+      <Filter setSelected={setSelectedResponsible} storageArea={storageArea}></Filter>
     </ScreenContainer>
   );
 }

@@ -1,24 +1,31 @@
 import { Item } from "@/types";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 
-export const useFilterItems = (
-  items: Item[],
-  search: string,
-  selected: string[]
-) => {
-  return useMemo(() => {
+export const useFilterItems = (items: Item[]) => {
+  const [search, setSearch] = useState<string>("");
+  const [selectedStorage, setSelectedStorage] = useState<string[]>([]);
+  const [selectedResponsible, setSelectedResponsible] = useState<string[]>([]);
+
+  const itemList = useMemo(() => {
     return items.filter((item) => {
       const matchesSearch = item.equipment
         .toLowerCase()
         .includes(search.toLowerCase());
 
       const matchesStorage =
-        selected.length === 0 ||
-        selected.includes("All") ||
-        selected
+        selectedStorage.length === 0 ||
+        selectedStorage
           .map((s) => s.toLowerCase())
           .includes(item.storageArea.toLowerCase());
-      return matchesSearch && matchesStorage;
+
+      const matchesResponsible =
+        selectedResponsible.length === 0 ||
+        selectedResponsible
+          .map((s) => s.toLowerCase())
+          .includes(item.storageArea.toLowerCase());
+      return matchesSearch && matchesStorage && matchesResponsible;
     });
-  }, [items, search, selected]);
+  }, [items, search, selectedStorage, selectedResponsible]);
+
+  return { itemList, setSearch, setSelectedStorage, setSelectedResponsible };
 };
