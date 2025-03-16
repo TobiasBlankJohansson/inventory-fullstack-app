@@ -1,5 +1,6 @@
 import {
   Button,
+  Filter,
   renderTableHeaders,
   renderTableItems,
   ScreenContainer,
@@ -21,7 +22,16 @@ export function Dashboard() {
       <BodyContainer>
         <section className="h-10 grid grid-flow-col grid-cols-3 gap-2">
           <Search setSearch={setSearch}></Search>
-          <Button className="min-h-full h-full">Filter</Button>
+          <Button
+            className="min-h-full h-full"
+            onClick={() =>
+              (
+                document.getElementById("filter") as HTMLDialogElement
+              ).showModal()
+            }
+          >
+            Filter
+          </Button>
           <Print itemList={itemList}></Print>
         </section>
         <Tabel
@@ -29,6 +39,7 @@ export function Dashboard() {
           renderItemInTable={renderTableItems(itemList)}
         ></Tabel>
       </BodyContainer>
+      <Filter></Filter>
     </ScreenContainer>
   );
 }
