@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useFilterItems } from "../filter-items";
-import { useFetchItems } from "../fetch-items";
-import { useFetchStorage } from "../fetch-storage";
+import { useFilterItems } from "../../filter-items";
+import { useFetchItems } from "../../fetch/fetch-items";
+import { useFetchStorage } from "../../fetch/fetch-storage";
 
 export function useDashboardData() {
   const { items, setItems, isLoading, error, refetch } = useFetchItems();

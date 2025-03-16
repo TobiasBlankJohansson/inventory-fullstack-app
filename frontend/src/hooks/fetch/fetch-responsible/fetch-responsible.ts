@@ -15,7 +15,7 @@ export const useFetchResponsible = () => {
   });
 
   const setResponsible = (updateFn: (prevStorage: string[]) => string[]) => {
-    queryClient.setQueryData<string[]>(["storageArea"], (oldStorage = []) => {
+    queryClient.setQueryData<string[]>(["responsible"], (oldStorage = []) => {
       return updateFn(oldStorage);
     });
   };
