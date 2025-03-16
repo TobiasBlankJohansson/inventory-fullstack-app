@@ -8,7 +8,7 @@ export const useFilterItems = (
 ) => {
   return useMemo(() => {
     return items.filter((item) => {
-      const matchesSearch = item.name
+      const matchesSearch = item.equipment
         .toLowerCase()
         .includes(search.toLowerCase());
 

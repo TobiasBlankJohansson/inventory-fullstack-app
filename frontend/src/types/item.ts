@@ -1,6 +1,6 @@
 export type Item = {
   id: string;
-  name: string;
+  equipment: string;
   quantity: string;
   storageArea: string;
   responsible: string;

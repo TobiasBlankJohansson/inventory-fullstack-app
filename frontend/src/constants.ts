@@ -1,8 +1,7 @@
 import { FormFieldConfig } from "./types";
 
 export const FORM_FIELDS_ITEM: FormFieldConfig[] = [
-  { key: "id", label: "Id", type: "text", placeholder: "Enter id" },
-  { key: "name", label: "Name", type: "text", placeholder: "Enter name" },
+  { key: "equipment", label: "Equipment", type: "select" },
   {
     key: "quantity",
     label: "Quantity",
