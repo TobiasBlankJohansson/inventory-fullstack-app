@@ -1,6 +1,7 @@
 import { Item } from "@/types";
 import { Button } from "../button";
 import { Link } from "react-router-dom";
+import { getItemKeys } from "@/util";
 
 export const renderTableHeaders = (
   headers: string[],
@@ -48,6 +49,8 @@ export const renderTableItems = (
     ];
   }
 
+  const keys = getItemKeys(items[0]);
+
   return items.map((item) => {
     const isChecked = checkedItems.includes(item.id);
 
@@ -59,14 +62,21 @@ export const renderTableItems = (
 
     return (
       <tr key={item.id}>
-        <td>{item.id}</td>
-        <td>
-          <Link to={"/item-editor?id=" + item.id} className="link text-info">
-            {item.name}
-          </Link>
-        </td>
-        <td>{item.quantity}</td>
-        <td>{item.storageArea}</td>
+        {keys.map((key) => (
+          <td key={key}>
+            {key === "equipment" ? (
+              <Link
+                to={`/item-editor?id=${item.id}`}
+                className="link text-info"
+              >
+                {item[key as keyof Item]}
+              </Link>
+            ) : (
+              item[key as keyof Item]
+            )}
+          </td>
+        ))}
+
         {includeCheckbox && (
           <td className="flex justify-center">
             <input
