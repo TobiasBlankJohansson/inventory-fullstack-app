@@ -3,11 +3,11 @@ import {
   renderTableItems,
   ScreenContainer,
   Search,
+  SelectableList,
 } from "@/components";
 import { BodyContainer } from "@/components/container/BodyContainer";
 import { CreateItem } from "@/components/modal/CreateItem";
 import { Navbar } from "@/components/navbar/Navbar";
-import { StorageArea } from "@/components/storage_area/SelectableList";
 import { Tabel } from "@/components/tabel/Tabel";
 import { useManageData } from "@/hooks";
 import { getItemHeaders } from "@/util";
@@ -32,10 +32,10 @@ export function InventoryManage() {
           <div className="w-60">
             <Search setSearch={setSearch}></Search>
           </div>
-          <StorageArea
-            storageArea={storageArea}
+          <SelectableList
+            list={storageArea}
             setSelected={setSelected}
-          ></StorageArea>
+          ></SelectableList>
         </div>
         <Tabel
           renderHeadersInTable={renderTableHeaders(
