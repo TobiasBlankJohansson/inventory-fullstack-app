@@ -22,7 +22,7 @@ export const useFilterItems = (items: Item[]) => {
         selectedResponsible.length === 0 ||
         selectedResponsible
           .map((s) => s.toLowerCase())
-          .includes(item.storageArea.toLowerCase());
+          .includes(item.responsible.toLowerCase());
       return matchesSearch && matchesStorage && matchesResponsible;
     });
   }, [items, search, selectedStorage, selectedResponsible]);

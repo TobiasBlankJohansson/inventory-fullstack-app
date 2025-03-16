@@ -47,10 +47,10 @@ export function Dashboard() {
         ></Tabel>
       </BodyContainer>
       <Filter
-        setSelected={setSelectedResponsible}
+        setStorage={setSelectedStorage}
         storageArea={storageArea}
         responsible={responsible}
-        setResponsible={setSelectedStorage}
+        setResponsible={setSelectedResponsible}
       ></Filter>
     </ScreenContainer>
   );

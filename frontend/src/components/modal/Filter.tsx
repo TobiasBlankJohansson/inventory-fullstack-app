@@ -1,14 +1,14 @@
 import { SelectableList } from "../storage_area";
 
 type Prop = {
-  setSelected: React.Dispatch<React.SetStateAction<string[]>>;
+  setStorage: React.Dispatch<React.SetStateAction<string[]>>;
   storageArea: string[];
   setResponsible: React.Dispatch<React.SetStateAction<string[]>>;
   responsible: string[];
 };
 
 export const Filter = ({
-  setSelected,
+  setStorage,
   storageArea,
   setResponsible,
   responsible,
@@ -19,7 +19,7 @@ export const Filter = ({
         <h3 className="font-bold text-lg">Filter</h3>
         <p className="mt-2">Storage area</p>
         <SelectableList
-          setSelected={setSelected}
+          setSelected={setStorage}
           list={storageArea}
         ></SelectableList>
         <p className="mt-5">Responsible</p>
