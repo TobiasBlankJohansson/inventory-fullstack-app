@@ -1,2 +1,2 @@
-export * from "./StorageArea.tsx";
+export * from "./SelectableList.tsx";
 export * from "./AreaItem.tsx";

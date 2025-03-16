@@ -1,18 +1,18 @@
 import { AreaItem } from "./AreaItem";
 
 type Props = {
-  storageArea: string[];
+  list: string[];
   setSelected: React.Dispatch<React.SetStateAction<string[]>>;
 };
 
-export function StorageArea({ storageArea, setSelected }: Props) {
+export function SelectableList({ list, setSelected }: Props) {
   return (
     <>
       <ol className="flex h-12 gap-2 overflow-scroll scrollbar-hide">
-        {storageArea.map((area) => (
+        {list.map((item) => (
           <AreaItem
-            key={"area_" + area}
-            area={area}
+            key={"area_" + item}
+            area={item}
             setSelected={setSelected}
           />
         ))}

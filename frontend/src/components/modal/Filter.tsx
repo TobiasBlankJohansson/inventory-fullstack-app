@@ -1,4 +1,4 @@
-import { StorageArea } from "../storage_area";
+import { SelectableList } from "../storage_area";
 
 type Prop = {
   setSelected: React.Dispatch<React.SetStateAction<string[]>>;
@@ -18,15 +18,15 @@ export const Filter = ({
       <div className="modal-box">
         <h3 className="font-bold text-lg">Filter</h3>
         <p className="mt-2">Storage area</p>
-        <StorageArea
+        <SelectableList
           setSelected={setSelected}
-          storageArea={storageArea}
-        ></StorageArea>
+          list={storageArea}
+        ></SelectableList>
         <p className="mt-5">Responsible</p>
-        <StorageArea
+        <SelectableList
           setSelected={setResponsible}
-          storageArea={responsible}
-        ></StorageArea>
+          list={responsible}
+        ></SelectableList>
       </div>
       <form method="dialog" className="modal-backdrop">
         <button>close</button>
