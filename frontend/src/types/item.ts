@@ -3,4 +3,5 @@ export type Item = {
   name: string;
   quantity: string;
   storageArea: string;
+  responsible: string;
 };

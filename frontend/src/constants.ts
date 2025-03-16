@@ -10,4 +10,5 @@ export const FORM_FIELDS_ITEM: FormFieldConfig[] = [
     placeholder: "Enter quantity",
   },
   { key: "storageArea", label: "Storage Area", type: "select" },
+  { key: "responsible", label: "Responsible", type: "select" },
 ];
