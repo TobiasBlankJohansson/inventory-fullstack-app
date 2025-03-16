@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {Button} from "../button";
-import {postStorageArea} from "@/api/InventoryApiService";
+import { postStorageArea } from "@/api/StorageFetch";
+
 
 type Props = {
   setStorageArea: (updateFn: (prevStorage: string[]) => string[]) => void;

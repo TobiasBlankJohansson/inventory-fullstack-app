@@ -19,7 +19,7 @@ export function InventoryManage() {
     storageArea,
     setItems,
     setSearch,
-    setSelected,
+    setSelectedStorage,
     handleDelete,
     setCheckedItems,
     handleCreate,
@@ -34,7 +34,7 @@ export function InventoryManage() {
           </div>
           <SelectableList
             list={storageArea}
-            setSelected={setSelected}
+            setSelected={setSelectedStorage}
           ></SelectableList>
         </div>
         <Tabel

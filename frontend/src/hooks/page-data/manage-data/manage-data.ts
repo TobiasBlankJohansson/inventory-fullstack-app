@@ -1,15 +1,13 @@
-import {useState} from "react";
-import {useFetchItems, useFetchStorage, useFilterItems} from "@/hooks";
+import { useState } from "react";
+import { useFetchItems, useFetchStorage, useFilterItems } from "@/hooks";
 
 export const useManageData = () => {
-  const {items, setItems} = useFetchItems();
-  const {storageArea, setStorageArea} = useFetchStorage();
+  const { items, setItems } = useFetchItems();
+  const { storageArea, setStorageArea } = useFetchStorage();
 
-  const [selected, setSelected] = useState<string[]>([]);
-  const [search, setSearch] = useState<string>("");
   const [checkedItems, setCheckedItems] = useState<string[]>([]);
 
-  const itemList = useFilterItems(items, search, selected);
+  const { itemList, setSearch, setSelectedStorage } = useFilterItems(items);
 
   const handleDelete = () => {
     setItems((prev) => prev.filter((item) => !checkedItems.includes(item.id)));
@@ -24,10 +22,8 @@ export const useManageData = () => {
     setItems,
     storageArea,
     setStorageArea,
-    search,
     setSearch,
-    selected,
-    setSelected,
+    setSelectedStorage,
     checkedItems,
     setCheckedItems,
     handleDelete,
