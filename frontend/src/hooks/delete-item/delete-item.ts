@@ -1,4 +1,4 @@
-import { deleteItem } from "@/api/InventoryApiService";
+import { deleteItem } from "@/api/InventoryFetch";
 import { Item } from "@/types";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";

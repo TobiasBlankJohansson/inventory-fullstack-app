@@ -31,7 +31,7 @@ export function CreateItem<T extends Item>(
             <FormFieldItem
               key={field.key}
               field={field}
-              options={field.type === "select" ? storageAreas : undefined}
+              options={field.label === "select" ? storageAreas : undefined}
             />
           ))}
           <div className="modal-action flex justify-between">
