@@ -17,6 +17,13 @@ export const inventory: Item[] = [
     responsible: "John Doe",
   },
   {
+    id: "1",
+    equipment: "Axe",
+    quantity: "3",
+    storageArea: "Tool Shed",
+    responsible: "Jane Smith",
+  },
+  {
     id: "2",
     equipment: "Tent",
     quantity: "5",

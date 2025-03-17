@@ -61,7 +61,7 @@ export const renderTableItems = (
     };
 
     return (
-      <tr key={item.id}>
+      <tr key={item.id + item.responsible}>
         {keys.map((key) => (
           <td key={key}>
             {key === "equipment" ? (
