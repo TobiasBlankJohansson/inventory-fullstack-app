@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useFetchItems, useFetchStorage, useFilterItems } from "@/hooks";
+import { consolidateInventory } from "@/util";
 
 export const useManageData = () => {
   const { items, setItems } = useFetchItems();
@@ -7,7 +8,9 @@ export const useManageData = () => {
 
   const [checkedItems, setCheckedItems] = useState<string[]>([]);
 
-  const { itemList, setSearch, setSelectedStorage } = useFilterItems(items);
+  const { itemList, setSearch, setSelectedStorage } = useFilterItems(
+    consolidateInventory(items)
+  );
 
   const handleDelete = () => {
     setItems((prev) => prev.filter((item) => !checkedItems.includes(item.id)));
