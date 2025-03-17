@@ -17,6 +17,7 @@ export function InventoryManage() {
     itemList,
     checkedItems,
     storageArea,
+    options,
     setItems,
     setSearch,
     setSelectedStorage,
@@ -53,7 +54,7 @@ export function InventoryManage() {
           )}
         ></Tabel>
       </BodyContainer>
-      <CreateItem setItems={setItems} storageAreas={storageArea} />
+      <CreateItem setItems={setItems} options={options} />
     </ScreenContainer>
   );
 }

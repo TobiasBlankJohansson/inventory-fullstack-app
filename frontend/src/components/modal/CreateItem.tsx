@@ -8,7 +8,7 @@ type Props<T> = {
   setItems: (updateFn: (prevItems: T[]) => T[]) => void;
   options: {
     equipment: string[];
-    storageAreas: string[];
+    storageArea: string[];
     responsible: string[];
   };
 };
@@ -19,7 +19,7 @@ export function CreateItem<T extends Item>({ setItems, options }: Props<T>) {
 
   const option = (label: string) => {
     if (label === "Storage Area") {
-      return options.storageAreas;
+      return options.storageArea;
     }
     if (label === "Equipment") {
       return options.equipment;
