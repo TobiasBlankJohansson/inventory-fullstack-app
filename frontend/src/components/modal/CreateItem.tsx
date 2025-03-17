@@ -1,21 +1,34 @@
-import {Button} from "../button";
-import {Item} from "@/types";
-import {FORM_FIELDS_ITEM} from "@/constants";
-import {FormFieldItem} from "../forms";
-import {useCreateItem} from "@/hooks";
+import { Button } from "../button";
+import { Item } from "@/types";
+import { FORM_FIELDS_ITEM } from "@/constants";
+import { FormFieldItem } from "../forms";
+import { useCreateItem } from "@/hooks";
 
 type Props<T> = {
   setItems: (updateFn: (prevItems: T[]) => T[]) => void;
-  storageAreas: string[];
+  options: {
+    equipment: string[];
+    storageAreas: string[];
+    responsible: string[];
+  };
 };
 
-export function CreateItem<T extends Item>(
-  {
-    setItems,
-    storageAreas,
-  }: Props<T>) {
+export function CreateItem<T extends Item>({ setItems, options }: Props<T>) {
+  const { handleSubmit, errorMessage, setAddAnotherOne } =
+    useCreateItem(setItems);
 
-  const {handleSubmit, errorMessage, setAddAnotherOne} = useCreateItem(setItems);
+  const option = (label: string) => {
+    if (label === "Storage Area") {
+      return options.storageAreas;
+    }
+    if (label === "Equipment") {
+      return options.equipment;
+    }
+    if (label === "Responsible") {
+      return options.responsible;
+    }
+    return undefined;
+  };
 
   return (
     <dialog id="create_item" className="modal">
@@ -31,7 +44,7 @@ export function CreateItem<T extends Item>(
             <FormFieldItem
               key={field.key}
               field={field}
-              options={field.label === "select" ? storageAreas : undefined}
+              options={option(field.label)}
             />
           ))}
           <div className="modal-action flex justify-between">
