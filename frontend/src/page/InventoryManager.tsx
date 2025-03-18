@@ -1,4 +1,4 @@
-import {Filter, renderTableHeaders, renderTableItems, ScreenContainer, Search,} from "@/components";
+import {Button, Filter, renderTableHeaders, renderTableItems, ScreenContainer, Search,} from "@/components";
 import {BodyContainer} from "@/components/container/BodyContainer";
 import {CreateItem} from "@/components/modal/CreateItem";
 import {Navbar} from "@/components/navbar/Navbar";
@@ -25,11 +25,24 @@ export function InventoryManage() {
     <ScreenContainer>
       <Navbar currentPage={1} currentPageName="Inventory Manage"></Navbar>
       <BodyContainer>
-        <div className="flex mt">
-          <div className="w-60">
-            <Search setSearch={setSearch}></Search>
-          </div>
-        </div>
+        <section className="h-10 grid grid-flow-col grid-cols-3 gap-2">
+          <Search setSearch={setSearch}></Search>
+          <Button
+            className="min-h-full h-full"
+            onClick={() =>
+              (
+                document.getElementById("filter") as HTMLDialogElement
+              ).showModal()
+            }
+          >
+            Filter
+          </Button>
+          <section className="h-10 grid grid-flow-col grid-cols-3 gap-2">
+            <Button className="min-h-full h-full">Add Equipment</Button>
+            <Button className="min-h-full h-full">Add Storage</Button>
+            <Button className="min-h-full h-full">Add Responsible</Button>
+          </section>
+        </section>
         <Tabel
           renderHeadersInTable={renderTableHeaders(
             getItemHeaders(itemList),
