@@ -5,12 +5,12 @@ type Asset = {
 export const useSaveAsset = <T>(set: (updateFn: (prevData: T[]) => T[]) => void,
                                 mutateAsync: (variables: string) => Promise<T>,
                                 data: T[]) => {
-  return async function saveAsset(
+  return async (
     formId: string,
     addAnotherOne: boolean,
     setAddAnotherOne: React.Dispatch<React.SetStateAction<boolean>>,
     event?: React.FormEvent
-  ) {
+  ) => {
     const input: HTMLInputElement = document.getElementById(
       "input " + formId
     ) as HTMLInputElement;

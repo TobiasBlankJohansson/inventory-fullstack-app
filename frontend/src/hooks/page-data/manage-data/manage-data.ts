@@ -26,9 +26,9 @@ export const useManageData = () => {
     consolidateInventory(items)
   );
 
-  const saveAssetStorage = useSaveAsset(setStorageArea, mutateStorage)
-  const saveAssetEquipment = useSaveAsset(setEquipment, mutateEquipment)
-  const saveAssetResponsible = useSaveAsset(setResponsible, mutateResponsible)
+  const saveAssetStorage = useSaveAsset(setStorageArea, mutateStorage, storageArea)
+  const saveAssetEquipment = useSaveAsset(setEquipment, mutateEquipment, equipment)
+  const saveAssetResponsible = useSaveAsset(setResponsible, mutateResponsible, responsible)
 
   const handleDelete = () => {
     setItems((prev) => prev.filter((item) => !checkedItems.includes(item.id)));
