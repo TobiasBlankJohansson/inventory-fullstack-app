@@ -5,12 +5,14 @@ type Props = {
   saveAsset: (addAnotherOne: boolean,
               setAddAnotherOne: React.Dispatch<React.SetStateAction<boolean>>,
               event?: React.FormEvent) => Promise<void>;
+  dialogId: string;
 };
 
-export function CreateAsset({saveAsset}: Props) {
+
+export function CreateAsset({saveAsset, dialogId}: Props) {
   const [addAnotherOne, setAddAnotherOne] = useState<boolean>(false);
   return (
-    <dialog id="create_storage" className="modal">
+    <dialog id={dialogId} className="modal">
       <div className="modal-box px-10 py-6 w-fit bg-background">
         <form
           method="dialog"
