@@ -12,7 +12,7 @@ import {
   ThreeGridContainer,
 } from "@/components";
 import {useManageData} from "@/hooks";
-import {getItemHeaders} from "@/util";
+import {getItemHeaders, openModal} from "@/util";
 
 export function InventoryManage() {
   const {
@@ -35,13 +35,7 @@ export function InventoryManage() {
       <BodyContainer>
         <ThreeGridContainer>
           <Search setSearch={setSearch}></Search>
-          <FullHeightButton
-            onClick={() =>
-              (
-                document.getElementById("filter") as HTMLDialogElement
-              ).showModal()
-            }
-          >
+          <FullHeightButton onClick={() => openModal("filter")}>
             Filter
           </FullHeightButton>
           <ThreeGridContainer>

@@ -1,4 +1,4 @@
-import { Item } from "@/types";
+import {Item} from "@/types";
 
 export const getItemKeys = (item: Item): (keyof Item)[] => {
   return Object.keys(item) as (keyof Item)[];
@@ -32,3 +32,8 @@ export const consolidateInventory = (items: Item[]): Item[] => {
 
   return [...items, ...Object.values(totals)];
 };
+
+export const openModal = (modal: string) =>
+  (
+    document.getElementById(modal) as HTMLDialogElement
+  ).showModal();
