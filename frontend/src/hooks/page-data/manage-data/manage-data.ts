@@ -1,8 +1,8 @@
 import {useState} from "react";
 import {
-  useFetchEquipment,
   useFetchResponsible,
   useFilterItems,
+  useGetEquipment,
   useGetItems,
   useGetStorage,
   usePostStorage,
@@ -14,7 +14,7 @@ export const useManageData = () => {
   const {items, setItems} = useGetItems();
   const {storageArea, setStorageArea} = useGetStorage();
   const {mutateAsync} = usePostStorage();
-  const {equipment} = useFetchEquipment();
+  const {equipment} = useGetEquipment();
   const {responsible} = useFetchResponsible();
   const [checkedItems, setCheckedItems] = useState<string[]>([]);
 
