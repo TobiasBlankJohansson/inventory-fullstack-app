@@ -17,9 +17,14 @@ export const useItemEditorData = (id: string) => {
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const newItem = Object.fromEntries(
+
+    const newItemData = Object.fromEntries(
       FORM_FIELDS_ITEM.map(({key}) => [key, formData.get(`item_${key}`)])
-    ) as Item;
+    ) as { [key: string]: FormDataEntryValue | null };
+
+    const equipmentName = newItemData.equipment as string;
+    newItemData.equipment = equipment.find(equipment => equipment.name === equipmentName) as Equipment;
+
     const equipmentItem = newItem.equipment;
     newItem.id = (equipment.find(item => item.name === equipmentItem) as Equipment).id;
     const itemData = await mutateAsync(newItem);

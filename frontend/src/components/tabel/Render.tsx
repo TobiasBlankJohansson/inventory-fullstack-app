@@ -74,7 +74,7 @@ export const renderTableItems = (
                 {item.equipment.name}
               </Link>
             ) : (
-              typeof item[key as keyof Item] === "string" && typeof item[key as keyof Item]
+              item[key as keyof Item] as string
             )}
           </td>
         ))}
