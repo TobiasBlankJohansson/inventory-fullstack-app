@@ -12,7 +12,7 @@ import {consolidateInventory, openModal} from "@/util";
 
 export const useManageData = () => {
   const {items, setItems} = useGetItems();
-  const {mutate, isSuccess, data} = usePostStorage();
+  const {mutateAsync, isSuccess, data} = usePostStorage();
   const {storageArea, setStorageArea} = useGetStorage();
   const {equipment} = useFetchEquipment();
   const {responsible} = useFetchResponsible();
@@ -36,14 +36,14 @@ export const useManageData = () => {
     setAddAnotherOne: React.Dispatch<React.SetStateAction<boolean>>,
     event?: React.FormEvent
   ) {
-    const areaInput: HTMLInputElement = document.getElementById(
+    const input: HTMLInputElement = document.getElementById(
       formId
     ) as HTMLInputElement;
-    const name = areaInput.value;
-    mutate(name);
+    const name = input.value;
+    await mutateAsync(name);
     if (isSuccess)
       setStorageArea((storageArea) => [...storageArea, data]);
-    areaInput.value = "";
+    input.value = "";
     if (addAnotherOne) {
       event?.preventDefault();
       setAddAnotherOne(() => false);

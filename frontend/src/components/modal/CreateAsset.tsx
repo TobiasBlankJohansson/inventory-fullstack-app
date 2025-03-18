@@ -36,12 +36,14 @@ export function CreateAsset({saveAsset, dialogName}: Props) {
           </label>
           <div className="modal-action flex justify-between">
             <Button
+              type="submit"
               className="btn bg-button_primary hover:bg-button_primary_hover border-button_primary text-white"
               onClick={() => setAddAnotherOne(() => true)}
             >
               Add another one
             </Button>
             <Button
+              type="submit"
               className="btn bg-button_secondary hover:bg-button_warning_hover border-button_secondary text-white">
               Save
             </Button>
