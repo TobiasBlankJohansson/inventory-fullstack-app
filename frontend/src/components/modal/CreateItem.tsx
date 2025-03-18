@@ -1,31 +1,30 @@
-import { Button } from "../button";
-import { Item } from "@/types";
-import { FORM_FIELDS_ITEM } from "@/constants";
-import { FormFieldItem } from "../forms";
-import { useCreateItem } from "@/hooks";
+import {Equipment, Item, Responsible, Storage} from "@/types";
+import {FORM_FIELDS_ITEM} from "@/constants";
+import {useCreateItem} from "@/hooks";
+import {Button, FormFieldItem} from "@/components";
 
 type Props<T> = {
   setItems: (updateFn: (prevItems: T[]) => T[]) => void;
   options: {
-    equipment: string[];
-    storageArea: string[];
-    responsible: string[];
+    equipment: Equipment[];
+    storageArea: Storage[];
+    responsible: Responsible[];
   };
 };
 
-export function CreateItem<T extends Item>({ setItems, options }: Props<T>) {
-  const { handleSubmit, errorMessage, setAddAnotherOne } =
+export function CreateItem<T extends Item>({setItems, options}: Props<T>) {
+  const {handleSubmit, errorMessage, setAddAnotherOne} =
     useCreateItem(setItems);
 
   const option = (label: string) => {
     if (label === "Storage Area") {
-      return options.storageArea;
+      return options.storageArea.map(storage => storage.name);
     }
     if (label === "Equipment") {
-      return options.equipment;
+      return options.equipment.map(equipment => equipment.name);
     }
     if (label === "Responsible") {
-      return options.responsible;
+      return options.responsible.map(equipment => equipment.name);
     }
     return undefined;
   };
