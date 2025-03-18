@@ -8,7 +8,7 @@ import {
   renderTableItems,
   ScreenContainer,
   Search,
-  Tabel,
+  Table,
   ThreeGridContainer,
 } from "@/components";
 import {useManageData} from "@/hooks";
@@ -44,7 +44,7 @@ export function InventoryManage() {
             <FullHeightButton>Add Responsible</FullHeightButton>
           </ThreeGridContainer>
         </ThreeGridContainer>
-        <Tabel
+        <Table
           renderHeadersInTable={renderTableHeaders(
             getItemHeaders(itemList),
             true,
@@ -58,7 +58,7 @@ export function InventoryManage() {
             checkedItems,
             setCheckedItems
           )}
-        ></Tabel>
+        ></Table>
       </BodyContainer>
       <CreateItem setItems={setItems} options={options}/>
       <Filter setStorage={setSelectedStorage}

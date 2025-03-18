@@ -3,7 +3,7 @@ type inputTable = {
   renderItemInTable: JSX.Element[];
 };
 
-export function Tabel({ renderHeadersInTable, renderItemInTable }: inputTable) {
+export function Table({ renderHeadersInTable, renderItemInTable }: inputTable) {
   return (
     <>
       <div className="overflow-x-auto bg-white mt-2 h-full rounded-lg">

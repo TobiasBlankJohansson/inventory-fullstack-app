@@ -1,13 +1,13 @@
 import {useState} from "react";
 import {Button} from "../button";
-import { postStorageArea } from "@/api/StorageFetch";
-
 
 type Props = {
-  setStorageArea: (updateFn: (prevStorage: string[]) => string[]) => void;
+  saveAsset: (addAnotherOne: boolean,
+              setAddAnotherOne: React.Dispatch<React.SetStateAction<boolean>>,
+              event?: React.FormEvent) => Promise<void>;
 };
 
-export function CreateStorage({setStorageArea}: Props) {
+export function CreateAsset({saveAsset}: Props) {
   const [addAnotherOne, setAddAnotherOne] = useState<boolean>(false);
   return (
     <dialog id="create_storage" className="modal">
@@ -15,7 +15,7 @@ export function CreateStorage({setStorageArea}: Props) {
         <form
           method="dialog"
           onSubmit={(event) =>
-            SaveStorage(setStorageArea, addAnotherOne, setAddAnotherOne, event)
+            saveAsset(addAnotherOne, setAddAnotherOne, event)
           }
         >
           <h3 className="font-bold text-lg ">Storage area creation</h3>
@@ -51,23 +51,4 @@ export function CreateStorage({setStorageArea}: Props) {
       </form>
     </dialog>
   );
-}
-
-async function SaveStorage(
-  setStorageArea: (updateFn: (prevStorage: string[]) => string[]) => void,
-  addAnotherOne: boolean,
-  setAddAnotherOne: React.Dispatch<React.SetStateAction<boolean>>,
-  event?: React.FormEvent
-) {
-  const storageAreaInput: HTMLInputElement = document.getElementById(
-    "storage_area_name"
-  ) as HTMLInputElement;
-  const storageName = storageAreaInput.value;
-  if (await postStorageArea(storageName))
-    setStorageArea((storageArea) => [...storageArea, storageName]);
-  storageAreaInput.value = "";
-  if (addAnotherOne) {
-    event?.preventDefault();
-    setAddAnotherOne(() => false);
-  }
 }

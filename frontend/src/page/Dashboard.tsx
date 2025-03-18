@@ -8,7 +8,7 @@ import {
   renderTableItems,
   ScreenContainer,
   Search,
-  Tabel,
+  Table,
 } from "@/components";
 import {useDashboardData} from "@/hooks";
 import {getItemHeaders, openModal} from "@/util";
@@ -35,10 +35,10 @@ export function Dashboard() {
           </FullHeightButton>
           <Print itemList={itemList}></Print>
         </ThreeGridContainer>
-        <Tabel
+        <Table
           renderHeadersInTable={renderTableHeaders(getItemHeaders(itemList))}
           renderItemInTable={renderTableItems(itemList)}
-        ></Tabel>
+        ></Table>
       </BodyContainer>
       <Filter
         setStorage={setSelectedStorage}
