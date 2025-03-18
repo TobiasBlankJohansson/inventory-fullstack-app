@@ -12,6 +12,7 @@ import {
 } from "@/components";
 import {useDashboardData} from "@/hooks";
 import {getItemHeaders} from "@/util";
+import {ThreeGridContainer} from "@/components/container/ThreeGridContainer.tsx";
 
 export function Dashboard() {
   const {
@@ -27,7 +28,7 @@ export function Dashboard() {
     <ScreenContainer>
       <Navbar currentPage={0} currentPageName="Dashboard"></Navbar>
       <BodyContainer>
-        <section className="h-10 grid grid-flow-col grid-cols-3 gap-2">
+        <ThreeGridContainer>
           <Search setSearch={setSearch}></Search>
           <Button
             className="min-h-full h-full"
@@ -40,7 +41,7 @@ export function Dashboard() {
             Filter
           </Button>
           <Print itemList={itemList}></Print>
-        </section>
+        </ThreeGridContainer>
         <Tabel
           renderHeadersInTable={renderTableHeaders(getItemHeaders(itemList))}
           renderItemInTable={renderTableItems(itemList)}

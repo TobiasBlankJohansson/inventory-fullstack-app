@@ -1,8 +1,16 @@
-import {Button, Filter, renderTableHeaders, renderTableItems, ScreenContainer, Search,} from "@/components";
-import {BodyContainer} from "@/components/container/BodyContainer";
-import {CreateItem} from "@/components/modal/CreateItem";
-import {Navbar} from "@/components/navbar/Navbar";
-import {Tabel} from "@/components/tabel/Tabel";
+import {
+  BodyContainer,
+  Button,
+  CreateItem,
+  Filter,
+  Navbar,
+  renderTableHeaders,
+  renderTableItems,
+  ScreenContainer,
+  Search,
+  Tabel,
+  ThreeGridContainer,
+} from "@/components";
 import {useManageData} from "@/hooks";
 import {getItemHeaders} from "@/util";
 
@@ -25,7 +33,7 @@ export function InventoryManage() {
     <ScreenContainer>
       <Navbar currentPage={1} currentPageName="Inventory Manage"></Navbar>
       <BodyContainer>
-        <section className="h-10 grid grid-cols-3 gap-2">
+        <ThreeGridContainer>
           <Search setSearch={setSearch}></Search>
           <Button
             className="min-h-full h-full"
@@ -37,12 +45,12 @@ export function InventoryManage() {
           >
             Filter
           </Button>
-          <section className="h-10 grid grid-cols-3 gap-2">
+          <ThreeGridContainer>
             <Button className="min-h-full h-full">Add Equipment</Button>
             <Button className="min-h-full h-full">Add Storage</Button>
             <Button className="min-h-full h-full">Add Responsible</Button>
-          </section>
-        </section>
+          </ThreeGridContainer>
+        </ThreeGridContainer>
         <Tabel
           renderHeadersInTable={renderTableHeaders(
             getItemHeaders(itemList),
