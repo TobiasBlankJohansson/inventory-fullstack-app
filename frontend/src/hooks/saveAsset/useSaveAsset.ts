@@ -1,5 +1,5 @@
-export const saveAsset = <T>(set: (updateFn: (prevData: T[]) => T[]) => void,
-                             mutateAsync: (variables: string) => Promise<T>) => {
+export const useSaveAsset = <T>(set: (updateFn: (prevData: T[]) => T[]) => void,
+                                mutateAsync: (variables: string) => Promise<T>) => {
   return async function saveAsset(
     formId: string,
     addAnotherOne: boolean,

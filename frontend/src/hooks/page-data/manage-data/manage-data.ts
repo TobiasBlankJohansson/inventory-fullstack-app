@@ -1,10 +1,19 @@
 import {useState} from "react";
-import {useFetchEquipment, useFetchResponsible, useFilterItems, useGetItems, useGetStorage,} from "@/hooks";
+import {
+  useFetchEquipment,
+  useFetchResponsible,
+  useFilterItems,
+  useGetItems,
+  useGetStorage,
+  usePostStorage,
+  useSaveAsset,
+} from "@/hooks";
 import {consolidateInventory, openModal} from "@/util";
 
 export const useManageData = () => {
   const {items, setItems} = useGetItems();
-  const {storageArea} = useGetStorage();
+  const {storageArea, setStorageArea} = useGetStorage();
+  const {mutateAsync} = usePostStorage();
   const {equipment} = useFetchEquipment();
   const {responsible} = useFetchResponsible();
   const [checkedItems, setCheckedItems] = useState<string[]>([]);
@@ -13,6 +22,7 @@ export const useManageData = () => {
     consolidateInventory(items)
   );
 
+  const saveAssetStorage = useSaveAsset(setStorageArea, mutateAsync)
 
   const handleDelete = () => {
     setItems((prev) => prev.filter((item) => !checkedItems.includes(item.id)));
@@ -37,5 +47,6 @@ export const useManageData = () => {
     setCheckedItems,
     handleDelete,
     handleCreate,
+    saveAssetStorage
   };
 };
