@@ -1,22 +1,16 @@
-import { useState } from "react";
-import {
-  useFetchEquipment,
-  useFetchItems,
-  useFetchResponsible,
-  useFetchStorage,
-  useFilterItems,
-} from "@/hooks";
-import { consolidateInventory } from "@/util";
+import {useState} from "react";
+import {useFetchEquipment, useFetchItems, useFetchResponsible, useFetchStorage, useFilterItems,} from "@/hooks";
+import {consolidateInventory} from "@/util";
 
 export const useManageData = () => {
-  const { items, setItems } = useFetchItems();
-  const { storageArea, setStorageArea } = useFetchStorage();
-  const { equipment } = useFetchEquipment();
-  const { responsible } = useFetchResponsible();
+  const {items, setItems} = useFetchItems();
+  const {storageArea} = useFetchStorage();
+  const {equipment} = useFetchEquipment();
+  const {responsible} = useFetchResponsible();
 
   const [checkedItems, setCheckedItems] = useState<string[]>([]);
 
-  const { itemList, setSearch, setSelectedStorage } = useFilterItems(
+  const {itemList, setSearch, setSelectedStorage, setSelectedResponsible} = useFilterItems(
     consolidateInventory(items)
   );
 
@@ -29,11 +23,12 @@ export const useManageData = () => {
   };
 
   return {
-    options: { equipment, responsible, storageArea },
+    options: {equipment, responsible, storageArea},
+    setSelectedResponsible,
+    responsible,
     itemList,
     setItems,
     storageArea,
-    setStorageArea,
     setSearch,
     setSelectedStorage,
     checkedItems,

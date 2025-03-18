@@ -1,7 +1,7 @@
 import {FormEvent, useState} from "react";
 import {FORM_FIELDS_ITEM} from "@/constants.ts";
 import {Item} from "@/types";
-import {usePostItem} from "src/hooks/fetch/item/post-item";
+import {usePostItem} from "@/hooks";
 
 export const useCreateItem = <T extends Item>(
   setItems: (updateFn: (prevItems: T[]) => T[]) => void

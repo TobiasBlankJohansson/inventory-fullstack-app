@@ -1,16 +1,10 @@
-import {
-  renderTableHeaders,
-  renderTableItems,
-  ScreenContainer,
-  Search,
-  SelectableList,
-} from "@/components";
-import { BodyContainer } from "@/components/container/BodyContainer";
-import { CreateItem } from "@/components/modal/CreateItem";
-import { Navbar } from "@/components/navbar/Navbar";
-import { Tabel } from "@/components/tabel/Tabel";
-import { useManageData } from "@/hooks";
-import { getItemHeaders } from "@/util";
+import {Filter, renderTableHeaders, renderTableItems, ScreenContainer, Search,} from "@/components";
+import {BodyContainer} from "@/components/container/BodyContainer";
+import {CreateItem} from "@/components/modal/CreateItem";
+import {Navbar} from "@/components/navbar/Navbar";
+import {Tabel} from "@/components/tabel/Tabel";
+import {useManageData} from "@/hooks";
+import {getItemHeaders} from "@/util";
 
 export function InventoryManage() {
   const {
@@ -24,6 +18,8 @@ export function InventoryManage() {
     handleDelete,
     setCheckedItems,
     handleCreate,
+    responsible,
+    setSelectedResponsible
   } = useManageData();
   return (
     <ScreenContainer>
@@ -33,10 +29,6 @@ export function InventoryManage() {
           <div className="w-60">
             <Search setSearch={setSearch}></Search>
           </div>
-          <SelectableList
-            list={storageArea}
-            setSelected={setSelectedStorage}
-          ></SelectableList>
         </div>
         <Tabel
           renderHeadersInTable={renderTableHeaders(
@@ -54,7 +46,11 @@ export function InventoryManage() {
           )}
         ></Tabel>
       </BodyContainer>
-      <CreateItem setItems={setItems} options={options} />
+      <CreateItem setItems={setItems} options={options}/>
+      <Filter setStorage={setSelectedStorage}
+              storageArea={storageArea.map(storage => storage.name)}
+              setResponsible={setSelectedResponsible}
+              responsible={responsible.map(responsible => responsible.name)}></Filter>
     </ScreenContainer>
   );
 }
