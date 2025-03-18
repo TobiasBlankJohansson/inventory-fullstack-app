@@ -1,6 +1,8 @@
+import {Equipment} from "@/types/equipment.ts";
+
 export type Item = {
   id: string;
-  equipment: string;
+  equipment: Equipment;
   quantity: string;
   storageArea: string;
   responsible: string;
