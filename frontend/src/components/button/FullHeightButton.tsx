@@ -1,6 +1,6 @@
 import {Button} from "@/components";
 
-export const FullHightButton = ({children, onClick}: {
+export const FullHeightButton = ({children, onClick}: {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   children?: React.ReactNode;
 }) => {
