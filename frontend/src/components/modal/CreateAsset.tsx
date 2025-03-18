@@ -27,7 +27,7 @@ export function CreateAsset({saveAsset, dialogName}: Props) {
               <span className="label-text ">{dialogName} name</span>
             </div>
             <input
-              id="storage_area_name"
+              id={"input " + dialogName}
               type="text"
               placeholder="Type here"
               className="input input-bordered w-full max-w-xs"

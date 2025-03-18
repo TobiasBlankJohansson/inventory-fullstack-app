@@ -8,7 +8,7 @@ export async function getStorageArea(): Promise<Storage[]> {
 }
 
 export async function postStorageArea(storageArea: string): Promise<Storage> {
-  return {id: "1", name: storageArea};
+  return {id: "0", name: storageArea};
 }
 
 const mockDataStorageArea: Storage[] = [
