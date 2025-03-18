@@ -1,12 +1,12 @@
 import {useState} from "react";
-import {useFetchEquipment, useFetchResponsible, useFetchStorage, useFilterItems, useGet,} from "@/hooks";
+import {useFetchEquipment, useFetchResponsible, useFilterItems, useGet, useGetStorage,} from "@/hooks";
 import {consolidateInventory, openModal} from "@/util";
 import {postStorageArea} from "@/api/StorageFetch.ts";
 import {getItems} from "@/api/InventoryFetch.ts";
 
 export const useManageData = () => {
   const {data: items, set: setItems} = useGet(getItems, "items");
-  const {storageArea} = useFetchStorage();
+  const {storageArea} = useGetStorage();
   const {equipment} = useFetchEquipment();
   const {responsible} = useFetchResponsible();
 

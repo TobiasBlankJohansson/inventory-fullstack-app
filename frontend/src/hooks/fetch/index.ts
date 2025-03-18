@@ -1,5 +1,5 @@
 export * from "./fetch-responsible";
-export * from "./fetch-storage";
+export * from "./storage";
 export * from "./fetch-equipment";
 export * from "./item";
 export * from "./api";

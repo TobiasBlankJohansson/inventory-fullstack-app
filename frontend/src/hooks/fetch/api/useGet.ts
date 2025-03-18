@@ -3,6 +3,7 @@ import {useQuery, useQueryClient} from "@tanstack/react-query";
 export const useGet = <T>(
   queryFn: () => Promise<T[]>,
   queryKey: string) => {
+
   const queryClient = useQueryClient();
 
   const {

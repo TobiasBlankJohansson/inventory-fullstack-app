@@ -1,7 +1,7 @@
-import { deleteItem } from "@/api/InventoryFetch.ts";
-import { Item } from "@/types";
-import { useMutation } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
+import {deleteItem} from "@/api/InventoryFetch.ts";
+import {Item} from "@/types";
+import {useMutation} from "@tanstack/react-query";
+import {useNavigate} from "react-router-dom";
 
 export const useDeleteItem = (
   setItems: (updateFn: (prevItems: Item[]) => Item[]) => void,
@@ -16,7 +16,7 @@ export const useDeleteItem = (
       navigate("/");
     },
     onError: (error) => {
-      console.error("Error deleting item:", error);
+      console.error("Error deleting:", error);
     },
   });
 };
