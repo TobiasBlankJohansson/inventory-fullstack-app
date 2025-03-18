@@ -11,7 +11,7 @@ import {
   Tabel,
 } from "@/components";
 import {useDashboardData} from "@/hooks";
-import {getItemHeaders} from "@/util";
+import {getItemHeaders, openModal} from "@/util";
 import {ThreeGridContainer} from "@/components/container/ThreeGridContainer.tsx";
 
 export function Dashboard() {
@@ -30,13 +30,7 @@ export function Dashboard() {
       <BodyContainer>
         <ThreeGridContainer>
           <Search setSearch={setSearch}></Search>
-          <FullHeightButton
-            onClick={() =>
-              (
-                document.getElementById("filter") as HTMLDialogElement
-              ).showModal()
-            }
-          >
+          <FullHeightButton onClick={() => openModal("filter")}>
             Filter
           </FullHeightButton>
           <Print itemList={itemList}></Print>

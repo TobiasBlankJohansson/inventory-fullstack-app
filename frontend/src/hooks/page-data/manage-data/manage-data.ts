@@ -1,6 +1,6 @@
 import {useState} from "react";
 import {useFetchEquipment, useFetchItems, useFetchResponsible, useFetchStorage, useFilterItems,} from "@/hooks";
-import {consolidateInventory} from "@/util";
+import {consolidateInventory, openModal} from "@/util";
 
 export const useManageData = () => {
   const {items, setItems} = useFetchItems();
@@ -18,9 +18,8 @@ export const useManageData = () => {
     setItems((prev) => prev.filter((item) => !checkedItems.includes(item.id)));
     setCheckedItems([]);
   };
-  const handleCreate = () => {
-    (document.getElementById("create_item") as HTMLDialogElement).showModal();
-  };
+  
+  const handleCreate = () => openModal("create_item");
 
   return {
     options: {equipment, responsible, storageArea},
