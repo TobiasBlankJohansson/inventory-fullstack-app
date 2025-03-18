@@ -1,5 +1,6 @@
-import { getEquipment } from "@/api/EquipmentFetch";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import {getEquipment} from "@/api/EquipmentFetch";
+import {useQuery, useQueryClient} from "@tanstack/react-query";
+import {Equipment} from "@/types";
 
 export const useFetchEquipment = () => {
   const queryClient = useQueryClient();
@@ -9,16 +10,16 @@ export const useFetchEquipment = () => {
     isLoading,
     error,
     refetch,
-  } = useQuery<string[], Error>({
+  } = useQuery<Equipment[], Error>({
     queryKey: ["equipment"],
     queryFn: getEquipment,
   });
 
-  const setEquipment = (updateFn: (prev: string[]) => string[]) => {
-    queryClient.setQueryData<string[]>(["equipment"], (old = []) => {
+  const setEquipment = (updateFn: (prev: Equipment[]) => Equipment[]) => {
+    queryClient.setQueryData<Equipment[]>(["equipment"], (old = []) => {
       return updateFn(old);
     });
   };
 
-  return { equipment, setEquipment, isLoading, error, refetch };
+  return {equipment, setEquipment, isLoading, error, refetch};
 };
