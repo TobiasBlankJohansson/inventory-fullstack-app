@@ -25,7 +25,7 @@ export function InventoryManage() {
     <ScreenContainer>
       <Navbar currentPage={1} currentPageName="Inventory Manage"></Navbar>
       <BodyContainer>
-        <section className="h-10 grid grid-flow-col grid-cols-3 gap-2">
+        <section className="h-10 grid grid-cols-3 gap-2">
           <Search setSearch={setSearch}></Search>
           <Button
             className="min-h-full h-full"
@@ -37,7 +37,7 @@ export function InventoryManage() {
           >
             Filter
           </Button>
-          <section className="h-10 grid grid-flow-col grid-cols-3 gap-2">
+          <section className="h-10 grid grid-cols-3 gap-2">
             <Button className="min-h-full h-full">Add Equipment</Button>
             <Button className="min-h-full h-full">Add Storage</Button>
             <Button className="min-h-full h-full">Add Responsible</Button>
