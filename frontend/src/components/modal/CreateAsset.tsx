@@ -6,25 +6,25 @@ type Props = {
               addAnotherOne: boolean,
               setAddAnotherOne: React.Dispatch<React.SetStateAction<boolean>>,
               event?: React.FormEvent) => Promise<void>;
-  dialogId: string;
+  dialogName: string;
 };
 
-export function CreateAsset({saveAsset, dialogId}: Props) {
+export function CreateAsset({saveAsset, dialogName}: Props) {
   const [addAnotherOne, setAddAnotherOne] = useState<boolean>(false);
   return (
-    <dialog id={dialogId} className="modal">
+    <dialog id={dialogName} className="modal">
       <div className="modal-box px-10 py-6 w-fit bg-background">
         <form
           method="dialog"
           onSubmit={(event) =>
-            saveAsset(dialogId, addAnotherOne, setAddAnotherOne, event)
+            saveAsset(dialogName, addAnotherOne, setAddAnotherOne, event)
           }
         >
-          <h3 className="font-bold text-lg ">Storage area creation</h3>
+          <h3 className="font-bold text-lg ">{dialogName} creation</h3>
           <label
             className="form-control w-full max-w-xs">
             <div className="label">
-              <span className="label-text ">Storage area name</span>
+              <span className="label-text ">{dialogName} name</span>
             </div>
             <input
               id="storage_area_name"

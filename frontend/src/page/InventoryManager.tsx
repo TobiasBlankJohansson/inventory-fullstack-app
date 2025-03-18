@@ -41,9 +41,9 @@ export function InventoryManage() {
             Filter
           </FullHeightButton>
           <ThreeGridContainer>
-            <FullHeightButton onClick={() => openModal("storage_create")}>Add Equipment</FullHeightButton>
-            <FullHeightButton>Add Storage</FullHeightButton>
-            <FullHeightButton>Add Responsible</FullHeightButton>
+            <FullHeightButton onClick={() => openModal("Equipment")}>Add Equipment</FullHeightButton>
+            <FullHeightButton onClick={() => openModal("Storage area")}>Add Storage</FullHeightButton>
+            <FullHeightButton onClick={() => openModal("Responsible")}>Add Responsible</FullHeightButton>
           </ThreeGridContainer>
         </ThreeGridContainer>
         <Table
@@ -67,7 +67,9 @@ export function InventoryManage() {
               storageArea={storageArea.map(storage => storage.name)}
               setResponsible={setSelectedResponsible}
               responsible={responsible.map(responsible => responsible.name)}></Filter>
-      <CreateAsset saveAsset={saveAsset} dialogId={"storage_create"}></CreateAsset>
+      <CreateAsset saveAsset={saveAsset} dialogName={"Equipment"}></CreateAsset>
+      <CreateAsset saveAsset={saveAsset} dialogName={"Storage area"}></CreateAsset>
+      <CreateAsset saveAsset={saveAsset} dialogName={"Responsible"}></CreateAsset>
     </ScreenContainer>
   );
 }
