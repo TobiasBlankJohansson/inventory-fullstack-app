@@ -1,4 +1,4 @@
-import { Item } from "@/types";
+import {Item} from "@/types";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -8,6 +8,7 @@ export async function getItems(): Promise<Item[]> {
     res.json()
   );
 }
+
 export const inventory: Item[] = [
   {
     id: "1",
@@ -52,18 +53,20 @@ export const inventory: Item[] = [
     responsible: "Sarah Wilson",
   },
 ];
+
 export async function postItem(item: Item): Promise<Item> {
   return fetch(BACKEND_URL + "/api/v1/inventory", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {"Content-Type": "application/json"},
     body: JSON.stringify(item),
   }).then((res) => res.json());
 }
 
 export async function putItem(item: Item): Promise<Item> {
+  return item;
   return fetch(BACKEND_URL + "/api/v1/inventory", {
     method: "PUT",
-    headers: { "Content-Type": "application/json" },
+    headers: {"Content-Type": "application/json"},
     body: JSON.stringify(item),
   }).then((res) => res.json());
 }

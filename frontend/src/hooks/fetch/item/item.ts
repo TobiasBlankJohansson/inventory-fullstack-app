@@ -41,21 +41,8 @@ export const useDeleteItem = (
   });
 };
 
-export const usePutItem = (
-  setItems: (updateFn: (prevItems: Item[]) => Item[]) => void,
-  id: string
-) => {
+export const usePutItem = () => {
   return useMutation({
     mutationFn: putItem,
-    onSuccess: (item) => {
-      setItems((prev: Item[]) =>
-        prev.map((listItem) =>
-          listItem.id === id ? (listItem = item) : listItem
-        )
-      );
-    },
-    onError: (error) => {
-      console.error("Error deleting item:", error);
-    },
   });
 };
