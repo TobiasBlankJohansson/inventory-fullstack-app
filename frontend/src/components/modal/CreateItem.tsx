@@ -2,6 +2,7 @@ import {Equipment, Item, Responsible, Storage} from "@/types";
 import {FORM_FIELDS_ITEM} from "@/constants";
 import {useCreateItem} from "@/hooks";
 import {Button, FormFieldItem} from "@/components";
+import {option} from "@/util";
 
 type Props<T> = {
   setItems: (updateFn: (prevItems: T[]) => T[]) => void;
@@ -15,19 +16,6 @@ type Props<T> = {
 export function CreateItem<T extends Item>({setItems, options}: Props<T>) {
   const {handleSubmit, errorMessage, setAddAnotherOne} =
     useCreateItem(setItems);
-
-  const option = (label: string) => {
-    if (label === "Storage Area") {
-      return options.storageArea.map(storage => storage.name);
-    }
-    if (label === "Equipment") {
-      return options.equipment.map(equipment => equipment.name);
-    }
-    if (label === "Responsible") {
-      return options.responsible.map(equipment => equipment.name);
-    }
-    return undefined;
-  };
 
   return (
     <dialog id="create_item" className="modal">
@@ -43,7 +31,7 @@ export function CreateItem<T extends Item>({setItems, options}: Props<T>) {
             <FormFieldItem
               key={field.key}
               field={field}
-              options={option(field.label)}
+              options={option(field.label, options)}
             />
           ))}
           <div className="modal-action flex justify-between">
