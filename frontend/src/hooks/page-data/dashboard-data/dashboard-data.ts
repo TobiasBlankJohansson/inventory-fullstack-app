@@ -1,9 +1,9 @@
-import {useFetchItems, useFilterItems, useGetStorage} from "@/hooks";
+import {useFilterItems, useGetItems, useGetStorage} from "@/hooks";
 import {useFetchResponsible} from "@/hooks/fetch";
 import {consolidateInventory} from "@/util";
 
 export function useDashboardData() {
-  const {items, setItems, isLoading, error, refetch} = useFetchItems();
+  const {items, setItems} = useGetItems();
   const {storageArea} = useGetStorage();
   const {responsible} = useFetchResponsible();
   const {itemList, setSearch, setSelectedResponsible, setSelectedStorage} =
@@ -22,8 +22,5 @@ export function useDashboardData() {
     setSelectedResponsible,
     itemList,
     storageArea,
-    isLoading,
-    error,
-    refetch,
   };
 }

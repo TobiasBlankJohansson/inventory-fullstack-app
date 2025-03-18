@@ -1,10 +1,10 @@
-import {useDeleteItem, useFetchItems, usePutItem} from "@/hooks";
+import {useDeleteItem, useGetItems, usePutItem} from "@/hooks";
 import {useState} from "react";
 import {Item} from "@/types";
 import {FORM_FIELDS_ITEM} from "@/constants.ts";
 
 export const useItemEditorData = (id: string) => {
-  const {items, setItems} = useFetchItems();
+  const {items, setItems} = useGetItems();
   const item = items.find((item) => item.id === id);
   const {mutate: deleteMutation} = useDeleteItem(setItems, id);
   const {mutate: saveMutation} = usePutItem(setItems, id);

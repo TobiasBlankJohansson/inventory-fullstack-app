@@ -30,20 +30,20 @@ export const useManageData = () => {
 
   const handleCreate = () => openModal("create_item");
 
-  async function SaveAsset(
+  async function saveAsset(
     formId: string,
     addAnotherOne: boolean,
     setAddAnotherOne: React.Dispatch<React.SetStateAction<boolean>>,
     event?: React.FormEvent
   ) {
-    const storageAreaInput: HTMLInputElement = document.getElementById(
+    const areaInput: HTMLInputElement = document.getElementById(
       formId
     ) as HTMLInputElement;
-    const storageName = storageAreaInput.value;
-    mutate(storageName);
+    const name = areaInput.value;
+    mutate(name);
     if (isSuccess)
       setStorageArea((storageArea) => [...storageArea, data]);
-    storageAreaInput.value = "";
+    areaInput.value = "";
     if (addAnotherOne) {
       event?.preventDefault();
       setAddAnotherOne(() => false);
@@ -63,6 +63,6 @@ export const useManageData = () => {
     setCheckedItems,
     handleDelete,
     handleCreate,
-    SaveAsset
+    saveAsset
   };
 };

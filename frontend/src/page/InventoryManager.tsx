@@ -1,5 +1,6 @@
 import {
   BodyContainer,
+  CreateAsset,
   CreateItem,
   Filter,
   FullHeightButton,
@@ -27,7 +28,8 @@ export function InventoryManage() {
     setCheckedItems,
     handleCreate,
     responsible,
-    setSelectedResponsible
+    setSelectedResponsible,
+    saveAsset
   } = useManageData();
   return (
     <ScreenContainer>
@@ -39,7 +41,7 @@ export function InventoryManage() {
             Filter
           </FullHeightButton>
           <ThreeGridContainer>
-            <FullHeightButton>Add Equipment</FullHeightButton>
+            <FullHeightButton onClick={() => openModal("storage_create")}>Add Equipment</FullHeightButton>
             <FullHeightButton>Add Storage</FullHeightButton>
             <FullHeightButton>Add Responsible</FullHeightButton>
           </ThreeGridContainer>
@@ -65,6 +67,7 @@ export function InventoryManage() {
               storageArea={storageArea.map(storage => storage.name)}
               setResponsible={setSelectedResponsible}
               responsible={responsible.map(responsible => responsible.name)}></Filter>
+      <CreateAsset saveAsset={saveAsset} dialogId={"storage_create"}></CreateAsset>
     </ScreenContainer>
   );
 }
