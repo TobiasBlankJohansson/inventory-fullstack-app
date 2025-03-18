@@ -1,17 +1,19 @@
-import {useDeleteItem, useGetItems, usePutItem} from "@/hooks";
+import {useDeleteItem, useGetEquipment, useGetItems, useGetResponsible, useGetStorage, usePutItem} from "@/hooks";
 import {useState} from "react";
 import {Item} from "@/types";
 import {FORM_FIELDS_ITEM} from "@/constants.ts";
 
 export const useItemEditorData = (id: string) => {
   const {items, setItems} = useGetItems();
+  const {storageArea} = useGetStorage();
+  const {equipment} = useGetEquipment();
+  const {responsible} = useGetResponsible();
   const item = items.find((item) => item.id === id);
   const {mutate: deleteMutation} = useDeleteItem(setItems, id);
   const {mutate: saveMutation} = usePutItem(setItems, id);
   const [edit, setEdit] = useState(false);
 
   const onSave = <T extends Item>(e: React.FormEvent<HTMLFormElement>) => {
-    console.log("onSave");
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const newItem = Object.fromEntries(
@@ -27,5 +29,8 @@ export const useItemEditorData = (id: string) => {
     }
   };
 
-  return {item, onDelete, edit, setEdit, onSave};
+  return {
+    opions: {storageArea, equipment, responsible},
+    item, onDelete, edit, setEdit, onSave
+  };
 };

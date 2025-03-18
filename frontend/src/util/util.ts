@@ -37,3 +37,24 @@ export const openModal = (modal: string) =>
   (
     document.getElementById(modal) as HTMLDialogElement
   ).showModal();
+
+type Option = {
+  name: string,
+}
+
+export const option = (label: string, options: {
+  storageArea: Option[],
+  equipment: Option[],
+  responsible: Option[]
+}) => {
+  if (label === "Storage Area") {
+    return options.storageArea.map(storage => storage.name);
+  }
+  if (label === "Equipment") {
+    return options.equipment.map(equipment => equipment.name);
+  }
+  if (label === "Responsible") {
+    return options.responsible.map(equipment => equipment.name);
+  }
+  return undefined;
+};
