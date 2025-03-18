@@ -1,1 +1,1 @@
-export * from "./item-editor.ts";
+export * from "./item-editor-data.ts";

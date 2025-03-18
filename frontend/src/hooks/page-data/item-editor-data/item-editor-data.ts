@@ -30,7 +30,7 @@ export const useItemEditorData = (id: string) => {
   };
 
   return {
-    opions: {storageArea, equipment, responsible},
+    options: {equipment, responsible, storageArea},
     item, onDelete, edit, setEdit, onSave
   };
 };

@@ -3,19 +3,10 @@ import {useItemEditorData} from "@/hooks";
 import {useLocation} from "react-router-dom";
 import {FORM_FIELDS_ITEM} from "@/constants.ts";
 import {option} from "@/util";
-import {Equipment, Responsible, Storage} from "@/types";
 
-export const ItemEditor = (
-  {options}: {
-    options: {
-      equipment: Equipment[],
-      storageArea: Storage[],
-      responsible: Responsible[],
-    }
-  }
-) => {
+export const ItemEditor = () => {
   const id = new URLSearchParams(useLocation().search).get("id");
-  const {item, onDelete, onSave, edit, setEdit} = useItemEditorData(
+  const {item, onDelete, onSave, edit, setEdit, options} = useItemEditorData(
     id as string
   );
 
