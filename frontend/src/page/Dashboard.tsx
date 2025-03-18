@@ -1,17 +1,17 @@
 import {
+  BodyContainer,
   Button,
   Filter,
+  Navbar,
+  Print,
   renderTableHeaders,
   renderTableItems,
   ScreenContainer,
+  Search,
+  Tabel,
 } from "@/components";
-import { BodyContainer } from "@/components";
-import { Navbar } from "@/components";
-import { Print } from "@/components";
-import { Search } from "@/components";
-import { Tabel } from "@/components";
-import { useDashboardData } from "@/hooks";
-import { getItemHeaders } from "@/util";
+import {useDashboardData} from "@/hooks";
+import {getItemHeaders} from "@/util";
 
 export function Dashboard() {
   const {
@@ -48,8 +48,8 @@ export function Dashboard() {
       </BodyContainer>
       <Filter
         setStorage={setSelectedStorage}
-        storageArea={storageArea}
-        responsible={responsible}
+        storageArea={storageArea.map((storage) => storage.name)}
+        responsible={responsible.map((responsible) => responsible.name)}
         setResponsible={setSelectedResponsible}
       ></Filter>
     </ScreenContainer>

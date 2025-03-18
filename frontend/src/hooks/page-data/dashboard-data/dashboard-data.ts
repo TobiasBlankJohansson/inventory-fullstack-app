@@ -1,6 +1,4 @@
-import {useFilterItems} from "../../filter-items";
-import {useFetchItems} from "../../fetch/item/get-items";
-import {useFetchStorage} from "../../fetch/fetch-storage";
+import {useFetchItems, useFetchStorage, useFilterItems} from "@/hooks";
 import {useFetchResponsible} from "@/hooks/fetch";
 import {consolidateInventory} from "@/util";
 
@@ -11,7 +9,7 @@ export function useDashboardData() {
   const {itemList, setSearch, setSelectedResponsible, setSelectedStorage} =
     useFilterItems(consolidateInventory(items));
   const responsibleList = [...responsible, {
-    id: "1",
+    id: "0",
     name: "Total"
   }];
 
