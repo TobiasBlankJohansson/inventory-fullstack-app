@@ -6,7 +6,7 @@ import {option} from "@/util";
 
 export const ItemEditor = () => {
   const id = new URLSearchParams(useLocation().search).get("id");
-  const {item, onDelete, onSave, edit, setEdit, options} = useItemEditorData(
+  const {item, edit, setEdit, options} = useItemEditorData(
     id as string
   );
 
