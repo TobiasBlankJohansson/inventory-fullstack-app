@@ -7,11 +7,8 @@ export async function getStorageArea(): Promise<Storage[]> {
   return await fetch(BACKEND_URL + "/api/items").then((res) => res.json());
 }
 
-export async function postStorageArea(storageArea: string): Promise<boolean> {
-  if (storageArea) {
-    return true;
-  }
-  return true;
+export async function postStorageArea(storageArea: string): Promise<Storage> {
+  return {id: "1", name: storageArea};
 }
 
 const mockDataStorageArea: Storage[] = [

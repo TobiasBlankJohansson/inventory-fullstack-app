@@ -1,12 +1,19 @@
 import {useState} from "react";
-import {useFetchEquipment, useFetchResponsible, useFilterItems, useGetItems, useGetStorage,} from "@/hooks";
+import {
+  useFetchEquipment,
+  useFetchResponsible,
+  useFilterItems,
+  useGetItems,
+  useGetStorage,
+  usePostStorage,
+} from "@/hooks";
 import {consolidateInventory, openModal} from "@/util";
-import {postStorageArea} from "@/api/StorageFetch.ts";
 
 
 export const useManageData = () => {
   const {items, setItems} = useGetItems();
-  const {storageArea} = useGetStorage();
+  const {mutate, isSuccess, data} = usePostStorage();
+  const {storageArea, setStorageArea} = useGetStorage();
   const {equipment} = useFetchEquipment();
   const {responsible} = useFetchResponsible();
 
@@ -23,18 +30,19 @@ export const useManageData = () => {
 
   const handleCreate = () => openModal("create_item");
 
-  async function SaveStorage(
-    setStorageArea: (updateFn: (prevStorage: string[]) => string[]) => void,
+  async function SaveAsset(
+    formId: string,
     addAnotherOne: boolean,
     setAddAnotherOne: React.Dispatch<React.SetStateAction<boolean>>,
     event?: React.FormEvent
   ) {
     const storageAreaInput: HTMLInputElement = document.getElementById(
-      "storage_area_name"
+      formId
     ) as HTMLInputElement;
     const storageName = storageAreaInput.value;
-    if (await postStorageArea(storageName))
-      setStorageArea((storageArea) => [...storageArea, storageName]);
+    mutate(storageName);
+    if (isSuccess)
+      setStorageArea((storageArea) => [...storageArea, data]);
     storageAreaInput.value = "";
     if (addAnotherOne) {
       event?.preventDefault();

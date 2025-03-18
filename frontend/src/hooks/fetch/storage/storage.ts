@@ -10,12 +10,8 @@ export const useGetStorage = () => {
   return {storageArea, setStorageArea};
 };
 
-export const usePostStorage = (
-  setErrorMessage: React.Dispatch<React.SetStateAction<string | null>>) => {
+export const usePostStorage = () => {
   return useMutation({
     mutationFn: postStorageArea,
-    onError: (error) => {
-      setErrorMessage(error.message);
-    },
   });
 }
