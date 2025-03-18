@@ -1,14 +1,16 @@
-import { Item } from "@/types";
-import { Button } from "../button";
-import { Link } from "react-router-dom";
-import { getItemKeys } from "@/util";
+import {Item} from "@/types";
+import {Button} from "../button";
+import {Link} from "react-router-dom";
+import {getItemKeys} from "@/util";
 
 export const renderTableHeaders = (
   headers: string[],
   includeActionColumn: boolean = false,
   checkedItems: string[] = [],
-  onDelete: () => void = () => {},
-  onCreate: () => void = () => {}
+  onDelete: () => void = () => {
+  },
+  onCreate: () => void = () => {
+  }
 ): JSX.Element => {
   const hasCheckedItems = checkedItems.length > 0;
 
@@ -39,7 +41,8 @@ export const renderTableItems = (
   items: Item[],
   includeCheckbox: boolean = false,
   checkedItems: string[] = [],
-  setCheckedItems: React.Dispatch<React.SetStateAction<string[]>> = () => {}
+  setCheckedItems: React.Dispatch<React.SetStateAction<string[]>> = () => {
+  }
 ): JSX.Element[] => {
   if (!items || items.length === 0) {
     return [
@@ -67,14 +70,11 @@ export const renderTableItems = (
         {keys.map((key) => (
           <td key={key}>
             {key === "equipment" ? (
-              <Link
-                to={`/item-editor?id=${item.id}`}
-                className="link text-info"
-              >
-                {item[key as keyof Item]}
+              <Link to={`/item-editor?id=${item.id}`} className="link text-info">
+                {item.equipment.name}
               </Link>
             ) : (
-              item[key as keyof Item]
+              typeof item[key as keyof Item] === "string" && typeof item[key as keyof Item]
             )}
           </td>
         ))}
