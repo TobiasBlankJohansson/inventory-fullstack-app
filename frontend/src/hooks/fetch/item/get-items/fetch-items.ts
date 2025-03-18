@@ -1,4 +1,4 @@
-import { getItems } from "@/api/InventoryFetch";
+import { getItems } from "@/api/InventoryFetch.ts";
 import { Item } from "@/types";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 

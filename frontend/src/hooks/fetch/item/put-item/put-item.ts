@@ -1,6 +1,6 @@
-import { Item } from "@/types";
-import { useMutation } from "@tanstack/react-query";
-import { putItem } from "@/api/InventoryFetch";
+import {Item} from "@/types";
+import {useMutation} from "@tanstack/react-query";
+import {putItem} from "@/api/InventoryFetch.ts";
 
 export const usePutItem = (
   setItems: (updateFn: (prevItems: Item[]) => Item[]) => void,

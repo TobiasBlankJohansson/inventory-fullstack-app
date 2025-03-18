@@ -1,5 +1,5 @@
-import { useMutation } from "@tanstack/react-query";
-import { postItem } from "@/api/InventoryFetch";
+import {useMutation} from "@tanstack/react-query";
+import {postItem} from "@/api/InventoryFetch.ts";
 
 export const usePostItem = (
   setErrorMessage: React.Dispatch<React.SetStateAction<string | null>>

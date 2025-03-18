@@ -1,20 +1,20 @@
-import { FormEvent, useState } from "react";
-import { FORM_FIELDS_ITEM } from "@/constants.ts";
-import { Item } from "@/types";
-import { usePostItem } from "@/hooks/post-item";
+import {FormEvent, useState} from "react";
+import {FORM_FIELDS_ITEM} from "@/constants.ts";
+import {Item} from "@/types";
+import {usePostItem} from "src/hooks/fetch/item/post-item";
 
 export const useCreateItem = <T extends Item>(
   setItems: (updateFn: (prevItems: T[]) => T[]) => void
 ) => {
   const [addAnotherOne, setAddAnotherOne] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const { mutate } = usePostItem(setErrorMessage);
+  const {mutate} = usePostItem(setErrorMessage);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const newItem = Object.fromEntries(
-      FORM_FIELDS_ITEM.map(({ key }) => [key, formData.get(`item_${key}`)])
+      FORM_FIELDS_ITEM.map(({key}) => [key, formData.get(`item_${key}`)])
     ) as T;
     newItem.id = "5";
 
@@ -66,5 +66,5 @@ export const useCreateItem = <T extends Item>(
     });
   };
 
-  return { errorMessage, handleSubmit, setAddAnotherOne };
+  return {errorMessage, handleSubmit, setAddAnotherOne};
 };
