@@ -8,7 +8,6 @@ type Props = {
   dialogId: string;
 };
 
-
 export function CreateAsset({saveAsset, dialogId}: Props) {
   const [addAnotherOne, setAddAnotherOne] = useState<boolean>(false);
   return (
