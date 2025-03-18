@@ -7,11 +7,8 @@ export async function getResponsible(): Promise<Responsible[]> {
   return await fetch(BACKEND_URL + "/api/items").then((res) => res.json());
 }
 
-export async function postResponsible(responsible: string): Promise<boolean> {
-  if (responsible) {
-    return true;
-  }
-  return true;
+export async function postResponsible(responsible: string): Promise<Responsible> {
+  return {id: "0", name: responsible};
 }
 
 const mockDataResponsible: Responsible[] = [

@@ -7,11 +7,8 @@ export async function getEquipment(): Promise<Equipment[]> {
   return await fetch(BACKEND_URL + "/api/items").then((res) => res.json());
 }
 
-export async function postEquipment(equipment: string): Promise<boolean> {
-  if (equipment) {
-    return true;
-  }
-  return true;
+export async function postEquipment(equipment: string): Promise<Equipment> {
+  return {id: "0", name: equipment};
 }
 
 const mockDataEquipment: Equipment[] = [

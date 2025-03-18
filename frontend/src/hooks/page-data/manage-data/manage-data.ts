@@ -5,6 +5,8 @@ import {
   useGetItems,
   useGetResponsible,
   useGetStorage,
+  usePostEquipment,
+  usePostResponsible,
   usePostStorage,
   useSaveAsset,
 } from "@/hooks";
@@ -13,16 +15,20 @@ import {consolidateInventory, openModal} from "@/util";
 export const useManageData = () => {
   const {items, setItems} = useGetItems();
   const {storageArea, setStorageArea} = useGetStorage();
-  const {mutateAsync} = usePostStorage();
-  const {equipment} = useGetEquipment();
-  const {responsible} = useGetResponsible();
+  const {mutateAsync: mutateStorage} = usePostStorage();
+  const {equipment, setEquipment} = useGetEquipment();
+  const {mutateAsync: mutateEquipment} = usePostEquipment();
+  const {responsible, setResponsible} = useGetResponsible();
+  const {mutateAsync: mutateResponsible} = usePostResponsible();
   const [checkedItems, setCheckedItems] = useState<string[]>([]);
 
   const {itemList, setSearch, setSelectedStorage, setSelectedResponsible} = useFilterItems(
     consolidateInventory(items)
   );
 
-  const saveAssetStorage = useSaveAsset(setStorageArea, mutateAsync)
+  const saveAssetStorage = useSaveAsset(setStorageArea, mutateStorage)
+  const saveAssetEquipment = useSaveAsset(setEquipment, mutateEquipment)
+  const saveAssetResponsible = useSaveAsset(setResponsible, mutateResponsible)
 
   const handleDelete = () => {
     setItems((prev) => prev.filter((item) => !checkedItems.includes(item.id)));
@@ -47,6 +53,10 @@ export const useManageData = () => {
     setCheckedItems,
     handleDelete,
     handleCreate,
-    saveAssetStorage
+    saveAsset: {
+      saveAssetStorage,
+      saveAssetEquipment,
+      saveAssetResponsible
+    }
   };
 };
