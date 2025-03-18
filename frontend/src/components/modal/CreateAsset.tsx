@@ -2,7 +2,8 @@ import {useState} from "react";
 import {Button} from "../button";
 
 type Props = {
-  saveAsset: (addAnotherOne: boolean,
+  saveAsset: (formId: string,
+              addAnotherOne: boolean,
               setAddAnotherOne: React.Dispatch<React.SetStateAction<boolean>>,
               event?: React.FormEvent) => Promise<void>;
   dialogId: string;
@@ -16,7 +17,7 @@ export function CreateAsset({saveAsset, dialogId}: Props) {
         <form
           method="dialog"
           onSubmit={(event) =>
-            saveAsset(addAnotherOne, setAddAnotherOne, event)
+            saveAsset(dialogId, addAnotherOne, setAddAnotherOne, event)
           }
         >
           <h3 className="font-bold text-lg ">Storage area creation</h3>

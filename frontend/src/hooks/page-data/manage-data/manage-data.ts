@@ -63,5 +63,6 @@ export const useManageData = () => {
     setCheckedItems,
     handleDelete,
     handleCreate,
+    SaveAsset
   };
 };
