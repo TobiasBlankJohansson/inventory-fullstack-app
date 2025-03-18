@@ -1,7 +1,7 @@
 import {
   BodyContainer,
-  Button,
   Filter,
+  FullHeightButton,
   Navbar,
   Print,
   renderTableHeaders,
@@ -30,8 +30,7 @@ export function Dashboard() {
       <BodyContainer>
         <ThreeGridContainer>
           <Search setSearch={setSearch}></Search>
-          <Button
-            className="min-h-full h-full"
+          <FullHeightButton
             onClick={() =>
               (
                 document.getElementById("filter") as HTMLDialogElement
@@ -39,7 +38,7 @@ export function Dashboard() {
             }
           >
             Filter
-          </Button>
+          </FullHeightButton>
           <Print itemList={itemList}></Print>
         </ThreeGridContainer>
         <Tabel

@@ -1,8 +1,8 @@
 import {
   BodyContainer,
-  Button,
   CreateItem,
   Filter,
+  FullHeightButton,
   Navbar,
   renderTableHeaders,
   renderTableItems,
@@ -35,8 +35,7 @@ export function InventoryManage() {
       <BodyContainer>
         <ThreeGridContainer>
           <Search setSearch={setSearch}></Search>
-          <Button
-            className="min-h-full h-full"
+          <FullHeightButton
             onClick={() =>
               (
                 document.getElementById("filter") as HTMLDialogElement
@@ -44,11 +43,11 @@ export function InventoryManage() {
             }
           >
             Filter
-          </Button>
+          </FullHeightButton>
           <ThreeGridContainer>
-            <Button className="min-h-full h-full">Add Equipment</Button>
-            <Button className="min-h-full h-full">Add Storage</Button>
-            <Button className="min-h-full h-full">Add Responsible</Button>
+            <FullHeightButton>Add Equipment</FullHeightButton>
+            <FullHeightButton>Add Storage</FullHeightButton>
+            <FullHeightButton>Add Responsible</FullHeightButton>
           </ThreeGridContainer>
         </ThreeGridContainer>
         <Tabel
