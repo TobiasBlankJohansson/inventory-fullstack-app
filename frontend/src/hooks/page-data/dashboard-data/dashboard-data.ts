@@ -8,13 +8,12 @@ export function useDashboardData() {
   const {responsible} = useFetchResponsible();
   const {itemList, setSearch, setSelectedResponsible, setSelectedStorage} =
     useFilterItems(consolidateInventory(items));
-  const responsibleList = [...responsible, {
-    id: "0",
-    name: "Total"
-  }];
 
   return {
-    responsible: responsibleList,
+    responsible: [...responsible, {
+      id: "0",
+      name: "Total"
+    }],
     items,
     setItems,
     setSearch,

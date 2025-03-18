@@ -53,7 +53,10 @@ export const useManageData = () => {
   return {
     options: {equipment, responsible, storageArea},
     setSelectedResponsible,
-    responsible,
+    responsible: [...responsible, {
+      id: "0",
+      name: "Total"
+    }],
     itemList,
     setItems,
     storageArea,
