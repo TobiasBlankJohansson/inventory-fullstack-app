@@ -6,7 +6,7 @@ import {useGet} from "@/hooks";
 
 const queryKey = "items";
 
-export const useFetchItems = () => {
+export const useGetItems = () => {
   const {data: items, set: setItems} = useGet(getItems, queryKey)
   return {items, setItems};
 };
