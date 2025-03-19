@@ -11,8 +11,9 @@ export const renderTableHeaders = (
   },
   onCreate: () => void = () => {
   },
-  setOrder: React.Dispatch<React.SetStateAction<string>>,
-  order: string,
+  setOrder: (string: string) => void = () => {
+  },
+  order = "",
 ) => {
   const hasCheckedItems = checkedItems.length > 0;
 
