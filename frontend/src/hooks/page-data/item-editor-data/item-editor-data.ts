@@ -20,18 +20,24 @@ export const useItemEditorData = (id: string) => {
 
     const newItemData = Object.fromEntries(
       FORM_FIELDS_ITEM.map(({key}) => [key, formData.get(`item_${key}`)])
-    ) as { [key: string]: FormDataEntryValue | null };
+    ) as {
+      equipment: string;
+      quantity: string;
+      storageArea: string;
+      responsible: string;
+    };
 
-    const equipmentName = newItemData.equipment as string;
-    newItemData.equipment = equipment.find(equipment => equipment.name === equipmentName) as Equipment;
+    const newItem: Item = {
+      id: "null",
+      ...newItemData,
+      equipment: equipment.find(equipment => equipment.name === newItemData.equipment) as Equipment
+    };
 
-    const equipmentItem = newItem.equipment;
-    newItem.id = (equipment.find(item => item.name === equipmentItem) as Equipment).id;
     const itemData = await mutateAsync(newItem);
     if (itemData && item) {
       setItems((prev: Item[]) =>
         prev.map((listItem) =>
-          listItem.id === item.id && listItem.responsible === item.responsible ? (listItem = newItem) : listItem
+          listItem.id === item.id ? (listItem = newItem) : listItem
         )
       );
       navigate(`/item-editor?id=${itemData.id}`);
