@@ -73,7 +73,7 @@ export const renderTableItems = (
               <Link to={`/item-editor?id=${item.id}`} className="link text-info">
                 {item.equipment.name}
               </Link>
-            ) : (
+            ) : key === "id" ? item.equipment.id : (
               item[key as keyof Item] as string
             )}
           </td>
