@@ -1,7 +1,7 @@
 import {useGetEquipment, useGetItems, useGetResponsible, useGetStorage, usePutItem} from "@/hooks";
 import {useState} from "react";
 import {FORM_FIELDS_ITEM} from "@/constants.ts";
-import {Equipment, Item} from "@/types";
+import {FormField, Item, toItemFrom} from "@/types";
 import {useNavigate} from "react-router-dom";
 
 export const useItemEditorData = (id: string) => {
@@ -16,37 +16,23 @@ export const useItemEditorData = (id: string) => {
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
+    if (!item) return;
 
     const newItemData = Object.fromEntries(
-      FORM_FIELDS_ITEM.map(({key}) => [key, formData.get(`item_${key}`)])
-    ) as {
-      equipment: string;
-      quantity: string;
-      storageArea: string;
-      responsible: string;
-    };
+      FORM_FIELDS_ITEM.map(({key}) =>
+        [key, new FormData(e.currentTarget).get(`item_${key}`)])
+    ) as FormField;
 
-    if (!item) {
-      return;
-    }
+    const itemData = await mutateAsync(toItemFrom(newItemData, equipment, item.id));
+    if (!itemData) return;
 
-    const newItem: Item = {
-      id: item.id,
-      ...newItemData,
-      equipment: equipment.find(equipment => equipment.name === newItemData.equipment) as Equipment
-    };
-
-    const itemData = await mutateAsync(newItem);
-    if (itemData) {
-      setItems((prev: Item[]) =>
-        prev.map((listItem) =>
-          listItem.id === item.id ? (listItem = newItem) : listItem
-        )
-      );
-      navigate(`/item-editor?id=${itemData.id}`);
-      setEdit(false);
-    }
+    setItems((prev: Item[]) =>
+      prev.map((listItem) =>
+        listItem.id === item.id ? (listItem = itemData) : listItem
+      )
+    );
+    navigate(`/item-editor?id=${itemData.id}`);
+    setEdit(false);
   }
 
   return {
