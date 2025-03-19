@@ -27,14 +27,18 @@ export const useItemEditorData = (id: string) => {
       responsible: string;
     };
 
+    if (!item) {
+      return;
+    }
+
     const newItem: Item = {
-      id: "null",
+      id: item.id,
       ...newItemData,
       equipment: equipment.find(equipment => equipment.name === newItemData.equipment) as Equipment
     };
 
     const itemData = await mutateAsync(newItem);
-    if (itemData && item) {
+    if (itemData) {
       setItems((prev: Item[]) =>
         prev.map((listItem) =>
           listItem.id === item.id ? (listItem = newItem) : listItem

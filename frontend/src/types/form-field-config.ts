@@ -1,10 +1,12 @@
-import { Item } from "./item";
+import {Item} from "./item";
 
 export interface FormFieldConfig {
-    key: keyof Item;
-    label: string;
-    type: "text" | "number" | "select";
-    options?: string[];
-    placeholder?: string;
-  }
-  
+  key: keyof Item;
+  label: string;
+  type: "text" | "number" | "select";
+  options?: string[];
+  placeholder?: string;
+}
+
+
+
