@@ -3,6 +3,7 @@ import {useItemEditorData} from "@/hooks";
 import {useLocation} from "react-router-dom";
 import {FORM_FIELDS_ITEM} from "@/constants.ts";
 import {option} from "@/util";
+import {fromItemTo} from "@/types";
 
 export const ItemEditor = () => {
   const id = new URLSearchParams(useLocation().search).get("id");
@@ -29,7 +30,7 @@ export const ItemEditor = () => {
                 <FormFieldItem
                   key={field.key}
                   field={field}
-                  value={item[field.key]}
+                  value={fromItemTo(item)[field.key]}
                   options={option(field.label, options)}
                   edit={!edit}
                 />

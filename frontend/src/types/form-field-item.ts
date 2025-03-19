@@ -1,17 +1,24 @@
 import {Item} from "@/types/item.ts";
 import {Equipment} from "@/types/equipment.ts";
 
-export type FormFieldItem = {
+export type FormField = {
   equipment: string;
   quantity: string;
   storageArea: string;
   responsible: string;
 }
 
-export const toItemFrom = (formFieldItem: FormFieldItem, equipment: Equipment[], id: string): Item => {
+export const fromItemTo = (item: Item): FormField => {
+  return {
+    ...item,
+    equipment: item.equipment.name
+  }
+};
+
+export const toItemFrom = (formField: FormField, equipment: Equipment[], id: string): Item => {
   return {
     id: id,
-    ...formFieldItem,
-    equipment: equipment.find(equipment => equipment.name === formFieldItem.equipment) as Equipment
+    ...formField,
+    equipment: equipment.find(equipment => equipment.name === formField.equipment) as Equipment
   }
 };
