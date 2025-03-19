@@ -8,14 +8,14 @@ export type FormField = {
   responsible: string;
 }
 
-export const fromItemTo = (item: Item): FormField => {
+export const fromItemToFormField = (item: Item): FormField => {
   return {
     ...item,
     equipment: item.equipment.name
   }
 };
 
-export const toItemFrom = (formField: FormField, equipment: Equipment[], id: string): Item => {
+export const toItemFromFormField = (formField: FormField, equipment: Equipment[], id: string): Item => {
   return {
     id: id,
     ...formField,

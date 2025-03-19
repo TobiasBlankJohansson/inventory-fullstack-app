@@ -1,7 +1,7 @@
 import {useDeleteItem, useGetEquipment, useGetItems, useGetResponsible, useGetStorage, usePutItem} from "@/hooks";
 import {useState} from "react";
 import {FORM_FIELDS_ITEM} from "@/constants.ts";
-import {FormField, Item, toItemFrom} from "@/types";
+import {FormField, Item, toItemFromFormField} from "@/types";
 import {useNavigate} from "react-router-dom";
 
 export const useItemEditorData = (id: string) => {
@@ -29,7 +29,7 @@ export const useItemEditorData = (id: string) => {
         item.equipment.name === newItemData.equipment && item.responsible === newItemData.responsible
     )) return;
 
-    const itemData = await mutatePut(toItemFrom(newItemData, equipment, item.id));
+    const itemData = await mutatePut(toItemFromFormField(newItemData, equipment, item.id));
     if (!itemData) return;
 
     setItems((prev: Item[]) =>

@@ -1,6 +1,6 @@
 import {FormEvent, useState} from "react";
 import {FORM_FIELDS_ITEM} from "@/constants.ts";
-import {Equipment, FormField, Item, toItemFrom} from "@/types";
+import {Equipment, FormField, Item, toItemFromFormField} from "@/types";
 import {usePostItem} from "@/hooks";
 
 export const useCreateItem = (
@@ -33,7 +33,7 @@ export const useCreateItem = (
       return;
     }
 
-    const newItem = toItemFrom(formField, equipment, "null")
+    const newItem = toItemFromFormField(formField, equipment, "null")
 
     const form = e.currentTarget;
     setItems((prevItems) => {
