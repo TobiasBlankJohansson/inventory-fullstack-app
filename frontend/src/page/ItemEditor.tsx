@@ -7,7 +7,7 @@ import {fromItemTo} from "@/types";
 
 export const ItemEditor = () => {
   const id = new URLSearchParams(useLocation().search).get("id");
-  const {item, edit, setEdit, options, onSubmit} = useItemEditorData(
+  const {item, edit, setEdit, options, onSubmit, onDelete} = useItemEditorData(
     id as string
   );
 
@@ -22,8 +22,7 @@ export const ItemEditor = () => {
               onSubmit={onSubmit}
               item={item}
               edit={edit}
-              onDelete={() => {
-              }}
+              onDelete={onDelete}
               setEdit={setEdit}
             >
               {FORM_FIELDS_ITEM.map((field) => (
