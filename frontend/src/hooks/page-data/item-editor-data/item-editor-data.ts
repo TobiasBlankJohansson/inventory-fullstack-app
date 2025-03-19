@@ -24,7 +24,10 @@ export const useItemEditorData = (id: string) => {
         [key, new FormData(e.currentTarget).get(`item_${key}`)])
     ) as FormField;
 
-    if (newItemData.filter) return;
+    if (items.some(
+      (item) =>
+        item.equipment.name === newItemData.equipment && item.responsible === newItemData.responsible
+    )) return;
 
     const itemData = await mutatePut(toItemFrom(newItemData, equipment, item.id));
     if (!itemData) return;
