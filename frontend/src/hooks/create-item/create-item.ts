@@ -1,10 +1,11 @@
 import {FormEvent, useState} from "react";
 import {FORM_FIELDS_ITEM} from "@/constants.ts";
-import {Item} from "@/types";
+import {Equipment, FormField, Item, toItemFrom} from "@/types";
 import {usePostItem} from "@/hooks";
 
-export const useCreateItem = <T extends Item>(
-  setItems: (updateFn: (prevItems: T[]) => T[]) => void
+export const useCreateItem = (
+  setItems: (updateFn: (prevItems: Item[]) => Item[]) => void,
+  equipment: Equipment[]
 ) => {
   const [addAnotherOne, setAddAnotherOne] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -13,31 +14,32 @@ export const useCreateItem = <T extends Item>(
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const newItem = Object.fromEntries(
+    const formField = Object.fromEntries(
       FORM_FIELDS_ITEM.map(({key}) => [key, formData.get(`item_${key}`)])
-    ) as T;
-    newItem.id = "5";
+    ) as FormField;
 
     if (
-      !newItem.equipment ||
-      !newItem.quantity ||
-      !newItem.storageArea ||
-      !newItem.responsible
+      !formField.equipment ||
+      !formField.quantity ||
+      !formField.storageArea ||
+      !formField.responsible
     ) {
       setErrorMessage("Please fill in all required fields");
       return;
     }
 
-    if (parseInt(newItem.quantity) < 1) {
+    if (parseInt(formField.quantity) < 1) {
       setErrorMessage("Quantity can't be negative");
       return;
     }
+
+    const newItem = toItemFrom(formField, equipment, "null")
 
     const form = e.currentTarget;
     setItems((prevItems) => {
       const isUnique = !prevItems.some(
         (item) =>
-          item.id === newItem.id && item.responsible === newItem.responsible
+          item.equipment === newItem.equipment && item.responsible === newItem.responsible
       );
 
       if (!isUnique) {
