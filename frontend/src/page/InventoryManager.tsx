@@ -29,7 +29,8 @@ export function InventoryManage() {
     handleCreate,
     responsible,
     setSelectedResponsible,
-    saveAsset
+    saveAsset,
+    setOrder, order
   } = useManageData();
   return (
     <ScreenContainer>
@@ -52,7 +53,9 @@ export function InventoryManage() {
             true,
             checkedItems,
             handleDelete,
-            handleCreate
+            handleCreate,
+            setOrder,
+            order
           )}
           renderItemInTable={renderTableItems(
             itemList,

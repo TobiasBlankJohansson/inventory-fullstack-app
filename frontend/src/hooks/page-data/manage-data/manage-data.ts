@@ -71,6 +71,6 @@ export const useManageData = () => {
       saveAssetStorage,
       saveAssetEquipment,
       saveAssetResponsible
-    }, setOrder
+    }, setOrder, order
   };
 };

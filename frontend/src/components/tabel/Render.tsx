@@ -10,14 +10,18 @@ export const renderTableHeaders = (
   onDelete: () => void = () => {
   },
   onCreate: () => void = () => {
-  }
-): JSX.Element => {
+  },
+  setOrder: React.Dispatch<React.SetStateAction<string>>,
+  order: string,
+) => {
   const hasCheckedItems = checkedItems.length > 0;
 
   return (
     <tr>
       {headers.map((head, index) => (
-        <th key={index}>{head}</th>
+        <th key={index} onClick={() => {
+          setOrder(head.toLowerCase())
+        }} className={`cursor-pointer ${order == head.toLowerCase() && "text-primary"}`}>{head}</th>
       ))}
       {includeActionColumn && (
         <th className="flex justify-center p-0 py-2">
