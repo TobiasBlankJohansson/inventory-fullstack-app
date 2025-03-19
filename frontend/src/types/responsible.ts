@@ -4,5 +4,5 @@ export type Responsible = {
 };
 
 export const responsibleFromList = (responsibleName: string, list: Responsible[]) => {
-  return list.find((equipment) => equipment.name === responsibleName);
+  return list.find((responsible) => responsible.name === responsibleName);
 }
