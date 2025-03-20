@@ -18,17 +18,7 @@ export const useCreateItem = (
       FORM_FIELDS_ITEM.map(({key}) => [key, formData.get(`item_${key}`)])
     ) as FormField;
 
-    if (
-      !formField.equipment ||
-      !formField.quantity ||
-      !formField.storageArea ||
-      !formField.responsible
-    ) {
-      toast.error("Please fill in all required fields");
-      return;
-    }
-
-    if (parseInt(formField.quantity) < 1) {
+    if (parseInt(newItemData.quantity) < 1 || parseInt(newItemData.quantity) % 1 !== 0) {
       toast.error("Quantity can't be negative")
       return;
     }
