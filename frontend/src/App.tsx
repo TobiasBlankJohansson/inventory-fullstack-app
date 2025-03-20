@@ -1,9 +1,9 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Dashboard } from "./page/Dashboard";
-import { InventoryManage } from "./page/InventoryManager";
-import { ScreenProvider } from "./components";
-import { ItemEditor } from "./page";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {Dashboard, InventoryManage} from "@/page";
+import {ScreenProvider} from "./components";
+import {ItemEditor} from "./page";
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+import {Bounce, ToastContainer} from "react-toastify";
 
 const queryClient = new QueryClient();
 
@@ -13,10 +13,22 @@ function App() {
       <ScreenProvider>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/manage" element={<InventoryManage />} />
-            <Route path="/item-editor" element={<ItemEditor />} />
+            <Route path="/" element={<Dashboard/>}/>
+            <Route path="/manage" element={<InventoryManage/>}/>
+            <Route path="/item-editor" element={<ItemEditor/>}/>
           </Routes>
+          <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick={false}
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+            transition={Bounce}/>
         </BrowserRouter>
       </ScreenProvider>
     </QueryClientProvider>
