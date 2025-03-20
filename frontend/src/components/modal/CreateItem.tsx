@@ -4,8 +4,8 @@ import {useCreateItem} from "@/hooks";
 import {Button, FormFieldItem} from "@/components";
 import {option} from "@/util";
 
-type Props<T> = {
-  setItems: (updateFn: (prevItems: T[]) => T[]) => void;
+type Props = {
+  setItems: (updateFn: (prevItems: Item[]) => Item[]) => void;
   options: {
     equipment: Equipment[];
     storageArea: Storage[];
@@ -13,9 +13,9 @@ type Props<T> = {
   };
 };
 
-export function CreateItem<T extends Item>({setItems, options}: Props<T>) {
+export function CreateItem({setItems, options}: Props) {
   const {handleSubmit, errorMessage, setAddAnotherOne} =
-    useCreateItem(setItems);
+    useCreateItem(setItems, options.equipment);
 
   return (
     <dialog id="create_item" className="modal">
