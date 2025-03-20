@@ -2,6 +2,7 @@ import {toast} from "react-toastify";
 
 type Asset = {
   name: string;
+  id?: string;
 };
 
 export const useSaveAsset = <T>(set: (updateFn: (prevData: T[]) => T[]) => void,
@@ -13,13 +14,23 @@ export const useSaveAsset = <T>(set: (updateFn: (prevData: T[]) => T[]) => void,
     setAddAnotherOne: React.Dispatch<React.SetStateAction<boolean>>,
     event?: React.FormEvent
   ) => {
-    const input: HTMLInputElement = document.getElementById(
-      "input " + formId
+    const inputName: HTMLInputElement = document.getElementById(
+      "input name " + formId
     ) as HTMLInputElement;
-    const name = input.value;
+    const name = inputName.value;
+    const inputId: HTMLInputElement = document.getElementById(
+      "input id " + formId
+    ) as HTMLInputElement;
+    const id = inputId.value;
 
     if (data.some(item => (item as Asset).name === name)) {
-      toast.error(formId + ' already exists');
+      toast.error(formId + ' already exists with that name');
+      event?.preventDefault();
+      return;
+    }
+
+    if (id && data.some(item => (item as Asset).id === id)) {
+      toast.error(formId + ' already exists with that id');
       event?.preventDefault();
       return;
     }
@@ -30,10 +41,11 @@ export const useSaveAsset = <T>(set: (updateFn: (prevData: T[]) => T[]) => void,
       event?.preventDefault();
       return;
     }
-
+    toast.success("Saved successfully");
     set((prevData) => [...prevData, asset]);
-    input.value = "";
-
+    inputName.value = "";
+    inputId.value = "";
+    
     if (addAnotherOne) {
       event?.preventDefault();
       setAddAnotherOne(() => false);
