@@ -34,7 +34,6 @@ export const useCreateItem = (
     }
 
     const newItem = toItemFromFormField(formField, equipment, "null")
-
     const form = e.currentTarget;
     setItems((prevItems) => {
       const isUnique = !prevItems.some(

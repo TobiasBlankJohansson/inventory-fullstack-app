@@ -14,7 +14,7 @@ type Props = {
 };
 
 export function CreateItem({setItems, options}: Props) {
-  const {handleSubmit, errorMessage, setAddAnotherOne} =
+  const {handleSubmit, setAddAnotherOne} =
     useCreateItem(setItems, options.equipment);
 
   return (
@@ -22,11 +22,6 @@ export function CreateItem({setItems, options}: Props) {
       <div className="modal-box px-10 py-6 w-96 bg-background">
         <form method="dialog" onSubmit={handleSubmit}>
           <h3 className="font-bold text-lg">Item Creation</h3>
-          {errorMessage && (
-            <div className="alert alert-error my-4">
-              <span>{errorMessage}</span>
-            </div>
-          )}
           {FORM_FIELDS_ITEM.map((field) => (
             <FormFieldItem
               key={field.key}
