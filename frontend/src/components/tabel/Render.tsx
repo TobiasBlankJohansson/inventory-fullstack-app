@@ -5,15 +5,15 @@ import {getItemKeys} from "@/util";
 
 export const renderTableHeaders = (
   headers: string[],
+  setOrder: (string: string) => void = () => {
+  },
+  order = "",
   includeActionColumn: boolean = false,
   checkedItems: string[] = [],
   onDelete: () => void = () => {
   },
   onCreate: () => void = () => {
   },
-  setOrder: (string: string) => void = () => {
-  },
-  order = "",
 ) => {
   const hasCheckedItems = checkedItems.length > 0;
 

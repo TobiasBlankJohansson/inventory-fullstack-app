@@ -50,12 +50,12 @@ export function InventoryManage() {
         <Table
           renderHeadersInTable={renderTableHeaders(
             getItemHeaders(itemList),
+            setOrder,
+            order,
             true,
             checkedItems,
             handleDelete,
-            handleCreate,
-            setOrder,
-            order
+            handleCreate
           )}
           renderItemInTable={renderTableItems(
             itemList,
