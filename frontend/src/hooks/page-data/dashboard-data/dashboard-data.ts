@@ -1,4 +1,4 @@
-import {useFilterItems, useGetItems, useGetResponsible, useGetStorage} from "@/hooks";
+import {useFilterItems, useGetItems, useGetResponsible, useGetStorage, useOrderItem} from "@/hooks";
 import {consolidateInventory} from "@/util";
 
 export function useDashboardData() {
@@ -7,6 +7,7 @@ export function useDashboardData() {
   const {responsible} = useGetResponsible();
   const {itemList, setSearch, setSelectedResponsible, setSelectedStorage} =
     useFilterItems(consolidateInventory(items));
+  const {setOrder, order, orderItems} = useOrderItem();
 
   return {
     responsible: [...responsible, {
@@ -18,7 +19,7 @@ export function useDashboardData() {
     setSearch,
     setSelectedStorage,
     setSelectedResponsible,
-    itemList,
-    storageArea,
+    itemList: orderItems(itemList, order),
+    storageArea, setOrder, order
   };
 }

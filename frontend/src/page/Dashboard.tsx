@@ -22,6 +22,7 @@ export function Dashboard() {
     storageArea,
     setSelectedStorage,
     responsible,
+    setOrder, order
   } = useDashboardData();
 
   return (
@@ -36,7 +37,7 @@ export function Dashboard() {
           <Print itemList={itemList}></Print>
         </ThreeGridContainer>
         <Table
-          renderHeadersInTable={renderTableHeaders(getItemHeaders(itemList))}
+          renderHeadersInTable={renderTableHeaders(getItemHeaders(itemList), setOrder, order)}
           renderItemInTable={renderTableItems(itemList)}
         ></Table>
       </BodyContainer>
