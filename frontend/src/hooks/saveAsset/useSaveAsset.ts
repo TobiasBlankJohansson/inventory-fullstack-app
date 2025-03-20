@@ -1,3 +1,5 @@
+import {toast} from "react-toastify";
+
 type Asset = {
   name: string;
 };
@@ -17,15 +19,21 @@ export const useSaveAsset = <T>(set: (updateFn: (prevData: T[]) => T[]) => void,
     const name = input.value;
 
     if (data.some(item => (item as Asset).name === name)) {
-      input.value = "";
+      toast.error(formId + ' already exists');
+      event?.preventDefault();
       return;
     }
 
     const asset = await mutateAsync(name);
-    if (asset) {
-      set((prevData) => [...prevData, asset]);
+    if (!asset) {
+      toast.error("Wasn't saved, please try again");
+      event?.preventDefault();
+      return;
     }
+
+    set((prevData) => [...prevData, asset]);
     input.value = "";
+
     if (addAnotherOne) {
       event?.preventDefault();
       setAddAnotherOne(() => false);
