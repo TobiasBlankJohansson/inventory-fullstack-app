@@ -10,14 +10,9 @@ export const useGetItems = () => {
 };
 
 
-export const usePostItem = (
-  setErrorMessage: React.Dispatch<React.SetStateAction<string | null>>
-) => {
+export const usePostItem = () => {
   return useMutation({
     mutationFn: postItem,
-    onError: (error) => {
-      setErrorMessage(error.message);
-    },
   });
 };
 

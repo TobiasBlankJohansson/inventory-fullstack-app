@@ -2,14 +2,14 @@ import {FormEvent, useState} from "react";
 import {FORM_FIELDS_ITEM} from "@/constants.ts";
 import {Equipment, FormField, Item, toItemFromFormField} from "@/types";
 import {usePostItem} from "@/hooks";
+import {toast} from "react-toastify";
 
 export const useCreateItem = (
   setItems: (updateFn: (prevItems: Item[]) => Item[]) => void,
   equipment: Equipment[]
 ) => {
   const [addAnotherOne, setAddAnotherOne] = useState(false);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const {mutate} = usePostItem(setErrorMessage);
+  const {mutate} = usePostItem();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -24,12 +24,12 @@ export const useCreateItem = (
       !formField.storageArea ||
       !formField.responsible
     ) {
-      setErrorMessage("Please fill in all required fields");
+      toast.error("Please fill in all required fields");
       return;
     }
 
     if (parseInt(formField.quantity) < 1) {
-      setErrorMessage("Quantity can't be negative");
+      toast.error("Quantity can't be negative")
       return;
     }
 
@@ -43,12 +43,11 @@ export const useCreateItem = (
       );
 
       if (!isUnique) {
-        setErrorMessage("Item already exists with equipment and responsible");
+        toast.error("Item already exists with equipment and responsible");
         return prevItems;
       }
 
       mutate(newItem);
-      setErrorMessage(null);
       const updatedItems = [...prevItems, newItem];
 
       if (form) {
@@ -68,5 +67,5 @@ export const useCreateItem = (
     });
   };
 
-  return {errorMessage, handleSubmit, setAddAnotherOne};
+  return {handleSubmit, setAddAnotherOne};
 };

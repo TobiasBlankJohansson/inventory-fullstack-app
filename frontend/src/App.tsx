@@ -28,7 +28,8 @@ function App() {
             draggable
             pauseOnHover
             theme="light"
-            transition={Bounce}/>
+            transition={Bounce}
+          />
         </BrowserRouter>
       </ScreenProvider>
     </QueryClientProvider>
