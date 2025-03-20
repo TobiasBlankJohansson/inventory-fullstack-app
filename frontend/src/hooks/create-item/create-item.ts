@@ -18,8 +18,8 @@ export const useCreateItem = (
       FORM_FIELDS_ITEM.map(({key}) => [key, formData.get(`item_${key}`)])
     ) as FormField;
 
-    if (parseInt(newItemData.quantity) < 1 || parseInt(newItemData.quantity) % 1 !== 0) {
-      toast.error("Quantity can't be negative")
+    if (parseInt(formField.quantity) < 1 || formField.quantity.includes(".")) {
+      toast.error("Quantity can't be negative or contain decimal")
       return;
     }
 

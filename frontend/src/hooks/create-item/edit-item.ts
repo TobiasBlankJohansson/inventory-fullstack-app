@@ -24,8 +24,8 @@ export const useEditItem =
           [key, new FormData(e.currentTarget).get(`item_${key}`)])
       ) as FormField;
 
-      if (parseInt(newItemData.quantity) < 1 || parseInt(newItemData.quantity) % 1 !== 0) {
-        toast.error("Quantity can't be negative")
+      if (parseInt(newItemData.quantity) < 1 || newItemData.quantity.includes(".")) {
+        toast.error("Quantity can't be negative or contain decimal")
         return;
       }
 
