@@ -70,7 +70,7 @@ export function InventoryManage() {
               storageArea={storageArea.map(storage => storage.name)}
               setResponsible={setSelectedResponsible}
               responsible={responsible.map(responsible => responsible.name)}></Filter>
-      <CreateAsset saveAsset={saveAsset.saveAssetEquipment} dialogName={"Equipment"}></CreateAsset>
+      <CreateAsset saveAsset={saveAsset.saveAssetEquipment} dialogName={"Equipment"} useId={true}></CreateAsset>
       <CreateAsset saveAsset={saveAsset.saveAssetStorage} dialogName={"Storage area"}></CreateAsset>
       <CreateAsset saveAsset={saveAsset.saveAssetResponsible} dialogName={"Responsible"}></CreateAsset>
     </ScreenContainer>

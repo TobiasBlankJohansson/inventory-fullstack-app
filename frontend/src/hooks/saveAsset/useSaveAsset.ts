@@ -5,9 +5,11 @@ type Asset = {
   id?: string;
 };
 
-export const useSaveAsset = <T>(set: (updateFn: (prevData: T[]) => T[]) => void,
-                                mutateAsync: (variables: string) => Promise<T>,
-                                data: T[]) => {
+export const useSaveAsset = <T>(
+  set: (updateFn: (prevData: T[]) => T[]) => void,
+  mutateAsync: (...args: [string] | [string, string]) => Promise<T>,
+  data: T[]
+) => {
   return async (
     formId: string,
     addAnotherOne: boolean,
@@ -29,13 +31,19 @@ export const useSaveAsset = <T>(set: (updateFn: (prevData: T[]) => T[]) => void,
       return;
     }
 
+    if (id && id.length != 6) {
+      toast.error('Id needs to be at least 6 numbers long');
+      event?.preventDefault();
+      return;
+    }
+
     if (id && data.some(item => (item as Asset).id === id)) {
       toast.error(formId + ' already exists with that id');
       event?.preventDefault();
       return;
     }
 
-    const asset = await mutateAsync(name);
+    const asset = await mutateAsync(name, id);
     if (!asset) {
       toast.error("Wasn't saved, please try again");
       event?.preventDefault();
@@ -45,7 +53,7 @@ export const useSaveAsset = <T>(set: (updateFn: (prevData: T[]) => T[]) => void,
     set((prevData) => [...prevData, asset]);
     inputName.value = "";
     inputId.value = "";
-    
+
     if (addAnotherOne) {
       event?.preventDefault();
       setAddAnotherOne(() => false);
