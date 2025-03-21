@@ -7,16 +7,18 @@ export async function getItems(): Promise<Item[]> {
   return items.items;
 }
 
-export async function postItem(item: Item): Promise<Item> {
+export type postItemDto = { storageId: string, equipmentId: string, responsibleId: string, amount: string }
+
+export async function postItem(itemDto: postItemDto): Promise<Item> {
   return fetch(BACKEND_URL + "/api/items", {
     method: "POST",
     headers: {"Content-Type": "application/json"},
-    body: JSON.stringify(item),
+    body: JSON.stringify(itemDto),
   }).then((res) => res.json());
 }
 
 export async function putItem(item: Item): Promise<Item> {
-  return fetch(BACKEND_URL + "/api/inventory", {
+  return fetch(BACKEND_URL + "/api/items", {
     method: "PUT",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify(item),
@@ -24,8 +26,8 @@ export async function putItem(item: Item): Promise<Item> {
 }
 
 export async function deleteItem(id: string): Promise<boolean> {
-  return fetch(BACKEND_URL + "/api/inventory/" + id, {
-    method: "POST",
+  return fetch(BACKEND_URL + "/api/items/" + id, {
+    method: "DELETE",
   }).then((res) => res.json());
 }
 
