@@ -15,7 +15,7 @@ type Props = {
 
 export function CreateItem({setItems, options}: Props) {
   const {handleSubmit, setAddAnotherOne} =
-    useCreateItem(setItems, options.equipment);
+    useCreateItem(setItems, options);
 
   return (
     <dialog id="create_item" className="modal">
