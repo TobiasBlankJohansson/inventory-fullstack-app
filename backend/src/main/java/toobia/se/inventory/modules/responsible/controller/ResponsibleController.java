@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.*;
 import toobia.se.inventory.modules.responsible.controller.dtos.ResponsibleDto;
 import toobia.se.inventory.modules.responsible.controller.dtos.ResponsibleListResponseDto;
 import toobia.se.inventory.modules.responsible.model.Responsible;
-import toobia.se.inventory.service.ResponsibleService;
+import toobia.se.inventory.modules.responsible.service.ResponsibleService;
 
 import java.util.UUID;
 

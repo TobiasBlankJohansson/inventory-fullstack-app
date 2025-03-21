@@ -1,4 +1,4 @@
-package toobia.se.inventory.service;
+package toobia.se.inventory.modules.equipment.service;
 
 import org.springframework.stereotype.Service;
 import toobia.se.inventory.exceptions.InventoryResourceExists;

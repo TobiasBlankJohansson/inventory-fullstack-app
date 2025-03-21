@@ -1,6 +1,7 @@
-package toobia.se.inventory.service;
+package toobia.se.inventory.modules.item.service;
 
 import org.springframework.stereotype.Service;
+import toobia.se.inventory.modules.equipment.service.EquipmentService;
 import toobia.se.inventory.modules.item.controller.dtos.ItemCreateDto;
 import toobia.se.inventory.modules.item.controller.dtos.ItemUpdateDto;
 import toobia.se.inventory.exceptions.InventoryResourceExists;
@@ -10,6 +11,8 @@ import toobia.se.inventory.modules.item.model.Item;
 import toobia.se.inventory.modules.responsible.model.Responsible;
 import toobia.se.inventory.modules.storage.model.Storage;
 import toobia.se.inventory.modules.item.repository.ItemRepository;
+import toobia.se.inventory.modules.responsible.service.ResponsibleService;
+import toobia.se.inventory.modules.storage.service.StorageService;
 
 import java.util.List;
 import java.util.UUID;

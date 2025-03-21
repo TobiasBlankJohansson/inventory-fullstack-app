@@ -6,7 +6,7 @@ import toobia.se.inventory.modules.item.controller.dtos.ItemCreateDto;
 import toobia.se.inventory.modules.item.controller.dtos.ItemDto;
 import toobia.se.inventory.modules.item.controller.dtos.ItemListDto;
 import toobia.se.inventory.modules.item.controller.dtos.ItemUpdateDto;
-import toobia.se.inventory.service.ItemService;
+import toobia.se.inventory.modules.item.service.ItemService;
 
 import java.util.List;
 import java.util.UUID;
