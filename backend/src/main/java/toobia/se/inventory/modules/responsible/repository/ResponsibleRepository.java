@@ -1,4 +1,4 @@
-package toobia.se.inventory.repository;
+package toobia.se.inventory.modules.responsible.repository;
 
 import org.springframework.data.repository.ListCrudRepository;
 import org.springframework.stereotype.Repository;

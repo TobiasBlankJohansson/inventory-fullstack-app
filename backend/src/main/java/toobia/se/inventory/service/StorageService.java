@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import toobia.se.inventory.exceptions.InventoryResourceExists;
 import toobia.se.inventory.exceptions.InventoryResourceNotFound;
 import toobia.se.inventory.model.Storage;
-import toobia.se.inventory.repository.StorageRepository;
+import toobia.se.inventory.modules.storage.repository.StorageRepository;
 
 import java.util.List;
 import java.util.UUID;

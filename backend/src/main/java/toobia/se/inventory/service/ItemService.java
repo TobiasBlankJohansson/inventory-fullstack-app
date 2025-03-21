@@ -9,7 +9,7 @@ import toobia.se.inventory.model.Equipment;
 import toobia.se.inventory.model.Item;
 import toobia.se.inventory.model.Responsible;
 import toobia.se.inventory.model.Storage;
-import toobia.se.inventory.repository.ItemRepository;
+import toobia.se.inventory.modules.item.repository.ItemRepository;
 
 import java.util.List;
 import java.util.UUID;
