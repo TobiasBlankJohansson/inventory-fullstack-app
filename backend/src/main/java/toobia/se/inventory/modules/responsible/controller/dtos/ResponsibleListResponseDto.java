@@ -4,7 +4,7 @@ import toobia.se.inventory.modules.responsible.model.Responsible;
 
 import java.util.List;
 
-public record ResponsibleListResponseDto(List<ResponsibleDto> responsiblePeople) {
+public record ResponsibleListResponseDto(List<ResponsibleDto> responsible) {
 
     public static ResponsibleListResponseDto fromList(List<Responsible> input) {
         return new ResponsibleListResponseDto(input.stream()

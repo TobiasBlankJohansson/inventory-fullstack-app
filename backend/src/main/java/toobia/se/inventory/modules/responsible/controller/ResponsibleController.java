@@ -37,7 +37,6 @@ public class ResponsibleController {
         return new ResponsibleDto(responsible.getId(), responsible.getName());
     }
 
-
     @PutMapping()
     public ResponsibleDto updateResponsible(@RequestBody ResponsibleDto responsibleDto) {
         Responsible responsible = responsibleService.updateResponsibleName(
@@ -49,5 +48,4 @@ public class ResponsibleController {
     public void deleteResponsible(@PathVariable UUID id) {
         responsibleService.deleteResponsible(id);
     }
-
 }
