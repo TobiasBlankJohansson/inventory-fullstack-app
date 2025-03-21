@@ -1,4 +1,4 @@
-package toobia.com.inventory.controller;
+package toobia.com.inventory.modules.equipment.controller;
 
 import org.springframework.web.bind.annotation.*;
 import toobia.com.inventory.controller.web.EquipmentDto;
@@ -6,8 +6,6 @@ import toobia.com.inventory.controller.web.EquipmentListResponseDto;
 import toobia.com.inventory.exceptions.InventoryBadInput;
 import toobia.com.inventory.model.Equipment;
 import toobia.com.inventory.service.EquipmentService;
-
-import java.util.UUID;
 
 @RestController
 @CrossOrigin

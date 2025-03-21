@@ -1,4 +1,4 @@
-package toobia.com.inventory.controller;
+package toobia.com.inventory.modules.storage.controller;
 
 import org.springframework.web.bind.annotation.*;
 import toobia.com.inventory.controller.web.StorageDto;
@@ -6,7 +6,6 @@ import toobia.com.inventory.controller.web.StorageListDto;
 import toobia.com.inventory.model.Storage;
 import toobia.com.inventory.service.StorageService;
 
-import java.util.List;
 import java.util.UUID;
 
 @RestController
