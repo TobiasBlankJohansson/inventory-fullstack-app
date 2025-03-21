@@ -52,9 +52,9 @@ public class EquipmentController {
         return new EquipmentDto(equipment.getEquipmentName(), equipment.getEquipmentId());
     }
 
-    @DeleteMapping("/{equipmentId}")
-    public void deleteEquipment(@PathVariable String equipmentId) {
-        equipmentService.deleteEquipment(equipmentId);
+    @DeleteMapping("/{id}")
+    public void deleteEquipment(@PathVariable String id) {
+        equipmentService.deleteEquipment(id);
     }
 
 }
