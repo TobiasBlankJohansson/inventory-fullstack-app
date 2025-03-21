@@ -3,10 +3,30 @@ import {Item} from "@/types";
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export async function getItems(): Promise<Item[]> {
-  return inventory;
-  return await fetch(BACKEND_URL + "/api/v1/inventory").then((res) =>
-    res.json()
-  );
+  const items = await fetch(BACKEND_URL + "/api/items").then((res) => res.json())
+  return items.items;
+}
+
+export async function postItem(item: Item): Promise<Item> {
+  return fetch(BACKEND_URL + "/api/items", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(item),
+  }).then((res) => res.json());
+}
+
+export async function putItem(item: Item): Promise<Item> {
+  return fetch(BACKEND_URL + "/api/inventory", {
+    method: "PUT",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(item),
+  }).then((res) => res.json());
+}
+
+export async function deleteItem(id: string): Promise<boolean> {
+  return fetch(BACKEND_URL + "/api/inventory/" + id, {
+    method: "POST",
+  }).then((res) => res.json());
 }
 
 export const inventory: Item[] = [
@@ -82,28 +102,3 @@ export const inventory: Item[] = [
   },
 ];
 
-
-export async function postItem(item: Item): Promise<Item> {
-  return item;
-  return fetch(BACKEND_URL + "/api/v1/inventory", {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify(item),
-  }).then((res) => res.json());
-}
-
-export async function putItem(item: Item): Promise<Item> {
-  return item;
-  return fetch(BACKEND_URL + "/api/v1/inventory", {
-    method: "PUT",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify(item),
-  }).then((res) => res.json());
-}
-
-export async function deleteItem(id: string): Promise<boolean> {
-  return true;
-  return fetch(BACKEND_URL + "/api/v1/inventory/" + id, {
-    method: "POST",
-  }).then((res) => res.json());
-}
