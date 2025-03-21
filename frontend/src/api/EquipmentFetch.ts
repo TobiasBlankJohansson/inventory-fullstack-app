@@ -3,7 +3,8 @@ import {Equipment} from "@/types";
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export async function getEquipment(): Promise<Equipment[]> {
-  return await fetch(BACKEND_URL + "/api/equipments").then((res) => res.json());
+  const equipments = await fetch(BACKEND_URL + "/api/equipments").then((res) => res.json())
+  return equipments.equipments;
 }
 
 export async function postEquipment(equipment: Equipment): Promise<Equipment> {
