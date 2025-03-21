@@ -13,7 +13,7 @@ import java.util.UUID;
 @RequestMapping("/api/storages")
 public class StorageController {
 
-    private StorageService storageService;
+    private final StorageService storageService;
 
     public StorageController(StorageService storageService) {
         this.storageService = storageService;
@@ -30,8 +30,8 @@ public class StorageController {
         return new StorageDto(storage.getName(), storage.getId());
     }
 
-    @PostMapping("/{name}")
-    public StorageDto addStorage(@PathVariable String name) {
+    @PostMapping
+    public StorageDto addStorage(@RequestBody String name) {
         Storage storage = storageService.createStorage(name);
         return new StorageDto(storage.getName(), storage.getId());
     }
@@ -42,9 +42,9 @@ public class StorageController {
         return new StorageDto(storage.getName(), storage.getId());
     }
 
-    @DeleteMapping("/{storageId}")
-    public void deleteStorage(@PathVariable UUID storageId) {
-        storageService.deleteStorage(storageId);
+    @DeleteMapping("/{id}")
+    public void deleteStorage(@PathVariable UUID id) {
+        storageService.deleteStorage(id);
     }
 
 }
