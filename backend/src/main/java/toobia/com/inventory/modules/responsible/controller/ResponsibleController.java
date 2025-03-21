@@ -1,8 +1,8 @@
 package toobia.com.inventory.modules.responsible.controller;
 
 import org.springframework.web.bind.annotation.*;
-import toobia.com.inventory.controller.web.ResponsibleDto;
-import toobia.com.inventory.controller.web.ResponsibleListResponseDto;
+import toobia.com.inventory.modules.responsible.controller.dtos.ResponsibleDto;
+import toobia.com.inventory.modules.responsible.controller.dtos.ResponsibleListResponseDto;
 import toobia.com.inventory.model.Responsible;
 import toobia.com.inventory.service.ResponsibleService;
 

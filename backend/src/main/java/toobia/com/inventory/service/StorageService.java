@@ -1,7 +1,6 @@
 package toobia.com.inventory.service;
 
 import org.springframework.stereotype.Service;
-import toobia.com.inventory.controller.web.StorageDto;
 import toobia.com.inventory.exceptions.InventoryResourceExists;
 import toobia.com.inventory.exceptions.InventoryResourceNotFound;
 import toobia.com.inventory.model.Storage;

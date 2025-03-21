@@ -1,15 +1,14 @@
 package toobia.com.inventory.service;
 
 import org.springframework.stereotype.Service;
-import toobia.com.inventory.controller.web.ItemCreateDto;
-import toobia.com.inventory.controller.web.ItemUpdateDto;
+import toobia.com.inventory.modules.item.controller.dtos.ItemCreateDto;
+import toobia.com.inventory.modules.item.controller.dtos.ItemUpdateDto;
 import toobia.com.inventory.exceptions.InventoryResourceExists;
 import toobia.com.inventory.exceptions.InventoryResourceNotFound;
 import toobia.com.inventory.model.Equipment;
 import toobia.com.inventory.model.Item;
 import toobia.com.inventory.model.Responsible;
 import toobia.com.inventory.model.Storage;
-import toobia.com.inventory.repository.EquipmentRepository;
 import toobia.com.inventory.repository.ItemRepository;
 
 import java.util.List;

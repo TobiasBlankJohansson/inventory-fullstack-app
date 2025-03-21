@@ -1,4 +1,4 @@
-package toobia.com.inventory.controller.web;
+package toobia.com.inventory.modules.storage.controller.dtos;
 
 import java.util.UUID;
 

@@ -1,4 +1,4 @@
-package toobia.com.inventory.controller.web;
+package toobia.com.inventory.modules.equipment.controller.dtos;
 
 import jakarta.validation.constraints.Size;
 

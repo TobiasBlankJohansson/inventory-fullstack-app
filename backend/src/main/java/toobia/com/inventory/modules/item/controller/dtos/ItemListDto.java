@@ -1,4 +1,4 @@
-package toobia.com.inventory.controller.web;
+package toobia.com.inventory.modules.item.controller.dtos;
 
 import toobia.com.inventory.model.Item;
 

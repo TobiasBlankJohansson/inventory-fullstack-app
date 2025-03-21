@@ -1,8 +1,7 @@
-package toobia.com.inventory.controller.web;
+package toobia.com.inventory.modules.responsible.controller.dtos;
 
 import toobia.com.inventory.model.Responsible;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public record ResponsibleListResponseDto(List<ResponsibleDto> responsiblePeople) {
