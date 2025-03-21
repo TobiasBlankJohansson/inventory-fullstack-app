@@ -16,7 +16,7 @@ import java.util.UUID;
 @RequestMapping("/api/items")
 public class ItemController {
 
-    private ItemService itemService;
+    private final ItemService itemService;
 
     public ItemController(ItemService itemService) {
         this.itemService = itemService;
@@ -34,9 +34,9 @@ public class ItemController {
         return ItemListDto.from(items);
     }
 
-    @GetMapping("/{itemId}")
-    public ItemDto getItemById(@PathVariable UUID itemId) {
-        return ItemDto.from(itemService.findById(itemId));
+    @GetMapping("/{id}")
+    public ItemDto getItemById(@PathVariable UUID id) {
+        return ItemDto.from(itemService.findById(id));
     }
 
 
@@ -46,9 +46,9 @@ public class ItemController {
         return ItemDto.from(item);
     }
 
-    @DeleteMapping("/{itemId}")
-    public void deleteItem(@PathVariable UUID itemId) {
-        itemService.deleteItem(itemId);
+    @DeleteMapping("/{id}")
+    public void deleteItem(@PathVariable UUID id) {
+        itemService.deleteItem(id);
     }
 
 }
