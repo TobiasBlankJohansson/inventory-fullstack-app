@@ -3,15 +3,19 @@ import {Responsible} from "@/types";
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export async function getResponsible(): Promise<Responsible[]> {
-  return mockDataResponsible;
-  return await fetch(BACKEND_URL + "/api/items").then((res) => res.json());
+  const responsible = await fetch(BACKEND_URL + "/api/responsible").then((res) => res.json())
+  return responsible.responsible;
 }
 
 export async function postResponsible(responsible: { name: string }): Promise<Responsible> {
-  return {id: "0", name: responsible.name};
+  return await fetch(BACKEND_URL + "/api/responsible", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(responsible.name),
+  }).then((res) => res.json());
 }
 
-const mockDataResponsible: Responsible[] = [
+export const mockDataResponsible: Responsible[] = [
   {id: "1", name: "John Doe"},
   {id: "2", name: "Jane Smith"},
   {id: "3", name: "Emily Johnson"},
