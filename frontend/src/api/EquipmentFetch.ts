@@ -3,14 +3,18 @@ import {Equipment} from "@/types";
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export async function getEquipment(): Promise<Equipment[]> {
-  return mockDataEquipment;
-  return await fetch(BACKEND_URL + "/api/items").then((res) => res.json());
+  return await fetch(BACKEND_URL + "/api/equipments").then((res) => res.json());
 }
 
 export async function postEquipment(equipment: Equipment): Promise<Equipment> {
-  return equipment;
+  return await fetch(BACKEND_URL + "/api/equipments", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(equipment),
+  }).then((res) => res.json());
 }
 
+/*
 const mockDataEquipment: Equipment[] = [
   {id: "1", name: "Compass"},
   {id: "2", name: "Multi-tool Knife"},
@@ -23,3 +27,4 @@ const mockDataEquipment: Equipment[] = [
   {id: "9", name: "Hiking Boots"},
   {id: "10", name: "Rope"},
 ];
+*/
