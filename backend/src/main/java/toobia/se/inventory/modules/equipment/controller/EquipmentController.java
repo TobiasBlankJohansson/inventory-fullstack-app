@@ -32,21 +32,21 @@ public class EquipmentController {
 
     @PostMapping
     public EquipmentDto createEquipment(@RequestBody EquipmentDto equipmentDto) {
-        if (equipmentDto.equipmentId().length() != 6) {
+        if (equipmentDto.id().length() != 6) {
             throw new InventoryBadInput("Equipment id must be 6 characters");
         }
-        for (int i = 0; i < equipmentDto.equipmentId().length(); i++) {
-            if (equipmentDto.equipmentId().charAt(i) < 48 || equipmentDto.equipmentId().charAt(i) > 57) {
+        for (int i = 0; i < equipmentDto.id().length(); i++) {
+            if (equipmentDto.id().charAt(i) < 48 || equipmentDto.id().charAt(i) > 57) {
                 throw new InventoryBadInput("Equipment ID may only contain numbers");
             }
         }
-        equipmentService.addEquipment(equipmentDto.equipmentName(), equipmentDto.equipmentId());
+        equipmentService.addEquipment(equipmentDto.name(), equipmentDto.id());
         return equipmentDto;
     }
 
     @PutMapping
     public EquipmentDto updateEquipment(@RequestBody EquipmentDto equipmentDto) {
-        Equipment equipment = equipmentService.updateEquipment(equipmentDto.equipmentId(), equipmentDto.equipmentName());
+        Equipment equipment = equipmentService.updateEquipment(equipmentDto.id(), equipmentDto.name());
         return new EquipmentDto(equipment.getEquipmentName(), equipment.getEquipmentId());
     }
 

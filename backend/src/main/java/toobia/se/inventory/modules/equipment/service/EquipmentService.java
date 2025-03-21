@@ -23,10 +23,10 @@ public class EquipmentService {
         for (Equipment equipment : equipments) {
             String eqText = equipment.getEquipmentName().toLowerCase();
             if (eqText.equals(testText)) {
-                throw new InventoryResourceExists("Equipment with equipmentName:" + equipmentName + " already exists");
+                throw new InventoryResourceExists("Equipment with name:" + equipmentName + " already exists");
             }
             if (equipment.getEquipmentId().equals(equipmentId)) {
-                throw new InventoryResourceExists("Equipment with equipmentId:" + equipmentId + " already exists");
+                throw new InventoryResourceExists("Equipment with id:" + equipmentId + " already exists");
             }
         }
 

@@ -2,5 +2,5 @@ package toobia.se.inventory.modules.equipment.controller.dtos;
 
 import jakarta.validation.constraints.Size;
 
-public record EquipmentDto(String equipmentName, @Size(min = 6, max = 6) String equipmentId) {
+public record EquipmentDto(String name, @Size(min = 6, max = 6) String id) {
 }
