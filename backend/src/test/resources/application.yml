@@ -1,0 +1,22 @@
+server:
+  port: 8080
+spring:
+  sql:
+    init:
+      platform: postgresql
+      mode: always
+
+  output:
+    ansi:
+      enabled: always
+
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/postgres}
+    username: ${DB_USERNAME:salt}
+    password: ${DB_PASSWORD:secret}
+
+
+  jpa:
+    hibernate:
+      ddl-auto: ${DDL_MODE:update}
+    defer-datasource-initialization: true
