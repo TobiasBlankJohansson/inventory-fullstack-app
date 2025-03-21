@@ -1,6 +1,7 @@
-package toobia.se.inventory.model;
+package toobia.se.inventory.modules.storage.model;
 
 import jakarta.persistence.*;
+import toobia.se.inventory.modules.item.model.Item;
 
 import java.util.ArrayList;
 import java.util.List;

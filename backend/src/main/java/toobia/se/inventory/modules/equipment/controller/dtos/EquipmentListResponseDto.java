@@ -1,6 +1,6 @@
 package toobia.se.inventory.modules.equipment.controller.dtos;
 
-import toobia.se.inventory.model.Equipment;
+import toobia.se.inventory.modules.equipment.model.Equipment;
 
 import java.util.List;
 

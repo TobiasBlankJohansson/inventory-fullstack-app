@@ -3,7 +3,7 @@ package toobia.se.inventory.service;
 import org.springframework.stereotype.Service;
 import toobia.se.inventory.exceptions.InventoryResourceExists;
 import toobia.se.inventory.exceptions.InventoryResourceNotFound;
-import toobia.se.inventory.model.Responsible;
+import toobia.se.inventory.modules.responsible.model.Responsible;
 import toobia.se.inventory.modules.responsible.repository.ResponsibleRepository;
 
 import java.util.List;

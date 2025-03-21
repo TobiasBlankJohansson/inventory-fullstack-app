@@ -2,7 +2,7 @@ package toobia.se.inventory.modules.storage.repository;
 
 import org.springframework.data.repository.ListCrudRepository;
 import org.springframework.stereotype.Repository;
-import toobia.se.inventory.model.Storage;
+import toobia.se.inventory.modules.storage.model.Storage;
 
 import java.util.UUID;
 

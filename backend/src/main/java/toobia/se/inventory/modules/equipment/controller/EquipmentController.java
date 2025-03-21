@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.*;
 import toobia.se.inventory.modules.equipment.controller.dtos.EquipmentDto;
 import toobia.se.inventory.modules.equipment.controller.dtos.EquipmentListResponseDto;
 import toobia.se.inventory.exceptions.InventoryBadInput;
-import toobia.se.inventory.model.Equipment;
+import toobia.se.inventory.modules.equipment.model.Equipment;
 import toobia.se.inventory.service.EquipmentService;
 
 @RestController

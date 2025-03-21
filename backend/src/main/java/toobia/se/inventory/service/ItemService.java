@@ -5,10 +5,10 @@ import toobia.se.inventory.modules.item.controller.dtos.ItemCreateDto;
 import toobia.se.inventory.modules.item.controller.dtos.ItemUpdateDto;
 import toobia.se.inventory.exceptions.InventoryResourceExists;
 import toobia.se.inventory.exceptions.InventoryResourceNotFound;
-import toobia.se.inventory.model.Equipment;
-import toobia.se.inventory.model.Item;
-import toobia.se.inventory.model.Responsible;
-import toobia.se.inventory.model.Storage;
+import toobia.se.inventory.modules.equipment.model.Equipment;
+import toobia.se.inventory.modules.item.model.Item;
+import toobia.se.inventory.modules.responsible.model.Responsible;
+import toobia.se.inventory.modules.storage.model.Storage;
 import toobia.se.inventory.modules.item.repository.ItemRepository;
 
 import java.util.List;

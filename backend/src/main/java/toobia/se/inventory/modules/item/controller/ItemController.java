@@ -1,7 +1,7 @@
 package toobia.se.inventory.modules.item.controller;
 
 import org.springframework.web.bind.annotation.*;
-import toobia.se.inventory.model.Item;
+import toobia.se.inventory.modules.item.model.Item;
 import toobia.se.inventory.modules.item.controller.dtos.ItemCreateDto;
 import toobia.se.inventory.modules.item.controller.dtos.ItemDto;
 import toobia.se.inventory.modules.item.controller.dtos.ItemListDto;
