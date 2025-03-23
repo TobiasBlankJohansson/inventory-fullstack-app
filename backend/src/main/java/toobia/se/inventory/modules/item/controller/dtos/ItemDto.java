@@ -5,15 +5,15 @@ import toobia.se.inventory.modules.item.model.Item;
 
 import java.util.UUID;
 
-public record ItemDto(UUID id,EquipmentDto equipment, int amount, String storage, String responsible ) {
+public record ItemDto(UUID id, EquipmentDto equipment, int amount, String storage, String responsible) {
 
     public static ItemDto from(Item item) {
         return new ItemDto(
-                new EquipmentDto(item.getEquipment().getEquipmentName(),item.getEquipment().getEquipmentId()),
-                item.getResponsible().getName(),
-                item.getStorage().getName(),
+                item.getId(),
+                new EquipmentDto(item.getEquipment().getEquipmentName(), item.getEquipment().getEquipmentId()),
                 item.getAmount(),
-                item.getId()
+                item.getStorage().getName(),
+                item.getResponsible().getName()
         );
     }
 }

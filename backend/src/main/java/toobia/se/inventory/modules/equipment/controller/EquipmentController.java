@@ -1,9 +1,9 @@
 package toobia.se.inventory.modules.equipment.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 import toobia.se.inventory.modules.equipment.controller.dtos.EquipmentDto;
 import toobia.se.inventory.modules.equipment.controller.dtos.EquipmentListResponseDto;
-import toobia.se.inventory.exceptions.InventoryBadInput;
 import toobia.se.inventory.modules.equipment.model.Equipment;
 import toobia.se.inventory.modules.equipment.service.EquipmentService;
 
@@ -12,7 +12,7 @@ import toobia.se.inventory.modules.equipment.service.EquipmentService;
 @RequestMapping("/api/equipments")
 public class EquipmentController {
 
-    private EquipmentService equipmentService;
+    private final EquipmentService equipmentService;
 
     public EquipmentController(EquipmentService equipmentService) {
         this.equipmentService = equipmentService;
@@ -31,15 +31,7 @@ public class EquipmentController {
     }
 
     @PostMapping
-    public EquipmentDto createEquipment(@RequestBody EquipmentDto equipmentDto) {
-        if (equipmentDto.id().length() != 6) {
-            throw new InventoryBadInput("Equipment id must be 6 characters");
-        }
-        for (int i = 0; i < equipmentDto.id().length(); i++) {
-            if (equipmentDto.id().charAt(i) < 48 || equipmentDto.id().charAt(i) > 57) {
-                throw new InventoryBadInput("Equipment ID may only contain numbers");
-            }
-        }
+    public EquipmentDto createEquipment(@Valid @RequestBody EquipmentDto equipmentDto) {
         equipmentService.addEquipment(equipmentDto.name(), equipmentDto.id());
         return equipmentDto;
     }
