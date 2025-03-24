@@ -1,6 +1,7 @@
 package toobia.se.inventory.modules.item.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 import toobia.se.inventory.modules.storage.model.Storage;
 import toobia.se.inventory.modules.equipment.model.Equipment;
 import toobia.se.inventory.modules.responsible.model.Responsible;
@@ -9,6 +10,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "item")
+@Getter
 public class Item {
 
     @Id
@@ -66,23 +68,4 @@ public class Item {
         return old;
     }
 
-    public UUID getId() {
-        return id;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public Equipment getEquipment() {
-        return equipment;
-    }
-
-    public Responsible getResponsible() {
-        return responsible;
-    }
-
-    public Storage getStorage() {
-        return storage;
-    }
 }
