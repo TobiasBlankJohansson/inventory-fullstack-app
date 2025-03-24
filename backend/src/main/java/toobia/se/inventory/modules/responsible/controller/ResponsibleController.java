@@ -1,9 +1,8 @@
 package toobia.se.inventory.modules.responsible.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import toobia.se.inventory.modules.responsible.controller.dtos.ResponsibleDto;
-import toobia.se.inventory.modules.responsible.controller.dtos.ResponsibleListResponseDto;
-import toobia.se.inventory.modules.responsible.model.Responsible;
 import toobia.se.inventory.modules.responsible.service.ResponsibleService;
 
 import java.util.List;
@@ -12,13 +11,10 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/responsible")
 @CrossOrigin
+@RequiredArgsConstructor
 public class ResponsibleController {
 
     private final ResponsibleService responsibleService;
-
-    public ResponsibleController(ResponsibleService responsibleService) {
-        this.responsibleService = responsibleService;
-    }
 
     @GetMapping
     public List<ResponsibleDto> getResponsibleList() {
