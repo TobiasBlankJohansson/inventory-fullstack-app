@@ -41,7 +41,7 @@ public class ItemService {
     public Item createItem(ItemCreateDto itemCreateDto) {
         Storage storage = storageService.getStorageById(itemCreateDto.storageId());
         Responsible responsible = responsibleService.findResponsible(itemCreateDto.responsibleId());
-        Equipment equipment = equipmentService.getEquipment(itemCreateDto.equipmentId());
+        Equipment equipment = equipmentService.readEquipment(itemCreateDto.equipmentId());
         List<Item> items = equipment.getItems();
         for (Item item : items) {
             if (item.getEquipment() == equipment && item.getResponsible() == responsible) {
@@ -61,7 +61,7 @@ public class ItemService {
         Item item = findById(itemUpdateDto.storageId());
         Storage storage = storageService.getStorageById(itemUpdateDto.storageId());
         Responsible responsible = responsibleService.findResponsible(itemUpdateDto.responsibleId());
-        Equipment equipment = equipmentService.getEquipment(itemUpdateDto.equipmentId());
+        Equipment equipment = equipmentService.readEquipment(itemUpdateDto.equipmentId());
         storageService.saveStorage(item.setStorage(storage));
         responsibleService.saveResponsible(item.setResponsible(responsible));
         storageService.saveStorage(storage);

@@ -17,7 +17,7 @@ public class EquipmentService {
         this.equipmentRepository = equipmentRepository;
     }
 
-    public Equipment addEquipment(String equipmentName, String equipmentId) {
+    public Equipment createEquipment(String equipmentName, String equipmentId) {
         if (equipmentRepository.existsByEquipmentNameIgnoreCase(equipmentName.toLowerCase())) {
             throw new InventoryResourceExists("Equipment with name: " + equipmentName + " already exists");
         }
@@ -28,24 +28,23 @@ public class EquipmentService {
         return equipmentRepository.save(new Equipment(equipmentName, equipmentId));
     }
 
-    public List<Equipment> getAllEquipment() {
+    public List<Equipment> readListEquipment() {
         return equipmentRepository.findAll();
     }
 
-    public void deleteEquipment(String equipmentId) {
-        Equipment equipment = getEquipment(equipmentId);
-        equipmentRepository.delete(equipment);
-    }
-
-    public Equipment getEquipment(String equipmentId) {
+    public Equipment readEquipment(String equipmentId) {
         return equipmentRepository.findById(equipmentId)
                 .orElseThrow(()-> new InventoryResourceNotFound(equipmentId + " not found"));
     }
 
     public Equipment updateEquipment(String id, String name) {
-        Equipment equipment = getEquipment(id);
+        Equipment equipment = readEquipment(id);
         equipment.setEquipmentName(name);
         return equipmentRepository.save(equipment);
     }
 
+    public void deleteEquipment(String equipmentId) {
+        Equipment equipment = readEquipment(equipmentId);
+        equipmentRepository.delete(equipment);
+    }
 }
