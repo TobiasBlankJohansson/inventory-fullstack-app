@@ -2,6 +2,7 @@ package toobia.se.inventory.modules.storage.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import toobia.se.inventory.modules.storage.controller.dtos.StorageCreateDto;
 import toobia.se.inventory.modules.storage.controller.dtos.StorageDto;
 import toobia.se.inventory.modules.storage.service.StorageService;
 
@@ -27,8 +28,8 @@ public class StorageController {
     }
 
     @PostMapping
-    public StorageDto addStorage(@RequestBody String name) {
-        return StorageDto.from(storageService.createStorage(name));
+    public StorageDto addStorage(@RequestBody StorageCreateDto dto) {
+        return StorageDto.from(storageService.createStorage(dto.name()));
     }
 
     @PutMapping
