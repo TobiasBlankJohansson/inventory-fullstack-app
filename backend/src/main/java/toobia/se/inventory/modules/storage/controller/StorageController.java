@@ -2,7 +2,6 @@ package toobia.se.inventory.modules.storage.controller;
 
 import org.springframework.web.bind.annotation.*;
 import toobia.se.inventory.modules.storage.controller.dtos.StorageDto;
-import toobia.se.inventory.modules.storage.controller.dtos.StorageListDto;
 import toobia.se.inventory.modules.storage.model.Storage;
 import toobia.se.inventory.modules.storage.service.StorageService;
 
