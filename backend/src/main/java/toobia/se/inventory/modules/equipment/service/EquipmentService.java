@@ -1,5 +1,6 @@
 package toobia.se.inventory.modules.equipment.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import toobia.se.inventory.exceptions.InventoryResourceExists;
 import toobia.se.inventory.exceptions.InventoryResourceNotFound;
@@ -9,13 +10,10 @@ import toobia.se.inventory.modules.equipment.repository.EquipmentRepository;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class EquipmentService {
 
     private final EquipmentRepository equipmentRepository;
-
-    public EquipmentService(EquipmentRepository equipmentRepository) {
-        this.equipmentRepository = equipmentRepository;
-    }
 
     public Equipment createEquipment(String equipmentName, String equipmentId) {
         if (equipmentRepository.existsByEquipmentNameIgnoreCase(equipmentName.toLowerCase())) {
