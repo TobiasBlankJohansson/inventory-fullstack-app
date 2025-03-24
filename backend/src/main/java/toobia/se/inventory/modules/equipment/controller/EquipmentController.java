@@ -26,20 +26,17 @@ public class EquipmentController {
 
     @GetMapping("/{id}")
     public EquipmentDto getEquipmentById(@PathVariable String id) {
-        Equipment equipment = equipmentService.getEquipment(id);
-        return new EquipmentDto(equipment.getEquipmentName(), equipment.getEquipmentId());
+        return EquipmentDto.from(equipmentService.getEquipment(id));
     }
 
     @PostMapping
     public EquipmentDto createEquipment(@Valid @RequestBody EquipmentDto equipmentDto) {
-        equipmentService.addEquipment(equipmentDto.name(), equipmentDto.id());
-        return equipmentDto;
+        return EquipmentDto.from(equipmentService.addEquipment(equipmentDto.name(), equipmentDto.id()));
     }
 
     @PutMapping
     public EquipmentDto updateEquipment(@RequestBody EquipmentDto equipmentDto) {
-        Equipment equipment = equipmentService.updateEquipment(equipmentDto.id(), equipmentDto.name());
-        return new EquipmentDto(equipment.getEquipmentName(), equipment.getEquipmentId());
+        return EquipmentDto.from(equipmentService.updateEquipment(equipmentDto.id(), equipmentDto.name()));
     }
 
     @DeleteMapping("/{id}")

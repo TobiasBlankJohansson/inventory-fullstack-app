@@ -56,8 +56,8 @@ public class EquipmentService {
         return equipment;
     }
 
-    public void saveEquipment(Equipment equipment) {
-        equipmentRepository.save(equipment);
+    public Equipment saveEquipment(Equipment equipment) {
+        return equipmentRepository.save(equipment);
     }
 
     public Equipment updateEquipment(String id, String name) {
