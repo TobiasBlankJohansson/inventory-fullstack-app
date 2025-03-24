@@ -17,19 +17,19 @@ export const consolidateInventory = (items: Item[]): Item[] => {
   const totals: Record<string, Item> = {};
 
   items.forEach((item) => {
-    if (!totals[item.id]) {
-      totals[item.id] = {
+    if (!totals[item.equipment.id]) {
+      totals[item.equipment.id] = {
         ...item,
         quantity: "0",
         storageArea: "",
         responsible: "Total",
       };
     }
-    totals[item.id].quantity = (
-      parseInt(totals[item.id].quantity) + parseInt(item.quantity)
+    totals[item.equipment.id].quantity = (
+      parseInt(totals[item.equipment.id].quantity) + parseInt(item.quantity)
     ).toString();
   });
-
+console.log(...Object.values(totals))
   return [...items, ...Object.values(totals)];
 };
 
