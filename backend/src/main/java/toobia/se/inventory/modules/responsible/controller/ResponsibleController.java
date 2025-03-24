@@ -6,6 +6,7 @@ import toobia.se.inventory.modules.responsible.controller.dtos.ResponsibleListRe
 import toobia.se.inventory.modules.responsible.model.Responsible;
 import toobia.se.inventory.modules.responsible.service.ResponsibleService;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -20,28 +21,24 @@ public class ResponsibleController {
     }
 
     @GetMapping
-    public ResponsibleListResponseDto getResponsibleList() {
-        return ResponsibleListResponseDto.
-                fromList(responsibleService.getAllResponsibles());
+    public List<ResponsibleDto> getResponsibleList() {
+        return ResponsibleDto.listFrom(responsibleService.getAllResponsibles());
     }
 
     @GetMapping("/{id}")
     public ResponsibleDto getResponsibleById(@PathVariable UUID id) {
-        Responsible responsible = responsibleService.findResponsible(id);
-        return new ResponsibleDto(responsible.getId(), responsible.getName());
+        return ResponsibleDto.from(responsibleService.findResponsible(id));
     }
 
     @PostMapping()
     public ResponsibleDto createResponsible(@RequestBody String name) {
-        Responsible responsible = responsibleService.createResponsible(name);
-        return new ResponsibleDto(responsible.getId(), responsible.getName());
+        return ResponsibleDto.from(responsibleService.createResponsible(name));
     }
 
     @PutMapping()
     public ResponsibleDto updateResponsible(@RequestBody ResponsibleDto responsibleDto) {
-        Responsible responsible = responsibleService.updateResponsibleName(
-                responsibleDto.id(), responsibleDto.name());
-        return new ResponsibleDto(responsible.getId(), responsible.getName());
+        return ResponsibleDto.from(responsibleService.updateResponsibleName(
+                responsibleDto.id(), responsibleDto.name()));
     }
 
     @DeleteMapping("/{id}")
