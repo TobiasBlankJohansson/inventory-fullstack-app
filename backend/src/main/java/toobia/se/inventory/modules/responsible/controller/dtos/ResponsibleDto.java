@@ -10,7 +10,7 @@ import java.util.UUID;
 public record ResponsibleDto(UUID id, String name) {
 
     public static ResponsibleDto from(Responsible responsible) {
-        return new ResponsibleDto(responsible.getEquipmentId(),responsible.getEquipmentName());
+        return new ResponsibleDto(responsible.getId(),responsible.getName());
     }
     public static List<ResponsibleDto> listFrom(List<Responsible> responsible) {
         return responsible.stream().map(ResponsibleDto::from).toList();
