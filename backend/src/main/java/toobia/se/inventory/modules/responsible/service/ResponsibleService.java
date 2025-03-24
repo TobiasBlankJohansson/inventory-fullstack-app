@@ -1,5 +1,6 @@
 package toobia.se.inventory.modules.responsible.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import toobia.se.inventory.exceptions.InventoryResourceExists;
 import toobia.se.inventory.exceptions.InventoryResourceNotFound;
@@ -10,25 +11,17 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
+@RequiredArgsConstructor
 public class ResponsibleService {
 
-    private ResponsibleRepository repository;
-
-    public ResponsibleService(ResponsibleRepository repository) {
-        this.repository = repository;
-    }
+    private final ResponsibleRepository repository;
 
     public Responsible createResponsible(String responsibleName) {
-        String checkString = responsibleName.toLowerCase();
-        List<Responsible> responsibleList = repository.findAll();
-        for (Responsible responsible : responsibleList) {
-            if (responsible.getName().toLowerCase().equals(checkString)) {
-                throw new InventoryResourceExists(responsibleName + " already exists");
-            }
+        if (repository.existsByNameIgnoreCase(responsibleName)) {
+            throw new InventoryResourceExists(responsibleName + " already exists");
         }
-        Responsible responsible = new Responsible(responsibleName);
-        repository.save(responsible);
-        return responsible;
+
+        return repository.save(new Responsible(responsibleName));
     }
 
     public Responsible findResponsible(UUID id) {
