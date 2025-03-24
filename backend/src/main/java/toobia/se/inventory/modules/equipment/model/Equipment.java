@@ -2,6 +2,10 @@ package toobia.se.inventory.modules.equipment.model;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import toobia.se.inventory.modules.item.model.Item;
 
 import java.util.ArrayList;
@@ -10,54 +14,30 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "equipment")
+@NoArgsConstructor
+@Getter
+@Setter
 public class Equipment {
 
     @Id
     private String equipmentId;
     private String equipmentName;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "equipment")
-    private List<Item> items;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "equipment", orphanRemoval = true)
+    private List<Item> items = new ArrayList<>();
 
-    public Equipment(String equipmentName, String equipmentId) {
+    public Equipment(String equipmentId, String equipmentName) {
         this.equipmentId = equipmentId;
-        this.equipmentName = equipmentName;
-        items = new ArrayList<>();
-    }
-
-    public Equipment() {
-        equipmentId = UUID.randomUUID().toString();
-    }
-
-    public List<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(List<Item> items) {
-        this.items = items;
-    }
-
-    public String getEquipmentId() {
-        return equipmentId;
-    }
-
-    public void setEquipmentId(String equipmentId) {
-        this.equipmentId = equipmentId;
-    }
-
-    public String getEquipmentName() {
-        return equipmentName;
-    }
-
-    public void setEquipmentName(String equipmentName) {
         this.equipmentName = equipmentName;
     }
 
     public void addItem(Item item) {
         items.add(item);
+        item.setEquipment(this);
     }
 
     public void removeItem(Item item) {
         items.remove(item);
+        item.setEquipment(null);
     }
 }
