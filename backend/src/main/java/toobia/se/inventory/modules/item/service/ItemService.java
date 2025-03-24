@@ -31,42 +31,42 @@ public class ItemService {
         return itemRepository.findAll();
     }
 
-
     public Item createItem(ItemCreateDto itemCreateDto) {
         Storage storage = storageService.readStorage(itemCreateDto.storageId());
         Responsible responsible = responsibleService.readResponsible(itemCreateDto.responsibleId());
         Equipment equipment = equipmentService.readEquipment(itemCreateDto.equipmentId());
-        List<Item> items = equipment.getItems();
-        for (Item item : items) {
-            if (item.getEquipment() == equipment && item.getResponsible() == responsible) {
-                if (item.getStorage() == storage) {
-                    throw new InventoryResourceExists("Item with these parameters already exists");
-                }
-            }
+
+        if (itemRepository.existsByEquipmentAndResponsibleAndStorage(equipment, responsible, storage)) {
+            throw new InventoryResourceExists("Item with these parameters already exists");
         }
 
-        Item item = itemRepository.save(new Item(equipment, responsible, storage, itemCreateDto.amount()));
-        return item;
+        return itemRepository.save(new Item(equipment, responsible, storage, itemCreateDto.amount()));
     }
 
     public Item updateItem(ItemUpdateDto itemUpdateDto) {
+        Storage storage = storageService.readStorage(itemUpdateDto.storageId());
+        Responsible responsible = responsibleService.readResponsible(itemUpdateDto.responsibleId());
+        Equipment equipment = equipmentService.readEquipment(itemUpdateDto.equipmentId());
+
+        if (itemRepository.existsByEquipmentAndResponsibleAndStorage(equipment, responsible, storage)) {
+            throw new InventoryResourceExists("Item with these parameters already exists");
+        }
+
         Item item = findById(itemUpdateDto.storageId());
+        item.setAmount(itemUpdateDto.amount());
+        item.setEquipment(equipment);
+        item.setResponsible(responsible);
+        item.setStorage(storage);
         return itemRepository.save(item);
     }
 
-
     public Item findById(UUID id) {
-        Item item = itemRepository.findById(id).orElse(null);
-        if (item == null) {
-            throw new InventoryResourceNotFound(id.toString() + " does not exist");
-        }
-        return item;
+        return itemRepository.findById(id)
+                .orElseThrow(() -> new InventoryResourceNotFound(id.toString() + " does not exist"));
     }
 
     public void deleteItem(UUID id) {
         Item item = findById(id);
         itemRepository.delete(item);
     }
-
-
 }
