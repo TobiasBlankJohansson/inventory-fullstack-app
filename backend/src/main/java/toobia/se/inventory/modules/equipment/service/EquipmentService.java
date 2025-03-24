@@ -38,17 +38,8 @@ public class EquipmentService {
     }
 
     public Equipment getEquipment(String equipmentId) {
-        List<Equipment> ls = equipmentRepository.findAll();
-        Equipment equipment = null;
-        for (Equipment t : ls) {
-            if (equipmentId.equals(t.getEquipmentId())) {
-                equipment = t;
-            }
-        }
-        if (equipment == null) {
-            throw new InventoryResourceNotFound(equipmentId + " not found");
-        }
-        return equipment;
+        return equipmentRepository.findById(equipmentId)
+                .orElseThrow(()-> new InventoryResourceNotFound(equipmentId + " not found"));
     }
 
     public Equipment updateEquipment(String id, String name) {
