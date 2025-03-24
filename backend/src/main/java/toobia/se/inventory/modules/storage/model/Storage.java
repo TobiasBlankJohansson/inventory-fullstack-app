@@ -1,6 +1,9 @@
 package toobia.se.inventory.modules.storage.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import toobia.se.inventory.modules.item.model.Item;
 
 import java.util.ArrayList;
@@ -9,6 +12,9 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "storage")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Storage {
 
     @Id
@@ -17,33 +23,19 @@ public class Storage {
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "storage")
-    private List<Item> items;
-
-    public Storage() {
-    }
+    private List<Item> items = new ArrayList<>();
 
     public Storage(String name) {
-        this.name = name;
-        items = new ArrayList<>();
-    }
-
-    public void removeItem(Item item) {
-        items.remove(item);
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
         this.name = name;
     }
 
     public void addItem(Item item) {
         items.add(item);
+        item.setStorage(this);
+    }
+
+    public void removeItem(Item item) {
+        items.remove(item);
+        item.setStorage(null);
     }
 }

@@ -1,7 +1,5 @@
 package toobia.se.inventory.modules.responsible.controller.dtos;
 
-import toobia.se.inventory.modules.equipment.controller.dtos.EquipmentDto;
-import toobia.se.inventory.modules.equipment.model.Equipment;
 import toobia.se.inventory.modules.responsible.model.Responsible;
 
 import java.util.List;
