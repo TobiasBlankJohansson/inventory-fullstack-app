@@ -1,6 +1,7 @@
 package toobia.se.inventory.modules.equipment.controller;
 
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import toobia.se.inventory.modules.equipment.controller.dtos.EquipmentDto;
 import toobia.se.inventory.modules.equipment.service.EquipmentService;
@@ -10,13 +11,10 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @RequestMapping("/api/equipments")
+@RequiredArgsConstructor
 public class EquipmentController {
 
     private final EquipmentService equipmentService;
-
-    public EquipmentController(EquipmentService equipmentService) {
-        this.equipmentService = equipmentService;
-    }
 
     @GetMapping
     public List<EquipmentDto>  getAllEquipment() {
