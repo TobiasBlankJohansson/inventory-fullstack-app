@@ -1,5 +1,6 @@
 package toobia.se.inventory.modules.item.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import toobia.se.inventory.modules.item.model.Item;
 import toobia.se.inventory.modules.item.controller.dtos.ItemCreateDto;
@@ -13,13 +14,10 @@ import java.util.UUID;
 @CrossOrigin
 @RestController
 @RequestMapping("/api/items")
+@RequiredArgsConstructor
 public class ItemController {
 
     private final ItemService itemService;
-
-    public ItemController(ItemService itemService) {
-        this.itemService = itemService;
-    }
 
     @PostMapping
     public ItemDto createItem(@RequestBody ItemCreateDto itemCreateDto) {
