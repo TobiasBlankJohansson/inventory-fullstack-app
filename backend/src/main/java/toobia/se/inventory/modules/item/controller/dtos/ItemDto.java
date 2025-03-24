@@ -11,7 +11,7 @@ public record ItemDto(UUID id, EquipmentDto equipment, int amount, String storag
     public static ItemDto from(Item item) {
         return new ItemDto(
                 item.getId(),
-                new EquipmentDto(item.getEquipment().getEquipmentName(), item.getEquipment().getEquipmentId()),
+                EquipmentDto.from(item.getEquipment()),
                 item.getAmount(),
                 item.getStorage().getName(),
                 item.getResponsible().getName()

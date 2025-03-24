@@ -35,7 +35,7 @@ public class Responsible {
     }
 
     public void removeItem(Item item) {
-        items.remove(item);
-        item.setResponsible(null);
+            items.remove(item);
+            item.setResponsible(null);
     }
 }

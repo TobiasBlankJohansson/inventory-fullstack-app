@@ -39,8 +39,8 @@ public class ItemService {
         if (itemRepository.existsByEquipmentAndResponsibleAndStorage(equipment, responsible, storage)) {
             throw new InventoryResourceExists("Item with these parameters already exists");
         }
-
-        return itemRepository.save(new Item(equipment, responsible, storage, itemCreateDto.amount()));
+        Item item = new Item(equipment, responsible, storage, itemCreateDto.amount());
+        return itemRepository.save(item);
     }
 
     public Item updateItem(ItemUpdateDto itemUpdateDto) {
