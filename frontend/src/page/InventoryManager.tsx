@@ -12,8 +12,8 @@ import {
   Table,
   ThreeGridContainer,
 } from "@/components";
-import {useManageData} from "@/hooks";
-import {getItemHeaders, openModal} from "@/util";
+import { useManageData } from "@/hooks";
+import { getItemHeaders, openModal } from "@/util";
 
 export function InventoryManage() {
   const {
@@ -30,7 +30,8 @@ export function InventoryManage() {
     responsible,
     setSelectedResponsible,
     saveAsset,
-    setOrder, order
+    setOrder,
+    order,
   } = useManageData();
   return (
     <ScreenContainer>
@@ -42,9 +43,15 @@ export function InventoryManage() {
             Filter
           </FullHeightButton>
           <ThreeGridContainer>
-            <FullHeightButton onClick={() => openModal("Equipment")}>Add Equipment</FullHeightButton>
-            <FullHeightButton onClick={() => openModal("Storage area")}>Add Storage</FullHeightButton>
-            <FullHeightButton onClick={() => openModal("Responsible")}>Add Responsible</FullHeightButton>
+            <FullHeightButton onClick={() => openModal("Equipment")}>
+              Add Equipment
+            </FullHeightButton>
+            <FullHeightButton onClick={() => openModal("Storage area")}>
+              Add Storage
+            </FullHeightButton>
+            <FullHeightButton onClick={() => openModal("Responsible")}>
+              Add Responsible
+            </FullHeightButton>
           </ThreeGridContainer>
         </ThreeGridContainer>
         <Table
@@ -65,14 +72,26 @@ export function InventoryManage() {
           )}
         ></Table>
       </BodyContainer>
-      <CreateItem setItems={setItems} options={options}/>
-      <Filter setStorage={setSelectedStorage}
-              storageArea={storageArea.map(storage => storage.name)}
-              setResponsible={setSelectedResponsible}
-              responsible={responsible.map(responsible => responsible.name)}></Filter>
-      <CreateAsset saveAsset={saveAsset.saveAssetEquipment} dialogName={"Equipment"} useId={true}></CreateAsset>
-      <CreateAsset saveAsset={saveAsset.saveAssetStorage} dialogName={"Storage area"}></CreateAsset>
-      <CreateAsset saveAsset={saveAsset.saveAssetResponsible} dialogName={"Responsible"}></CreateAsset>
+      <CreateItem setItems={setItems} items={itemList} options={options} />
+      <Filter
+        setStorage={setSelectedStorage}
+        storageArea={storageArea.map((storage) => storage.name)}
+        setResponsible={setSelectedResponsible}
+        responsible={responsible.map((responsible) => responsible.name)}
+      ></Filter>
+      <CreateAsset
+        saveAsset={saveAsset.saveAssetEquipment}
+        dialogName={"Equipment"}
+        useId={true}
+      ></CreateAsset>
+      <CreateAsset
+        saveAsset={saveAsset.saveAssetStorage}
+        dialogName={"Storage area"}
+      ></CreateAsset>
+      <CreateAsset
+        saveAsset={saveAsset.saveAssetResponsible}
+        dialogName={"Responsible"}
+      ></CreateAsset>
     </ScreenContainer>
   );
 }

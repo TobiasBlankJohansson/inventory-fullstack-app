@@ -1,11 +1,12 @@
-import {Equipment, Item, Responsible, Storage} from "@/types";
-import {FORM_FIELDS_ITEM} from "@/constants";
-import {useCreateItem} from "@/hooks";
-import {Button, FormFieldItem} from "@/components";
-import {option} from "@/util";
+import { Equipment, Item, Responsible, Storage } from "@/types";
+import { FORM_FIELDS_ITEM } from "@/constants";
+import { useCreateItem } from "@/hooks";
+import { Button, FormFieldItem } from "@/components";
+import { option } from "@/util";
 
 type Props = {
   setItems: (updateFn: (prevItems: Item[]) => Item[]) => void;
+  items: Item[];
   options: {
     equipment: Equipment[];
     storageArea: Storage[];
@@ -13,9 +14,12 @@ type Props = {
   };
 };
 
-export function CreateItem({setItems, options}: Props) {
-  const {handleSubmit, setAddAnotherOne} =
-    useCreateItem(setItems, options);
+export function CreateItem({ setItems, items, options }: Props) {
+  const { handleSubmit, setAddAnotherOne } = useCreateItem(
+    setItems,
+    items,
+    options
+  );
 
   return (
     <dialog id="create_item" className="modal">

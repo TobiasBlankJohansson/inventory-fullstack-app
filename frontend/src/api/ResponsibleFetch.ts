@@ -3,8 +3,7 @@ import {Responsible} from "@/types";
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export async function getResponsible(): Promise<Responsible[]> {
-  const responsible = await fetch(BACKEND_URL + "/api/responsible").then((res) => res.json())
-  return responsible.responsible;
+  return await fetch(BACKEND_URL + "/api/responsible").then((res) => res.json())
 }
 
 export async function postResponsible(responsible: { name: string }): Promise<Responsible> {
