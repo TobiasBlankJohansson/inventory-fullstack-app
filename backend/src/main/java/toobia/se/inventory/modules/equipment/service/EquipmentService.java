@@ -23,7 +23,7 @@ public class EquipmentService {
             throw new InventoryResourceExists("Equipment with ID: " + equipmentId + " already exists");
         }
 
-        return equipmentRepository.save(new Equipment(equipmentName, equipmentId));
+        return equipmentRepository.save(new Equipment(equipmentId,equipmentName));
     }
 
     public List<Equipment> readListEquipment() {

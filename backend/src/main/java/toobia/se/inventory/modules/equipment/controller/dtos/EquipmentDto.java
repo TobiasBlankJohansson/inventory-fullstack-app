@@ -7,12 +7,12 @@ import toobia.se.inventory.modules.equipment.model.Equipment;
 import java.util.List;
 
 public record EquipmentDto(
-        String name,
         @Size(min = 6, max = 6, message = "Id need to be 6 characters long")
         @Pattern(regexp = "\\d{6}", message = "Id need to be numbers")
-         String id) {
+         String id,
+        String name) {
     public static EquipmentDto from(Equipment equipment) {
-        return new EquipmentDto(equipment.getEquipmentName(), equipment.getEquipmentId());
+        return new EquipmentDto(equipment.getEquipmentId(),equipment.getEquipmentName());
     }
     public static List<EquipmentDto> listFrom(List<Equipment> equipments) {
         return equipments.stream().map(EquipmentDto::from).toList();
