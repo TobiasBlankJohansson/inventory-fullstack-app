@@ -1,5 +1,6 @@
 package toobia.se.inventory.modules.item.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import toobia.se.inventory.modules.equipment.service.EquipmentService;
 import toobia.se.inventory.modules.item.controller.dtos.ItemCreateDto;
@@ -18,20 +19,13 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
+@RequiredArgsConstructor
 public class ItemService {
 
     private final ItemRepository itemRepository;
     private final EquipmentService equipmentService;
     private final ResponsibleService responsibleService;
     private final StorageService storageService;
-
-    public ItemService(ItemRepository itemRepository, EquipmentService equipmentService,
-                       ResponsibleService responsibleService, StorageService storageService) {
-        this.itemRepository = itemRepository;
-        this.equipmentService = equipmentService;
-        this.responsibleService = responsibleService;
-        this.storageService = storageService;
-    }
 
     public List<Item> findAll() {
         return itemRepository.findAll();
