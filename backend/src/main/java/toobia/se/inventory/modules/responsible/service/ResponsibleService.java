@@ -25,11 +25,9 @@ public class ResponsibleService {
     }
 
     public Responsible findResponsible(UUID id) {
-        Responsible responsible = repository.findById(id).orElse(null);
-        if (responsible == null) {
-            throw new InventoryResourceNotFound("Responsible with id:" + id.toString() + " not found");
-        }
-        return responsible;
+        return repository.findById(id)
+                .orElseThrow(()-> new InventoryResourceNotFound(
+                        "Responsible with id:" + id.toString() + " not found"));
     }
 
     public Responsible updateResponsibleName(UUID id, String name) {
