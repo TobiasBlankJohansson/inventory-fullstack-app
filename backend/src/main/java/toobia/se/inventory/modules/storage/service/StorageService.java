@@ -1,5 +1,6 @@
 package toobia.se.inventory.modules.storage.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import toobia.se.inventory.exceptions.InventoryResourceExists;
 import toobia.se.inventory.exceptions.InventoryResourceNotFound;
@@ -10,52 +11,35 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
+@RequiredArgsConstructor
 public class StorageService {
 
     private final StorageRepository storageRepository;
-    private StorageRepository repository;
-
-    public StorageService(StorageRepository repository, StorageRepository storageRepository) {
-        this.repository = repository;
-        this.storageRepository = storageRepository;
-    }
 
     public List<Storage> getStorages() {
-        return repository.findAll();
+        return storageRepository.findAll();
     }
 
     public Storage getStorageById(UUID id) {
-        Storage storage = repository.findById(id).orElse(null);
-        if (storage == null) {
-            throw new InventoryResourceNotFound("Storage with id:" + id.toString() + " not found");
-        }
-        return storage;
+        return storageRepository.findById(id)
+                .orElseThrow(() -> new
+                        InventoryResourceNotFound("Storage with id:" + id + " not found"));
     }
 
     public Storage updateStorage(UUID id, String name) {
-        Storage storage = repository.findById(id).orElse(null);
+        Storage storage = getStorageById(id);
         storage.setName(name);
         return storageRepository.save(storage);
     }
 
     public Storage createStorage(String name) {
-        String checkString = name.toLowerCase();
-        List<Storage> storageList = storageRepository.findAll();
-        for (Storage storage : storageList) {
-            if (storage.getName().toLowerCase().equals(checkString)) {
-                throw new InventoryResourceExists(name + " already exists");
-            }
+        if (storageRepository.existsByNameIgnoreCase(name)) {
+            throw new InventoryResourceExists(name + " already exists");
         }
-        return repository.save(new Storage(name));
-    }
-
-    public void saveStorage(Storage storage) {
-        storageRepository.save(storage);
+        return storageRepository.save(new Storage(name));
     }
 
     public void deleteStorage(UUID id) {
         storageRepository.deleteById(id);
     }
-
-
 }

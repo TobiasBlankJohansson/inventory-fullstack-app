@@ -8,4 +8,5 @@ import java.util.UUID;
 
 @Repository
 public interface StorageRepository extends ListCrudRepository<Storage, UUID> {
+    boolean existsByNameIgnoreCase(String name);
 }
