@@ -41,8 +41,7 @@ public class ResponsibleService {
     }
 
     public void deleteResponsible(UUID id) {
-        Responsible responsible = findResponsible(id);
-        repository.delete(responsible);
+        repository.delete(findResponsible(id));
     }
 
 }
