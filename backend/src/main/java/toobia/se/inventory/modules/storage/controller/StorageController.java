@@ -1,44 +1,40 @@
 package toobia.se.inventory.modules.storage.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import toobia.se.inventory.modules.storage.controller.dtos.StorageDto;
 import toobia.se.inventory.modules.storage.model.Storage;
 import toobia.se.inventory.modules.storage.service.StorageService;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
 @CrossOrigin
 @RequestMapping("/api/storages")
+@RequiredArgsConstructor
 public class StorageController {
 
     private final StorageService storageService;
 
-    public StorageController(StorageService storageService) {
-        this.storageService = storageService;
-    }
-
     @GetMapping
-    public StorageListDto getStorages() {
-        return StorageListDto.fromList(storageService.getStorages());
+    public List<StorageDto> getStorages() {
+        return StorageDto.listFrom(storageService.getStorages());
     }
 
     @GetMapping("/{id}")
     public StorageDto getStorageById(@PathVariable UUID id) {
-        Storage storage = storageService.getStorageById(id);
-        return new StorageDto(storage.getName(), storage.getId());
+        return StorageDto.from(storageService.getStorageById(id));
     }
 
     @PostMapping
     public StorageDto addStorage(@RequestBody String name) {
-        Storage storage = storageService.createStorage(name);
-        return new StorageDto(storage.getName(), storage.getId());
+        return StorageDto.from(storageService.createStorage(name));
     }
 
     @PutMapping
     public StorageDto updateStorage(@RequestBody StorageDto storageDto) {
-        Storage storage = storageService.updateStorage(storageDto.id(), storageDto.name());
-        return new StorageDto(storage.getName(), storage.getId());
+        return StorageDto.from(storageService.updateStorage(storageDto.id(), storageDto.name()));
     }
 
     @DeleteMapping("/{id}")
