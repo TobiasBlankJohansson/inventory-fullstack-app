@@ -11,23 +11,18 @@ import java.util.List;
 @Service
 public class EquipmentService {
 
-    private EquipmentRepository equipmentRepository;
+    private final EquipmentRepository equipmentRepository;
 
     public EquipmentService(EquipmentRepository equipmentRepository) {
         this.equipmentRepository = equipmentRepository;
     }
 
     public Equipment addEquipment(String equipmentName, String equipmentId) {
-        List<Equipment> equipments = equipmentRepository.findAll();
-        String testText = equipmentName.toLowerCase();
-        for (Equipment equipment : equipments) {
-            String eqText = equipment.getEquipmentName().toLowerCase();
-            if (eqText.equals(testText)) {
-                throw new InventoryResourceExists("Equipment with name:" + equipmentName + " already exists");
-            }
-            if (equipment.getEquipmentId().equals(equipmentId)) {
-                throw new InventoryResourceExists("Equipment with id:" + equipmentId + " already exists");
-            }
+        if (equipmentRepository.existsByEquipmentNameIgnoreCase(equipmentName.toLowerCase())) {
+            throw new InventoryResourceExists("Equipment with name: " + equipmentName + " already exists");
+        }
+        if (equipmentRepository.existsByEquipmentId(equipmentId)) {
+            throw new InventoryResourceExists("Equipment with ID: " + equipmentId + " already exists");
         }
 
         return equipmentRepository.save(new Equipment(equipmentName, equipmentId));

@@ -6,4 +6,7 @@ import toobia.se.inventory.modules.equipment.model.Equipment;
 
 @Repository
 public interface EquipmentRepository extends ListCrudRepository<Equipment, String> {
+    boolean existsByEquipmentNameIgnoreCase(String normalizedEquipmentName);
+
+    boolean existsByEquipmentId(String equipmentId);
 }
