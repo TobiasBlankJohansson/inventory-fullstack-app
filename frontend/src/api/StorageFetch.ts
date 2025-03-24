@@ -12,7 +12,7 @@ export async function postStorageArea(storageArea: {
   return await fetch(BACKEND_URL + "/api/storages", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(storageArea.name),
+    body: JSON.stringify({ name: storageArea.name }),
   }).then((res) => res.json());
 }
 
