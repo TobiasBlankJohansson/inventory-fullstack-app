@@ -6,7 +6,7 @@ import toobia.se.inventory.modules.item.model.Item;
 import java.util.List;
 import java.util.UUID;
 
-public record ItemDto(UUID id, EquipmentDto equipment, int amount, String storage, String responsible) {
+public record ItemDto(UUID id, EquipmentDto equipment, int quantity, String storageArea, String responsible) {
 
     public static ItemDto from(Item item) {
         return new ItemDto(
