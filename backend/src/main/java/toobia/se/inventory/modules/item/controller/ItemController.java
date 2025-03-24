@@ -23,14 +23,12 @@ public class ItemController {
 
     @PostMapping
     public ItemDto createItem(@RequestBody ItemCreateDto itemCreateDto) {
-        Item item = itemService.createItem(itemCreateDto);
-        return ItemDto.from(item);
+        return ItemDto.from(itemService.createItem(itemCreateDto));
     }
 
     @GetMapping
-    public ItemListDto getAllItems() {
-        List<Item> items = itemService.findAll();
-        return ItemListDto.from(items);
+    public List<ItemDto> getAllItems() {
+        return ItemDto.listFrom(itemService.findAll());
     }
 
     @GetMapping("/{id}")
@@ -41,8 +39,7 @@ public class ItemController {
 
     @PutMapping
     public ItemDto updateItem(@RequestBody ItemUpdateDto itemUpdateDto) {
-        Item item = itemService.updateItem(itemUpdateDto);
-        return ItemDto.from(item);
+        return ItemDto.from(itemService.updateItem(itemUpdateDto));
     }
 
     @DeleteMapping("/{id}")
