@@ -3,7 +3,6 @@ package toobia.se.inventory.modules.storage.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import toobia.se.inventory.modules.storage.controller.dtos.StorageDto;
-import toobia.se.inventory.modules.storage.model.Storage;
 import toobia.se.inventory.modules.storage.service.StorageService;
 
 import java.util.List;
@@ -19,12 +18,12 @@ public class StorageController {
 
     @GetMapping
     public List<StorageDto> getStorages() {
-        return StorageDto.listFrom(storageService.getStorages());
+        return StorageDto.listFrom(storageService.readListStorage());
     }
 
     @GetMapping("/{id}")
     public StorageDto getStorageById(@PathVariable UUID id) {
-        return StorageDto.from(storageService.getStorageById(id));
+        return StorageDto.from(storageService.readStorage(id));
     }
 
     @PostMapping

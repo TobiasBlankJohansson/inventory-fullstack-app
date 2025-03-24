@@ -16,27 +16,27 @@ public class StorageService {
 
     private final StorageRepository storageRepository;
 
-    public List<Storage> getStorages() {
+    public Storage createStorage(String name) {
+        if (storageRepository.existsByNameIgnoreCase(name)) {
+            throw new InventoryResourceExists(name + " already exists");
+        }
+        return storageRepository.save(new Storage(name));
+    }
+
+    public List<Storage> readListStorage() {
         return storageRepository.findAll();
     }
 
-    public Storage getStorageById(UUID id) {
+    public Storage readStorage(UUID id) {
         return storageRepository.findById(id)
                 .orElseThrow(() -> new
                         InventoryResourceNotFound("Storage with id:" + id + " not found"));
     }
 
     public Storage updateStorage(UUID id, String name) {
-        Storage storage = getStorageById(id);
+        Storage storage = readStorage(id);
         storage.setName(name);
         return storageRepository.save(storage);
-    }
-
-    public Storage createStorage(String name) {
-        if (storageRepository.existsByNameIgnoreCase(name)) {
-            throw new InventoryResourceExists(name + " already exists");
-        }
-        return storageRepository.save(new Storage(name));
     }
 
     public void deleteStorage(UUID id) {
