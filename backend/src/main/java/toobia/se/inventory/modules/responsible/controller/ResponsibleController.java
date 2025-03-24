@@ -2,6 +2,7 @@ package toobia.se.inventory.modules.responsible.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import toobia.se.inventory.modules.responsible.controller.dtos.ResponsibleCreateDto;
 import toobia.se.inventory.modules.responsible.controller.dtos.ResponsibleDto;
 import toobia.se.inventory.modules.responsible.service.ResponsibleService;
 
@@ -27,8 +28,8 @@ public class ResponsibleController {
     }
 
     @PostMapping()
-    public ResponsibleDto createResponsible(@RequestBody String name) {
-        return ResponsibleDto.from(responsibleService.createResponsible(name));
+    public ResponsibleDto createResponsible(@RequestBody ResponsibleCreateDto dto) {
+        return ResponsibleDto.from(responsibleService.createResponsible(dto.name()));
     }
 
     @PutMapping()
