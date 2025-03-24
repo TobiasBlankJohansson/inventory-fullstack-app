@@ -3,9 +3,10 @@ package toobia.se.inventory.modules.equipment.controller;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 import toobia.se.inventory.modules.equipment.controller.dtos.EquipmentDto;
-import toobia.se.inventory.modules.equipment.controller.dtos.EquipmentListResponseDto;
 import toobia.se.inventory.modules.equipment.model.Equipment;
 import toobia.se.inventory.modules.equipment.service.EquipmentService;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -19,9 +20,8 @@ public class EquipmentController {
     }
 
     @GetMapping
-    public EquipmentListResponseDto getAllEquipment() {
-        return EquipmentListResponseDto.toEquipmentListResponseDto
-                (equipmentService.getAllEquipment());
+    public List<EquipmentDto>  getAllEquipment() {
+        return EquipmentDto.listFrom(equipmentService.getAllEquipment());
     }
 
     @GetMapping("/{id}")
