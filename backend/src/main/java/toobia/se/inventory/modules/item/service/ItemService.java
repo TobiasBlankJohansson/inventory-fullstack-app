@@ -52,7 +52,6 @@ public class ItemService {
         }
 
         Item item = itemRepository.save(new Item(equipment, responsible, storage, itemCreateDto.amount()));
-        equipmentService.saveEquipment(equipment);
         storageService.saveStorage(storage);
         responsibleService.saveResponsible(responsible);
         return item;
@@ -64,10 +63,8 @@ public class ItemService {
         Responsible responsible = responsibleService.findResponsible(itemUpdateDto.responsibleId());
         Equipment equipment = equipmentService.getEquipment(itemUpdateDto.equipmentId());
         storageService.saveStorage(item.setStorage(storage));
-        equipmentService.saveEquipment(item.setEquipment(equipment));
         responsibleService.saveResponsible(item.setResponsible(responsible));
         storageService.saveStorage(storage);
-        equipmentService.saveEquipment(equipment);
         responsibleService.saveResponsible(responsible);
         return itemRepository.save(item);
     }

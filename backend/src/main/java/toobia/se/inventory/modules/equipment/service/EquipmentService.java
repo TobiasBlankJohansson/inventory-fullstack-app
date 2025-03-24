@@ -51,10 +51,6 @@ public class EquipmentService {
         return equipment;
     }
 
-    public Equipment saveEquipment(Equipment equipment) {
-        return equipmentRepository.save(equipment);
-    }
-
     public Equipment updateEquipment(String id, String name) {
         Equipment equipment = getEquipment(id);
         equipment.setEquipmentName(name);
