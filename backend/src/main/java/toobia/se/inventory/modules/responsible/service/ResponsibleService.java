@@ -49,10 +49,6 @@ public class ResponsibleService {
         return repository.findAll();
     }
 
-    public void saveResponsible(Responsible responsible) {
-        repository.save(responsible);
-    }
-
     public void deleteResponsible(UUID id) {
         Responsible responsible = findResponsible(id);
         repository.delete(responsible);

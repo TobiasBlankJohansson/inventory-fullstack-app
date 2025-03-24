@@ -52,20 +52,11 @@ public class ItemService {
         }
 
         Item item = itemRepository.save(new Item(equipment, responsible, storage, itemCreateDto.amount()));
-        storageService.saveStorage(storage);
-        responsibleService.saveResponsible(responsible);
         return item;
     }
 
     public Item updateItem(ItemUpdateDto itemUpdateDto) {
         Item item = findById(itemUpdateDto.storageId());
-        Storage storage = storageService.getStorageById(itemUpdateDto.storageId());
-        Responsible responsible = responsibleService.findResponsible(itemUpdateDto.responsibleId());
-        Equipment equipment = equipmentService.readEquipment(itemUpdateDto.equipmentId());
-        storageService.saveStorage(item.setStorage(storage));
-        responsibleService.saveResponsible(item.setResponsible(responsible));
-        storageService.saveStorage(storage);
-        responsibleService.saveResponsible(responsible);
         return itemRepository.save(item);
     }
 
