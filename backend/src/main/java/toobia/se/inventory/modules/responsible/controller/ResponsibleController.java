@@ -18,12 +18,12 @@ public class ResponsibleController {
 
     @GetMapping
     public List<ResponsibleDto> getResponsibleList() {
-        return ResponsibleDto.listFrom(responsibleService.getAllResponsibles());
+        return ResponsibleDto.listFrom(responsibleService.readListResponsible());
     }
 
     @GetMapping("/{id}")
     public ResponsibleDto getResponsibleById(@PathVariable UUID id) {
-        return ResponsibleDto.from(responsibleService.findResponsible(id));
+        return ResponsibleDto.from(responsibleService.readResponsible(id));
     }
 
     @PostMapping()

@@ -20,28 +20,26 @@ public class ResponsibleService {
         if (repository.existsByNameIgnoreCase(responsibleName)) {
             throw new InventoryResourceExists(responsibleName + " already exists");
         }
-
         return repository.save(new Responsible(responsibleName));
     }
 
-    public Responsible findResponsible(UUID id) {
+    public Responsible readResponsible(UUID id) {
         return repository.findById(id)
                 .orElseThrow(()-> new InventoryResourceNotFound(
-                        "Responsible with id:" + id.toString() + " not found"));
+                        "Responsible with id:" + id + " not found"));
+    }
+
+    public List<Responsible> readListResponsible() {
+        return repository.findAll();
     }
 
     public Responsible updateResponsibleName(UUID id, String name) {
-        Responsible responsible = findResponsible(id);
+        Responsible responsible = readResponsible(id);
         responsible.setName(name);
         return repository.save(responsible);
     }
 
-    public List<Responsible> getAllResponsibles() {
-        return repository.findAll();
-    }
-
     public void deleteResponsible(UUID id) {
-        repository.delete(findResponsible(id));
+        repository.delete(readResponsible(id));
     }
-
 }

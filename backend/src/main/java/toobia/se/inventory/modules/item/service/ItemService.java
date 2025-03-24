@@ -40,7 +40,7 @@ public class ItemService {
 
     public Item createItem(ItemCreateDto itemCreateDto) {
         Storage storage = storageService.getStorageById(itemCreateDto.storageId());
-        Responsible responsible = responsibleService.findResponsible(itemCreateDto.responsibleId());
+        Responsible responsible = responsibleService.readResponsible(itemCreateDto.responsibleId());
         Equipment equipment = equipmentService.readEquipment(itemCreateDto.equipmentId());
         List<Item> items = equipment.getItems();
         for (Item item : items) {
