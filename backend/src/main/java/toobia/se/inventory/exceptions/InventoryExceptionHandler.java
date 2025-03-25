@@ -37,7 +37,7 @@ public class InventoryExceptionHandler{
                 .collect(Collectors.toMap(
                         FieldError::getField,
                         DefaultMessageSourceResolvable::getDefaultMessage,
-                        (existing, replacement) -> existing // Handle duplicate field names
+                        (existing, replacement) -> existing
                 ));
         return ResponseEntity.status(HttpStatus.valueOf(400))
                 .body(errors);
