@@ -7,8 +7,7 @@ import toobia.se.inventory.modules.equipment.model.Equipment;
 import java.util.List;
 
 public record EquipmentDto(
-        @Size(min = 6, max = 6, message = "Id need to be 6 characters long")
-        @Pattern(regexp = "\\d{6}", message = "Id need to be numbers")
+        @Pattern(regexp = "\\d{6}", message = "Id need to be numbers and 6 characters long")
          String id,
         String name) {
     public static EquipmentDto from(Equipment equipment) {
