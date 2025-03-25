@@ -28,14 +28,4 @@ public class Storage {
     public Storage(String name) {
         this.name = name;
     }
-
-    public void addItem(Item item) {
-        items.add(item);
-        item.setStorage(this);
-    }
-
-    public void removeItem(Item item) {
-        items.remove(item);
-        item.setStorage(null);
-    }
 }

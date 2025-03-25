@@ -9,6 +9,7 @@ import toobia.se.inventory.modules.item.model.Item;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
 @Entity
 @Table(name = "responsible")
 @Getter
@@ -27,15 +28,5 @@ public class Responsible {
 
     public Responsible(String name) {
         this.name = name;
-    }
-
-    public void addItem(Item item) {
-        items.add(item);
-        item.setResponsible(this);
-    }
-
-    public void removeItem(Item item) {
-            items.remove(item);
-            item.setResponsible(null);
     }
 }
