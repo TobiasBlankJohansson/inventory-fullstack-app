@@ -63,6 +63,16 @@ export const useEditEquipment = (
   }
 
   const onDelete = async () => {
+    if (!equipment) return;
+    const response = await mutateDelete(id)
+    if (!response) {
+      toast.error("Error deleting equipment")
+      return;
+    }
+
+    setEquipment((prev: Equipment[]) => prev.filter((equipment) => equipment.id != id));
+    toast.success("Equipment deleted");
+    navigate("/");
   }
 
   return {equipment, onSubmit, onDelete}

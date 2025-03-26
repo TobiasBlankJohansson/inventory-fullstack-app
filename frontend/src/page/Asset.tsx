@@ -2,6 +2,7 @@ import {BodyContainer, EditItemForm, FormField, Navbar, ScreenContainer} from "@
 import {FORM_FIELDS_EQUIPMENT} from "@/constants.ts";
 import {useAssetData} from "@/hooks/page-data/asset-data";
 import {useLocation} from "react-router-dom";
+import {FormFieldItem} from "@/types";
 
 export const Asset = () => {
   const id = new URLSearchParams(useLocation().search).get("id");
@@ -25,7 +26,7 @@ export const Asset = () => {
                 <FormField
                   key={field.key}
                   field={field}
-                  value={equipment[field.key]}
+                  value={(equipment as FormFieldItem)[field.key]}
                   edit={!edit}
                 />
               ))}
