@@ -20,7 +20,7 @@ export const ItemEditor = () => {
           {item && (
             <EditItemForm
               onSubmit={onSubmit}
-              item={item}
+              name={item.equipment.name}
               edit={edit}
               onDelete={onDelete}
               setEdit={setEdit}

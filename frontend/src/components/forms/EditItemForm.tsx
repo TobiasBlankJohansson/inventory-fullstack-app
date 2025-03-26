@@ -1,16 +1,15 @@
-import {Item} from "@/types";
 import {Button} from "@/components";
 
 export function EditItemForm({
                                onSubmit,
-                               item,
+                               name,
                                children,
                                edit,
                                setEdit,
                                onDelete,
                              }: {
   onSubmit: React.FormEventHandler<HTMLFormElement> | undefined;
-  item: Item;
+  name: string;
   children: React.ReactNode;
   edit: boolean;
   onDelete: () => void;
@@ -21,7 +20,7 @@ export function EditItemForm({
       onSubmit={onSubmit}
       className="flex flex-col items-center h-full w-full flex-grow justify-between"
     >
-      <h1 className="text-3xl my-8">{item.equipment.name}</h1>
+      <h1 className="text-3xl my-8">{name}</h1>
       {children}
       <div className="modal-action flex justify-between pb-8 w-80">
         {edit ? (
