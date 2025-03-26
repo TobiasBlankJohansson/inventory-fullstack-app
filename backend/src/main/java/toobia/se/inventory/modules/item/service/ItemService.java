@@ -2,17 +2,17 @@ package toobia.se.inventory.modules.item.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import toobia.se.inventory.modules.equipment.service.EquipmentService;
-import toobia.se.inventory.modules.item.controller.dtos.ItemCreateDto;
-import toobia.se.inventory.modules.item.controller.dtos.ItemUpdateDto;
 import toobia.se.inventory.exceptions.InventoryResourceExists;
 import toobia.se.inventory.exceptions.InventoryResourceNotFound;
 import toobia.se.inventory.modules.equipment.model.Equipment;
+import toobia.se.inventory.modules.equipment.service.EquipmentService;
+import toobia.se.inventory.modules.item.controller.dtos.ItemCreateDto;
+import toobia.se.inventory.modules.item.controller.dtos.ItemUpdateDto;
 import toobia.se.inventory.modules.item.model.Item;
-import toobia.se.inventory.modules.responsible.model.Responsible;
-import toobia.se.inventory.modules.storage.model.Storage;
 import toobia.se.inventory.modules.item.repository.ItemRepository;
+import toobia.se.inventory.modules.responsible.model.Responsible;
 import toobia.se.inventory.modules.responsible.service.ResponsibleService;
+import toobia.se.inventory.modules.storage.model.Storage;
 import toobia.se.inventory.modules.storage.service.StorageService;
 
 import java.util.List;
@@ -52,7 +52,7 @@ public class ItemService {
             throw new InventoryResourceExists("Item with these parameters already exists");
         }
 
-        Item item = findById(itemUpdateDto.storageId());
+        Item item = findById(itemUpdateDto.id());
         item.setAmount(itemUpdateDto.amount());
         item.setEquipment(equipment);
         item.setResponsible(responsible);
