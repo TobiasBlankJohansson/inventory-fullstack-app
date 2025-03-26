@@ -1,5 +1,5 @@
 import {BodyContainer, EditItemForm, FormField, Navbar, ScreenContainer} from "@/components";
-import {FORM_FIELDS_EQUIPMENT} from "@/constants.ts";
+import {FORM_FIELDS_ASSET} from "@/constants.ts";
 import {useAssetData} from "@/hooks/page-data/asset-data";
 import {useLocation} from "react-router-dom";
 import {FormFieldItem} from "@/types";
@@ -22,7 +22,7 @@ export const Asset = () => {
               onDelete={onDelete}
               setEdit={setEdit}
             >
-              {FORM_FIELDS_EQUIPMENT.map((field) => (
+              {FORM_FIELDS_ASSET.map((field) => (
                 <FormField
                   key={field.key}
                   field={field}

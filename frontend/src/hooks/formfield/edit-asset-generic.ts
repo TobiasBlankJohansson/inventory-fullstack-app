@@ -1,5 +1,5 @@
 import {useNavigate} from "react-router-dom";
-import {FORM_FIELDS_EQUIPMENT} from "@/constants.ts";
+import {FORM_FIELDS_ASSET} from "@/constants.ts";
 import {toast} from "react-toastify";
 import {UseMutationResult} from "@tanstack/react-query";
 
@@ -24,7 +24,7 @@ export const useEditAsset = <T extends Asset, >(
     if (!asset) return;
 
     const newAssetData = Object.fromEntries(
-      FORM_FIELDS_EQUIPMENT.map(({key}) =>
+      FORM_FIELDS_ASSET.map(({key}) =>
         [key, new FormData(e.currentTarget).get(`form_field_${key}`)])
     ) as Asset;
 

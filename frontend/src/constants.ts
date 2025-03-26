@@ -12,7 +12,6 @@ export const FORM_FIELDS_ITEM: FormFieldConfig[] = [
   {key: "responsible", label: "Responsible", type: "select"},
 ];
 
-export const FORM_FIELDS_EQUIPMENT: FormFieldConfig[] = [
-  {key: "id", label: "Id", type: "text"},
+export const FORM_FIELDS_ASSET: FormFieldConfig[] = [
   {key: "name", label: "Name", type: "text"},
 ];
