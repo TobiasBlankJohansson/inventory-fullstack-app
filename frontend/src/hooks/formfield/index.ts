@@ -1,1 +1,1 @@
-export * from "./equipment";
+export * from "./edit-asset-generic.ts";
