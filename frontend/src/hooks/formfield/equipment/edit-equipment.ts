@@ -31,7 +31,7 @@ export const useEditEquipment = (
         toast.error("Equipment already exists with name and id");
         return;
       }
-      console.log(newEquipmentData)
+
       const EquipmentData = await mutatePut(newEquipmentData);
       if (!EquipmentData) {
         toast.error("Error updating equipment, try again");
