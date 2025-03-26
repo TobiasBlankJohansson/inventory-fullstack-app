@@ -4,6 +4,7 @@ import {fromItemToFormField} from "@/types";
 import {option} from "@/util";
 
 export const Asset = () => {
+  
   return (
     <ScreenContainer>
       <Navbar currentPageName="item"></Navbar>

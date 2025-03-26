@@ -1,5 +1,5 @@
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {Dashboard, InventoryManage} from "@/page";
+import {Asset, Dashboard, InventoryManage} from "@/page";
 import {ScreenProvider} from "./components";
 import {ItemEditor} from "./page";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
@@ -16,6 +16,7 @@ function App() {
             <Route path="/" element={<Dashboard/>}/>
             <Route path="/manage" element={<InventoryManage/>}/>
             <Route path="/item-editor" element={<ItemEditor/>}/>
+            <Route path="/asset" element={<Asset/>}/>
           </Routes>
           <ToastContainer
             position="top-center"
