@@ -1,5 +1,4 @@
-import {Equipment, Item} from "@/types";
-import {putItemDto} from "@/api/InventoryFetch.ts";
+import {Equipment} from "@/types";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -15,11 +14,11 @@ export async function postEquipment(equipment: Equipment): Promise<Equipment> {
   }).then((res) => res.json());
 }
 
-export async function putEquipment(itemDto: putItemDto): Promise<Item> {
+export async function putEquipment(equipment: Equipment): Promise<Equipment> {
   return fetch(BACKEND_URL + "/api/equipments", {
     method: "PUT",
     headers: {"Content-Type": "application/json"},
-    body: JSON.stringify(itemDto),
+    body: JSON.stringify(equipment),
   }).then((res) => res.json());
 }
 
