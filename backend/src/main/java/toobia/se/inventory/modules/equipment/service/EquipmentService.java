@@ -35,9 +35,8 @@ public class EquipmentService {
                 .orElseThrow(() -> new InventoryResourceNotFound(equipmentId + " not found"));
     }
 
-    public Equipment updateEquipment(String oldId, String id, String name) {
-        Equipment equipment = readEquipment(oldId);
-        equipment.setEquipmentId(id);
+    public Equipment updateEquipment(String id, String name) {
+        Equipment equipment = readEquipment(id);
         equipment.setEquipmentName(name);
         return equipmentRepository.save(equipment);
     }

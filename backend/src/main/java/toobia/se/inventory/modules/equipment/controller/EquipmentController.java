@@ -4,7 +4,6 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import toobia.se.inventory.modules.equipment.controller.dtos.EquipmentDto;
-import toobia.se.inventory.modules.equipment.controller.dtos.EquipmentUpdateDto;
 import toobia.se.inventory.modules.equipment.service.EquipmentService;
 
 import java.util.List;
@@ -33,8 +32,8 @@ public class EquipmentController {
     }
 
     @PutMapping
-    public EquipmentDto updateEquipment(@RequestBody EquipmentUpdateDto equipmentUpdateDto) {
-        return EquipmentDto.from(equipmentService.updateEquipment(equipmentUpdateDto.oldId(), equipmentUpdateDto.id(), equipmentUpdateDto.name()));
+    public EquipmentDto updateEquipment(@RequestBody EquipmentDto equipmentDto) {
+        return EquipmentDto.from(equipmentService.updateEquipment(equipmentDto.id(), equipmentDto.name()));
     }
 
     @DeleteMapping("/{id}")
