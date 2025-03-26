@@ -23,7 +23,7 @@ public class EquipmentService {
             throw new InventoryResourceExists("Equipment with ID: " + equipmentId + " already exists");
         }
 
-        return equipmentRepository.save(new Equipment(equipmentId,equipmentName));
+        return equipmentRepository.save(new Equipment(equipmentId, equipmentName));
     }
 
     public List<Equipment> readListEquipment() {
@@ -32,11 +32,12 @@ public class EquipmentService {
 
     public Equipment readEquipment(String equipmentId) {
         return equipmentRepository.findById(equipmentId)
-                .orElseThrow(()-> new InventoryResourceNotFound(equipmentId + " not found"));
+                .orElseThrow(() -> new InventoryResourceNotFound(equipmentId + " not found"));
     }
 
-    public Equipment updateEquipment(String id, String name) {
-        Equipment equipment = readEquipment(id);
+    public Equipment updateEquipment(String oldId, String id, String name) {
+        Equipment equipment = readEquipment(oldId);
+        equipment.setEquipmentId(id);
         equipment.setEquipmentName(name);
         return equipmentRepository.save(equipment);
     }
