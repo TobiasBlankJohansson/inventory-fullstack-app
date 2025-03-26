@@ -1,2 +1,2 @@
-export * from "./FormFieldItem.tsx";
+export * from "./FormField.tsx";
 export * from "./EditItemForm.tsx";

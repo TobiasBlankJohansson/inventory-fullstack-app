@@ -1,7 +1,5 @@
-import {FormField} from "@/types/form-field-item.ts";
-
 export interface FormFieldConfig {
-  key: keyof FormField;
+  key: string;
   label: string;
   type: "text" | "number" | "select";
   options?: string[];

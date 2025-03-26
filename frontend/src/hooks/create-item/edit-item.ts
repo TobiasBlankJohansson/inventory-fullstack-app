@@ -1,4 +1,4 @@
-import {Equipment, FormField, Item, toItemFromFormField} from "@/types";
+import {Equipment, FormFieldItem, Item, toItemFromFormField} from "@/types";
 import {FORM_FIELDS_ITEM} from "@/constants.ts";
 import {useNavigate} from "react-router-dom";
 import {useDeleteItem, usePutItem} from "@/hooks";
@@ -22,7 +22,7 @@ export const useEditItem =
       const newItemData = Object.fromEntries(
         FORM_FIELDS_ITEM.map(({key}) =>
           [key, new FormData(e.currentTarget).get(`item_${key}`)])
-      ) as FormField;
+      ) as FormFieldItem;
 
       if (parseInt(newItemData.quantity) < 1 || newItemData.quantity.includes(".")) {
         toast.error("Quantity can't be negative or contain decimal")

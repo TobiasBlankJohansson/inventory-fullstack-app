@@ -1,7 +1,7 @@
 import { Equipment, Item, Responsible, Storage } from "@/types";
 import { FORM_FIELDS_ITEM } from "@/constants";
 import { useCreateItem } from "@/hooks";
-import { Button, FormFieldItem } from "@/components";
+import { Button, FormField } from "@/components";
 import { option } from "@/util";
 
 type Props = {
@@ -27,7 +27,7 @@ export function CreateItem({ setItems, items, options }: Props) {
         <form method="dialog" onSubmit={handleSubmit}>
           <h3 className="font-bold text-lg">Item Creation</h3>
           {FORM_FIELDS_ITEM.map((field) => (
-            <FormFieldItem
+            <FormField
               key={field.key}
               field={field}
               options={option(field.label, options)}

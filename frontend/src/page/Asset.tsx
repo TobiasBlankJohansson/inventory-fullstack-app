@@ -1,4 +1,4 @@
-import {BodyContainer, EditItemForm, FormFieldItem, Navbar, ScreenContainer} from "@/components";
+import {BodyContainer, EditItemForm, FormField, Navbar, ScreenContainer} from "@/components";
 import {FORM_FIELDS_ITEM} from "@/constants.ts";
 import {fromItemToFormField} from "@/types";
 import {option} from "@/util";
@@ -19,7 +19,7 @@ export const Asset = () => {
               setEdit={setEdit}
             >
               {FORM_FIELDS_ITEM.map((field) => (
-                <FormFieldItem
+                <FormField
                   key={field.key}
                   field={field}
                   value={fromItemToFormField(item)[field.key]}

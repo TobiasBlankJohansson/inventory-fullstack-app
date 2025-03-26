@@ -2,7 +2,7 @@ import { FormEvent, useState } from "react";
 import { FORM_FIELDS_ITEM } from "@/constants.ts";
 import {
   Equipment,
-  FormField,
+  FormFieldItem,
   Item,
   Responsible,
   responsibleFromList,
@@ -31,7 +31,7 @@ export const useCreateItem = (
     const formData = new FormData(e.currentTarget);
     const formField = Object.fromEntries(
       FORM_FIELDS_ITEM.map(({ key }) => [key, formData.get(`item_${key}`)])
-    ) as FormField;
+    ) as FormFieldItem;
 
     if (parseInt(formField.quantity) < 1 || formField.quantity.includes(".")) {
       toast.error("Quantity can't be negative or contain decimal");
