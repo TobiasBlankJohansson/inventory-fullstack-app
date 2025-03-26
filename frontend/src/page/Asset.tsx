@@ -1,9 +1,11 @@
 import {BodyContainer, EditItemForm, FormField, Navbar, ScreenContainer} from "@/components";
 import {FORM_FIELDS_EQUIPMENT} from "@/constants.ts";
 import {useAssetData} from "@/hooks/page-data/asset-data";
+import {useLocation} from "react-router-dom";
 
 export const Asset = () => {
-  const {} = useAssetData();
+  const id = new URLSearchParams(useLocation().search).get("id");
+  const {equipment, edit, setEdit, onDelete, onSubmit} = useAssetData(id as string);
 
   return (
     <ScreenContainer>
@@ -14,7 +16,7 @@ export const Asset = () => {
           {equipment && (
             <EditItemForm
               onSubmit={onSubmit}
-              item={equipment}
+              name={"Equipment"}
               edit={edit}
               onDelete={onDelete}
               setEdit={setEdit}

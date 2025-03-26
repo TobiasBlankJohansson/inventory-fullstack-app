@@ -7,19 +7,18 @@ export type FormFieldItem = {
   quantity: string;
   storageArea: string;
   responsible: string;
+  name: string;
 }
 
 export const fromItemToFormField = (item: Item): FormFieldItem => {
   return {
     ...item,
-    equipment: item.equipment.name
+    equipment: item.equipment.name,
+    name: ""
   }
 };
 
 export const toItemFromFormField = (formField: FormFieldItem, equipment: Equipment[], id: string): Item => {
-  console.log(formField)
-  console.log(equipment)
-
   return {
     ...formField,
     id: id,
