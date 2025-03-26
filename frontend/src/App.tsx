@@ -16,7 +16,7 @@ function App() {
             <Route path="/" element={<Dashboard/>}/>
             <Route path="/manage" element={<InventoryManage/>}/>
             <Route path="/item-editor" element={<ItemEditor/>}/>
-            <Route path="/asset" element={<Asset/>}/>
+            <Route path="/asset/*" element={<Asset/>}/>
           </Routes>
           <ToastContainer
             position="top-center"
