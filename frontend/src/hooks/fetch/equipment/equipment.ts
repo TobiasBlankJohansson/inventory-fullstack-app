@@ -15,13 +15,13 @@ export const usePostEquipment = () => {
   });
 };
 
-export const useDeleteItem = () => {
+export const useDeleteEquipment = () => {
   return useMutation({
     mutationFn: deleteEquipment,
   });
 };
 
-export const usePutItem = () => {
+export const usePutEquipment = () => {
   return useMutation({
     mutationFn: putEquipment,
   });
