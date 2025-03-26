@@ -8,7 +8,7 @@ export const useItemEditorData = (id: string) => {
   const {equipment} = useGetEquipment();
   const {responsible} = useGetResponsible();
   const [edit, setEdit] = useState(false);
-  const {item, onSubmit, onDelete} = useEditItem(id, items, setItems, equipment, setEdit);
+  const {item, onSubmit, onDelete} = useEditItem(id, items, setItems, equipment, responsible, storageArea, setEdit);
 
   return {
     options: {equipment, responsible, storageArea},

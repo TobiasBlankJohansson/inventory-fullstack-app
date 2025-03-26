@@ -17,6 +17,9 @@ export const fromItemToFormField = (item: Item): FormFieldItem => {
 };
 
 export const toItemFromFormField = (formField: FormFieldItem, equipment: Equipment[], id: string): Item => {
+  console.log(formField)
+  console.log(equipment)
+
   return {
     ...formField,
     id: id,

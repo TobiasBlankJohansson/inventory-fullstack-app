@@ -29,7 +29,6 @@ export const consolidateInventory = (items: Item[]): Item[] => {
       parseInt(totals[item.equipment.id].quantity) + parseInt(item.quantity)
     ).toString();
   });
-console.log(...Object.values(totals))
   return [...items, ...Object.values(totals)];
 };
 

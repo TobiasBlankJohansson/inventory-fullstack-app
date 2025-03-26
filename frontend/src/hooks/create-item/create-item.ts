@@ -1,5 +1,5 @@
-import { FormEvent, useState } from "react";
-import { FORM_FIELDS_ITEM } from "@/constants.ts";
+import {FormEvent, useState} from "react";
+import {FORM_FIELDS_ITEM} from "@/constants.ts";
 import {
   Equipment,
   FormFieldItem,
@@ -10,9 +10,9 @@ import {
   storageFromList,
   toItemFromFormField,
 } from "@/types";
-import { usePostItem } from "@/hooks";
-import { toast } from "react-toastify";
-import { postItemDto } from "@/api/InventoryFetch.ts";
+import {usePostItem} from "@/hooks";
+import {toast} from "react-toastify";
+import {postItemDto} from "@/api/InventoryFetch.ts";
 
 export const useCreateItem = (
   setItems: (updateFn: (prevItems: Item[]) => Item[]) => void,
@@ -24,20 +24,19 @@ export const useCreateItem = (
   }
 ) => {
   const [addAnotherOne, setAddAnotherOne] = useState(false);
-  const { mutateAsync } = usePostItem();
+  const {mutateAsync} = usePostItem();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const formField = Object.fromEntries(
-      FORM_FIELDS_ITEM.map(({ key }) => [key, formData.get(`item_${key}`)])
+      FORM_FIELDS_ITEM.map(({key}) => [key, formData.get(`item_${key}`)])
     ) as FormFieldItem;
 
     if (parseInt(formField.quantity) < 1 || formField.quantity.includes(".")) {
       toast.error("Quantity can't be negative or contain decimal");
       return;
     }
-    console.log();
 
     const newItem = toItemFromFormField(formField, options.equipment, "null");
     const isUnique = !Items.some(
@@ -84,5 +83,5 @@ export const useCreateItem = (
     setItems(() => updatedItems);
   };
 
-  return { handleSubmit, setAddAnotherOne };
+  return {handleSubmit, setAddAnotherOne};
 };
