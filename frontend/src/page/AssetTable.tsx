@@ -36,10 +36,9 @@ export const AssetTable = () => {
 const useEquipmentTable = () => {
   const {equipment, setEquipment} = useGetEquipment();
   const orderObject = useOrderItem()
-  const {mutateAsync: mutateEquipment} = usePostEquipment();
-  const [checkedItems, setCheckedItems] = useState<string[]>([]);
+  const [checkedItems] = useState<string[]>([]);
 
-  const saveAssetEquipment = useSaveAsset(setEquipment, mutateEquipment, equipment)
+  const saveAssetEquipment = useSaveAsset(setEquipment, usePostEquipment(), equipment)
 
   return {asset: equipment, orderObject, saveAsset: saveAssetEquipment, checkedItems}
 }

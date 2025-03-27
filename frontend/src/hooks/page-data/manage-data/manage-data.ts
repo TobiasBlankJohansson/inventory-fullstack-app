@@ -17,11 +17,8 @@ import {Item} from "@/types";
 export const useManageData = () => {
   const {items, setItems} = useGetItems();
   const {storageArea, setStorageArea} = useGetStorage();
-  const {mutateAsync: mutateStorage} = usePostStorage();
   const {equipment, setEquipment} = useGetEquipment();
-  const {mutateAsync: mutateEquipment} = usePostEquipment();
   const {responsible, setResponsible} = useGetResponsible();
-  const {mutateAsync: mutateResponsible} = usePostResponsible();
   const [checkedItems, setCheckedItems] = useState<string[]>([]);
   const {orderItems, order, setOrder} = useOrderItem();
 
@@ -29,9 +26,9 @@ export const useManageData = () => {
     consolidateInventory(items)
   );
 
-  const saveAssetStorage = useSaveAsset(setStorageArea, mutateStorage, storageArea)
-  const saveAssetEquipment = useSaveAsset(setEquipment, mutateEquipment, equipment)
-  const saveAssetResponsible = useSaveAsset(setResponsible, mutateResponsible, responsible)
+  const saveAssetStorage = useSaveAsset(setStorageArea, usePostStorage(), storageArea)
+  const saveAssetEquipment = useSaveAsset(setEquipment, usePostEquipment(), equipment)
+  const saveAssetResponsible = useSaveAsset(setResponsible, usePostResponsible(), responsible)
 
   const handleDelete = () => {
     setItems((prev) => prev.filter((item) => !checkedItems.includes(item.id)));

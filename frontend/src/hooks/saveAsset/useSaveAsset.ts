@@ -1,4 +1,5 @@
 import {toast} from "react-toastify";
+import {UseMutationResult} from "@tanstack/react-query";
 
 type Asset = {
   name: string;
@@ -7,7 +8,7 @@ type Asset = {
 
 export const useSaveAsset = <T>(
   set: (updateFn: (prevData: T[]) => T[]) => void,
-  mutateAsync: ({name, id}: { id: string, name: string }) => Promise<T>,
+  {mutateAsync}: UseMutationResult<T, Error, T, unknown>,
   data: T[]
 ) => {
   return async (
@@ -23,7 +24,7 @@ export const useSaveAsset = <T>(
     let id: string = "";
     if (inputId != undefined) {
       id = inputId.value
-      
+
       if (id && id.length != 6) {
         toast.error('Id needs to be at least 6 numbers long');
         event?.preventDefault();
@@ -48,7 +49,7 @@ export const useSaveAsset = <T>(
       return;
     }
 
-    const asset = await mutateAsync({name, id});
+    const asset = await mutateAsync({name, id} as T);
     if (!asset) {
       toast.error("Wasn't saved, please try again");
       event?.preventDefault();
