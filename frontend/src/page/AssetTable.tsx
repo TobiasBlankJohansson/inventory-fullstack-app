@@ -4,8 +4,10 @@ import {useGetEquipment, useOrderItem, usePostEquipment, useSaveAsset} from "@/h
 import {getTableHeaders, openModal} from "@/util";
 import {Equipment} from "@/types";
 import {useState} from "react";
+import {useLocation} from "react-router-dom";
 
 export const AssetTable = () => {
+  const type = new URLSearchParams(useLocation().search).get("type") as string;
   const {orderObject, asset, saveAsset, checkedItems} = useEquipmentTable();
 
   return <ScreenContainer>
@@ -17,16 +19,16 @@ export const AssetTable = () => {
             orderObject.setOrder,
             orderObject.order,
             true,
-            "equipment",
+            type,
             checkedItems,
             () => {
             },
-            () => openModal("equipment"))}
-        renderItemInTable={renderTableAsset(orderObject.orderItems(asset, orderObject.order) as Equipment[], "equipment", true)}></Table>
+            () => openModal(type))}
+        renderItemInTable={renderTableAsset(orderObject.orderItems(asset, orderObject.order) as Equipment[], type, true)}></Table>
     </BodyContainer>
     <CreateAsset
       saveAsset={saveAsset}
-      dialogName={"equipment"}
+      dialogName={type}
       useId={true}
     ></CreateAsset>
   </ScreenContainer>
