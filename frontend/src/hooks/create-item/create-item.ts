@@ -30,7 +30,7 @@ export const useCreateItem = (
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const formField = Object.fromEntries(
-      FORM_FIELDS_ITEM.map(({key}) => [key, formData.get(`item_${key}`)])
+      FORM_FIELDS_ITEM.map(({key}) => [key, formData.get(`form_field_${key}`)])
     ) as FormFieldItem;
 
     if (parseInt(formField.quantity) < 1 || formField.quantity.includes(".")) {
