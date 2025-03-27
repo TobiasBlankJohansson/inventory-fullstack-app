@@ -28,14 +28,16 @@ export const useEditAsset = <T extends Asset, >(
         [key, new FormData(e.currentTarget).get(`form_field_${key}`)])
     ) as Asset;
 
-    if (asset.id != newAssetData.id || asset.name != newAssetData.name) {
+    if (asset.name != newAssetData.name) {
       if (assetList.some(
         (asset) =>
           asset.name === newAssetData.name && asset.id === newAssetData.id
       )) {
-        toast.error("Asset already exists with name and id");
+        toast.error("Asset already exists with name");
         return;
       }
+
+      newAssetData.id = asset.id;
 
       const AssetData = await mutatePut(newAssetData as T);
       if (!AssetData) {
