@@ -28,7 +28,6 @@ export const AssetTable = () => {
       saveAsset={saveAsset}
       dialogName={"equipment"}
       useId={true}
-      useTable={true}
     ></CreateAsset>
   </ScreenContainer>
 }
