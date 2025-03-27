@@ -11,7 +11,7 @@ import {
   Table,
 } from "@/components";
 import {useDashboardData} from "@/hooks";
-import {getItemHeaders, openModal} from "@/util";
+import {getTableHeaders, openModal} from "@/util";
 import {ThreeGridContainer} from "@/components/container/ThreeGridContainer.tsx";
 
 export function Dashboard() {
@@ -37,7 +37,7 @@ export function Dashboard() {
           <Print itemList={itemList}></Print>
         </ThreeGridContainer>
         <Table
-          renderHeadersInTable={renderTableHeaders(getItemHeaders(itemList), setOrder, order)}
+          renderHeadersInTable={renderTableHeaders(getTableHeaders(itemList), setOrder, order)}
           renderItemInTable={renderTableItems(itemList)}
         ></Table>
       </BodyContainer>

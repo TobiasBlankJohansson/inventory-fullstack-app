@@ -8,7 +8,7 @@ export const capitalize = (str: string): string => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
 
-export const getItemHeaders = <T extends object>(items: T[]): string[] => {
+export const getTableHeaders = <T extends object>(items: T[]): string[] => {
   const keys = items.length > 0 ? getItemKeys(items[0]) : [];
   return keys.map((key) => capitalize(String(key)));
 };
