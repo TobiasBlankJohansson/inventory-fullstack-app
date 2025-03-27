@@ -8,7 +8,7 @@ import {useLocation} from "react-router-dom";
 
 export const AssetTable = () => {
   const type = new URLSearchParams(useLocation().search).get("type") as string;
-  const {orderObject, asset, saveAsset, checkedItems} = useEquipmentTable();
+  const {orderObject, asset, saveAsset, checkedItems, setCheckedItems} = useEquipmentTable();
 
   return <ScreenContainer>
     <Navbar currentPageName="item"></Navbar>
@@ -24,7 +24,13 @@ export const AssetTable = () => {
             () => {
             },
             () => openModal(type))}
-        renderItemInTable={renderTableAsset(orderObject.orderItems(asset, orderObject.order) as Equipment[], type, true)}></Table>
+        renderItemInTable={
+          renderTableAsset(orderObject.orderItems(asset, orderObject.order) as Equipment[],
+            type,
+            true,
+            checkedItems,
+            setCheckedItems
+          )}></Table>
     </BodyContainer>
     <CreateAsset
       saveAsset={saveAsset}
@@ -37,9 +43,9 @@ export const AssetTable = () => {
 const useEquipmentTable = () => {
   const {equipment, setEquipment} = useGetEquipment();
   const orderObject = useOrderItem()
-  const [checkedItems] = useState<string[]>([]);
+  const [checkedItems, setCheckedItems] = useState<string[]>([]);
 
   const saveAssetEquipment = useSaveAsset(setEquipment, usePostEquipment(), equipment)
 
-  return {asset: equipment, orderObject, saveAsset: saveAssetEquipment, checkedItems}
+  return {asset: equipment, orderObject, saveAsset: saveAssetEquipment, checkedItems, setCheckedItems}
 }
