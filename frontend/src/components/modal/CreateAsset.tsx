@@ -9,9 +9,10 @@ type Props = {
               event?: React.FormEvent) => Promise<void>;
   dialogName: string;
   useId?: boolean;
+  useTable?: boolean;
 };
 
-export function CreateAsset({saveAsset, dialogName, useId}: Props) {
+export function CreateAsset({saveAsset, dialogName, useId, useTable}: Props) {
   const [addAnotherOne, setAddAnotherOne] = useState<boolean>(false);
   const navigate = useNavigate();
 
@@ -67,10 +68,10 @@ export function CreateAsset({saveAsset, dialogName, useId}: Props) {
             </Button>
           </div>
         </form>
-        <Button className={"w-full mt-6"} onClick={() => {
-          navigate("/table");
+        {useTable && <Button className={"w-full mt-6"} onClick={() => {
+          navigate(`/table?type=${dialogName.toLowerCase()}`);
         }
-        }>Equipment table</Button>
+        }>{dialogName} table</Button>}
       </div>
       <form method="dialog" className="modal-backdrop">
         <button>close</button>

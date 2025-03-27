@@ -83,14 +83,17 @@ export function InventoryManage() {
         saveAsset={saveAsset.saveAssetEquipment}
         dialogName={"Equipment"}
         useId={true}
+        useTable={true}
       ></CreateAsset>
       <CreateAsset
         saveAsset={saveAsset.saveAssetStorage}
         dialogName={"Storage area"}
+        useTable={true}
       ></CreateAsset>
       <CreateAsset
         saveAsset={saveAsset.saveAssetResponsible}
         dialogName={"Responsible"}
+        useTable={true}
       ></CreateAsset>
     </ScreenContainer>
   );
