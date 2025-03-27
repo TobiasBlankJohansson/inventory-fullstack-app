@@ -8,6 +8,7 @@ type Asset = {
 
 export const renderTableAsset = <T extends Asset>(
   assets: T[],
+  assetType: string,
   includeCheckbox: boolean = false,
   checkedAssets: string[] = [],
   setCheckedAsset: React.Dispatch<React.SetStateAction<string[]>> = () => {
@@ -39,7 +40,7 @@ export const renderTableAsset = <T extends Asset>(
         {keys.map((key) => (
           <td key={String(key)}>
             {key === "name" ? (
-                <Link to={`/item-editor?id=${asset.id}`} className="link text-info">
+                <Link to={`/asset/${assetType}?id=${asset.id}`} className="link text-info">
                   {asset.name}
                 </Link>
               ) :
