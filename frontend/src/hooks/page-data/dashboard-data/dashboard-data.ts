@@ -1,5 +1,6 @@
 import {useFilterItems, useGetItems, useGetResponsible, useGetStorage, useOrderItem} from "@/hooks";
 import {consolidateInventory} from "@/util";
+import {Item} from "@/types";
 
 export function useDashboardData() {
   const {items, setItems} = useGetItems();
@@ -19,7 +20,7 @@ export function useDashboardData() {
     setSearch,
     setSelectedStorage,
     setSelectedResponsible,
-    itemList: orderItems(itemList, order),
+    itemList: orderItems(itemList, order) as Item[],
     storageArea, setOrder, order
   };
 }

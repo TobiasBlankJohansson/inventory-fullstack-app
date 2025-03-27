@@ -12,6 +12,7 @@ import {
   useSaveAsset,
 } from "@/hooks";
 import {consolidateInventory, openModal} from "@/util";
+import {Item} from "@/types";
 
 export const useManageData = () => {
   const {items, setItems} = useGetItems();
@@ -46,7 +47,7 @@ export const useManageData = () => {
       id: "0",
       name: "Total"
     }],
-    itemList: orderItems(itemList, order),
+    itemList: orderItems(itemList, order) as Item[],
     setItems,
     storageArea,
     setSearch,

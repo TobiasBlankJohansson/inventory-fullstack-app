@@ -12,8 +12,8 @@ export const AssetTable = () => {
     <Navbar currentPageName="item"></Navbar>
     <BodyContainer>
       <Table
-        renderHeadersInTable={renderTableHeaders(getTableHeaders(equipment), setOrder as (string: string) => void, order)}
-        renderItemInTable={renderTableAsset(orderItems(equipment, order) as Equipment[], "equipment")}></Table>
+        renderHeadersInTable={renderTableHeaders(getTableHeaders(equipment), setOrder, order, true, "equipment")}
+        renderItemInTable={renderTableAsset(orderItems(equipment, order) as Equipment[], "equipment", true)}></Table>
     </BodyContainer>
   </ScreenContainer>
 }

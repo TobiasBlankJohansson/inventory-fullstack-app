@@ -20,5 +20,5 @@ export const useOrderItem = <T extends object, K extends keyof T>() => {
     });
   };
 
-  return {order, setOrder, orderItems};
+  return {order, setOrder: (setOrder as (string: string) => void), orderItems};
 };

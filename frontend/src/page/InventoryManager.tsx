@@ -59,7 +59,7 @@ export function InventoryManage() {
             getTableHeaders(itemList),
             setOrder,
             order,
-            true,
+            true, "item",
             checkedItems,
             handleDelete,
             handleCreate
