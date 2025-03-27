@@ -1,18 +1,24 @@
 import {useState} from "react";
-import {Item} from "@/types";
 
-export const useOrderItem = () => {
-  const [order, setOrder] = useState<string>("");
-  const orderItems = (itemList: Item[], order: string) => {
-    const sortingFunctions: Record<string, (a: Item, b: Item) => number> = {
-      id: (a, b) => Number(a.equipment.id) - Number(b.equipment.id),
-      equipment: (a, b) => a.equipment.name.localeCompare(b.equipment.name),
-      quantity: (a, b) => Number(a.quantity) - Number(b.quantity),
-      storagearea: (a, b) => a.storageArea.localeCompare(b.storageArea),
-      responsible: (a, b) => a.responsible.localeCompare(b.responsible),
-    };
+export const useOrderItem = <T extends object, K extends keyof T>() => {
+  const [order, setOrder] = useState<K | "">("");
 
-    return sortingFunctions[order] ? [...itemList].sort(sortingFunctions[order]) : itemList;
+  const orderItems = (itemList: T[], order: K | ""): T[] => {
+    if (!order) return itemList;
+
+    return [...itemList].sort((a, b) => {
+      const aValue = a[order];
+      const bValue = b[order];
+
+      if (typeof aValue === "number" && typeof bValue === "number") {
+        return aValue - bValue;
+      }
+      if (typeof aValue === "string" && typeof bValue === "string") {
+        return aValue.localeCompare(bValue);
+      }
+      return 0;
+    });
   };
-  return {order, setOrder, orderItems}
-}
+
+  return {order, setOrder, orderItems};
+};
