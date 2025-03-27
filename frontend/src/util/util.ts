@@ -1,7 +1,7 @@
 import {Item} from "@/types";
 
-export const getItemKeys = (item: Item): (keyof Item)[] => {
-  return Object.keys(item) as (keyof Item)[];
+export const getItemKeys = <T extends object>(item: T): (keyof T)[] => {
+  return Object.entries(item).map(([key]) => key as keyof T);
 };
 
 export const capitalize = (str: string): string => {
