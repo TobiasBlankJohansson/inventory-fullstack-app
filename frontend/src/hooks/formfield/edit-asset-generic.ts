@@ -1,3 +1,4 @@
+import {FormEvent} from "react";
 import {useNavigate} from "react-router-dom";
 import {FORM_FIELDS_ASSET} from "@/constants.ts";
 import {toast} from "react-toastify";
@@ -6,9 +7,9 @@ import {UseMutationResult} from "@tanstack/react-query";
 type Asset = {
   id: string;
   name: string;
-}
+};
 
-export const useEditAsset = <T extends Asset, >(
+export const useEditAsset = <T extends Asset>(
   id: string,
   assetList: Asset[],
   setAsset: (updateFn: (prevData: T[]) => T[]) => void,
@@ -16,60 +17,58 @@ export const useEditAsset = <T extends Asset, >(
   {mutateAsync: mutatePut}: UseMutationResult<T, Error, T, unknown>,
   {mutateAsync: mutateDelete}: UseMutationResult<boolean, Error, string, unknown>
 ) => {
-  const asset = assetList.find((asset) => asset.id === id);
+  const asset = assetList.find((a) => a.id === id);
   const navigate = useNavigate();
 
-  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  if (!asset) {
+    return {
+      asset: null, onSubmit: () => {
+      }, onDelete: () => {
+      }
+    };
+  }
+
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!asset) return;
 
-    const newAssetData = Object.fromEntries(
-      FORM_FIELDS_ASSET.map(({key}) =>
-        [key, new FormData(e.currentTarget).get(`form_field_${key}`)])
-    ) as Asset;
+    const formData = new FormData(e.currentTarget);
+    const newAssetData = FORM_FIELDS_ASSET.reduce(
+      (acc, {key}) => ({...acc, [key]: formData.get(`form_field_${key}`)}),
+      {} as Asset
+    );
 
-    if (asset.name != newAssetData.name) {
-      if (assetList.some(
-        (asset) =>
-          asset.name === newAssetData.name && asset.id === newAssetData.id
-      )) {
-        toast.error("Asset already exists with name");
-        return;
-      }
-
-      newAssetData.id = asset.id;
-
-      const AssetData = await mutatePut(newAssetData as T);
-      if (!AssetData) {
-        toast.error("Error updating asset, try again");
-        return;
-      }
-
-      setAsset((prev: T[]) =>
-        prev.map((listAsset) =>
-          listAsset.id === asset.id ? (listAsset = AssetData) : listAsset
-        )
+    if (asset.name !== newAssetData.name) {
+      const isDuplicate = assetList.some(
+        (a) => a.name === newAssetData.name && a.id !== asset.id
       );
 
-      toast.success("Asset updated successfully");
-      navigate(`/asset?id=${AssetData.id}`);
-      setEdit(false);
+      if (isDuplicate) {
+        toast.error("Asset with this name already exists");
+        return;
+      }
 
+      try {
+        const updatedAsset = await mutatePut({...newAssetData, id: asset.id} as T);
+        setAsset((prev) => prev.map((a) => (a.id === asset.id ? updatedAsset : a)));
+        toast.success("Asset updated successfully");
+        navigate(`/asset?id=${updatedAsset.id}`);
+        setEdit(false);
+      } catch {
+        toast.error("Error updating asset, try again");
+      }
     }
-  }
+  };
 
   const onDelete = async () => {
-    if (!asset) return;
-    const response = await mutateDelete(id)
-    if (!response) {
-      toast.error("Error deleting asset")
-      return;
+    try {
+      await mutateDelete(id);
+      setAsset((prev) => prev.filter((a) => a.id !== id));
+      toast.success("Asset deleted");
+      navigate("/");
+    } catch {
+      toast.error("Error deleting asset");
     }
+  };
 
-    setAsset((prev: T[]) => prev.filter((asset) => asset.id != id));
-    toast.success("Asset deleted");
-    navigate("/");
-  }
-
-  return {asset, onSubmit, onDelete}
-}
+  return {asset, onSubmit, onDelete};
+};
