@@ -1,5 +1,6 @@
 import {useState} from "react";
 import {Button} from "../button";
+import {useNavigate} from "react-router-dom";
 
 type Props = {
   saveAsset: (formId: string,
@@ -12,6 +13,8 @@ type Props = {
 
 export function CreateAsset({saveAsset, dialogName, useId}: Props) {
   const [addAnotherOne, setAddAnotherOne] = useState<boolean>(false);
+  const navigate = useNavigate();
+
   return (
     <dialog id={dialogName} className="modal">
       <div className="modal-box px-10 py-6 w-fit bg-background">
@@ -64,6 +67,10 @@ export function CreateAsset({saveAsset, dialogName, useId}: Props) {
             </Button>
           </div>
         </form>
+        <Button className={"w-full mt-6"} onClick={() => {
+          navigate("/table");
+        }
+        }>Equipment table</Button>
       </div>
       <form method="dialog" className="modal-backdrop">
         <button>close</button>
