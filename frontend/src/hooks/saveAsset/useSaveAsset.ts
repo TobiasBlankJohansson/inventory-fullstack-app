@@ -16,19 +16,18 @@ export const useSaveAsset = <T>(
     const inputId: HTMLInputElement = document.getElementById(
       "input id " + formId
     ) as HTMLInputElement;
+    event?.preventDefault();
     let id: string = "";
     if (inputId != undefined) {
       id = inputId.value;
 
       if (id && id.length != 6) {
         toast.error("Id needs to be at least 6 numbers long");
-        event?.preventDefault();
         return;
       }
 
       if (id && data.some((item) => (item as Asset).id === id)) {
         toast.error(formId + " already exists with that id");
-        event?.preventDefault();
         return;
       }
     }
@@ -40,14 +39,12 @@ export const useSaveAsset = <T>(
 
     if (data.some((item) => (item as Asset).name === name)) {
       toast.error(formId + " already exists with that name");
-      event?.preventDefault();
       return;
     }
 
     const asset = await mutateAsync({name, id} as T);
     if (!asset) {
       toast.error("Wasn't saved, please try again");
-      event?.preventDefault();
       return;
     }
     toast.success("Saved successfully");
@@ -56,8 +53,12 @@ export const useSaveAsset = <T>(
     inputId.value = "";
 
     if (addAnotherOne) {
-      event?.preventDefault();
       setAddAnotherOne(() => false);
+      return
     }
+    const dialog = document.getElementById(
+      formId
+    ) as HTMLDialogElement;
+    dialog.close();
   };
 };
