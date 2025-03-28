@@ -40,7 +40,7 @@ export const renderTableAsset = <T extends Asset>(
         {keys.map((key) => (
           <td key={String(key)}>
             {key === "name" ? (
-                <Link to={`/asset/${assetType}?id=${asset.id}`} className="link text-info">
+                <Link to={`/asset/?type=${assetType.toLowerCase()}&id=${asset.id}`} className="link text-info">
                   {asset.name}
                 </Link>
               ) :
