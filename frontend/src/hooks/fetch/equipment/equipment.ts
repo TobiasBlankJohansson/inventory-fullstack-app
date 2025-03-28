@@ -4,6 +4,11 @@ import {useGet} from "@/hooks";
 
 const queryKey = "equipment";
 
+export const useEquipment = () => {
+  const {equipment, setEquipment} = useGetEquipment();
+  return {equipment, setEquipment, useGetEquipment, usePostEquipment, useDeleteEquipment, usePutEquipment}
+}
+
 export const useGetEquipment = () => {
   const {data: equipment, set: setEquipment} = useGet(getEquipment, queryKey);
   return {equipment, setEquipment};

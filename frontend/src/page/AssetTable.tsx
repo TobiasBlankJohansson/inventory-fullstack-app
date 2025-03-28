@@ -1,13 +1,13 @@
 import {BodyContainer, CreateAsset, Navbar, renderTableHeaders, ScreenContainer, Table} from "@/components";
 import {renderTableAsset} from "@/components/tabel/RenderAsset.tsx";
-import {saveAsset, useDeleteAsset, useDeleteEquipment, useGetEquipment, useOrderItem, usePostEquipment} from "@/hooks";
-import {getTableHeaders, openModal} from "@/util";
+import {saveAsset, useDeleteAsset, useEquipment, useOrderItem,} from "@/hooks";
+import {capitalize, getTableHeaders, openModal} from "@/util";
 import {Equipment} from "@/types";
 import {useState} from "react";
 import {useLocation} from "react-router-dom";
 
 export const AssetTable = () => {
-  const type = new URLSearchParams(useLocation().search).get("type") as string;
+  const type = capitalize(new URLSearchParams(useLocation().search).get("type") as string);
   const {orderObject, asset, saveAsset, deleteAsset, checkedItems, setCheckedItems} = useEquipmentTable();
 
   return <ScreenContainer>
@@ -40,12 +40,11 @@ export const AssetTable = () => {
 }
 
 const useEquipmentTable = () => {
-  const {equipment, setEquipment} = useGetEquipment();
-  const orderObject = useOrderItem()
+  const {equipment, setEquipment, usePostEquipment, useDeleteEquipment} = useEquipment();
   const [checkedItems, setCheckedItems] = useState<string[]>([]);
-
   const saveAssetEquipment = saveAsset(setEquipment, usePostEquipment(), equipment)
   const deleteAssetEquipment = useDeleteAsset(setEquipment, useDeleteEquipment(), equipment, checkedItems, setCheckedItems)
+  const orderObject = useOrderItem()
 
   return {
     asset: equipment,
