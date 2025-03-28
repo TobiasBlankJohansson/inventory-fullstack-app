@@ -1,6 +1,6 @@
 import {BodyContainer, CreateAsset, Navbar, renderTableHeaders, ScreenContainer, Table} from "@/components";
 import {renderTableAsset} from "@/components/tabel/RenderAsset.tsx";
-import {saveAsset, useDeleteAsset, useEquipment, useOrderItem,} from "@/hooks";
+import {saveAsset, useDeleteAsset, useEquipment, useOrderItem, useResponsible, useStorage,} from "@/hooks";
 import {capitalize, getTableHeaders, openModal} from "@/util";
 import {Equipment} from "@/types";
 import {useState} from "react";
@@ -43,7 +43,7 @@ const useEquipmentTable = (type: string) => {
   const hooksMap = {
     "Equipment": useEquipment,
     "Responsible": useResponsible,
-    "Storage Area": useStorageArea,
+    "Storage area": useStorage,
   };
 
   const hook = hooksMap[type as keyof typeof hooksMap];
