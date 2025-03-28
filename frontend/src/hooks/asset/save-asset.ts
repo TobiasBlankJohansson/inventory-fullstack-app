@@ -50,7 +50,6 @@ export const saveAsset = <T>(
     toast.success("Saved successfully");
     set((prevData) => [...prevData, asset]);
     inputName.value = "";
-    inputId.value = "";
 
     if (addAnotherOne) {
       setAddAnotherOne(() => false);

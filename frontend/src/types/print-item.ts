@@ -1,4 +1,4 @@
-import { Item } from "@/types/item.ts";
+import {Item} from "@/types/item.ts";
 
 export type PrintItem = {
   id: string;
@@ -11,6 +11,7 @@ export type PrintItem = {
 export const fromItemToPrintItem = (item: Item): PrintItem => {
   return {
     ...item,
+    id: item.equipment.id,
     equipment: item.equipment.name,
   };
 };
