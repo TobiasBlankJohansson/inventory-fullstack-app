@@ -6,15 +6,27 @@ export async function getStorageArea(): Promise<Storage[]> {
   return await fetch(BACKEND_URL + "/api/storages").then((res) => res.json());
 }
 
-export async function postStorageArea(storageArea: {
-  name: string;
-  id: string;
-}): Promise<Storage> {
+export async function postStorageArea(storage: Storage): Promise<Storage> {
   return await fetch(BACKEND_URL + "/api/storages", {
     method: "POST",
     headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({name: storageArea.name}),
+    body: JSON.stringify({name: storage.name}),
   }).then((res) => res.json());
+}
+
+export async function putStorage(storage: Storage): Promise<Storage> {
+  return fetch(BACKEND_URL + "/api/storage", {
+    method: "PUT",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(storage),
+  }).then((res) => res.json());
+}
+
+export async function deleteStorage(id: string): Promise<boolean> {
+  const response = await fetch(BACKEND_URL + "/api/storage/" + id, {
+    method: "DELETE",
+  });
+  return response.ok;
 }
 
 export const mockDataStorageArea: Storage[] = [
