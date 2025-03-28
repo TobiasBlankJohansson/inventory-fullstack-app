@@ -42,7 +42,6 @@ export const useManageData = () => {
   };
 
   const handleCreate = () => openModal("create_item");
-
   return {
     options: {equipment, responsible, storage},
     setSelectedResponsible,

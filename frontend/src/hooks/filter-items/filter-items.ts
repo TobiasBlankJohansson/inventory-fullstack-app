@@ -1,5 +1,5 @@
-import { Item } from "@/types";
-import { useMemo, useState } from "react";
+import {Item} from "@/types";
+import {useMemo, useState} from "react";
 
 export const useFilterItems = (items: Item[]) => {
   const [search, setSearch] = useState<string>("");
@@ -27,5 +27,5 @@ export const useFilterItems = (items: Item[]) => {
     });
   }, [items, search, selectedStorage, selectedResponsible]);
 
-  return { itemList, setSearch, setSelectedStorage, setSelectedResponsible };
+  return {itemList, setSearch, setSelectedStorage, setSelectedResponsible};
 };
