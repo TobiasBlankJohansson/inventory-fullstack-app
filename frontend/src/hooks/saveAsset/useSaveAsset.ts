@@ -1,14 +1,11 @@
-import {toast} from "react-toastify";
-import {UseMutationResult} from "@tanstack/react-query";
+import { toast } from "react-toastify";
+import { UseMutationResult } from "@tanstack/react-query";
 
-type Asset = {
-  name: string;
-  id?: string;
-};
+import { Asset } from "@/types";
 
 export const useSaveAsset = <T>(
   set: (updateFn: (prevData: T[]) => T[]) => void,
-  {mutateAsync}: UseMutationResult<T, Error, T, unknown>,
+  { mutateAsync }: UseMutationResult<T, Error, T, unknown>,
   data: T[]
 ) => {
   return async (
@@ -17,22 +14,21 @@ export const useSaveAsset = <T>(
     setAddAnotherOne: React.Dispatch<React.SetStateAction<boolean>>,
     event?: React.FormEvent
   ) => {
-
     const inputId: HTMLInputElement = document.getElementById(
       "input id " + formId
     ) as HTMLInputElement;
     let id: string = "";
     if (inputId != undefined) {
-      id = inputId.value
+      id = inputId.value;
 
       if (id && id.length != 6) {
-        toast.error('Id needs to be at least 6 numbers long');
+        toast.error("Id needs to be at least 6 numbers long");
         event?.preventDefault();
         return;
       }
 
-      if (id && data.some(item => (item as Asset).id === id)) {
-        toast.error(formId + ' already exists with that id');
+      if (id && data.some((item) => (item as Asset).id === id)) {
+        toast.error(formId + " already exists with that id");
         event?.preventDefault();
         return;
       }
@@ -43,13 +39,13 @@ export const useSaveAsset = <T>(
     ) as HTMLInputElement;
     const name = inputName.value;
 
-    if (data.some(item => (item as Asset).name === name)) {
-      toast.error(formId + ' already exists with that name');
+    if (data.some((item) => (item as Asset).name === name)) {
+      toast.error(formId + " already exists with that name");
       event?.preventDefault();
       return;
     }
 
-    const asset = await mutateAsync({name, id} as T);
+    const asset = await mutateAsync({ name, id } as T);
     if (!asset) {
       toast.error("Wasn't saved, please try again");
       event?.preventDefault();
@@ -64,5 +60,5 @@ export const useSaveAsset = <T>(
       event?.preventDefault();
       setAddAnotherOne(() => false);
     }
-  }
-}
+  };
+};

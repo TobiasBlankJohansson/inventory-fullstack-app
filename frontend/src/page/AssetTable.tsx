@@ -59,21 +59,20 @@ const useEquipmentTable = () => {
   }
 }
 
-const useDeleteAsset = (
-  setEquipment: (updateFn: (prevData: Equipment[]) => Equipment[]) => void,
+const useDeleteAsset = <T, >(
+  setEquipment: (updateFn: (prevData: T[]) => T[]) => void,
   {mutateAsync}: UseMutationResult<boolean, Error, string, unknown>,
-  equipment: Equipment[],
+  asset: T[],
   checkedItems: string[],
   setCheckedItems: React.Dispatch<React.SetStateAction<string[]>>
 ) => {
   return async () => {
-    const prevEquipment = [...equipment];
-    const updatedEquipment = equipment.filter(e => !checkedItems.includes(e.id));
+    const prevEquipment = [...asset];
+    const updatedEquipment = asset.filter(e => !checkedItems.includes(e.id));
     setEquipment(() => updatedEquipment);
     setCheckedItems([]);
     try {
       await Promise.all(checkedItems.map(id => mutateAsync(id)));
-      throw new Error;
       toast.success("Deleted successfully!");
     } catch {
       setEquipment(() => prevEquipment);
