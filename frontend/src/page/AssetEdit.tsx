@@ -2,9 +2,8 @@ import {BodyContainer, EditItemForm, FormField, Navbar, ScreenContainer} from "@
 import {FORM_FIELDS_ASSET} from "@/constants.ts";
 import {useLocation} from "react-router-dom";
 import {FormFieldItem} from "@/types";
-import {useEditAsset, useEquipment, useResponsible, useStorage} from "@/hooks";
-import {useState} from "react";
 import {capitalize} from "@/util";
+import {useAssetData} from "@/hooks/page-data/asset-data";
 
 export const AssetEdit = () => {
   const id = new URLSearchParams(useLocation().search).get("id") as string;
@@ -42,24 +41,3 @@ export const AssetEdit = () => {
     </ScreenContainer>
   )
 }
-
-export const useAssetData = (id: string, type: string) => {
-  const hooksMap = {
-    Equipment: useEquipment,
-    Responsible: useResponsible,
-    Storage: useStorage,
-  };
-
-  const hook = hooksMap[type as keyof typeof hooksMap];
-  const {asset: assetList, setAsset, usePost, useDelete} = hook();
-  const [edit, setEdit] = useState(false);
-  const {
-    asset,
-    onSubmit,
-    onDelete
-  } = useEditAsset(id, assetList, setAsset, setEdit, usePost(), useDelete());
-
-  return {
-    asset, edit, setEdit, onSubmit, onDelete
-  };
-};
