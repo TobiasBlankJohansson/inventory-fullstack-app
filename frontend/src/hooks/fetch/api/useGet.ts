@@ -14,7 +14,9 @@ export const useGet = <T>(
   } = useQuery<T[], Error>({
     queryKey: [queryKey],
     queryFn: queryFn,
-    staleTime: 5000,
+    staleTime: Infinity,
+    retry: 3,
+    retryDelay: 5000
   });
 
   const set = (updateFn: (prevData: T[]) => T[]) => {
