@@ -9,10 +9,10 @@ export const useEquipment = () => {
   return {
     asset: equipment,
     setAsset: setEquipment,
-    useGetEquipment,
-    usePostEquipment,
-    useDeleteEquipment,
-    usePutEquipment
+    useGet: useGetEquipment,
+    usePost: usePostEquipment,
+    useDelete: useDeleteEquipment,
+    usePut: usePutEquipment
   }
 }
 

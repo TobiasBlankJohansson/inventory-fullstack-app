@@ -48,10 +48,10 @@ const useEquipmentTable = (type: string) => {
 
   const hook = hooksMap[type as keyof typeof hooksMap];
 
-  const {asset, setAsset, usePostEquipment, useDeleteEquipment} = hook();
+  const {asset, setAsset, usePost, useDelete} = hook();
   const [checkedItems, setCheckedItems] = useState<string[]>([]);
-  const saveAssetEquipment = saveAsset(setAsset, usePostEquipment(), asset)
-  const deleteAssetEquipment = useDeleteAsset(setAsset, useDeleteEquipment(), asset, checkedItems, setCheckedItems)
+  const saveAssetEquipment = saveAsset(setAsset, usePost(), asset)
+  const deleteAssetEquipment = useDeleteAsset(setAsset, useDelete(), asset, checkedItems, setCheckedItems)
   const orderObject = useOrderItem()
 
   return {
