@@ -44,13 +44,13 @@ export function InventoryManage() {
           </FullHeightButton>
           <ThreeGridContainer>
             <FullHeightButton onClick={() => openModal("Equipment")}>
-              Add Equipment
+              Equipment
             </FullHeightButton>
             <FullHeightButton onClick={() => openModal("Storage area")}>
-              Add Storage
+              Storage
             </FullHeightButton>
             <FullHeightButton onClick={() => openModal("Responsible")}>
-              Add Responsible
+              Responsible
             </FullHeightButton>
           </ThreeGridContainer>
         </ThreeGridContainer>
