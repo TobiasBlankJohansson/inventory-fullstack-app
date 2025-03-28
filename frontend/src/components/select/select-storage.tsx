@@ -1,9 +1,9 @@
 type inputSelect = {
   setSelected: React.Dispatch<React.SetStateAction<string[]>>;
-  storageArea: string[];
+  storage: string[];
 };
 
-export function SelectStorage({ setSelected, storageArea }: inputSelect) {
+export function SelectStorage({ setSelected, storage }: inputSelect) {
   return (
     <div className="h-10">
       <select
@@ -11,7 +11,7 @@ export function SelectStorage({ setSelected, storageArea }: inputSelect) {
         onChange={(e) => setSelected([e.target.value])}
       >
         <option key={"storage_all"}>{"All"}</option>
-        {storageArea.map((storage) => (
+        {storage.map((storage) => (
           <option key={"storage_" + storage}>{storage}</option>
         ))}
       </select>

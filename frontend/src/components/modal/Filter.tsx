@@ -2,14 +2,14 @@ import { SelectableList } from "../storage_area";
 
 type Prop = {
   setStorage: React.Dispatch<React.SetStateAction<string[]>>;
-  storageArea: string[];
+  storage: string[];
   setResponsible: React.Dispatch<React.SetStateAction<string[]>>;
   responsible: string[];
 };
 
 export const Filter = ({
   setStorage,
-  storageArea,
+  storage,
   setResponsible,
   responsible,
 }: Prop) => {
@@ -17,10 +17,10 @@ export const Filter = ({
     <dialog id="filter" className="modal">
       <div className="modal-box">
         <h3 className="font-bold text-lg">Filter</h3>
-        <p className="mt-2">Storage area</p>
+        <p className="mt-2">Storage</p>
         <SelectableList
           setSelected={setStorage}
-          list={storageArea}
+          list={storage}
         ></SelectableList>
         <p className="mt-5">Responsible</p>
         <SelectableList

@@ -1,5 +1,5 @@
-import {FormEvent, useState} from "react";
-import {FORM_FIELDS_ITEM} from "@/constants.ts";
+import { FormEvent, useState } from "react";
+import { FORM_FIELDS_ITEM } from "@/constants.ts";
 import {
   Equipment,
   FormFieldItem,
@@ -10,27 +10,30 @@ import {
   storageFromList,
   toItemFromFormField,
 } from "@/types";
-import {usePostItem} from "@/hooks";
-import {toast} from "react-toastify";
-import {postItemDto} from "@/api/InventoryFetch.ts";
+import { usePostItem } from "@/hooks";
+import { toast } from "react-toastify";
+import { postItemDto } from "@/api/InventoryFetch.ts";
 
 export const useCreateItem = (
   setItems: (updateFn: (prevItems: Item[]) => Item[]) => void,
   Items: Item[],
   options: {
     equipment: Equipment[];
-    storageArea: Storage[];
+    storage: Storage[];
     responsible: Responsible[];
   }
 ) => {
   const [addAnotherOne, setAddAnotherOne] = useState(false);
-  const {mutateAsync} = usePostItem();
+  const { mutateAsync } = usePostItem();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const formField = Object.fromEntries(
-      FORM_FIELDS_ITEM.map(({key}) => [key, formData.get(`form_field_${key}`)])
+      FORM_FIELDS_ITEM.map(({ key }) => [
+        key,
+        formData.get(`form_field_${key}`),
+      ])
     ) as FormFieldItem;
 
     if (parseInt(formField.quantity) < 1 || formField.quantity.includes(".")) {
@@ -55,8 +58,7 @@ export const useCreateItem = (
       amount: newItem.quantity,
       responsibleId:
         responsibleFromList(newItem.responsible, options.responsible)?.id ?? "",
-      storageId:
-        storageFromList(newItem.storageArea, options.storageArea)?.id ?? "",
+      storageId: storageFromList(newItem.storage, options.storage)?.id ?? "",
     };
 
     const item = await mutateAsync(itemDto);
@@ -83,5 +85,5 @@ export const useCreateItem = (
     setItems(() => updatedItems);
   };
 
-  return {handleSubmit, setAddAnotherOne};
+  return { handleSubmit, setAddAnotherOne };
 };

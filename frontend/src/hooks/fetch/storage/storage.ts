@@ -1,33 +1,33 @@
-import {getStorageArea, postStorageArea} from "@/api/StorageFetch";
+import { getStorage, postStorage } from "@/api/StorageFetch";
 
-import {useMutation} from "@tanstack/react-query";
-import {deleteStorage, putStorage} from "@/api/StorageFetch.ts";
-import {useGet} from "@/hooks";
+import { useMutation } from "@tanstack/react-query";
+import { deleteStorage, putStorage } from "@/api/StorageFetch.ts";
+import { useGet } from "@/hooks";
 
-const queryKey = "storageArea";
+const queryKey = "storage";
 
 export const useStorage = () => {
-  const {storageArea, setStorageArea} = useGetStorage();
+  const { storage, setStorage } = useGetStorage();
   return {
-    asset: storageArea,
-    setAsset: setStorageArea,
+    asset: storage,
+    setAsset: setStorage,
     useGet: useGetStorage,
     usePost: usePostStorage,
     useDelete: useDeleteStorage,
-    usePut: usePutStorage
-  }
-}
+    usePut: usePutStorage,
+  };
+};
 
 export const useGetStorage = () => {
-  const {data: storageArea, set: setStorageArea} = useGet(getStorageArea, queryKey);
-  return {storageArea, setStorageArea};
+  const { data: storage, set: setStorage } = useGet(getStorage, queryKey);
+  return { storage, setStorage };
 };
 
 export const usePostStorage = () => {
   return useMutation({
-    mutationFn: postStorageArea,
+    mutationFn: postStorage,
   });
-}
+};
 
 export const useDeleteStorage = () => {
   return useMutation({

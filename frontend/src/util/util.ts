@@ -21,7 +21,7 @@ export const consolidateInventory = (items: Item[]): Item[] => {
       totals[item.equipment.id] = {
         ...item,
         quantity: "0",
-        storageArea: "",
+        storage: "",
         responsible: "Total",
       };
     }
@@ -42,13 +42,13 @@ type Option = {
 export const option = (
   label: string,
   options: {
-    storageArea: Option[];
+    storage: Option[];
     equipment: Option[];
     responsible: Option[];
   }
 ) => {
   if (label === "Storage Area") {
-    return options.storageArea.map((storage) => storage.name);
+    return options.storage.map((storage) => storage.name);
   }
   if (label === "Equipment") {
     return options.equipment.map((equipment) => equipment.name);

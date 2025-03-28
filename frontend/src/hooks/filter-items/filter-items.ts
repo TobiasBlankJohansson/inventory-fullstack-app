@@ -16,7 +16,7 @@ export const useFilterItems = (items: Item[]) => {
         selectedStorage.length === 0 ||
         selectedStorage
           .map((s) => s.toLowerCase())
-          .includes(item.storageArea.toLowerCase());
+          .includes(item.storage.toLowerCase());
 
       const matchesResponsible =
         selectedResponsible.length === 0 ||

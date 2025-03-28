@@ -12,14 +12,14 @@ import {
   Table,
   ThreeGridContainer,
 } from "@/components";
-import {useManageData} from "@/hooks";
-import {getTableHeaders, openModal} from "@/util";
+import { useManageData } from "@/hooks";
+import { getTableHeaders, openModal } from "@/util";
 
 export function InventoryManage() {
   const {
     itemList,
     checkedItems,
-    storageArea,
+    storage,
     options,
     setItems,
     setSearch,
@@ -46,7 +46,7 @@ export function InventoryManage() {
             <FullHeightButton onClick={() => openModal("Equipment")}>
               Equipment
             </FullHeightButton>
-            <FullHeightButton onClick={() => openModal("Storage area")}>
+            <FullHeightButton onClick={() => openModal("Storage")}>
               Storage
             </FullHeightButton>
             <FullHeightButton onClick={() => openModal("Responsible")}>
@@ -59,7 +59,8 @@ export function InventoryManage() {
             getTableHeaders(itemList),
             setOrder,
             order,
-            true, "item",
+            true,
+            "item",
             checkedItems,
             handleDelete,
             handleCreate
@@ -72,10 +73,10 @@ export function InventoryManage() {
           )}
         ></Table>
       </BodyContainer>
-      <CreateItem setItems={setItems} items={itemList} options={options}/>
+      <CreateItem setItems={setItems} items={itemList} options={options} />
       <Filter
         setStorage={setSelectedStorage}
-        storageArea={storageArea.map((storage) => storage.name)}
+        storage={storage.map((storage) => storage.name)}
         setResponsible={setSelectedResponsible}
         responsible={responsible.map((responsible) => responsible.name)}
       ></Filter>
@@ -87,7 +88,7 @@ export function InventoryManage() {
       ></CreateAsset>
       <CreateAsset
         saveAsset={saveAsset.saveAssetStorage}
-        dialogName={"Storage area"}
+        dialogName={"Storage"}
         useTable={true}
       ></CreateAsset>
       <CreateAsset

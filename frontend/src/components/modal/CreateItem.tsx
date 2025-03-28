@@ -9,7 +9,7 @@ type Props = {
   items: Item[];
   options: {
     equipment: Equipment[];
-    storageArea: Storage[];
+    storage: Storage[];
     responsible: Responsible[];
   };
 };

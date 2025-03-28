@@ -10,19 +10,20 @@ import {
   Search,
   Table,
 } from "@/components";
-import {useDashboardData} from "@/hooks";
-import {getTableHeaders, openModal} from "@/util";
-import {ThreeGridContainer} from "@/components/container/ThreeGridContainer.tsx";
+import { useDashboardData } from "@/hooks";
+import { getTableHeaders, openModal } from "@/util";
+import { ThreeGridContainer } from "@/components/container/ThreeGridContainer.tsx";
 
 export function Dashboard() {
   const {
     setSearch,
     itemList,
     setSelectedResponsible,
-    storageArea,
+    storage,
     setSelectedStorage,
     responsible,
-    setOrder, order
+    setOrder,
+    order,
   } = useDashboardData();
 
   return (
@@ -37,13 +38,17 @@ export function Dashboard() {
           <Print itemList={itemList}></Print>
         </ThreeGridContainer>
         <Table
-          renderHeadersInTable={renderTableHeaders(getTableHeaders(itemList), setOrder, order)}
+          renderHeadersInTable={renderTableHeaders(
+            getTableHeaders(itemList),
+            setOrder,
+            order
+          )}
           renderItemInTable={renderTableItems(itemList)}
         ></Table>
       </BodyContainer>
       <Filter
         setStorage={setSelectedStorage}
-        storageArea={storageArea.map((storage) => storage.name)}
+        storage={storage.map((storage) => storage.name)}
         responsible={responsible.map((responsible) => responsible.name)}
         setResponsible={setSelectedResponsible}
       ></Filter>
