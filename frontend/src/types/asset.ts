@@ -1,4 +1,4 @@
 export type Asset = {
-  id?: string;
+  id: string;
   name: string;
 };

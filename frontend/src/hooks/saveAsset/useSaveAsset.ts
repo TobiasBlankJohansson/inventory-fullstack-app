@@ -1,11 +1,10 @@
-import { toast } from "react-toastify";
-import { UseMutationResult } from "@tanstack/react-query";
-
-import { Asset } from "@/types";
+import {toast} from "react-toastify";
+import {UseMutationResult} from "@tanstack/react-query";
+import {Asset} from "@/types";
 
 export const useSaveAsset = <T>(
   set: (updateFn: (prevData: T[]) => T[]) => void,
-  { mutateAsync }: UseMutationResult<T, Error, T, unknown>,
+  {mutateAsync}: UseMutationResult<T, Error, T, unknown>,
   data: T[]
 ) => {
   return async (
@@ -45,7 +44,7 @@ export const useSaveAsset = <T>(
       return;
     }
 
-    const asset = await mutateAsync({ name, id } as T);
+    const asset = await mutateAsync({name, id} as T);
     if (!asset) {
       toast.error("Wasn't saved, please try again");
       event?.preventDefault();

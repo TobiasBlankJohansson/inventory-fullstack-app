@@ -2,7 +2,7 @@ import {BodyContainer, CreateAsset, Navbar, renderTableHeaders, ScreenContainer,
 import {renderTableAsset} from "@/components/tabel/RenderAsset.tsx";
 import {useDeleteEquipment, useGetEquipment, useOrderItem, usePostEquipment, useSaveAsset} from "@/hooks";
 import {getTableHeaders, openModal} from "@/util";
-import {Equipment} from "@/types";
+import {Asset, Equipment} from "@/types";
 import {useState} from "react";
 import {useLocation} from "react-router-dom";
 import {UseMutationResult} from "@tanstack/react-query";
@@ -59,23 +59,23 @@ const useEquipmentTable = () => {
   }
 }
 
-const useDeleteAsset = <T, >(
-  setEquipment: (updateFn: (prevData: T[]) => T[]) => void,
+const useDeleteAsset = <T extends Asset>(
+  setAsset: (updateFn: (prevData: T[]) => T[]) => void,
   {mutateAsync}: UseMutationResult<boolean, Error, string, unknown>,
   asset: T[],
   checkedItems: string[],
   setCheckedItems: React.Dispatch<React.SetStateAction<string[]>>
 ) => {
   return async () => {
-    const prevEquipment = [...asset];
-    const updatedEquipment = asset.filter(e => !checkedItems.includes(e.id));
-    setEquipment(() => updatedEquipment);
+    const prevAsset = [...asset];
+    const updatedAsset = asset.filter(e => !checkedItems.includes(e.id));
+    setAsset(() => updatedAsset);
     setCheckedItems([]);
     try {
       await Promise.all(checkedItems.map(id => mutateAsync(id)));
       toast.success("Deleted successfully!");
     } catch {
-      setEquipment(() => prevEquipment);
+      setAsset(() => prevAsset);
       setCheckedItems(() => checkedItems);
       toast.error("Something went wrong, please try again");
     }
