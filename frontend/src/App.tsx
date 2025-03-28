@@ -1,5 +1,5 @@
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {Asset, AssetTable, Dashboard, InventoryManage} from "@/page";
+import {AssetEdit, AssetTable, Dashboard, InventoryManage} from "@/page";
 import {ScreenProvider} from "./components";
 import {ItemEditor} from "./page";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
@@ -16,7 +16,7 @@ function App() {
             <Route path="/" element={<Dashboard/>}/>
             <Route path="/manage" element={<InventoryManage/>}/>
             <Route path="/item-editor" element={<ItemEditor/>}/>
-            <Route path="/asset/*" element={<Asset/>}/>
+            <Route path="/asset" element={<AssetEdit/>}/>
             <Route path="/table" element={<AssetTable/>}/>
           </Routes>
           <ToastContainer
