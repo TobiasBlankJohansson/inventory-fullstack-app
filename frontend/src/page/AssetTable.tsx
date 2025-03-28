@@ -8,7 +8,7 @@ import {useLocation} from "react-router-dom";
 
 export const AssetTable = () => {
   const type = capitalize(new URLSearchParams(useLocation().search).get("type") as string);
-  const {orderObject, asset, saveAsset, deleteAsset, checkedItems, setCheckedItems} = useEquipmentTable();
+  const {orderObject, asset, saveAsset, deleteAsset, checkedItems, setCheckedItems} = useEquipmentTable(type);
 
   return <ScreenContainer>
     <Navbar currentPageName="item"></Navbar>
@@ -39,15 +39,23 @@ export const AssetTable = () => {
   </ScreenContainer>
 }
 
-const useEquipmentTable = () => {
-  const {equipment, setEquipment, usePostEquipment, useDeleteEquipment} = useEquipment();
+const useEquipmentTable = (type: string) => {
+  const hooksMap = {
+    "Equipment": useEquipment,
+    "Responsible": useResponsible,
+    "Storage Area": useStorageArea,
+  };
+
+  const hook = hooksMap[type as keyof typeof hooksMap];
+
+  const {asset, setAsset, usePostEquipment, useDeleteEquipment} = hook();
   const [checkedItems, setCheckedItems] = useState<string[]>([]);
-  const saveAssetEquipment = saveAsset(setEquipment, usePostEquipment(), equipment)
-  const deleteAssetEquipment = useDeleteAsset(setEquipment, useDeleteEquipment(), equipment, checkedItems, setCheckedItems)
+  const saveAssetEquipment = saveAsset(setAsset, usePostEquipment(), asset)
+  const deleteAssetEquipment = useDeleteAsset(setAsset, useDeleteEquipment(), asset, checkedItems, setCheckedItems)
   const orderObject = useOrderItem()
 
   return {
-    asset: equipment,
+    asset,
     orderObject,
     saveAsset: saveAssetEquipment,
     deleteAsset: deleteAssetEquipment,

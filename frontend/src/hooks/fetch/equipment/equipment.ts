@@ -6,7 +6,14 @@ const queryKey = "equipment";
 
 export const useEquipment = () => {
   const {equipment, setEquipment} = useGetEquipment();
-  return {equipment, setEquipment, useGetEquipment, usePostEquipment, useDeleteEquipment, usePutEquipment}
+  return {
+    asset: equipment,
+    setAsset: setEquipment,
+    useGetEquipment,
+    usePostEquipment,
+    useDeleteEquipment,
+    usePutEquipment
+  }
 }
 
 export const useGetEquipment = () => {
