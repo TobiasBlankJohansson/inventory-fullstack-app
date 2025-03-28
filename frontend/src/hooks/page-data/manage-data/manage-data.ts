@@ -1,5 +1,6 @@
 import {useState} from "react";
 import {
+  saveAsset,
   useFilterItems,
   useGetEquipment,
   useGetItems,
@@ -9,7 +10,6 @@ import {
   usePostEquipment,
   usePostResponsible,
   usePostStorage,
-  useSaveAsset,
 } from "@/hooks";
 import {consolidateInventory, openModal} from "@/util";
 import {Item} from "@/types";
@@ -26,9 +26,9 @@ export const useManageData = () => {
     consolidateInventory(items)
   );
 
-  const saveAssetStorage = useSaveAsset(setStorageArea, usePostStorage(), storageArea)
-  const saveAssetEquipment = useSaveAsset(setEquipment, usePostEquipment(), equipment)
-  const saveAssetResponsible = useSaveAsset(setResponsible, usePostResponsible(), responsible)
+  const saveAssetStorage = saveAsset(setStorageArea, usePostStorage(), storageArea)
+  const saveAssetEquipment = saveAsset(setEquipment, usePostEquipment(), equipment)
+  const saveAssetResponsible = saveAsset(setResponsible, usePostResponsible(), responsible)
 
   const handleDelete = () => {
     setItems((prev) => prev.filter((item) => !checkedItems.includes(item.id)));

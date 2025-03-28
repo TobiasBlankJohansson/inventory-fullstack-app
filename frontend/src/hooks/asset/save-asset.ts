@@ -2,7 +2,7 @@ import {toast} from "react-toastify";
 import {UseMutationResult} from "@tanstack/react-query";
 import {Asset} from "@/types";
 
-export const useSaveAsset = <T>(
+export const saveAsset = <T>(
   set: (updateFn: (prevData: T[]) => T[]) => void,
   {mutateAsync}: UseMutationResult<T, Error, T, unknown>,
   data: T[]
