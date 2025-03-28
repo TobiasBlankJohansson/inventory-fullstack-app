@@ -12,8 +12,8 @@ import {
   Table,
   ThreeGridContainer,
 } from "@/components";
-import { useManageData } from "@/hooks";
-import { getTableHeaders, openModal } from "@/util";
+import {useManageData} from "@/hooks";
+import {getTableHeaders, openModal} from "@/util";
 
 export function InventoryManage() {
   const {
@@ -33,6 +33,7 @@ export function InventoryManage() {
     setOrder,
     order,
   } = useManageData();
+
   return (
     <ScreenContainer>
       <Navbar currentPage={1} currentPageName="Inventory Manage"></Navbar>
@@ -73,7 +74,7 @@ export function InventoryManage() {
           )}
         ></Table>
       </BodyContainer>
-      <CreateItem setItems={setItems} items={itemList} options={options} />
+      <CreateItem setItems={setItems} items={itemList} options={options}/>
       <Filter
         setStorage={setSelectedStorage}
         storage={storage.map((storage) => storage.name)}

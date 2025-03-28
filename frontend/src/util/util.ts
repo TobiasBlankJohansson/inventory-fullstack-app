@@ -1,4 +1,4 @@
-import { Item } from "@/types";
+import {Item} from "@/types";
 
 export const getItemKeys = <T extends object>(item: T): (keyof T)[] => {
   return Object.entries(item).map(([key]) => key as keyof T);
@@ -47,7 +47,7 @@ export const option = (
     responsible: Option[];
   }
 ) => {
-  if (label === "Storage Area") {
+  if (label === "Storage") {
     return options.storage.map((storage) => storage.name);
   }
   if (label === "Equipment") {
