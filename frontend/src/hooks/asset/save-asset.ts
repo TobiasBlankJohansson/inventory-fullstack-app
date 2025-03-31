@@ -21,8 +21,8 @@ export const saveAsset = <T>(
     if (inputId != undefined) {
       id = inputId.value;
 
-      if (id && id.length != 6) {
-        toast.error("Id needs to be at least 6 numbers long");
+      if (id && id.length != 4) {
+        toast.error("Id needs to be at least 4 numbers long");
         return;
       }
 
