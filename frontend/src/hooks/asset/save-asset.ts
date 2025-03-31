@@ -49,6 +49,9 @@ export const saveAsset = <T>(
     }
     toast.success("Saved successfully");
     set((prevData) => [...prevData, asset]);
+    if (inputId != undefined) {
+      inputId.value = String(parseInt(id) + 1);
+    }
     inputName.value = "";
 
     if (addAnotherOne) {
