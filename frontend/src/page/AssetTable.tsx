@@ -16,6 +16,7 @@ export const AssetTable = () => {
     deleteAsset,
     checkedItems,
     setCheckedItems,
+    useId
   } = useAssetTable(type);
 
   return (
@@ -45,7 +46,7 @@ export const AssetTable = () => {
       <CreateAsset
         saveAsset={saveAsset}
         dialogName={type}
-        useId={true}
+        useId={useId}
       ></CreateAsset>
     </ScreenContainer>
   );

@@ -21,6 +21,7 @@ export const useAssetTable = (type: string) => {
     setCheckedItems
   );
   const orderObject = useOrderItem();
+  const useId = type == "Equipment";
 
   return {
     asset,
@@ -29,5 +30,6 @@ export const useAssetTable = (type: string) => {
     deleteAsset: deleteAssetEquipment,
     checkedItems,
     setCheckedItems,
+    useId
   };
 };
