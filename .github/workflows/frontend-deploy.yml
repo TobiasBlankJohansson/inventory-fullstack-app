@@ -22,7 +22,7 @@ jobs:
       - name: Build and Push Frontend
         run: |
           cd frontend
-          docker build --build-arg VITE_BACKEND_URL="${{ secrets.VITE_BACKEND_URL }}" -t ghcr.io/tobiasblankjohansson/inventory-fullstack-app-frontend:latest .
+          docker build --build-arg VITE_CLIENT_ID_AUTH="${{ secrets.VITE_CLIENT_ID_AUTH }}" VITE_DOMAIN_AUTH="${{ secrets.VITE_DOMAIN_AUTH }}" VITE_BACKEND_URL="${{ secrets.VITE_BACKEND_URL }}" -t ghcr.io/tobiasblankjohansson/inventory-fullstack-app-frontend:latest .
           docker push ghcr.io/tobiasblankjohansson/inventory-fullstack-app-frontend:latest
       - name: Trigger Coolify Deploy
         run: |
