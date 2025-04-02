@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {Button} from "../button";
 import {useNavigate} from "react-router-dom";
+import {categories} from "@/constants.ts";
 
 type Props = {
   saveAsset: (formId: string,
@@ -15,6 +16,7 @@ type Props = {
 export function CreateAsset({saveAsset, dialogName, useId, useTable}: Props) {
   const [addAnotherOne, setAddAnotherOne] = useState<boolean>(false);
   const navigate = useNavigate();
+  const [isFocused, setIsFocused] = useState(false);
 
   return (
     <dialog id={dialogName} className="modal">
@@ -31,13 +33,30 @@ export function CreateAsset({saveAsset, dialogName, useId, useTable}: Props) {
               <div className="label">
                   <span className="label-text ">{dialogName} id</span>
               </div>
-              <input
-                  id={"input id " + dialogName}
-                  type="number"
-                  placeholder="Type here"
-                  className="input input-bordered w-full max-w-xs"
-                  required
-              />
+              <div className="flex">
+                  <select
+                      key={"select id " + dialogName}
+                      name={"select id " + dialogName}
+                      onFocus={() => setIsFocused(true)}
+                      onBlur={() => setIsFocused(false)}
+                      className={`select select-bordered w-fit focus:w-full`}
+                      required
+                  >
+                    {categories.map((option: categories) => (
+                      <option key={option.name} value={option.id}>
+                        {isFocused ? `${option.id} - ${option.name}` : option.id}
+                      </option>
+                    ))}
+                  </select>
+
+                  <input
+                      id={"input id " + dialogName}
+                      type="number"
+                      placeholder="Type here"
+                      className="input input-bordered w-full max-w-xs"
+                      required
+                  />
+              </div>
           </label>}
           <label
             className="form-control w-full max-w-xs">
