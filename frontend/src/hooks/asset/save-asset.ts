@@ -13,13 +13,17 @@ export const saveAsset = <T>(
     setAddAnotherOne: React.Dispatch<React.SetStateAction<boolean>>,
     event?: React.FormEvent
   ) => {
+    event?.preventDefault();
     const inputId: HTMLInputElement = document.getElementById(
       "input id " + formId
     ) as HTMLInputElement;
-    event?.preventDefault();
+
     let id: string = "";
     if (inputId != undefined) {
-      id = inputId.value;
+      const selectId: HTMLInputElement = document.getElementById(
+        "select id " + formId
+      ) as HTMLInputElement;
+      id = selectId.value + inputId.value;
 
       if (id && id.length != 4) {
         toast.error("Id needs to be at least 4 numbers long");
@@ -50,7 +54,7 @@ export const saveAsset = <T>(
     toast.success("Saved successfully");
     set((prevData) => [...prevData, asset]);
     if (inputId != undefined) {
-      inputId.value = String(parseInt(id) + 1);
+      inputId.value = String(parseInt(id) + 1).slice(1);
     }
     inputName.value = "";
 

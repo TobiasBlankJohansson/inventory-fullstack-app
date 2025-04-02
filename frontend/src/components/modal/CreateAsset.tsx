@@ -35,6 +35,7 @@ export function CreateAsset({saveAsset, dialogName, useId, useTable}: Props) {
               </div>
               <div className="flex">
                   <select
+                      id={"select id " + dialogName}
                       key={"select id " + dialogName}
                       name={"select id " + dialogName}
                       onFocus={() => setIsFocused(true)}
@@ -48,9 +49,9 @@ export function CreateAsset({saveAsset, dialogName, useId, useTable}: Props) {
                       </option>
                     ))}
                   </select>
-
                   <input
                       id={"input id " + dialogName}
+                      key={"input id " + dialogName}
                       type="number"
                       placeholder="Type here"
                       className="input input-bordered w-full max-w-xs"
