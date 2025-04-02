@@ -15,6 +15,8 @@ createRoot(document.getElementById("root")!).render(
       redirect_uri: REDIRECT_URI,
       connection: "google-oauth2"
     }}
+    cacheLocation="localstorage"
+    useRefreshTokens={true}
   >
     <App/>
   </Auth0Provider>
