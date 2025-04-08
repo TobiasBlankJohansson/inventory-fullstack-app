@@ -1,5 +1,6 @@
-export const ThreeGridContainer = ({children}: { children?: React.ReactNode }) => {
-  return <section className="h-10 grid grid-cols-3 gap-2">
+export const ThreeGridContainer = ({children, className}:
+                                   { children?: React.ReactNode, className?: string }) => {
+  return <section className={`h-10 grid grid-cols-3 gap-2 ${className}`}>
     {children}
   </section>
 }

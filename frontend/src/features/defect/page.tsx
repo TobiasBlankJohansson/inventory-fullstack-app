@@ -1,4 +1,6 @@
-import {BodyContainer, Navbar, ScreenContainer, ThreeGridContainer} from "@/components";
+import {BodyContainer, Navbar, renderTableHeaders, ScreenContainer, Table, ThreeGridContainer} from "@/components";
+import {DefectTableItem, renderTableDefect} from "@/features/defect/components";
+import {getTableHeaders} from "@/util";
 
 export type Defect = {
   id: string;
@@ -10,24 +12,26 @@ export type Defect = {
   defect: string;
 }
 
-type DefactTableItem = {
-  date: string;
-  item: string;
-  status: string;
+export const DefectReport = () => {
+  const tableItems = convertToDefectTableItems(defects);
+  return <ScreenContainer>
+    <Navbar currentPageName={"Defect Report"} currentPage={3}/>
+    <BodyContainer>
+      <ThreeGridContainer className={"h-full pb-5"}>
+        <Table renderHeadersInTable={renderTableHeaders(getTableHeaders(tableItems))}
+               renderItemInTable={renderTableDefect(tableItems)}/>
+      </ThreeGridContainer>
+    </BodyContainer>
+  </ScreenContainer>
+
 }
 
-export const DefectReport = () => {
-
-  return <>
-    <ScreenContainer>
-      <Navbar currentPageName={"Defect Report"} currentPage={3}/>
-      <BodyContainer>
-        <ThreeGridContainer>
-
-        </ThreeGridContainer>
-      </BodyContainer>
-    </ScreenContainer>
-  </>
+function convertToDefectTableItems(defects: Defect[]): DefectTableItem[] {
+  return defects.map(defect => ({
+    id: defect.id,
+    date: defect.date,
+    item: defect.item
+  }));
 }
 
 const defects: Defect[] = [
