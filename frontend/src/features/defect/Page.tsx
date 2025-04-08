@@ -1,5 +1,6 @@
 import {BodyContainer, Navbar, ScreenContainer} from "@/components";
 import {DefectTable} from "@/features/defect/components/DefectTable.tsx";
+import {useState} from "react";
 
 export type DefectTableItem = {
   id: string;
@@ -18,13 +19,15 @@ export type Defect = {
 }
 
 export const DefectReport = () => {
+  const [defects, setDefects] = useState<Defect[]>(defectsMock);
   const sortedDefects = sortDefectsByStatus(defects);
   return <ScreenContainer>
     <Navbar currentPageName={"Defect Report"} currentPage={3}/>
     <BodyContainer>
-      <DefectTable registeredItems={convertToDefectTableItems(sortedDefects["Registered"])}
-                   processingItems={convertToDefectTableItems(sortedDefects["Processing"])}
-                   finalizedItems={convertToDefectTableItems(sortedDefects["Finalized"])}></DefectTable>
+      <DefectTable registeredItems={sortedDefects["Registered"]}
+                   processingItems={sortedDefects["Processing"]}
+                   finalizedItems={sortedDefects["Finalized"]}
+                   setDefects={setDefects}></DefectTable>
     </BodyContainer>
   </ScreenContainer>
 
@@ -42,15 +45,7 @@ function sortDefectsByStatus(defects: Defect[]) {
   }, {} as Record<string, Defect[]>);
 }
 
-function convertToDefectTableItems(defects: Defect[]): DefectTableItem[] {
-  return defects.map(defect => ({
-    id: defect.id,
-    date: defect.date,
-    item: defect.item
-  }));
-}
-
-const defects: Defect[] = [
+const defectsMock: Defect[] = [
   {
     id: "1",
     responsible: "John Doe",

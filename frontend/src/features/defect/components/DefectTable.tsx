@@ -1,18 +1,16 @@
-export type DefectTableItem = {
-  id: string;
-  date: string;
-  item: string;
-}
+import {Defect} from "@/features";
 
 interface DefectTableProps {
-  registeredItems: DefectTableItem[];
-  processingItems: DefectTableItem[];
-  finalizedItems: DefectTableItem[];
+  registeredItems: Defect[];
+  processingItems: Defect[];
+  finalizedItems: Defect[];
+  setDefects: (defects: Defect[]) => void;
 }
 
 export const DefectTable: React.FC<DefectTableProps> = ({registeredItems, processingItems, finalizedItems}) => {
+
   return (
-    <div className="flex gap-5 h-full">
+    <div className="flex flex-col md:flex-row gap-5 h-full">
       <div className="bg-white rounded-md shadow w-full">
         <h2 className="text-white bg-primary py-2 px-4 rounded-t-md text-left text-sm font-medium">Registered</h2>
         <div className="overflow-x-auto">
@@ -30,7 +28,8 @@ export const DefectTable: React.FC<DefectTableProps> = ({registeredItems, proces
                 <td>{item.item}</td>
                 <td>{item.date}</td>
                 <td className={"text-center"}>
-                  <button className="btn btn-xs h-7 bg-button_secondary hover:bg-button_secondary_hover">
+                  <button className="btn btn-xs h-7 bg-button_secondary hover:bg-button_secondary_hover"
+                          onClick={() => item.status = "processing"}>
                     <span className={"text-white"}>→</span>
                   </button>
                 </td>
