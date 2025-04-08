@@ -1,5 +1,5 @@
 import {BodyContainer, Navbar, ScreenContainer} from "@/components";
-import {DefectTable} from "@/features/defect/components/defectTable.tsx";
+import {DefectTable} from "@/features/defect/components/DefectTable.tsx";
 
 export type DefectTableItem = {
   id: string;

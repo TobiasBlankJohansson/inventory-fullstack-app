@@ -1,1 +1,1 @@
-export * from "./TableRender.tsx"
+export * from "./DefectTable.tsx"
