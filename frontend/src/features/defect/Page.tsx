@@ -1,6 +1,7 @@
 import {BodyContainer, Navbar, ScreenContainer} from "@/components";
 import {DefectTable} from "@/features/defect/components/DefectTable.tsx";
 import {useState} from "react";
+import {Status} from "@/features";
 
 export type DefectTableItem = {
   id: string;
@@ -24,9 +25,9 @@ export const DefectReport = () => {
   return <ScreenContainer>
     <Navbar currentPageName={"Defect Report"} currentPage={3}/>
     <BodyContainer>
-      <DefectTable registeredItems={sortedDefects["Registered"]}
-                   processingItems={sortedDefects["Processing"]}
-                   finalizedItems={sortedDefects["Finalized"]}
+      <DefectTable registeredItems={sortedDefects[Status.Registered]}
+                   processingItems={sortedDefects[Status.Processing]}
+                   finalizedItems={sortedDefects[Status.Finalized]}
                    setDefects={setDefects}></DefectTable>
     </BodyContainer>
   </ScreenContainer>

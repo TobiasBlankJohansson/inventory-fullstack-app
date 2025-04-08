@@ -1,4 +1,4 @@
-import {Defect} from "@/features";
+import {Defect, Status} from "@/features";
 
 interface DefectTableProps {
   registeredItems: Defect[];
@@ -9,11 +9,11 @@ interface DefectTableProps {
 
 export const DefectTable =
   ({registeredItems, processingItems, finalizedItems, setDefects}: DefectTableProps) => {
-    console.log("DefectTable", registeredItems);
     return (
       <div className="flex flex-col md:flex-row gap-5 h-full">
         <div className="bg-white rounded-md shadow w-full">
-          <h2 className="text-white bg-primary py-2 px-4 rounded-t-md text-left text-sm font-medium">Registered</h2>
+          <h2
+            className="text-white bg-primary py-2 px-4 rounded-t-md text-left text-sm font-medium">{Status.Registered}</h2>
           <div className="overflow-x-auto">
             <table className="table table-zebra table-pin-rows w-full">
               <thead>
@@ -33,7 +33,7 @@ export const DefectTable =
                             onClick={() => {
                               setDefects(prev =>
                                 prev.map(def =>
-                                  def.id === item.id ? {...def, status: "Processing"} : def
+                                  def.id === item.id ? {...def, status: Status.Processing} : def
                                 ))
                             }}>
                       <span className={"text-white"}>→</span>
@@ -47,7 +47,8 @@ export const DefectTable =
         </div>
 
         <div className="bg-white rounded-md shadow w-full">
-          <h2 className="text-white bg-primary py-2 px-4 rounded-t-md text-left text-sm font-medium">Processing</h2>
+          <h2
+            className="text-white bg-primary py-2 px-4 rounded-t-md text-left text-sm font-medium">{Status.Processing}</h2>
           <div className="overflow-x-auto">
             <table className="table table-zebra w-full">
               <thead>
@@ -68,7 +69,7 @@ export const DefectTable =
                               onClick={() => {
                                 setDefects(prev =>
                                   prev.map(def =>
-                                    def.id === item.id ? {...def, status: "Registered"} : def
+                                    def.id === item.id ? {...def, status: Status.Registered} : def
                                   ))
                               }}>
                         <span className={"text-white"}>←</span>
@@ -77,7 +78,7 @@ export const DefectTable =
                               onClick={() => {
                                 setDefects(prev =>
                                   prev.map(def =>
-                                    def.id === item.id ? {...def, status: "Finalized"} : def
+                                    def.id === item.id ? {...def, status: Status.Finalized} : def
                                   ))
                               }}>
                         <span className={"text-white"}>→</span>
