@@ -58,16 +58,28 @@ export const DefectTable =
               </tr>
               </thead>
               <tbody>
-              {processingItems.map((item) => (
+              {processingItems && processingItems.map((item) => (
                 <tr key={item.id}>
                   <td>{item.item}</td>
                   <td>{item.date}</td>
                   <td>
                     <div className="flex justify-center gap-2">
-                      <button className="btn btn-xs h-7 bg-button_primary hover:bg-button_primary_hover">
+                      <button className="btn btn-xs h-7 bg-button_primary hover:bg-button_primary_hover"
+                              onClick={() => {
+                                setDefects(prev =>
+                                  prev.map(def =>
+                                    def.id === item.id ? {...def, status: "Registered"} : def
+                                  ))
+                              }}>
                         <span className={"text-white"}>←</span>
                       </button>
-                      <button className="btn btn-xs h-7 bg-button_secondary hover:bg-button_secondary_hover">
+                      <button className="btn btn-xs h-7 bg-button_secondary hover:bg-button_secondary_hover"
+                              onClick={() => {
+                                setDefects(prev =>
+                                  prev.map(def =>
+                                    def.id === item.id ? {...def, status: "Finalized"} : def
+                                  ))
+                              }}>
                         <span className={"text-white"}>→</span>
                       </button>
                     </div>
