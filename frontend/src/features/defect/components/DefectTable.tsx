@@ -103,12 +103,16 @@ export const DefectTable =
               </tr>
               </thead>
               <tbody>
-              {finalizedItems.map((item) => (
+              {finalizedItems && finalizedItems.map((item) => (
                 <tr key={item.id}>
                   <td>{item.item}</td>
                   <td>{item.date}</td>
                   <td className={"text-center"}>
-                    <button className="btn btn-xs my-0.5 text-button_warning hover:bg-button_warning btn-outline">
+                    <button className="btn btn-xs my-0.5 text-button_warning hover:bg-button_warning btn-outline"
+                            onClick={() => {
+                              setDefects(prev =>
+                                prev.filter(def => def.id != item.id))
+                            }}>
                       Delete
                     </button>
                   </td>
