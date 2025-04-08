@@ -1,6 +1,11 @@
-import {BodyContainer, Navbar, renderTableHeaders, ScreenContainer, Table, ThreeGridContainer} from "@/components";
-import {DefectTableItem, renderTableDefect} from "@/features/defect/components";
-import {getTableHeaders} from "@/util";
+import {BodyContainer, Navbar, ScreenContainer} from "@/components";
+import {DefectTable} from "@/features/defect/components/defectTable.tsx";
+
+export type DefectTableItem = {
+  id: string;
+  date: string;
+  item: string;
+}
 
 export type Defect = {
   id: string;
@@ -13,17 +18,28 @@ export type Defect = {
 }
 
 export const DefectReport = () => {
-  const tableItems = convertToDefectTableItems(defects);
+  const sortedDefects = sortDefectsByStatus(defects);
   return <ScreenContainer>
     <Navbar currentPageName={"Defect Report"} currentPage={3}/>
     <BodyContainer>
-      <ThreeGridContainer className={"h-full pb-5"}>
-        <Table renderHeadersInTable={renderTableHeaders(getTableHeaders(tableItems))}
-               renderItemInTable={renderTableDefect(tableItems)}/>
-      </ThreeGridContainer>
+      <DefectTable registeredItems={convertToDefectTableItems(sortedDefects["Registered"])}
+                   processingItems={convertToDefectTableItems(sortedDefects["Processing"])}
+                   finalizedItems={convertToDefectTableItems(sortedDefects["Finalized"])}></DefectTable>
     </BodyContainer>
   </ScreenContainer>
 
+}
+
+function sortDefectsByStatus(defects: Defect[]) {
+  return defects.reduce((result, defect) => {
+    if (!result[defect.status]) {
+      result[defect.status] = [];
+    }
+
+    result[defect.status].push(defect);
+
+    return result;
+  }, {} as Record<string, Defect[]>);
 }
 
 function convertToDefectTableItems(defects: Defect[]): DefectTableItem[] {
