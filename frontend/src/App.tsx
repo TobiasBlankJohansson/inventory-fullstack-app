@@ -6,6 +6,7 @@ import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {Bounce, ToastContainer} from "react-toastify";
 import {useAuth0} from "@auth0/auth0-react";
 import LoginPage from "@/page/LoginPage.tsx";
+import {DefectReport} from "@/features";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="/item-editor" element={<ItemEditor/>}/>
           <Route path="/asset" element={<AssetEdit/>}/>
           <Route path="/table" element={<AssetTable/>}/>
+          <Route path="/defect" element={<DefectReport/>}/>
         </Routes>
         <ToastContainer
           position="top-center"
