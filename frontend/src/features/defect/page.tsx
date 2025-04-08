@@ -12,3 +12,14 @@ export const DefectReport = () => {
     </ScreenContainer>
   </>
 }
+
+
+export type Defect = {
+  id: string;
+  responsible: string;
+  date: string;
+  filed: string;
+  item: string;
+  status: string;
+  defect: string;
+}
