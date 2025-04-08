@@ -12,12 +12,13 @@ export const DefectTable =
     return (
       <div className="flex flex-col md:flex-row gap-5 h-full">
         <div className="bg-white rounded-md shadow w-full">
-          <h2
-            className="text-white bg-primary py-2 px-4 rounded-t-md text-left text-sm font-medium">{Status.Registered}</h2>
-          <div className="overflow-x-auto">
-            <table className="table table-zebra table-pin-rows w-full">
+
+          <div className="overflow-x-auto h-full">
+            <h2
+              className="text-white bg-primary py-2 px-4 rounded-t-md text-left text-sm font-medium">{Status.Registered}</h2>
+            <table className="table table-zebra table-pin-rows">
               <thead>
-              <tr className="bg-transparent">
+              <tr className="">
                 <th>Equipment</th>
                 <th>Date</th>
                 <th className={"text-center"}>Action</th>
@@ -47,9 +48,9 @@ export const DefectTable =
         </div>
 
         <div className="bg-white rounded-md shadow w-full">
-          <h2
-            className="text-white bg-primary py-2 px-4 rounded-t-md text-left text-sm font-medium">{Status.Processing}</h2>
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto h-full">
+            <h2
+              className="text-white bg-primary py-2 px-4 rounded-t-md text-left text-sm font-medium">{Status.Processing}</h2>
             <table className="table table-zebra w-full">
               <thead>
               <tr className="bg-transparent">
@@ -93,8 +94,8 @@ export const DefectTable =
         </div>
 
         <div className="bg-white rounded-md shadow w-full">
-          <h2 className="text-white bg-primary py-2 px-4 rounded-t-md text-left text-sm font-medium">Finalized</h2>
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto h-full">
+            <h2 className="text-white bg-primary py-2 px-4 rounded-t-md text-left text-sm font-medium">Finalized</h2>
             <table className="table table-zebra w-full">
               <thead>
               <tr className="bg-transparent">
