@@ -2,7 +2,8 @@ import {Defect, Status} from "@/features";
 import {Link} from "react-router-dom";
 import {Button} from "@/components";
 import {openModal} from "@/util";
-import {usePutDefect} from "@/features/defect/hooks/Defect.ts";
+import {useDeleteDefect, usePutDefect} from "@/features/defect/hooks/Defect.ts";
+import {toast} from "react-toastify";
 
 interface DefectTableProps {
   registeredItems: Defect[];
@@ -11,19 +12,26 @@ interface DefectTableProps {
   setDefects: (defects: (prev: Defect[]) => Defect[]) => void;
 }
 
-
 export const DefectTable =
   ({registeredItems, processingItems, finalizedItems, setDefects}: DefectTableProps) => {
-    const {mutateAsync} = usePutDefect();
-    console.log(processingItems);
+    const {mutateAsync: putDefect} = usePutDefect();
+    const {mutateAsync: deleteDefect} = useDeleteDefect()
 
     const handelStatus = async (item: Defect, status: typeof Status[keyof typeof Status]) => {
-      const updatedItem = await mutateAsync({...item, status});
+      const updatedItem = await putDefect({...item, status});
       setDefects(prev =>
         prev.map(def => (def.id === updatedItem.id ? updatedItem : def))
       );
     };
 
+    const handelDelete = async (item: Defect) => {
+      const deleted = await deleteDefect(item.id);
+      if (!deleted) {
+        toast.error("Defect report failed to delete");
+        return;
+      }
+      setDefects(prev => prev.filter(def => def.id !== item.id));
+    }
 
     return (
       <div className="flex flex-col md:flex-row gap-5 h-full mt-2">
@@ -119,10 +127,7 @@ export const DefectTable =
                   <td>{item.date}</td>
                   <td className={"text-center"}>
                     <button className="btn btn-xs my-0.5 text-button_warning hover:bg-button_warning btn-outline"
-                            onClick={() => {
-                              setDefects(prev =>
-                                prev.filter(def => def.id != item.id))
-                            }}>
+                            onClick={() => handelDelete(item)}>
                       Delete
                     </button>
                   </td>
