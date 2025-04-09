@@ -18,6 +18,7 @@ export async function postDefect(defect: Defect): Promise<Defect> {
 }
 
 export async function putDefect(defect: Defect): Promise<Defect> {
+  return defect;
   return fetch(BACKEND_URL + "/api/defects", {
     method: "PUT",
     headers: {"Content-Type": "application/json"},

@@ -2,6 +2,7 @@ import {Defect, Status} from "@/features";
 import {Link} from "react-router-dom";
 import {Button} from "@/components";
 import {openModal} from "@/util";
+import {usePutDefect} from "@/features/defect/hooks/Defect.ts";
 
 interface DefectTableProps {
   registeredItems: Defect[];
@@ -10,13 +11,25 @@ interface DefectTableProps {
   setDefects: (defects: (prev: Defect[]) => Defect[]) => void;
 }
 
+
 export const DefectTable =
   ({registeredItems, processingItems, finalizedItems, setDefects}: DefectTableProps) => {
+    const {mutateAsync} = usePutDefect();
+    console.log(processingItems);
+
+    const handelStatus = async (item: Defect, status: typeof Status[keyof typeof Status]) => {
+      const updatedItem = await mutateAsync({...item, status});
+      setDefects(prev =>
+        prev.map(def => (def.id === updatedItem.id ? updatedItem : def))
+      );
+    };
+
+
     return (
       <div className="flex flex-col md:flex-row gap-5 h-full mt-2">
         <section className="bg-white rounded-md shadow w-full">
           <div className="overflow-x-auto h-full">
-            <div className="bg-primary rounded-t-md flex justify-between items-center">
+            <header className="bg-primary rounded-t-md flex justify-between items-center">
               <h2
                 className="text-white py-2 px-4 text-left text-sm font-medium">{Status.Registered}</h2>
               <Button
@@ -25,7 +38,7 @@ export const DefectTable =
                 onClick={() => openModal("defect_report_modal")}>
                 Create Report
               </Button>
-            </div>
+            </header>
             <table className="table table-zebra table-pin-rows">
               <thead>
               <tr className="">
@@ -41,12 +54,7 @@ export const DefectTable =
                   <td>{item.date}</td>
                   <td className={"text-center"}>
                     <button className="btn btn-xs h-7 bg-button_secondary hover:bg-button_secondary_hover"
-                            onClick={() => {
-                              setDefects(prev =>
-                                prev.map(def =>
-                                  def.id === item.id ? {...def, status: Status.Processing} : def
-                                ))
-                            }}>
+                            onClick={() => handelStatus(item, Status.Processing)}>
                       <span className={"text-white"}>→</span>
                     </button>
                   </td>
@@ -77,21 +85,11 @@ export const DefectTable =
                   <td>
                     <div className="flex justify-center gap-2">
                       <button className="btn btn-xs h-7 bg-button_primary hover:bg-button_primary_hover"
-                              onClick={() => {
-                                setDefects(prev =>
-                                  prev.map(def =>
-                                    def.id === item.id ? {...def, status: Status.Registered} : def
-                                  ))
-                              }}>
+                              onClick={() => handelStatus(item, Status.Registered)}>
                         <span className={"text-white"}>←</span>
                       </button>
                       <button className="btn btn-xs h-7 bg-button_secondary hover:bg-button_secondary_hover"
-                              onClick={() => {
-                                setDefects(prev =>
-                                  prev.map(def =>
-                                    def.id === item.id ? {...def, status: Status.Finalized} : def
-                                  ))
-                              }}>
+                              onClick={() => handelStatus(item, Status.Finalized)}>
                         <span className={"text-white"}>→</span>
                       </button>
                     </div>

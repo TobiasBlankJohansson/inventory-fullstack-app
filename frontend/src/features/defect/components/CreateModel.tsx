@@ -64,7 +64,7 @@ export const DefectReportModal = () => {
           </h3>
 
           <form method="dialog" onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
+            <section className="grid grid-cols-2 gap-4">
               <div>
                 <label htmlFor="responsible" className="block text-sm font-medium text-gray-700">
                   Responsible
@@ -96,9 +96,9 @@ export const DefectReportModal = () => {
                   onChange={(e) => setDefectReport(prev => ({...prev, date: e.target.value}))}
                 />
               </div>
-            </div>
+            </section>
 
-            <div className="grid grid-cols-2 gap-4">
+            <section className="grid grid-cols-2 gap-4">
               <div>
                 <label htmlFor="filed" className="block text-sm font-medium text-gray-700">
                   Filed by
@@ -130,7 +130,7 @@ export const DefectReportModal = () => {
                   ))}
                 </select>
               </div>
-            </div>
+            </section>
 
             <div>
               <label htmlFor="defect" className="block text-sm font-medium text-gray-700">
