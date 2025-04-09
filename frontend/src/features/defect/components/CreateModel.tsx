@@ -75,7 +75,7 @@ export const DefectReportModal = () => {
                   value={defectReport.responsible}
                   onChange={(e) => setDefectReport(prev => ({...prev, responsible: e.target.value}))}
                 >
-                  <option value="" disabled selected>
+                  <option value="" disabled>
                     Value
                   </option>
                   {responsible.map((responsible) => (
@@ -122,7 +122,7 @@ export const DefectReportModal = () => {
                   value={defectReport.equipment}
                   onChange={(e) => setDefectReport(prev => ({...prev, equipment: e.target.value}))}
                 >
-                  <option value="" disabled selected>
+                  <option value="" disabled>
                     Value
                   </option>
                   {equipment.map((equipment) => (
