@@ -116,13 +116,19 @@ export const DefectReportModal = () => {
               Deficiency : e.g "Spirit Burner, Deficiency"
             </p>
 
-            <div className="modal-action justify-end">
+            <div className="modal-action justify-between">
               <button type="button" className="btn" onClick={handleCloseModal}>
                 Cancel
               </button>
-              <button type="submit" className="btn bg-button_secondary text-white hover:bg-button_secondary_hover">
-                Create
-              </button>
+              <div>
+                <button type="button" className="btn bg-button_primary text-white hover:bg-button_primary_hover mr-2">
+                  Create another one
+                </button>
+                <button type="submit" className="btn bg-button_secondary text-white hover:bg-button_secondary_hover">
+                  Create
+                </button>
+              </div>
+
             </div>
           </form>
         </div>
