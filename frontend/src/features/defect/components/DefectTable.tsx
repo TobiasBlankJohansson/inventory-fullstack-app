@@ -1,5 +1,6 @@
 import {Defect, Status} from "@/features";
 import {Link} from "react-router-dom";
+import {Button} from "@/components";
 
 interface DefectTableProps {
   registeredItems: Defect[];
@@ -11,11 +12,18 @@ interface DefectTableProps {
 export const DefectTable =
   ({registeredItems, processingItems, finalizedItems, setDefects}: DefectTableProps) => {
     return (
-      <div className="flex flex-col md:flex-row gap-5 h-full">
-        <div className="bg-white rounded-md shadow w-full">
+      <div className="flex flex-col md:flex-row gap-5 h-full mt-2">
+        <section className="bg-white rounded-md shadow w-full">
           <div className="overflow-x-auto h-full">
-            <h2
-              className="text-white bg-primary py-2 px-4 rounded-t-md text-left text-sm font-medium">{Status.Registered}</h2>
+            <div className="bg-primary rounded-t-md flex justify-between items-center">
+              <h2
+                className="text-white py-2 px-4 text-left text-sm font-medium">{Status.Registered}</h2>
+              <Button
+                className={"flex justify-center px-5 w-fit mr-4 btn-xs text-white " +
+                  "bg-button_success border-button_success hover:bg-button_success_hover hover:border-button_success"}>
+                Create Report
+              </Button>
+            </div>
             <table className="table table-zebra table-pin-rows">
               <thead>
               <tr className="">
@@ -45,9 +53,9 @@ export const DefectTable =
               </tbody>
             </table>
           </div>
-        </div>
+        </section>
 
-        <div className="bg-white rounded-md shadow w-full">
+        <section className="bg-white rounded-md shadow w-full">
           <div className="overflow-x-auto h-full">
             <h2
               className="text-white bg-primary py-2 px-4 rounded-t-md text-left text-sm font-medium">{Status.Processing}</h2>
@@ -91,9 +99,9 @@ export const DefectTable =
               </tbody>
             </table>
           </div>
-        </div>
+        </section>
 
-        <div className="bg-white rounded-md shadow w-full">
+        <section className="bg-white rounded-md shadow w-full">
           <div className="overflow-x-auto h-full">
             <h2 className="text-white bg-primary py-2 px-4 rounded-t-md text-left text-sm font-medium">Finalized</h2>
             <table className="table table-zebra w-full">
@@ -123,7 +131,7 @@ export const DefectTable =
               </tbody>
             </table>
           </div>
-        </div>
+        </section>
 
       </div>
     );
