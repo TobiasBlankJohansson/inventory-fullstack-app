@@ -8,6 +8,8 @@ export async function getDefect(): Promise<Defect[]> {
 }
 
 export async function postDefect(defect: Defect): Promise<Defect> {
+  defect.id = defect.equipment + defect.filed;
+  return defect;
   return await fetch(BACKEND_URL + "/api/defects", {
     method: "POST",
     headers: {"Content-Type": "application/json"},

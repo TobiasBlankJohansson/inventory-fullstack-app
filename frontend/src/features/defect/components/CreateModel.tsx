@@ -1,6 +1,8 @@
 import {useState} from "react";
-import {Defect} from "@/features";
+import {Defect, Status} from "@/features";
 import {useEquipment, useResponsible} from "@/hooks";
+import {useGetDefect, usePostDefect} from "@/features/defect/hooks/Defect.ts";
+import {toast} from "react-toastify";
 
 export const DefectReportModal = () => {
   const [defectReport, setDefectReport] = useState<Defect>({
@@ -14,6 +16,8 @@ export const DefectReportModal = () => {
   });
   const {asset: responsible} = useResponsible();
   const {asset: equipment} = useEquipment();
+  const {mutateAsync} = usePostDefect()
+  const {setDefect} = useGetDefect()
 
   const handleCloseModal = () => {
     const modal = document.getElementById('defect_report_modal') as HTMLDialogElement | null;
@@ -22,8 +26,28 @@ export const DefectReportModal = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log(defectReport);
+    const requiredFields: (keyof Defect)[] = ["defect", "date", "equipment", "filed", "responsible"];
+    const isEmptyField = requiredFields.some(field => defectReport[field] === "");
+    if (isEmptyField) {
+      toast.error("All fields need to be filled");
+      return;
+    }
+
+    defectReport.status = Status.Registered;
+    const defect = await mutateAsync(defectReport);
+    setDefect(prevData => [...prevData, defect]);
+    setDefectReport({
+      id: "",
+      defect: "",
+      status: "",
+      date: "",
+      equipment: "",
+      filed: "",
+      responsible: ""
+    })
     console.log(defectReport);
     handleCloseModal();
   };
@@ -48,7 +72,7 @@ export const DefectReportModal = () => {
                   value={defectReport.responsible}
                   onChange={(e) => setDefectReport(prev => ({...prev, responsible: e.target.value}))}
                 >
-                  <option disabled selected>
+                  <option value="" disabled selected>
                     Value
                   </option>
                   {responsible.map((responsible) => (
@@ -95,7 +119,7 @@ export const DefectReportModal = () => {
                   value={defectReport.equipment}
                   onChange={(e) => setDefectReport(prev => ({...prev, equipment: e.target.value}))}
                 >
-                  <option disabled selected>
+                  <option value="" disabled selected>
                     Value
                   </option>
                   {equipment.map((equipment) => (
