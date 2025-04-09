@@ -1,11 +1,16 @@
 import {useState} from "react";
+import {Defect} from "@/features";
 
 export const DefectReportModal = () => {
-  const [responsible, setResponsible] = useState('');
-  const [date, setDate] = useState('');
-  const [filedBy, setFiledBy] = useState('');
-  const [equipment, setEquipment] = useState('');
-  const [defectDeficiency, setDefectDeficiency] = useState('');
+  const [defectReport, setDefectReport] = useState<Defect>({
+    id: "",
+    defect: "",
+    status: "",
+    date: "",
+    equipment: "",
+    filed: "",
+    responsible: ""
+  });
 
   const handleCloseModal = () => {
     const modal = document.getElementById('defect_report_modal') as HTMLDialogElement | null;
@@ -16,7 +21,7 @@ export const DefectReportModal = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({responsible, date, filedBy, equipment, defectDeficiency});
+    console.log(defectReport);
     handleCloseModal();
   };
 
@@ -37,8 +42,8 @@ export const DefectReportModal = () => {
                 <select
                   id="responsible"
                   className="select select-bordered w-full max-w-xs mt-1"
-                  value={responsible}
-                  onChange={(e) => setResponsible(e.target.value)}
+                  value={defectReport.responsible}
+                  onChange={(e) => setDefectReport(prev => ({...prev, responsible: e.target.value}))}
                 >
                   <option disabled selected>
                     Value
@@ -57,8 +62,8 @@ export const DefectReportModal = () => {
                   id="date"
                   placeholder="Value"
                   className="input input-bordered w-full max-w-xs mt-1"
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
+                  value={defectReport.date}
+                  onChange={(e) => setDefectReport(prev => ({...prev, date: e.target.value}))}
                 />
               </div>
             </div>
@@ -73,8 +78,8 @@ export const DefectReportModal = () => {
                   id="filedBy"
                   placeholder="Value"
                   className="input input-bordered w-full max-w-xs mt-1"
-                  value={filedBy}
-                  onChange={(e) => setFiledBy(e.target.value)}
+                  value={defectReport.filed}
+                  onChange={(e) => setDefectReport(prev => ({...prev, filed: e.target.value}))}
                 />
               </div>
               <div>
@@ -84,8 +89,8 @@ export const DefectReportModal = () => {
                 <select
                   id="equipment"
                   className="select select-bordered w-full max-w-xs mt-1"
-                  value={equipment}
-                  onChange={(e) => setEquipment(e.target.value)}
+                  value={defectReport.equipment}
+                  onChange={(e) => setDefectReport(prev => ({...prev, equipment: e.target.value}))}
                 >
                   <option disabled selected>
                     Value
@@ -98,15 +103,15 @@ export const DefectReportModal = () => {
             </div>
 
             <div>
-              <label htmlFor="defectDeficiency" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="defect" className="block text-sm font-medium text-gray-700">
                 Defect, deficiency
               </label>
               <textarea
-                id="defectDeficiency"
+                id="defect"
                 placeholder="Value"
                 className="textarea textarea-bordered w-full mt-1 resize-none"
-                value={defectDeficiency}
-                onChange={(e) => setDefectDeficiency(e.target.value)}
+                value={defectReport.defect}
+                onChange={(e) => setDefectReport(prev => ({...prev, defect: e.target.value}))}
               />
             </div>
 

@@ -37,7 +37,7 @@ export const DefectTable =
               <tbody>
               {registeredItems && registeredItems.map((item) => (
                 <tr key={item.id}>
-                  <td><Link to={`/defect/${item.id}`} className="link text-info">{item.item}</Link></td>
+                  <td><Link to={`/defect/${item.id}`} className="link text-info">{item.equipment}</Link></td>
                   <td>{item.date}</td>
                   <td className={"text-center"}>
                     <button className="btn btn-xs h-7 bg-button_secondary hover:bg-button_secondary_hover"
@@ -72,7 +72,7 @@ export const DefectTable =
               <tbody>
               {processingItems && processingItems.map((item) => (
                 <tr key={item.id}>
-                  <td><Link to={`/defect/${item.id}`} className="link text-info">{item.item}</Link></td>
+                  <td><Link to={`/defect/${item.id}`} className="link text-info">{item.equipment}</Link></td>
                   <td>{item.date}</td>
                   <td>
                     <div className="flex justify-center gap-2">
@@ -117,7 +117,7 @@ export const DefectTable =
               <tbody>
               {finalizedItems && finalizedItems.map((item) => (
                 <tr key={item.id}>
-                  <td><Link to={`/defect/${item.id}`} className="link text-info">{item.item}</Link></td>
+                  <td><Link to={`/defect/${item.id}`} className="link text-info">{item.equipment}</Link></td>
                   <td>{item.date}</td>
                   <td className={"text-center"}>
                     <button className="btn btn-xs my-0.5 text-button_warning hover:bg-button_warning btn-outline"

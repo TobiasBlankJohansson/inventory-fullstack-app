@@ -9,7 +9,7 @@ export type Defect = {
   responsible: string;
   date: string;
   filed: string;
-  item: string;
+  equipment: string;
   status: string;
   defect: string;
 }
@@ -35,7 +35,7 @@ const defectsMock: Defect[] = [
     responsible: "John Doe",
     date: "2025-04-01",
     filed: "2025-04-01",
-    item: "Axe",
+    equipment: "Axe",
     status: "Registered",
     defect: "Broken"
   },
@@ -44,7 +44,7 @@ const defectsMock: Defect[] = [
     responsible: "Jane Smith",
     date: "2025-04-02",
     filed: "2025-04-02",
-    item: "Spirit Burner",
+    equipment: "Spirit Burner",
     status: "Processing",
     defect: "Missing"
   },
@@ -53,7 +53,7 @@ const defectsMock: Defect[] = [
     responsible: "Emily Johnson",
     date: "2025-04-03",
     filed: "2025-04-03",
-    item: "Hammer",
+    equipment: "Hammer",
     status: "Finalized",
     defect: "Cracked"
   },
@@ -62,7 +62,7 @@ const defectsMock: Defect[] = [
     responsible: "Michael Brown",
     date: "2025-04-04",
     filed: "2025-04-04",
-    item: "Screwdriver",
+    equipment: "Screwdriver",
     status: "Registered",
     defect: "Worn out"
   },
@@ -71,7 +71,7 @@ const defectsMock: Defect[] = [
     responsible: "Sarah Wilson",
     date: "2025-04-05",
     filed: "2025-04-05",
-    item: "Drill",
+    equipment: "Drill",
     status: "Processing",
     defect: "Defective motor"
   },
@@ -80,7 +80,7 @@ const defectsMock: Defect[] = [
     responsible: "David Clark",
     date: "2025-04-06",
     filed: "2025-04-06",
-    item: "Wrench",
+    equipment: "Wrench",
     status: "Registered",
     defect: "Rusty"
   },
@@ -89,7 +89,7 @@ const defectsMock: Defect[] = [
     responsible: "Laura Green",
     date: "2025-04-07",
     filed: "2025-04-07",
-    item: "Plunger",
+    equipment: "Plunger",
     status: "Finalized",
     defect: "Cracked handle"
   },
@@ -98,7 +98,7 @@ const defectsMock: Defect[] = [
     responsible: "Chris Adams",
     date: "2025-04-08",
     filed: "2025-04-08",
-    item: "Chainsaw",
+    equipment: "Chainsaw",
     status: "Processing",
     defect: "Fuel leakage"
   },
@@ -107,7 +107,7 @@ const defectsMock: Defect[] = [
     responsible: "Olivia Taylor",
     date: "2025-04-09",
     filed: "2025-04-09",
-    item: "Shovel",
+    equipment: "Shovel",
     status: "Registered",
     defect: "Bent"
   },
@@ -116,7 +116,7 @@ const defectsMock: Defect[] = [
     responsible: "James Miller",
     date: "2025-04-10",
     filed: "2025-04-10",
-    item: "Drill Bit",
+    equipment: "Drill Bit",
     status: "Finalized",
     defect: "Chipped"
   },
@@ -125,7 +125,7 @@ const defectsMock: Defect[] = [
     responsible: "Sophia White",
     date: "2025-04-11",
     filed: "2025-04-11",
-    item: "Crowbar",
+    equipment: "Crowbar",
     status: "Registered",
     defect: "Warped"
   },
@@ -134,7 +134,7 @@ const defectsMock: Defect[] = [
     responsible: "Ethan Harris",
     date: "2025-04-12",
     filed: "2025-04-12",
-    item: "Pry Bar",
+    equipment: "Pry Bar",
     status: "Processing",
     defect: "Bent"
   },
@@ -143,7 +143,7 @@ const defectsMock: Defect[] = [
     responsible: "Mia King",
     date: "2025-04-13",
     filed: "2025-04-13",
-    item: "Hacksaw",
+    equipment: "Hacksaw",
     status: "Finalized",
     defect: "Loose blade"
   },
@@ -152,7 +152,7 @@ const defectsMock: Defect[] = [
     responsible: "Alexander Scott",
     date: "2025-04-14",
     filed: "2025-04-14",
-    item: "Level",
+    equipment: "Level",
     status: "Processing",
     defect: "Bubble broken"
   },
@@ -161,7 +161,7 @@ const defectsMock: Defect[] = [
     responsible: "Grace Lewis",
     date: "2025-04-15",
     filed: "2025-04-15",
-    item: "Tape Measure",
+    equipment: "Tape Measure",
     status: "Finalized",
     defect: "Stuck mechanism"
   }
