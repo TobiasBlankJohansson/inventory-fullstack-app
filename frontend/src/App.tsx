@@ -14,7 +14,6 @@ function App() {
   const {
     isAuthenticated,
   } = useAuth0();
-  console.log(isAuthenticated);
   return isAuthenticated ? (<QueryClientProvider client={queryClient}>
     <ScreenProvider>
       <BrowserRouter>

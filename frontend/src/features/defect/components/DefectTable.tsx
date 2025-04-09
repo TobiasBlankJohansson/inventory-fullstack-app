@@ -1,6 +1,7 @@
 import {Defect, Status} from "@/features";
 import {Link} from "react-router-dom";
 import {Button} from "@/components";
+import {openModal} from "@/util";
 
 interface DefectTableProps {
   registeredItems: Defect[];
@@ -20,7 +21,8 @@ export const DefectTable =
                 className="text-white py-2 px-4 text-left text-sm font-medium">{Status.Registered}</h2>
               <Button
                 className={"flex justify-center px-5 w-fit mr-4 btn-xs text-white " +
-                  "bg-button_success border-button_success hover:bg-button_success_hover hover:border-button_success"}>
+                  "bg-button_success border-button_success hover:bg-button_success_hover hover:border-button_success"}
+                onClick={() => openModal("defect_report_modal")}>
                 Create Report
               </Button>
             </div>

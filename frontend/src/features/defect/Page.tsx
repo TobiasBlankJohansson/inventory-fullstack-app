@@ -2,6 +2,7 @@ import {BodyContainer, Navbar, ScreenContainer} from "@/components";
 import {DefectTable} from "@/features/defect/components/DefectTable.tsx";
 import {useState} from "react";
 import {sortDefectsByStatus, Status} from "@/features";
+import {DefectReportModal} from "@/features/defect/components/CreateModel.tsx";
 
 export type Defect = {
   id: string;
@@ -24,6 +25,7 @@ export const DefectReport = () => {
                    finalizedItems={sortedDefects[Status.Finalized]}
                    setDefects={setDefects}></DefectTable>
     </BodyContainer>
+    <DefectReportModal></DefectReportModal>
   </ScreenContainer>
 }
 
