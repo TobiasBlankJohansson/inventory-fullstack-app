@@ -1,4 +1,5 @@
 import {Defect, Status} from "@/features";
+import {Link} from "react-router-dom";
 
 interface DefectTableProps {
   registeredItems: Defect[];
@@ -12,7 +13,6 @@ export const DefectTable =
     return (
       <div className="flex flex-col md:flex-row gap-5 h-full">
         <div className="bg-white rounded-md shadow w-full">
-
           <div className="overflow-x-auto h-full">
             <h2
               className="text-white bg-primary py-2 px-4 rounded-t-md text-left text-sm font-medium">{Status.Registered}</h2>
@@ -27,7 +27,7 @@ export const DefectTable =
               <tbody>
               {registeredItems && registeredItems.map((item) => (
                 <tr key={item.id}>
-                  <td>{item.item}</td>
+                  <td><Link to={`/defect/${item.id}`} className="link text-info">{item.item}</Link></td>
                   <td>{item.date}</td>
                   <td className={"text-center"}>
                     <button className="btn btn-xs h-7 bg-button_secondary hover:bg-button_secondary_hover"
@@ -62,7 +62,7 @@ export const DefectTable =
               <tbody>
               {processingItems && processingItems.map((item) => (
                 <tr key={item.id}>
-                  <td>{item.item}</td>
+                  <td><Link to={`/defect/${item.id}`} className="link text-info">{item.item}</Link></td>
                   <td>{item.date}</td>
                   <td>
                     <div className="flex justify-center gap-2">
@@ -107,7 +107,7 @@ export const DefectTable =
               <tbody>
               {finalizedItems && finalizedItems.map((item) => (
                 <tr key={item.id}>
-                  <td>{item.item}</td>
+                  <td><Link to={`/defect/${item.id}`} className="link text-info">{item.item}</Link></td>
                   <td>{item.date}</td>
                   <td className={"text-center"}>
                     <button className="btn btn-xs my-0.5 text-button_warning hover:bg-button_warning btn-outline"
