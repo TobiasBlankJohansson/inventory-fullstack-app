@@ -18,6 +18,7 @@ export const DefectReportModal = () => {
   const {asset: equipment} = useEquipment();
   const {mutateAsync} = usePostDefect()
   const {setDefect} = useGetDefect()
+  const [addAnotherOne, setAddAnotherOne] = useState<boolean>(false);
 
   const handleCloseModal = () => {
     const modal = document.getElementById('defect_report_modal') as HTMLDialogElement | null;
@@ -28,7 +29,6 @@ export const DefectReportModal = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(defectReport);
     const requiredFields: (keyof Defect)[] = ["defect", "date", "equipment", "filed", "responsible"];
     const isEmptyField = requiredFields.some(field => defectReport[field] === "");
     if (isEmptyField) {
@@ -48,7 +48,10 @@ export const DefectReportModal = () => {
       filed: "",
       responsible: ""
     })
-    console.log(defectReport);
+    if (addAnotherOne) {
+      setAddAnotherOne(false);
+      return;
+    }
     handleCloseModal();
   };
 
@@ -97,12 +100,12 @@ export const DefectReportModal = () => {
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label htmlFor="filedBy" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="filed" className="block text-sm font-medium text-gray-700">
                   Filed by
                 </label>
                 <input
                   type="text"
-                  id="filedBy"
+                  id="filed"
                   placeholder="Value"
                   className="input input-bordered w-full max-w-xs mt-1"
                   value={defectReport.filed}
@@ -153,7 +156,8 @@ export const DefectReportModal = () => {
                 Cancel
               </button>
               <div>
-                <button type="submit" className="btn bg-button_primary text-white hover:bg-button_primary_hover mr-2">
+                <button type="submit" className="btn bg-button_primary text-white hover:bg-button_primary_hover mr-2"
+                        onClick={() => setAddAnotherOne(true)}>
                   Create another one
                 </button>
                 <button type="submit" className="btn bg-button_secondary text-white hover:bg-button_secondary_hover">
