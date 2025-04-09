@@ -129,7 +129,7 @@ export const DefectReportModal = () => {
                 Cancel
               </button>
               <div>
-                <button type="button" className="btn bg-button_primary text-white hover:bg-button_primary_hover mr-2">
+                <button type="submit" className="btn bg-button_primary text-white hover:bg-button_primary_hover mr-2">
                   Create another one
                 </button>
                 <button type="submit" className="btn bg-button_secondary text-white hover:bg-button_secondary_hover">
