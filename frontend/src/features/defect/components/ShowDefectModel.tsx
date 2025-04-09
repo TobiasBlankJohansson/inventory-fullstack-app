@@ -1,8 +1,8 @@
 import {Defect} from "@/features";
 
-export const ShowDefectModel = (defect: Defect) => {
+export const ShowDefectModel = ({defect}: { defect: Defect }) => {
   return (
-    <dialog id="my_modal_1" className="modal">
+    <dialog id="showDefect" className="modal">
       <div className="modal-box">
         <h3 className="font-bold text-2xl mb-8">Defect report</h3>
 
@@ -60,7 +60,8 @@ export const ShowDefectModel = (defect: Defect) => {
             <textarea
               className="textarea textarea-bordered w-full h-24"
               readOnly
-            >{defect.defect}</textarea>
+              value={defect.defect}
+            ></textarea>
           </div>
         </div>
       </div>
