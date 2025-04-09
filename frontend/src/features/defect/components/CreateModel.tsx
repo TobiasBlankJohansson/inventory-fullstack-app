@@ -1,5 +1,6 @@
 import {useState} from "react";
 import {Defect} from "@/features";
+import {useEquipment, useResponsible} from "@/hooks";
 
 export const DefectReportModal = () => {
   const [defectReport, setDefectReport] = useState<Defect>({
@@ -11,6 +12,8 @@ export const DefectReportModal = () => {
     filed: "",
     responsible: ""
   });
+  const {asset: responsible} = useResponsible();
+  const {asset: equipment} = useEquipment();
 
   const handleCloseModal = () => {
     const modal = document.getElementById('defect_report_modal') as HTMLDialogElement | null;
@@ -48,9 +51,9 @@ export const DefectReportModal = () => {
                   <option disabled selected>
                     Value
                   </option>
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                  <option>Option 3</option>
+                  {responsible.map((responsible) => (
+                    <option key={responsible.id} value={responsible.id}>{responsible.name}</option>
+                  ))}
                 </select>
               </div>
               <div>
@@ -95,9 +98,9 @@ export const DefectReportModal = () => {
                   <option disabled selected>
                     Value
                   </option>
-                  <option>Option A</option>
-                  <option>Option B</option>
-                  <option>Option C</option>
+                  {equipment.map((equipment) => (
+                    <option key={equipment.id} value={equipment.id}>{equipment.name}</option>
+                  ))}
                 </select>
               </div>
             </div>
