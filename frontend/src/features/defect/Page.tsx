@@ -1,13 +1,7 @@
 import {BodyContainer, Navbar, ScreenContainer} from "@/components";
 import {DefectTable} from "@/features/defect/components/DefectTable.tsx";
 import {useState} from "react";
-import {Status} from "@/features";
-
-export type DefectTableItem = {
-  id: string;
-  date: string;
-  item: string;
-}
+import {sortDefectsByStatus, Status} from "@/features";
 
 export type Defect = {
   id: string;
@@ -31,19 +25,6 @@ export const DefectReport = () => {
                    setDefects={setDefects}></DefectTable>
     </BodyContainer>
   </ScreenContainer>
-
-}
-
-function sortDefectsByStatus(defects: Defect[]) {
-  return defects.reduce((result, defect) => {
-    if (!result[defect.status]) {
-      result[defect.status] = [];
-    }
-
-    result[defect.status].push(defect);
-
-    return result;
-  }, {} as Record<string, Defect[]>);
 }
 
 const defectsMock: Defect[] = [
