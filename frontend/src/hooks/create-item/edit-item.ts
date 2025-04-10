@@ -8,11 +8,11 @@ import {
   storageFromList,
   toItemFromFormField,
 } from "@/types";
-import { FORM_FIELDS_ITEM } from "@/constants.ts";
-import { useNavigate } from "react-router-dom";
-import { useDeleteItem, usePutItem } from "@/hooks";
-import { toast } from "react-toastify";
-import { putItemDto } from "@/api/InventoryFetch.ts";
+import {FORM_FIELDS_ITEM} from "@/constants.ts";
+import {useNavigate} from "react-router-dom";
+import {useDeleteItem, usePutItem} from "@/hooks";
+import {toast} from "react-toastify";
+import {putItemDto} from "@/api/InventoryFetch.ts";
 
 export const useEditItem = (
   id: string,
@@ -25,8 +25,8 @@ export const useEditItem = (
 ) => {
   const item = items.find((item) => item.id === id);
   const navigate = useNavigate();
-  const { mutateAsync: mutatePut } = usePutItem();
-  const { mutateAsync: mutateDelete } = useDeleteItem();
+  const {mutateAsync: mutatePut} = usePutItem();
+  const {mutateAsync: mutateDelete} = useDeleteItem();
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -34,9 +34,9 @@ export const useEditItem = (
 
     const newItemData = toItemFromFormField(
       Object.fromEntries(
-        FORM_FIELDS_ITEM.map(({ key }) => [
+        FORM_FIELDS_ITEM.map(({key}) => [
           key,
-          new FormData(e.currentTarget).get(`item_${key}`),
+          new FormData(e.currentTarget).get(`form_field_${key}`),
         ])
       ) as FormFieldItem,
       equipments,
@@ -75,7 +75,7 @@ export const useEditItem = (
         responsibleFromList(newItemData.responsible, responsible)?.id ?? "",
       storageId: storageFromList(newItemData.storage, storage)?.id ?? "",
     };
-    console.log(itemDto);
+
     const itemData = await mutatePut(itemDto);
     if (!itemData) {
       toast.error("Error updating item, try again");
@@ -105,5 +105,5 @@ export const useEditItem = (
     navigate("/");
   };
 
-  return { onSubmit, onDelete, item };
+  return {onSubmit, onDelete, item};
 };
