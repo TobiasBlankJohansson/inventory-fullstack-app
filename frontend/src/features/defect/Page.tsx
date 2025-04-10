@@ -1,7 +1,7 @@
 import {BodyContainer, Navbar, ScreenContainer} from "@/components";
 import {DefectTable} from "@/features/defect/components/DefectTable.tsx";
 import {ShowDefectModel, sortDefectsByStatus, Status} from "@/features";
-import {DefectReportModal} from "@/features/defect/components/CreateModel.tsx";
+import {DefectReportModal} from "@/features/defect/components/CreateModal.tsx";
 import {useGetDefect} from "@/features/defect/hooks/Defect.ts";
 import {useState} from "react";
 
