@@ -4,7 +4,6 @@ import {useEquipment, useResponsible} from "@/hooks";
 import {useGetDefect, usePostDefect} from "@/features/defect/hooks/Defect.ts";
 import {toast} from "react-toastify";
 
-
 export const DefectReportModal = () => {
   const [defectReport, setDefectReport] = useState<Defect>({
     id: "",
@@ -20,7 +19,6 @@ export const DefectReportModal = () => {
   const {mutateAsync} = usePostDefect()
   const {setDefect} = useGetDefect()
   const [addAnotherOne, setAddAnotherOne] = useState<boolean>(false);
-
 
   const handleCloseModal = () => {
     const modal = document.getElementById('defect_report_modal') as HTMLDialogElement | null;
@@ -78,7 +76,7 @@ export const DefectReportModal = () => {
                   onChange={(e) => setDefectReport(prev => ({...prev, responsible: e.target.value}))}
                 >
                   <option value="" disabled>
-                    Value
+                    Select here
                   </option>
                   {responsible.map((responsible) => (
                     <option key={responsible.id} value={responsible.id}>{responsible.name}</option>
@@ -108,7 +106,7 @@ export const DefectReportModal = () => {
                 <input
                   type="text"
                   id="filed"
-                  placeholder="Value"
+                  placeholder="Type here"
                   className="input input-bordered w-full max-w-xs mt-1"
                   value={defectReport.filed}
                   onChange={(e) => setDefectReport(prev => ({...prev, filed: e.target.value}))}
@@ -125,7 +123,7 @@ export const DefectReportModal = () => {
                   onChange={(e) => setDefectReport(prev => ({...prev, equipment: e.target.value}))}
                 >
                   <option value="" disabled>
-                    Value
+                    Select here
                   </option>
                   {equipment.map((equipment) => (
                     <option key={equipment.id} value={equipment.id}>{equipment.name}</option>
@@ -140,7 +138,7 @@ export const DefectReportModal = () => {
               </label>
               <textarea
                 id="defect"
-                placeholder="Value"
+                placeholder="Type here"
                 className="textarea textarea-bordered w-full mt-1 resize-none"
                 value={defectReport.defect}
                 onChange={(e) => setDefectReport(prev => ({...prev, defect: e.target.value}))}
