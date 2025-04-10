@@ -1,6 +1,6 @@
 import {BodyContainer, Navbar, ScreenContainer} from "@/components";
 import {DefectTable} from "@/features/defect/components/DefectTable.tsx";
-import {ShowDefectModel, sortDefectsByStatus, Status} from "@/features";
+import {ShowDefectModal, sortDefectsByStatus, Status} from "@/features";
 import {DefectReportModal} from "@/features/defect/components/CreateModal.tsx";
 import {useGetDefect} from "@/features/defect/hooks/Defect.ts";
 import {useState} from "react";
@@ -39,7 +39,7 @@ export const DefectReport = () => {
       ></DefectTable>
     </BodyContainer>
     <DefectReportModal></DefectReportModal>
-    <ShowDefectModel defect={showDefect}></ShowDefectModel>
+    <ShowDefectModal defect={showDefect}></ShowDefectModal>
   </ScreenContainer>
 }
 

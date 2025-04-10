@@ -1,6 +1,6 @@
 import {Defect} from "@/features";
 
-export const ShowDefectModel = ({defect}: { defect: Defect }) => {
+export const ShowDefectModal = ({defect}: { defect: Defect }) => {
   const formatDate = (date: string | Date) =>
     new Date(date).toLocaleDateString();
 
