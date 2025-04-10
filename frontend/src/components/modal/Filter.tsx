@@ -1,4 +1,4 @@
-import { SelectableList } from "../storage_area";
+import {SelectableList} from "@/components";
 
 type Prop = {
   setStorage: React.Dispatch<React.SetStateAction<string[]>>;
@@ -8,11 +8,11 @@ type Prop = {
 };
 
 export const Filter = ({
-  setStorage,
-  storage,
-  setResponsible,
-  responsible,
-}: Prop) => {
+                         setStorage,
+                         storage,
+                         setResponsible,
+                         responsible,
+                       }: Prop) => {
   return (
     <dialog id="filter" className="modal">
       <div className="modal-box">
