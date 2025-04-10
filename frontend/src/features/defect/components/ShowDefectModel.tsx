@@ -29,7 +29,7 @@ export const ShowDefectModel = ({defect}: { defect: Defect }) => {
 
         <section className="form-control w-full mt-6">
           <label className="label">
-            <span className="label-text">Fel, brist</span>
+            <span className="label-text">Defect, deficiency</span>
           </label>
           <textarea
             className="textarea textarea-bordered w-full h-24 overflow-y-auto resize-none"
