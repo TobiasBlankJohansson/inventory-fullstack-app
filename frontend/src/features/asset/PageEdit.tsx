@@ -3,7 +3,8 @@ import {FORM_FIELDS_ASSET} from "@/constants.ts";
 import {useLocation} from "react-router-dom";
 import {FormFieldItem} from "@/types";
 import {capitalize} from "@/util";
-import {useAssetData} from "@/hooks/page-data/asset-data";
+import {useAssetData} from "@/features";
+
 
 export const AssetEdit = () => {
   const id = new URLSearchParams(useLocation().search).get("id") as string;

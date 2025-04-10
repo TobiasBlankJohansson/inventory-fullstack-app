@@ -1,13 +1,12 @@
-import { getStorage, postStorage } from "@/api/StorageFetch";
+import {deleteStorage, getStorage, postStorage, putStorage} from "@/api/StorageFetch.ts";
 
-import { useMutation } from "@tanstack/react-query";
-import { deleteStorage, putStorage } from "@/api/StorageFetch.ts";
-import { useGet } from "@/hooks";
+import {useMutation} from "@tanstack/react-query";
+import {useGet} from "@/hooks";
 
 const queryKey = "storage";
 
 export const useStorage = () => {
-  const { storage, setStorage } = useGetStorage();
+  const {storage, setStorage} = useGetStorage();
   return {
     asset: storage,
     setAsset: setStorage,
@@ -19,8 +18,8 @@ export const useStorage = () => {
 };
 
 export const useGetStorage = () => {
-  const { data: storage, set: setStorage } = useGet(getStorage, queryKey);
-  return { storage, setStorage };
+  const {data: storage, set: setStorage} = useGet(getStorage, queryKey);
+  return {storage, setStorage};
 };
 
 export const usePostStorage = () => {

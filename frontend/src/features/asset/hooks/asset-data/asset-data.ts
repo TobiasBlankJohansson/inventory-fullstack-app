@@ -1,6 +1,6 @@
-import {useEquipment, useResponsible, useStorage,} from "@/hooks";
 import {useState} from "react";
-import {useEditAsset} from "@/hooks/formfield/edit-asset-generic.ts";
+import {useEquipment, useResponsible, useStorage} from "@/features/asset/hooks/fetch";
+import {useEditAsset} from "@/hooks";
 
 export const useAssetData = (id: string, type: string) => {
   const hooksMap = {

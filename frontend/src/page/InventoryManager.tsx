@@ -1,6 +1,5 @@
 import {
   BodyContainer,
-  CreateAsset,
   CreateItem,
   Filter,
   FullHeightButton,
@@ -14,6 +13,7 @@ import {
 } from "@/components";
 import {useManageData} from "@/hooks";
 import {getTableHeaders, openModal} from "@/util";
+import {CreateAssetModal} from "@/features";
 
 export function InventoryManage() {
   const {
@@ -81,22 +81,22 @@ export function InventoryManage() {
         setResponsible={setSelectedResponsible}
         responsible={responsible.map((responsible) => responsible.name)}
       ></Filter>
-      <CreateAsset
+      <CreateAssetModal
         saveAsset={saveAsset.saveAssetEquipment}
         dialogName={"Equipment"}
         useId={true}
         useTable={true}
-      ></CreateAsset>
-      <CreateAsset
+      ></CreateAssetModal>
+      <CreateAssetModal
         saveAsset={saveAsset.saveAssetStorage}
         dialogName={"Storage"}
         useTable={true}
-      ></CreateAsset>
-      <CreateAsset
+      ></CreateAssetModal>
+      <CreateAssetModal
         saveAsset={saveAsset.saveAssetResponsible}
         dialogName={"Responsible"}
         useTable={true}
-      ></CreateAsset>
+      ></CreateAssetModal>
     </ScreenContainer>
   );
 }

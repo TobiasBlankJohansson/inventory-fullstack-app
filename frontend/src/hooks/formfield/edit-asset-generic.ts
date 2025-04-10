@@ -43,14 +43,14 @@ export const useEditAsset = <T extends Asset>(
       );
 
       if (isDuplicate) {
-        toast.error("AssetEdit with this name already exists");
+        toast.error("PageEdit with this name already exists");
         return;
       }
 
       try {
         const updatedAsset = await mutatePut({...newAssetData, id: asset.id} as T);
         setAsset((prev) => prev.map((a) => (a.id === asset.id ? updatedAsset : a)));
-        toast.success("AssetEdit updated successfully");
+        toast.success("PageEdit updated successfully");
         navigate(`/asset?id=${updatedAsset.id}`);
         setEdit(false);
       } catch {
@@ -63,7 +63,7 @@ export const useEditAsset = <T extends Asset>(
     try {
       await mutateDelete(id);
       setAsset((prev) => prev.filter((a) => a.id !== id));
-      toast.success("AssetEdit deleted");
+      toast.success("PageEdit deleted");
       navigate("/");
     } catch {
       toast.error("Error deleting asset");

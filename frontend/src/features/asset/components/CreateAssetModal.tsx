@@ -1,7 +1,7 @@
 import {useState} from "react";
-import {Button} from "../button";
 import {useNavigate} from "react-router-dom";
 import {categories} from "@/constants.ts";
+import {Button} from "@/components";
 
 type Props = {
   saveAsset: (formId: string,
@@ -13,7 +13,7 @@ type Props = {
   useTable?: boolean;
 };
 
-export function CreateAsset({saveAsset, dialogName, useId, useTable}: Props) {
+export function CreateAssetModal({saveAsset, dialogName, useId, useTable}: Props) {
   const [addAnotherOne, setAddAnotherOne] = useState<boolean>(false);
   const navigate = useNavigate();
   const [isFocused, setIsFocused] = useState(false);

@@ -1,12 +1,12 @@
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {AssetEdit, AssetTable, Dashboard, InventoryManage} from "@/page";
+import {Dashboard, InventoryManage} from "@/page";
 import {ScreenProvider} from "./components";
 import {ItemEditor} from "./page";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {Bounce, ToastContainer} from "react-toastify";
 import {useAuth0} from "@auth0/auth0-react";
 import LoginPage from "@/page/LoginPage.tsx";
-import {DefectReport} from "@/features";
+import {AssetEdit, AssetTable, DefectReport} from "@/features";
 
 const queryClient = new QueryClient();
 

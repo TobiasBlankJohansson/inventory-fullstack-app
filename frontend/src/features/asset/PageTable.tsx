@@ -1,9 +1,10 @@
-import {BodyContainer, CreateAsset, Navbar, renderTableHeaders, ScreenContainer, Table,} from "@/components";
+import {BodyContainer, Navbar, renderTableHeaders, ScreenContainer, Table,} from "@/components";
 import {renderTableAsset} from "@/components/tabel/RenderAsset.tsx";
 import {capitalize, getTableHeaders, openModal} from "@/util";
 import {Equipment} from "@/types";
 import {useLocation} from "react-router-dom";
 import {useAssetTable} from "@/hooks";
+import {CreateAssetModal} from "@/features";
 
 export const AssetTable = () => {
   const type = capitalize(
@@ -43,11 +44,11 @@ export const AssetTable = () => {
           )}
         ></Table>
       </BodyContainer>
-      <CreateAsset
+      <CreateAssetModal
         saveAsset={saveAsset}
         dialogName={type}
         useId={useId}
-      ></CreateAsset>
+      ></CreateAssetModal>
     </ScreenContainer>
   );
 };
