@@ -48,11 +48,14 @@ public class ItemService {
         Responsible responsible = responsibleService.readResponsible(itemUpdateDto.responsibleId());
         Equipment equipment = equipmentService.readEquipment(itemUpdateDto.equipmentId());
 
-        if (itemRepository.existsByEquipmentAndResponsibleAndStorage(equipment, responsible, storage)) {
-            throw new InventoryResourceExists("Item with these parameters already exists");
+        Item item = findById(itemUpdateDto.id());
+
+        if(!(item.getEquipment().equals(equipment) && item.getResponsible().equals(responsible) && item.getStorage().equals(storage))){
+            if (itemRepository.existsByEquipmentAndResponsibleAndStorage(equipment, responsible, storage)) {
+                throw new InventoryResourceExists("Item with these parameters already exists");
+            }
         }
 
-        Item item = findById(itemUpdateDto.id());
         item.setAmount(itemUpdateDto.amount());
         item.setEquipment(equipment);
         item.setResponsible(responsible);
