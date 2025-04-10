@@ -1,15 +1,16 @@
 import {useState} from "react";
-import {Defect, Status} from "@/features";
+import {dateToday, Defect, Status} from "@/features";
 import {useEquipment, useResponsible} from "@/hooks";
 import {useGetDefect, usePostDefect} from "@/features/defect/hooks/Defect.ts";
 import {toast} from "react-toastify";
+
 
 export const DefectReportModal = () => {
   const [defectReport, setDefectReport] = useState<Defect>({
     id: "",
     defect: "",
     status: "",
-    date: "",
+    date: dateToday(),
     equipment: "",
     filed: "",
     responsible: ""
@@ -19,6 +20,7 @@ export const DefectReportModal = () => {
   const {mutateAsync} = usePostDefect()
   const {setDefect} = useGetDefect()
   const [addAnotherOne, setAddAnotherOne] = useState<boolean>(false);
+
 
   const handleCloseModal = () => {
     const modal = document.getElementById('defect_report_modal') as HTMLDialogElement | null;
@@ -43,7 +45,7 @@ export const DefectReportModal = () => {
       id: "",
       defect: "",
       status: "",
-      date: "",
+      date: dateToday(),
       equipment: "",
       filed: "",
       responsible: ""
@@ -88,7 +90,7 @@ export const DefectReportModal = () => {
                   Date
                 </label>
                 <input
-                  type="text"
+                  type="date"
                   id="date"
                   placeholder="Value"
                   className="input input-bordered w-full max-w-xs mt-1"
