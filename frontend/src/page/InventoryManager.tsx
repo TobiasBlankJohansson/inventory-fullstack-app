@@ -1,6 +1,5 @@
 import {
   BodyContainer,
-  CreateItem,
   Filter,
   FullHeightButton,
   Navbar,
@@ -13,7 +12,7 @@ import {
 } from "@/components";
 import {useManageData} from "@/hooks";
 import {getTableHeaders, openModal} from "@/util";
-import {CreateAssetModal} from "@/features";
+import {CreateAssetModal, CreateItem} from "@/features";
 
 export function InventoryManage() {
   const {

@@ -1,8 +1,8 @@
-import { Equipment, Item, Responsible, Storage } from "@/types";
-import { FORM_FIELDS_ITEM } from "@/constants";
-import { useCreateItem } from "@/hooks";
-import { Button, FormField } from "@/components";
-import { option } from "@/util";
+import {FORM_FIELDS_ITEM} from "@/constants.ts";
+import {Button, FormField} from "@/components";
+import {option} from "@/util";
+import {Equipment, Item, Responsible, Storage} from "@/features";
+import {useCreateItem} from "@/features/item/hooks/create-item.ts";
 
 type Props = {
   setItems: (updateFn: (prevItems: Item[]) => Item[]) => void;
@@ -14,8 +14,8 @@ type Props = {
   };
 };
 
-export function CreateItem({ setItems, items, options }: Props) {
-  const { handleSubmit, setAddAnotherOne } = useCreateItem(
+export function CreateItem({setItems, items, options}: Props) {
+  const {handleSubmit, setAddAnotherOne} = useCreateItem(
     setItems,
     items,
     options

@@ -1,6 +1,6 @@
 import {useState} from "react";
 import {useEquipment, useResponsible, useStorage} from "@/features/asset/hooks/fetch";
-import {useEditAsset} from "@/hooks";
+import {useEditAsset} from "@/features";
 
 export const useAssetData = (id: string, type: string) => {
   const hooksMap = {

@@ -1,6 +1,5 @@
 import {useState} from "react";
-import {dateToday, Defect, Status} from "@/features";
-import {useEquipment, useResponsible} from "@/hooks";
+import {dateToday, Defect, Status, useEquipment, useResponsible} from "@/features";
 import {useGetDefect, usePostDefect} from "@/features/defect/hooks/Defect.ts";
 import {toast} from "react-toastify";
 

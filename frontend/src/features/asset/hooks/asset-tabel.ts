@@ -1,4 +1,4 @@
-import {saveAsset, useDeleteAsset, useEquipment, useOrderItem, useResponsible, useStorage} from "@/hooks";
+import {saveAsset, useDeleteAsset, useEquipment, useOrderItem, useResponsible, useStorage} from "@/features";
 import {useState} from "react";
 
 export const useAssetTable = (type: string) => {

@@ -1,11 +1,12 @@
 import {BodyContainer, EditItemForm, FormField, Navbar, ScreenContainer,} from "@/components";
-import {useItemEditorData} from "@/hooks";
 import {useLocation} from "react-router-dom";
 import {FORM_FIELDS_ITEM} from "@/constants.ts";
 import {option} from "@/util";
-import {fromItemToFormField} from "@/types";
+import {fromItemToFormField} from "@/features/item/types";
+import {useItemEditorData} from "@/features/item/hooks/item-editor-data";
 
-export const ItemEditor = () => {
+
+export const ItemEdit = () => {
   const id = new URLSearchParams(useLocation().search).get("id");
   const {item, edit, setEdit, options, onSubmit, onDelete} = useItemEditorData(
     id as string

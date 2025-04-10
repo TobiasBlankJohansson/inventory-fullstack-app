@@ -1,18 +1,10 @@
-import {
-  Equipment,
-  FormFieldItem,
-  Item,
-  Responsible,
-  responsibleFromList,
-  Storage,
-  storageFromList,
-  toItemFromFormField,
-} from "@/types";
 import {FORM_FIELDS_ITEM} from "@/constants.ts";
 import {useNavigate} from "react-router-dom";
-import {useDeleteItem, usePutItem} from "@/hooks";
+import {Equipment, Responsible, responsibleFromList, Storage, useDeleteItem, usePutItem} from "@/features";
 import {toast} from "react-toastify";
 import {putItemDto} from "@/api/InventoryFetch.ts";
+import {FormFieldItem, Item, toItemFromFormField} from "@/features/item/types";
+import {storageFromList} from "@/features/asset/types/storage.ts";
 
 export const useEditItem = (
   id: string,

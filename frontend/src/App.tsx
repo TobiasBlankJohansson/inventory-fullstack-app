@@ -1,7 +1,7 @@
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {Dashboard, InventoryManage} from "@/page";
 import {ScreenProvider} from "./components";
-import {ItemEditor} from "./page";
+import {ItemEdit} from "./page";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {Bounce, ToastContainer} from "react-toastify";
 import {useAuth0} from "@auth0/auth0-react";
@@ -20,7 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Dashboard/>}/>
           <Route path="/manage" element={<InventoryManage/>}/>
-          <Route path="/item-editor" element={<ItemEditor/>}/>
+          <Route path="/item-editor" element={<ItemEdit/>}/>
           <Route path="/asset" element={<AssetEdit/>}/>
           <Route path="/table" element={<AssetTable/>}/>
           <Route path="/defect" element={<DefectReport/>}/>

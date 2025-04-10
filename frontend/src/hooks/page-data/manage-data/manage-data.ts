@@ -1,5 +1,6 @@
 import {useState} from "react";
 import {
+  Item,
   saveAsset,
   useFilterItems,
   useGetEquipment,
@@ -10,9 +11,8 @@ import {
   usePostEquipment,
   usePostResponsible,
   usePostStorage,
-} from "@/hooks";
+} from "@/features";
 import {consolidateInventory, openModal} from "@/util";
-import {Item} from "@/types";
 
 export const useManageData = () => {
   const {items, setItems} = useGetItems();

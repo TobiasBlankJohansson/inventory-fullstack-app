@@ -1,18 +1,11 @@
-import { FormEvent, useState } from "react";
-import { FORM_FIELDS_ITEM } from "@/constants.ts";
-import {
-  Equipment,
-  FormFieldItem,
-  Item,
-  Responsible,
-  responsibleFromList,
-  Storage,
-  storageFromList,
-  toItemFromFormField,
-} from "@/types";
-import { usePostItem } from "@/hooks";
-import { toast } from "react-toastify";
-import { postItemDto } from "@/api/InventoryFetch.ts";
+import {FormEvent, useState} from "react";
+import {FORM_FIELDS_ITEM} from "@/constants.ts";
+import {postItemDto} from "@/api/InventoryFetch.ts";
+import {FormFieldItem, Item, toItemFromFormField} from "@/features/item/types";
+import {Responsible, responsibleFromList} from "@/features/asset/types/responsible.ts";
+import {storageFromList} from "@/features/asset/types/storage.ts";
+import {Equipment, Storage, usePostItem} from "@/features";
+import {toast} from "react-toastify";
 
 export const useCreateItem = (
   setItems: (updateFn: (prevItems: Item[]) => Item[]) => void,
@@ -24,13 +17,13 @@ export const useCreateItem = (
   }
 ) => {
   const [addAnotherOne, setAddAnotherOne] = useState(false);
-  const { mutateAsync } = usePostItem();
+  const {mutateAsync} = usePostItem();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const formField = Object.fromEntries(
-      FORM_FIELDS_ITEM.map(({ key }) => [
+      FORM_FIELDS_ITEM.map(({key}) => [
         key,
         formData.get(`form_field_${key}`),
       ])
@@ -85,5 +78,5 @@ export const useCreateItem = (
     setItems(() => updatedItems);
   };
 
-  return { handleSubmit, setAddAnotherOne };
+  return {handleSubmit, setAddAnotherOne};
 };

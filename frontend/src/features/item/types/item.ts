@@ -1,4 +1,4 @@
-import { Equipment } from "@/types/equipment.ts";
+import {Equipment} from "@/features/asset/types/equipment.ts";
 
 export type Item = {
   id: string;

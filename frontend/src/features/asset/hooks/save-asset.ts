@@ -1,6 +1,6 @@
 import {toast} from "react-toastify";
 import {UseMutationResult} from "@tanstack/react-query";
-import {Asset} from "@/types";
+import {Asset} from "@/features";
 
 export const saveAsset = <T>(
   set: (updateFn: (prevData: T[]) => T[]) => void,

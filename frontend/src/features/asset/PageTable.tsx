@@ -1,10 +1,8 @@
 import {BodyContainer, Navbar, renderTableHeaders, ScreenContainer, Table,} from "@/components";
-import {renderTableAsset} from "@/components/tabel/RenderAsset.tsx";
+import {renderTableAsset} from "@/features/asset/components/RenderAsset.tsx";
 import {capitalize, getTableHeaders, openModal} from "@/util";
-import {Equipment} from "@/types";
 import {useLocation} from "react-router-dom";
-import {useAssetTable} from "@/hooks";
-import {CreateAssetModal} from "@/features";
+import {CreateAssetModal, Equipment, useAssetTable} from "@/features";
 
 export const AssetTable = () => {
   const type = capitalize(

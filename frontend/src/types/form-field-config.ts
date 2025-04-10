@@ -1,4 +1,4 @@
-import {FormFieldItem} from "@/types/form-field-item.ts";
+import {FormFieldItem} from "@/features/item/types/form-field-item.ts";
 
 export interface FormFieldConfig {
   key: keyof FormFieldItem;

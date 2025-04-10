@@ -1,4 +1,4 @@
-import {Item} from "@/types/item.ts";
+import {Item} from "@/features/item/types/item.ts";
 
 export type PrintItem = {
   id: string;

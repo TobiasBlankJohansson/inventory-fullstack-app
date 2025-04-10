@@ -1,5 +1,5 @@
-import { Item } from "@/types/item.ts";
-import { Equipment } from "@/types/equipment.ts";
+import {Item} from "@/features/item/types/item.ts";
+import {Equipment} from "@/features/asset/types/equipment.ts";
 
 export type FormFieldItem = {
   id: string;

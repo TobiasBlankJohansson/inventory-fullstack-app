@@ -1,4 +1,4 @@
-import {Item} from "@/types";
+import {Item} from "@/features";
 
 export const getItemKeys = <T extends object>(item: T): (keyof T)[] => {
   return Object.entries(item).map(([key]) => key as keyof T);

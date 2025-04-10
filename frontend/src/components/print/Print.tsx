@@ -1,9 +1,9 @@
 import jsPDF from "jspdf";
 import {Button} from "../button";
-import {Item} from "@/types";
 import autoTable from "jspdf-autotable";
 import {capitalize, getItemKeys} from "@/util";
-import {fromItemToPrintItem} from "@/types/print-item.ts";
+import {fromItemToPrintItem} from "@/features/item/types/print-item.ts";
+import {Item} from "@/features/item/types";
 
 type Props = {
   itemList: Item[];

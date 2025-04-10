@@ -1,5 +1,5 @@
-import {Item} from "@/types";
-import {Button} from "../button";
+import {Item} from "@/features";
+import {Button} from "../../../components/button";
 import {Link} from "react-router-dom";
 import {getItemKeys} from "@/util";
 
