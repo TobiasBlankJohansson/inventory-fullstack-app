@@ -1,12 +1,10 @@
-import {BodyContainer, EditItemForm, FormField, Navbar, ScreenContainer} from "@/components";
+import {BodyContainer, FormField, Navbar, ScreenContainer} from "@/components";
 import {FORM_FIELDS_ASSET} from "@/constants.ts";
 import {useLocation} from "react-router-dom";
-import {FormFieldItem} from "@/types";
 import {capitalize} from "@/util";
-import {useAssetData} from "@/features";
+import {EditItemForm, FormFieldItem, useAssetData} from "@/features";
 
-
-export const AssetEdit = () => {
+export const AssetEditPage = () => {
   const id = new URLSearchParams(useLocation().search).get("id") as string;
   const type = capitalize(
     new URLSearchParams(useLocation().search).get("type") as string

@@ -1,9 +1,8 @@
-import {BodyContainer, EditItemForm, FormField, Navbar, ScreenContainer,} from "@/components";
+import {BodyContainer, FormField, Navbar, ScreenContainer,} from "@/components";
 import {useLocation} from "react-router-dom";
 import {FORM_FIELDS_ITEM} from "@/constants.ts";
 import {option} from "@/util";
-import {fromItemToFormField} from "@/features/item/types";
-import {useItemEditorData} from "@/features/item/hooks/item-editor-data";
+import {EditItemForm, fromItemToFormField, useItemEditorData} from "@/features";
 
 
 export const ItemEdit = () => {

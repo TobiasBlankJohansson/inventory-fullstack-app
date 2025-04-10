@@ -1,18 +1,7 @@
-import {
-  BodyContainer,
-  Filter,
-  FullHeightButton,
-  Navbar,
-  Print,
-  renderTableHeaders,
-  renderTableItems,
-  ScreenContainer,
-  Search,
-  Table,
-} from "@/components";
-import { useDashboardData } from "@/hooks";
-import { getTableHeaders, openModal } from "@/util";
-import { ThreeGridContainer } from "@/components/container/ThreeGridContainer.tsx";
+import {BodyContainer, FullHeightButton, Navbar, ScreenContainer, Search, Table,} from "@/components";
+import {getTableHeaders, openModal} from "@/util";
+import {ThreeGridContainer} from "@/components/container/ThreeGridContainer.tsx";
+import {Filter, Print, renderTableHeaders, renderTableItems, useDashboardData} from "@/features";
 
 export function Dashboard() {
   const {

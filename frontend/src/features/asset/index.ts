@@ -1,5 +1,5 @@
 export * from "./components"
 export * from "./hooks"
 export * from "./types"
-export * from "./PageEdit.tsx"
-export * from "./PageTable.tsx"
+export * from "./AssetEditPage.tsx"
+export * from "./AssetTablePage.tsx"

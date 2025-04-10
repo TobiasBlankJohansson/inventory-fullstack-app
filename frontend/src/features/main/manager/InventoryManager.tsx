@@ -1,18 +1,14 @@
 import {
   BodyContainer,
-  Filter,
   FullHeightButton,
   Navbar,
-  renderTableHeaders,
-  renderTableItems,
   ScreenContainer,
   Search,
   Table,
   ThreeGridContainer,
 } from "@/components";
-import {useManageData} from "@/hooks";
+import {CreateAssetModal, CreateItem, Filter, renderTableHeaders, renderTableItems, useManageData} from "@/features";
 import {getTableHeaders, openModal} from "@/util";
-import {CreateAssetModal, CreateItem} from "@/features";
 
 export function InventoryManage() {
   const {

@@ -1,5 +1,5 @@
 import jsPDF from "jspdf";
-import {Button} from "../button";
+import {Button} from "../../../components/button";
 import autoTable from "jspdf-autotable";
 import {capitalize, getItemKeys} from "@/util";
 import {fromItemToPrintItem} from "@/features/item/types/print-item.ts";

@@ -1,10 +1,10 @@
-import {BodyContainer, Navbar, renderTableHeaders, ScreenContainer, Table,} from "@/components";
+import {BodyContainer, Navbar, ScreenContainer, Table,} from "@/components";
 import {renderTableAsset} from "@/features/asset/components/RenderAsset.tsx";
 import {capitalize, getTableHeaders, openModal} from "@/util";
 import {useLocation} from "react-router-dom";
-import {CreateAssetModal, Equipment, useAssetTable} from "@/features";
+import {CreateAssetModal, Equipment, renderTableHeaders, useAssetTable} from "@/features";
 
-export const AssetTable = () => {
+export const AssetTablePage = () => {
   const type = capitalize(
     new URLSearchParams(useLocation().search).get("type") as string
   );
