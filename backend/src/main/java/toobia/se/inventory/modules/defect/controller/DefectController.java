@@ -9,6 +9,7 @@ import toobia.se.inventory.modules.defect.controller.dtos.DefectDto;
 import toobia.se.inventory.modules.defect.service.DefectService;
 
 import java.util.List;
+import java.util.UUID;
 
 @CrossOrigin
 @RestController
@@ -23,8 +24,15 @@ public class DefectController {
         return ResponseEntity.ok(DefectDto.fromList(defectService.getList()));
     }
 
+    @GetMapping("{id}")
+    public ResponseEntity<DefectDto> getDefect(@PathVariable String id) {
+        return ResponseEntity.ok(DefectDto.from(defectService.getById(UUID.fromString(id))));
+    }
+
     @PostMapping
     public ResponseEntity<DefectDto> createDefect(@RequestBody CreateDefectDto dto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(DefectDto.from(defectService.create(dto)));
     }
+
+
 }
