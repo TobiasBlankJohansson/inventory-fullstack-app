@@ -3,6 +3,7 @@ package toobia.se.inventory.modules.defect.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import toobia.se.inventory.exceptions.InventoryResourceNotFound;
+import toobia.se.inventory.modules.defect.controller.dtos.CreateDefectDto;
 import toobia.se.inventory.modules.defect.model.Defect;
 import toobia.se.inventory.modules.defect.repository.DefectRepository;
 import toobia.se.inventory.modules.equipment.model.Equipment;
@@ -30,11 +31,15 @@ public class DefectService {
         return defectRepository.findById(id).orElseThrow(() -> new InventoryResourceNotFound("Defect not found"));
     }
 
-    public Defect create(String date, String filed, String status, String defect, String equipmentId, String responsibleId) {
-        var equipment = equipmentService.readEquipment(equipmentId);
-        var responsible = responsibleService.readResponsible(UUID.fromString(responsibleId));
-        var defectObj = new Defect(date, filed, status, defect, equipment, responsible);
+    public Defect create(CreateDefectDto dto) {
+        var equipment = equipmentService.readEquipment(dto.equipment());
+        var responsible = responsibleService.readResponsible(UUID.fromString(dto.responsible()));
+        var defectObj = new Defect(dto.date(), dto.filed(), dto.status(), dto.defect(), equipment, responsible);
         return defectRepository.save(defectObj);
+    }
+
+    public Defect update(Defect defectObj) {
+
     }
 
 }
