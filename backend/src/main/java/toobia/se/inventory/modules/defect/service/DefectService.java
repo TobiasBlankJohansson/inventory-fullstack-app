@@ -6,9 +6,7 @@ import toobia.se.inventory.exceptions.InventoryResourceNotFound;
 import toobia.se.inventory.modules.defect.controller.dtos.CreateDefectDto;
 import toobia.se.inventory.modules.defect.model.Defect;
 import toobia.se.inventory.modules.defect.repository.DefectRepository;
-import toobia.se.inventory.modules.equipment.model.Equipment;
 import toobia.se.inventory.modules.equipment.service.EquipmentService;
-import toobia.se.inventory.modules.responsible.model.Responsible;
 import toobia.se.inventory.modules.responsible.service.ResponsibleService;
 
 import java.util.List;
@@ -20,8 +18,6 @@ public class DefectService {
     private final DefectRepository defectRepository;
     private final ResponsibleService responsibleService;
     private final EquipmentService equipmentService;
-    private Equipment equipment;
-    private Responsible responsible;
 
     public List<Defect> getList() {
         return defectRepository.findAll();
@@ -44,4 +40,7 @@ public class DefectService {
         return defectRepository.save(defect);
     }
 
+    public void delete(UUID id) {
+        defectRepository.deleteById(id);
+    }
 }
