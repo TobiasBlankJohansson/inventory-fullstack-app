@@ -1,11 +1,10 @@
 package toobia.se.inventory.modules.defect.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import toobia.se.inventory.modules.defect.controller.dtos.CreateDefectDto;
 import toobia.se.inventory.modules.defect.controller.dtos.DefectDto;
 import toobia.se.inventory.modules.defect.service.DefectService;
 
@@ -22,5 +21,10 @@ public class DefectController {
     @GetMapping
     public ResponseEntity<List<DefectDto>> getAllDefects() {
         return ResponseEntity.ok(DefectDto.fromList(defectService.getList()));
+    }
+
+    @PostMapping
+    public ResponseEntity<DefectDto> createDefect(@RequestBody CreateDefectDto dto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(DefectDto.from(defectService.create(dto)));
     }
 }

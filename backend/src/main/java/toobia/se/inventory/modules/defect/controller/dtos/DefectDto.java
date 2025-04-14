@@ -3,8 +3,9 @@ package toobia.se.inventory.modules.defect.controller.dtos;
 import toobia.se.inventory.modules.defect.model.Defect;
 
 import java.util.List;
+import java.util.UUID;
 
-public record DefectDto(String id,
+public record DefectDto(UUID id,
                         String date,
                         String filed,
                         String status,
