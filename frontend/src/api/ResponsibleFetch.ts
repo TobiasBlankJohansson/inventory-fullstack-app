@@ -1,4 +1,4 @@
-import {Responsible} from "@/types";
+import {Responsible} from "@/features";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 

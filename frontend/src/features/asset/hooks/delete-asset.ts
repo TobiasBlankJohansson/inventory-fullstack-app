@@ -1,4 +1,4 @@
-import {Asset} from "@/types";
+import {Asset} from "@/features";
 import {UseMutationResult} from "@tanstack/react-query";
 import {toast} from "react-toastify";
 

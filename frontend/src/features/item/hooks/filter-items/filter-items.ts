@@ -1,4 +1,4 @@
-import {Item} from "@/types";
+import {Item} from "@/features";
 import {useMemo, useState} from "react";
 
 export const useFilterItems = (items: Item[]) => {

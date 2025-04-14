@@ -1,4 +1,4 @@
-import {Storage} from "@/types";
+import {Storage} from "@/features";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
