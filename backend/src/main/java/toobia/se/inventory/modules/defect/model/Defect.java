@@ -11,7 +11,7 @@ import toobia.se.inventory.modules.responsible.model.Responsible;
 @NoArgsConstructor
 @Getter
 @Setter
-public class defect {
+public class Defect {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -29,7 +29,7 @@ public class defect {
     @JoinColumn(name = "responsible")
     private Responsible responsible;
 
-    public defect(String date, String filed, String status, String defect, Equipment equipment, Responsible responsible) {
+    public Defect(String date, String filed, String status, String defect, Equipment equipment, Responsible responsible) {
         this.date = date;
         this.filed = filed;
         this.status = status;
