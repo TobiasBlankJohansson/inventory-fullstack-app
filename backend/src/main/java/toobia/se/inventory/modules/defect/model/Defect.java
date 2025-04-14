@@ -7,6 +7,8 @@ import lombok.Setter;
 import toobia.se.inventory.modules.equipment.model.Equipment;
 import toobia.se.inventory.modules.responsible.model.Responsible;
 
+import java.util.UUID;
+
 @Entity
 @NoArgsConstructor
 @Getter
@@ -15,7 +17,7 @@ public class Defect {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    private UUID id;
     private String date;
     private String filed;
     private String status;
