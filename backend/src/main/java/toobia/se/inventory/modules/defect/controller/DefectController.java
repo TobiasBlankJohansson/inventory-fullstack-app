@@ -34,5 +34,8 @@ public class DefectController {
         return ResponseEntity.status(HttpStatus.CREATED).body(DefectDto.from(defectService.create(dto)));
     }
 
-
+    @PutMapping("status")
+    public ResponseEntity<DefectDto> updateStatus(@RequestBody DefectDto dto) {
+        return ResponseEntity.ok(DefectDto.from(defectService.updateStatus(dto.id(), dto.status())));
+    }
 }
