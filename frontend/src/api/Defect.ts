@@ -1,40 +1,35 @@
-import {Defect} from "@/features";
+import { Defect } from "@/features";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export async function getDefect(): Promise<Defect[]> {
-  return defectsMock;
-  return await fetch(BACKEND_URL + "/api/defects").then((res) => res.json())
+  return await fetch(BACKEND_URL + "/api/defects").then((res) => res.json());
 }
 
 export async function postDefect(defect: Defect): Promise<Defect> {
-  defect.id = defect.equipment + defect.filed;
-  return defect;
   return await fetch(BACKEND_URL + "/api/defects", {
     method: "POST",
-    headers: {"Content-Type": "application/json"},
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(defect),
   }).then((res) => res.json());
 }
 
 export async function putDefect(defect: Defect): Promise<Defect> {
-  return defect;
-  return fetch(BACKEND_URL + "/api/defects", {
+  return fetch(BACKEND_URL + "/api/defects/status", {
     method: "PUT",
-    headers: {"Content-Type": "application/json"},
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(defect),
   }).then((res) => res.json());
 }
 
 export async function deleteDefect(id: string): Promise<boolean> {
-  return true;
   const response = await fetch(BACKEND_URL + "/api/defects/" + id, {
     method: "DELETE",
   });
   return response.ok;
 }
 
-const defectsMock: Defect[] = [
+export const defectsMock: Defect[] = [
   {
     id: "1",
     responsible: "John Doe",
@@ -42,7 +37,7 @@ const defectsMock: Defect[] = [
     filed: "2025-04-01",
     equipment: "Axe",
     status: "Registered",
-    defect: "Broken"
+    defect: "Broken",
   },
   {
     id: "2",
@@ -51,7 +46,7 @@ const defectsMock: Defect[] = [
     filed: "2025-04-02",
     equipment: "Spirit Burner",
     status: "Processing",
-    defect: "Missing"
+    defect: "Missing",
   },
   {
     id: "3",
@@ -60,7 +55,7 @@ const defectsMock: Defect[] = [
     filed: "2025-04-03",
     equipment: "Hammer",
     status: "Finalized",
-    defect: "Cracked"
+    defect: "Cracked",
   },
   {
     id: "4",
@@ -69,7 +64,7 @@ const defectsMock: Defect[] = [
     filed: "2025-04-04",
     equipment: "Screwdriver",
     status: "Registered",
-    defect: "Worn out"
+    defect: "Worn out",
   },
   {
     id: "5",
@@ -78,7 +73,7 @@ const defectsMock: Defect[] = [
     filed: "2025-04-05",
     equipment: "Drill",
     status: "Processing",
-    defect: "Defective motor"
+    defect: "Defective motor",
   },
   {
     id: "6",
@@ -87,7 +82,7 @@ const defectsMock: Defect[] = [
     filed: "2025-04-06",
     equipment: "Wrench",
     status: "Registered",
-    defect: "Rusty"
+    defect: "Rusty",
   },
   {
     id: "7",
@@ -96,7 +91,7 @@ const defectsMock: Defect[] = [
     filed: "2025-04-07",
     equipment: "Plunger",
     status: "Finalized",
-    defect: "Cracked handle"
+    defect: "Cracked handle",
   },
   {
     id: "8",
@@ -105,7 +100,7 @@ const defectsMock: Defect[] = [
     filed: "2025-04-08",
     equipment: "Chainsaw",
     status: "Processing",
-    defect: "Fuel leakage"
+    defect: "Fuel leakage",
   },
   {
     id: "9",
@@ -114,7 +109,7 @@ const defectsMock: Defect[] = [
     filed: "2025-04-09",
     equipment: "Shovel",
     status: "Registered",
-    defect: "Bent"
+    defect: "Bent",
   },
   {
     id: "10",
@@ -123,7 +118,7 @@ const defectsMock: Defect[] = [
     filed: "2025-04-10",
     equipment: "Drill Bit",
     status: "Finalized",
-    defect: "Chipped"
+    defect: "Chipped",
   },
   {
     id: "11",
@@ -132,7 +127,7 @@ const defectsMock: Defect[] = [
     filed: "2025-04-11",
     equipment: "Crowbar",
     status: "Registered",
-    defect: "Warped"
+    defect: "Warped",
   },
   {
     id: "12",
@@ -141,7 +136,7 @@ const defectsMock: Defect[] = [
     filed: "2025-04-12",
     equipment: "Pry Bar",
     status: "Processing",
-    defect: "Bent"
+    defect: "Bent",
   },
   {
     id: "13",
@@ -150,7 +145,7 @@ const defectsMock: Defect[] = [
     filed: "2025-04-13",
     equipment: "Hacksaw",
     status: "Finalized",
-    defect: "Loose blade"
+    defect: "Loose blade",
   },
   {
     id: "14",
@@ -159,7 +154,7 @@ const defectsMock: Defect[] = [
     filed: "2025-04-14",
     equipment: "Level",
     status: "Processing",
-    defect: "Bubble broken"
+    defect: "Bubble broken",
   },
   {
     id: "15",
@@ -168,6 +163,6 @@ const defectsMock: Defect[] = [
     filed: "2025-04-15",
     equipment: "Tape Measure",
     status: "Finalized",
-    defect: "Stuck mechanism"
-  }
+    defect: "Stuck mechanism",
+  },
 ];
