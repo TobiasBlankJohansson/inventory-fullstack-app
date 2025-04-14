@@ -38,8 +38,10 @@ public class DefectService {
         return defectRepository.save(defectObj);
     }
 
-    public Defect update(Defect defectObj) {
-
+    public Defect updateStatus(UUID id, String status) {
+        var defect = getById(id);
+        defect.setStatus(status);
+        return defectRepository.save(defect);
     }
 
 }
