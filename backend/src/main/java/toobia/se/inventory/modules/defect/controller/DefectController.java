@@ -38,4 +38,10 @@ public class DefectController {
     public ResponseEntity<DefectDto> updateStatus(@RequestBody DefectDto dto) {
         return ResponseEntity.ok(DefectDto.from(defectService.updateStatus(dto.id(), dto.status())));
     }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<DefectDto> deleteDefect(@PathVariable String id) {
+        defectService.delete(UUID.fromString(id));
+        return ResponseEntity.status(204).build();
+    }
 }
