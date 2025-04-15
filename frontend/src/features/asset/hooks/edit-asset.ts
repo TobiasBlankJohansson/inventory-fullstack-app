@@ -1,8 +1,8 @@
-import {FormEvent} from "react";
-import {useNavigate} from "react-router-dom";
-import {FORM_FIELDS_ASSET} from "@/constants.ts";
-import {toast} from "react-toastify";
-import {UseMutationResult} from "@tanstack/react-query";
+import { FormEvent } from "react";
+import { useNavigate } from "react-router-dom";
+import { FORM_FIELDS_ASSET } from "@/constants.ts";
+import { toast } from "react-toastify";
+import { UseMutationResult } from "@tanstack/react-query";
 
 type Asset = {
   id: string;
@@ -14,17 +14,19 @@ export const useEditAsset = <T extends Asset>(
   assetList: Asset[],
   setAsset: (updateFn: (prevData: T[]) => T[]) => void,
   setEdit: React.Dispatch<React.SetStateAction<boolean>>,
-  {mutateAsync: mutatePut}: UseMutationResult<T, Error, T, unknown>,
-  {mutateAsync: mutateDelete}: UseMutationResult<boolean, Error, string, unknown>
+  { mutateAsync: mutatePut }: UseMutationResult<T, Error, T, unknown>,
+  {
+    mutateAsync: mutateDelete,
+  }: UseMutationResult<boolean, Error, string, unknown>
 ) => {
   const asset = assetList.find((a) => a.id === id);
   const navigate = useNavigate();
 
   if (!asset) {
     return {
-      asset: null, onSubmit: () => {
-      }, onDelete: () => {
-      }
+      asset: null,
+      onSubmit: () => {},
+      onDelete: () => {},
     };
   }
 
@@ -33,14 +35,12 @@ export const useEditAsset = <T extends Asset>(
 
     const formData = new FormData(e.currentTarget);
     const newAssetData = FORM_FIELDS_ASSET.reduce(
-      (acc, {key}) => ({...acc, [key]: formData.get(`form_field_${key}`)}),
+      (acc, { key }) => ({ ...acc, [key]: formData.get(`form_field_${key}`) }),
       {} as Asset
     );
 
     if (asset.name !== newAssetData.name) {
-      const isDuplicate = assetList.some(
-        (a) => a.name === newAssetData.name && a.id !== asset.id
-      );
+      const isDuplicate = assetList.some((a) => a.name === newAssetData.name);
 
       if (isDuplicate) {
         toast.error("PageEdit with this name already exists");
@@ -48,10 +48,14 @@ export const useEditAsset = <T extends Asset>(
       }
 
       try {
-        const updatedAsset = await mutatePut({...newAssetData, id: asset.id} as T);
-        setAsset((prev) => prev.map((a) => (a.id === asset.id ? updatedAsset : a)));
+        const updatedAsset = await mutatePut({
+          ...newAssetData,
+          id: asset.id,
+        } as T);
+        setAsset((prev) =>
+          prev.map((asset) => (asset.id === asset.id ? updatedAsset : asset))
+        );
         toast.success("PageEdit updated successfully");
-        navigate(`/asset?id=${updatedAsset.id}`);
         setEdit(false);
       } catch {
         toast.error("Error updating asset, try again");
@@ -70,5 +74,5 @@ export const useEditAsset = <T extends Asset>(
     }
   };
 
-  return {asset, onSubmit, onDelete};
+  return { asset, onSubmit, onDelete };
 };

@@ -1,6 +1,10 @@
-import {useState} from "react";
-import {useEquipment, useResponsible, useStorage} from "@/features/asset/hooks/fetch";
-import {useEditAsset} from "@/features";
+import { useState } from "react";
+import {
+  useEquipment,
+  useResponsible,
+  useStorage,
+} from "@/features/asset/hooks/fetch";
+import { useEditAsset } from "@/features";
 
 export const useAssetData = (id: string, type: string) => {
   const hooksMap = {
@@ -10,16 +14,22 @@ export const useAssetData = (id: string, type: string) => {
   };
 
   const hook = hooksMap[type as keyof typeof hooksMap];
-  const {asset: assetList, setAsset, usePost, useDelete} = hook();
+  const { asset: assetList, setAsset, usePut, useDelete } = hook();
   const [edit, setEdit] = useState(false);
-  const {
-    asset,
-    onSubmit,
-    onDelete
-  } = useEditAsset(id, assetList, setAsset, setEdit, usePost(), useDelete());
+  const { asset, onSubmit, onDelete } = useEditAsset(
+    id,
+    assetList,
+    setAsset,
+    setEdit,
+    usePut(),
+    useDelete()
+  );
 
   return {
-    asset, edit, setEdit, onSubmit, onDelete
+    asset,
+    edit,
+    setEdit,
+    onSubmit,
+    onDelete,
   };
 };
-
