@@ -28,11 +28,3 @@ export async function deleteStorage(id: string): Promise<boolean> {
   });
   return response.ok;
 }
-
-export const mockDataStorage: Storage[] = [
-  {id: "1", name: "Tool Shed"},
-  {id: "2", name: "Warehouse A"},
-  {id: "3", name: "Kitchen Storage"},
-  {id: "4", name: "Garage"},
-  {id: "5", name: "Emergency Room"},
-];

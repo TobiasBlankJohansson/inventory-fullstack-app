@@ -30,16 +30,3 @@ export async function deleteResponsible(id: string): Promise<boolean> {
   });
   return response.ok;
 }
-
-export const mockDataResponsible: Responsible[] = [
-  {id: "1", name: "John Doe"},
-  {id: "2", name: "Jane Smith"},
-  {id: "3", name: "Emily Johnson"},
-  {id: "4", name: "Michael Brown"},
-  {id: "5", name: "Sarah Wilson"},
-  {id: "6", name: "David Miller"},
-  {id: "7", name: "Jessica Davis"},
-  {id: "8", name: "Daniel Martinez"},
-  {id: "9", name: "Olivia Taylor"},
-  {id: "10", name: "James Anderson"},
-];
