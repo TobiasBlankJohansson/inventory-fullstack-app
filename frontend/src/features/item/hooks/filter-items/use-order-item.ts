@@ -1,14 +1,32 @@
 import {useState} from "react";
+import {Item} from "@/features";
 
-export const useOrderItem = <T extends object, K extends keyof T>() => {
-  const [order, setOrder] = useState<K | "">("");
+export const useOrderItem = () => {
+  const [order, setOrder] = useState<keyof Item | "">("");
 
-  const orderItems = (itemList: T[], order: K | ""): T[] => {
+  const resolveOrderKey = (order: keyof Item | ""): string => {
+    if (order === "equipment") return "equipment.name";
+    if (order === "id") return "equipment.id";
+    return order;
+  };
+
+  const getValue = (item: Item, path: string): unknown => {
+    return path.split(".").reduce<unknown>((acc, key) => {
+      if (acc && typeof acc === "object" && key in acc) {
+        return acc[key as keyof typeof acc];
+      }
+      return undefined;
+    }, item);
+  };
+
+  const orderItems = (itemList: Item[], order: keyof Item | ""): Item[] => {
     if (!order) return itemList;
 
+    const resolvedOrder = resolveOrderKey(order);
+
     return [...itemList].sort((a, b) => {
-      const aValue = a[order];
-      const bValue = b[order];
+      const aValue = getValue(a, resolvedOrder);
+      const bValue = getValue(b, resolvedOrder);
 
       if (typeof aValue === "number" && typeof bValue === "number") {
         return aValue - bValue;
@@ -16,9 +34,14 @@ export const useOrderItem = <T extends object, K extends keyof T>() => {
       if (typeof aValue === "string" && typeof bValue === "string") {
         return aValue.localeCompare(bValue);
       }
+
       return 0;
     });
   };
 
-  return {order, setOrder: (setOrder as (string: string) => void), orderItems};
+  return {
+    order,
+    setOrder,
+    orderItems,
+  };
 };
