@@ -1,7 +1,7 @@
-import {BodyContainer, FormField, Navbar, ScreenContainer,} from "@/components";
+import {BodyContainer, DeleteCheck, FormField, Navbar, ScreenContainer,} from "@/components";
 import {useLocation} from "react-router-dom";
 import {FORM_FIELDS_ITEM} from "@/constants.ts";
-import {option} from "@/lib";
+import {openModal, option} from "@/lib";
 import {EditItemForm, fromItemToFormField, useItemEditorData} from "@/features";
 
 
@@ -14,15 +14,14 @@ export const ItemEdit = () => {
   return (
     <ScreenContainer>
       <Navbar currentPageName="item"></Navbar>
-      <BodyContainer>
-        <section
-          className="bg-white my-5 h-full rounded-xl min-[768px]:mx-20 min-[1024px]:mx-60 overflow-scroll scrollbar-hide">
-          {item && (
+      {item && (<BodyContainer>
+          <section
+            className="bg-white my-5 h-full rounded-xl min-[768px]:mx-20 min-[1024px]:mx-60 overflow-scroll scrollbar-hide">
             <EditItemForm
               onSubmit={onSubmit}
               name={item.equipment.name}
               edit={edit}
-              onDelete={onDelete}
+              onDelete={() => openModal("delete_check")}
               setEdit={setEdit}
             >
               {FORM_FIELDS_ITEM.map((field) => (
@@ -35,9 +34,10 @@ export const ItemEdit = () => {
                 />
               ))}
             </EditItemForm>
-          )}
-        </section>
-      </BodyContainer>
+          </section>
+          <DeleteCheck name={item.equipment.name} deleteFunction={onDelete}></DeleteCheck>
+        </BodyContainer>
+      )}
     </ScreenContainer>
   );
 };
