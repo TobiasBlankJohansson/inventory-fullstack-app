@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { useScreen } from "../provider/ScreenContext";
+import {Link} from "react-router-dom";
+import {useScreen} from "@/components";
 
 export function NavItem(
   label: string,
@@ -7,7 +7,7 @@ export function NavItem(
   page: number,
   currentPage: number
 ): JSX.Element {
-  const { isLaptop } = useScreen();
+  const {isLaptop} = useScreen();
   return (
     <li
       key={"navitem_" + page}

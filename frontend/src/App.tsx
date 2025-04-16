@@ -5,6 +5,7 @@ import {Bounce, ToastContainer} from "react-toastify";
 import {useAuth0} from "@auth0/auth0-react";
 import LoginPage from "@/page/LoginPage.tsx";
 import {AssetEditPage, AssetTablePage, Dashboard, DefectReport, InventoryManage, ItemEdit} from "@/features";
+import {CreateCustomList} from "@/features/custom-list/create-custom-list.tsx";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/asset" element={<AssetEditPage/>}/>
           <Route path="/table" element={<AssetTablePage/>}/>
           <Route path="/defect" element={<DefectReport/>}/>
+          <Route path="/custom-list" element={<CreateCustomList/>}/>
         </Routes>
         <ToastContainer
           position="top-center"
