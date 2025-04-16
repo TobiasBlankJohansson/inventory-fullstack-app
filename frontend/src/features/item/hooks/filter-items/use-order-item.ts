@@ -2,9 +2,9 @@ import {useState} from "react";
 import {Item} from "@/features";
 
 export const useOrderItem = () => {
-  const [order, setOrder] = useState<keyof Item | "">("");
+  const [order, setOrder] = useState<string>("");
 
-  const resolveOrderKey = (order: keyof Item | ""): string => {
+  const resolveOrderKey = (order: string): string => {
     if (order === "equipment") return "equipment.name";
     if (order === "id") return "equipment.id";
     return order;
@@ -19,7 +19,7 @@ export const useOrderItem = () => {
     }, item);
   };
 
-  const orderItems = (itemList: Item[], order: keyof Item | ""): Item[] => {
+  const orderItems = (itemList: Item[], order: string): Item[] => {
     if (!order) return itemList;
 
     const resolvedOrder = resolveOrderKey(order);

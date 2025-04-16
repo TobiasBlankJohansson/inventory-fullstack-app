@@ -1,5 +1,6 @@
 import {
   BodyContainer,
+  DeleteCheck,
   FullHeightButton,
   Navbar,
   ScreenContainer,
@@ -86,7 +87,7 @@ export function InventoryManage() {
             true,
             "item",
             checkedItems,
-            handleDelete,
+            () => openModal("delete_check"),
             handleCreate
           )}
           renderItemInTable={renderTableItems(
@@ -120,6 +121,7 @@ export function InventoryManage() {
         dialogName={"Responsible"}
         useTable={true}
       ></CreateAssetModal>
+      <DeleteCheck name={"item"} deleteFunction={handleDelete}></DeleteCheck>
     </ScreenContainer>
   );
 }

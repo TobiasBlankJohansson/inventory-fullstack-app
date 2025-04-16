@@ -6,3 +6,4 @@ export * from "./selectableList";
 export * from "./tabel";
 export * from "./container";
 export * from "./forms"
+export * from "./modal"
