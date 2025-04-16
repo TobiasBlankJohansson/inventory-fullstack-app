@@ -1,7 +1,7 @@
-import {BodyContainer, FormField, Navbar, ScreenContainer} from "@/components";
+import {BodyContainer, DeleteCheck, FormField, Navbar, ScreenContainer} from "@/components";
 import {FORM_FIELDS_ASSET} from "@/constants.ts";
 import {useLocation} from "react-router-dom";
-import {capitalize} from "@/lib";
+import {capitalize, openModal} from "@/lib";
 import {EditItemForm, FormFieldItem, useAssetData} from "@/features";
 
 export const AssetEditPage = () => {
@@ -22,7 +22,7 @@ export const AssetEditPage = () => {
               onSubmit={onSubmit}
               name={type}
               edit={edit}
-              onDelete={onDelete}
+              onDelete={() => openModal("delete_check")}
               setEdit={setEdit}
             >
               {FORM_FIELDS_ASSET.map((field) => (
@@ -37,6 +37,7 @@ export const AssetEditPage = () => {
           )}
         </section>
       </BodyContainer>
+      <DeleteCheck name={type} deleteFunction={onDelete}></DeleteCheck>
     </ScreenContainer>
   )
 }

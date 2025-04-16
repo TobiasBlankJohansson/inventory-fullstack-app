@@ -1,16 +1,13 @@
 import {useState} from "react";
-import {Item} from "@/features";
 
-export const useOrderItem = () => {
+export const useOrderItem = <T extends object>() => {
   const [order, setOrder] = useState<string>("");
 
   const resolveOrderKey = (order: string): string => {
-    if (order === "equipment") return "equipment.name";
-    if (order === "id") return "equipment.id";
     return order;
   };
 
-  const getValue = (item: Item, path: string): unknown => {
+  const getValue = (item: T, path: string): unknown => {
     return path.split(".").reduce<unknown>((acc, key) => {
       if (acc && typeof acc === "object" && key in acc) {
         return acc[key as keyof typeof acc];
@@ -19,7 +16,7 @@ export const useOrderItem = () => {
     }, item);
   };
 
-  const orderItems = (itemList: Item[], order: string): Item[] => {
+  const orderItems = (itemList: T[], order: string): T[] => {
     if (!order) return itemList;
 
     const resolvedOrder = resolveOrderKey(order);

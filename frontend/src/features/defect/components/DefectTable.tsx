@@ -146,7 +146,6 @@ export const DefectTable =
             </table>
           </div>
         </section>
-
       </div>
     );
   };
