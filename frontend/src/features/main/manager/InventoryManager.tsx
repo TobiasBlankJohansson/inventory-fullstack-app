@@ -36,7 +36,7 @@ export function InventoryManage() {
     return <ul className="menu menu-horizontal bg-base-200 rounded-lg min-h-0 p-0">
       <li className="w-full h-full">
         <details className="h-full">
-          <summary className="p-0 m-0 h-full flex justify-center items-center">Asset</summary>
+          <summary className="p-0 m-0 h-full flex justify-center items-center font-medium">Asset</summary>
           <ul className="z-10 w-full flex flex-col gap-2 h-fit">
             <li className="h-10"><FullHeightButton onClick={() => openModal("Equipment")}>
               Equipment
