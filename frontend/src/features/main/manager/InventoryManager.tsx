@@ -6,6 +6,7 @@ import {
   Search,
   Table,
   ThreeGridContainer,
+  useScreen
 } from "@/components";
 import {CreateAssetModal, CreateItem, Filter, renderTableHeaders, renderTableItems, useManageData} from "@/features";
 import {getTableHeaders, openModal} from "@/util";
@@ -29,6 +30,43 @@ export function InventoryManage() {
     order,
   } = useManageData();
 
+  const {isLaptop} = useScreen();
+
+  const assetMenuPhone = () => {
+    return <ul className="menu menu-horizontal bg-base-200 rounded-lg min-h-0 p-0">
+      <li className="w-full h-full">
+        <details className="h-full">
+          <summary className="p-0 m-0 h-full flex justify-center items-center">Asset</summary>
+          <ul className="z-10 w-full flex flex-col gap-2 h-fit">
+            <li className="h-10"><FullHeightButton onClick={() => openModal("Equipment")}>
+              Equipment
+            </FullHeightButton></li>
+            <li className="h-10"><FullHeightButton onClick={() => openModal("Storage")}>
+              Storage
+            </FullHeightButton></li>
+            <li className="h-10"><FullHeightButton onClick={() => openModal("Responsible")}>
+              Responsible
+            </FullHeightButton></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  }
+
+  const assetMenuLaptop = () => {
+    return <ThreeGridContainer>
+      <FullHeightButton onClick={() => openModal("Equipment")}>
+        Equipment
+      </FullHeightButton>
+      <FullHeightButton onClick={() => openModal("Storage")}>
+        Storage
+      </FullHeightButton>
+      <FullHeightButton onClick={() => openModal("Responsible")}>
+        Responsible
+      </FullHeightButton>
+    </ThreeGridContainer>
+  }
+
   return (
     <ScreenContainer>
       <Navbar currentPage={1} currentPageName="Inventory Manage"></Navbar>
@@ -38,17 +76,7 @@ export function InventoryManage() {
           <FullHeightButton onClick={() => openModal("filter")}>
             Filter
           </FullHeightButton>
-          <ThreeGridContainer>
-            <FullHeightButton onClick={() => openModal("Equipment")}>
-              Equipment
-            </FullHeightButton>
-            <FullHeightButton onClick={() => openModal("Storage")}>
-              Storage
-            </FullHeightButton>
-            <FullHeightButton onClick={() => openModal("Responsible")}>
-              Responsible
-            </FullHeightButton>
-          </ThreeGridContainer>
+          {isLaptop ? assetMenuLaptop() : assetMenuPhone()}
         </ThreeGridContainer>
         <Table
           renderHeadersInTable={renderTableHeaders(

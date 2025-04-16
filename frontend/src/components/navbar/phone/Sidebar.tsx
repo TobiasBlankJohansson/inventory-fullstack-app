@@ -1,12 +1,11 @@
-import { Button } from "@/components/button";
-import { Navigation } from "../Navigation";
+import {Button, Navigation} from "@/components";
 
 type importSidebar = {
   setSideMenuShow: React.Dispatch<React.SetStateAction<boolean>>;
   currentPage: number;
 };
 
-export function Sidebar({ setSideMenuShow, currentPage }: importSidebar) {
+export function Sidebar({setSideMenuShow, currentPage}: importSidebar) {
   return (
     <div className="z-10">
       <menu className="absolute top-0 w-4/6 h-screen bg-primary p-4">
