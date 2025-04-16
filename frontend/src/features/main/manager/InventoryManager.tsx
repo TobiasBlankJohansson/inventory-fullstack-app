@@ -121,7 +121,7 @@ export function InventoryManage() {
         dialogName={"Responsible"}
         useTable={true}
       ></CreateAssetModal>
-      <DeleteCheck name={"item"} deleteFunction={handleDelete}></DeleteCheck>
+      <DeleteCheck name={"items"} deleteFunction={handleDelete}></DeleteCheck>
     </ScreenContainer>
   );
 }
