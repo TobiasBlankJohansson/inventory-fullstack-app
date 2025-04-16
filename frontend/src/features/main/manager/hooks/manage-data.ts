@@ -13,7 +13,7 @@ import {
   usePostResponsible,
   usePostStorage,
 } from "@/features";
-import {consolidateInventory, openModal} from "@/util";
+import {consolidateInventory, openModal} from "@/lib";
 import {toast} from "react-toastify";
 
 export const useManageData = () => {

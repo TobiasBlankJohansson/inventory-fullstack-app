@@ -1,7 +1,7 @@
 import {BodyContainer, FormField, Navbar, ScreenContainer,} from "@/components";
 import {useLocation} from "react-router-dom";
 import {FORM_FIELDS_ITEM} from "@/constants.ts";
-import {option} from "@/util";
+import {option} from "@/lib";
 import {EditItemForm, fromItemToFormField, useItemEditorData} from "@/features";
 
 

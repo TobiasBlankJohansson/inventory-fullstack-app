@@ -1,6 +1,6 @@
 import {FORM_FIELDS_ITEM} from "@/constants.ts";
 import {Button, FormField} from "@/components";
-import {option} from "@/util";
+import {option} from "@/lib";
 import {Equipment, Item, Responsible, Storage} from "@/features";
 import {useCreateItem} from "@/features/item/hooks/create-item.ts";
 

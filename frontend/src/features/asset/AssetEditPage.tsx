@@ -1,7 +1,7 @@
 import {BodyContainer, FormField, Navbar, ScreenContainer} from "@/components";
 import {FORM_FIELDS_ASSET} from "@/constants.ts";
 import {useLocation} from "react-router-dom";
-import {capitalize} from "@/util";
+import {capitalize} from "@/lib";
 import {EditItemForm, FormFieldItem, useAssetData} from "@/features";
 
 export const AssetEditPage = () => {

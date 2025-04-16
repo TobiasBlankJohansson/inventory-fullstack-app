@@ -1,6 +1,6 @@
 import {Defect, Status} from "@/features";
 import {Button} from "@/components";
-import {openModal} from "@/util";
+import {openModal} from "@/lib";
 import {useDeleteDefect, usePutDefect} from "@/features/defect/hooks/Defect.ts";
 import {toast} from "react-toastify";
 

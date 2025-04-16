@@ -1,7 +1,7 @@
 import {Item} from "@/features";
 import {Button} from "@/components";
 import {Link} from "react-router-dom";
-import {getItemKeys} from "@/util";
+import {getItemKeys} from "@/lib";
 
 export const renderTableHeaders = (
   headers: string[],

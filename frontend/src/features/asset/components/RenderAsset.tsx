@@ -1,4 +1,4 @@
-import {getItemKeys} from "@/util";
+import {getItemKeys} from "@/lib";
 import {Link} from "react-router-dom";
 
 type Asset = {

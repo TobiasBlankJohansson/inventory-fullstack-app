@@ -1,5 +1,5 @@
 import {Item, useFilterItems, useGetItems, useGetResponsible, useGetStorage, useOrderItem} from "@/features";
-import {consolidateInventory} from "@/util";
+import {consolidateInventory} from "@/lib";
 
 export function useDashboardData() {
   const {items, setItems} = useGetItems();

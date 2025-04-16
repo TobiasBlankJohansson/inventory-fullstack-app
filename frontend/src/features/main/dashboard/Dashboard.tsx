@@ -1,5 +1,5 @@
 import {BodyContainer, FullHeightButton, Navbar, ScreenContainer, Search, Table,} from "@/components";
-import {getTableHeaders, openModal} from "@/util";
+import {getTableHeaders, openModal} from "@/lib";
 import {ThreeGridContainer} from "@/components/container/ThreeGridContainer.tsx";
 import {Filter, Print, renderTableHeaders, renderTableItems, useDashboardData} from "@/features";
 

@@ -9,7 +9,7 @@ import {
   useScreen
 } from "@/components";
 import {CreateAssetModal, CreateItem, Filter, renderTableHeaders, renderTableItems, useManageData} from "@/features";
-import {getTableHeaders, openModal} from "@/util";
+import {getTableHeaders, openModal} from "@/lib";
 
 export function InventoryManage() {
   const {
