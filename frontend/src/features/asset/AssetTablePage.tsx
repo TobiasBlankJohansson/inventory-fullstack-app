@@ -1,4 +1,4 @@
-import {BodyContainer, Navbar, ScreenContainer, Table,} from "@/components";
+import {BodyContainer, DeleteCheck, Navbar, ScreenContainer, Table,} from "@/components";
 import {renderTableAsset} from "@/features/asset/components/RenderAsset.tsx";
 import {capitalize, getTableHeaders, openModal} from "@/lib";
 import {useLocation} from "react-router-dom";
@@ -30,7 +30,7 @@ export const AssetTablePage = () => {
             true,
             type,
             checkedItems,
-            deleteAsset,
+            () => openModal("delete_check"),
             () => openModal(type)
           )}
           renderItemInTable={renderTableAsset(
@@ -47,6 +47,7 @@ export const AssetTablePage = () => {
         dialogName={type}
         useId={useId}
       ></CreateAssetModal>
+      <DeleteCheck name={type} deleteFunction={deleteAsset}></DeleteCheck>
     </ScreenContainer>
   );
 };
