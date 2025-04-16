@@ -2,6 +2,7 @@ import {useState} from "react";
 import {
   Item,
   saveAsset,
+  useDeleteItem,
   useFilterItems,
   useGetEquipment,
   useGetItems,
@@ -13,9 +14,11 @@ import {
   usePostStorage,
 } from "@/features";
 import {consolidateInventory, openModal} from "@/util";
+import {toast} from "react-toastify";
 
 export const useManageData = () => {
   const {items, setItems} = useGetItems();
+  const {mutateAsync} = useDeleteItem();
   const {storage, setStorage} = useGetStorage();
   const {equipment, setEquipment} = useGetEquipment();
   const {responsible, setResponsible} = useGetResponsible();
@@ -36,9 +39,19 @@ export const useManageData = () => {
     responsible
   );
 
-  const handleDelete = () => {
-    setItems((prev) => prev.filter((item) => !checkedItems.includes(item.id)));
+  const handleDelete = async () => {
+    const prevItems = [...items];
+    const updatedItems = items.filter(e => !checkedItems.includes(e.id));
+    setItems(() => updatedItems);
     setCheckedItems([]);
+    try {
+      await Promise.all(checkedItems.map(id => mutateAsync(id)));
+      toast.success("Deleted successfully!");
+    } catch {
+      setItems(() => prevItems);
+      setCheckedItems(() => checkedItems);
+      toast.error("Something went wrong, please try again");
+    }
   };
 
   const handleCreate = () => openModal("create_item");

@@ -1,5 +1,5 @@
 import {Item} from "@/features";
-import {Button} from "../../../components/button";
+import {Button} from "@/components";
 import {Link} from "react-router-dom";
 import {getItemKeys} from "@/util";
 
@@ -28,7 +28,7 @@ export const renderTableHeaders = (
       {includeActionColumn && (
         <th className="flex justify-center p-0 py-2">
           <Button
-            className={`btn-ghost flex justify-center px-5 w-fit min-h-8 h-8 ${
+            className={`btn-ghost flex justify-center min-h-8 h-8 w-32 ${
               hasCheckedItems
                 ? "bg-button_warning text-white hover:bg-button_warning_hover"
                 : "text-success btn-outline hover:bg-button_success_hover hover:border-button_success"
