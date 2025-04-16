@@ -38,7 +38,7 @@ export const useManageData = () => {
     usePostResponsible(),
     responsible
   );
-
+  console.log(items);
   const handleDelete = async () => {
     const prevItems = [...items];
     const updatedItems = items.filter(e => !checkedItems.includes(e.id));

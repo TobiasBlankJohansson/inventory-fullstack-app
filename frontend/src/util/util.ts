@@ -15,11 +15,13 @@ export const getTableHeaders = <T extends object>(items: T[]): string[] => {
 
 export const consolidateInventory = (items: Item[]): Item[] => {
   const totals: Record<string, Item> = {};
-
+  console.log(totals);
+  console.log(items);
   items.forEach((item) => {
     if (!totals[item.equipment.id]) {
       totals[item.equipment.id] = {
         ...item,
+        id: item.id + item.responsible,
         quantity: "0",
         storage: "",
         responsible: "Total",
@@ -29,6 +31,8 @@ export const consolidateInventory = (items: Item[]): Item[] => {
       parseInt(totals[item.equipment.id].quantity) + parseInt(item.quantity)
     ).toString();
   });
+  console.log(totals);
+  console.log(items);
   return [...items, ...Object.values(totals)];
 };
 

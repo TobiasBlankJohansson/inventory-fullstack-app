@@ -55,14 +55,13 @@ export const useCreateItem = (
     };
 
     const item = await mutateAsync(itemDto);
-    const updatedItems = [...Items, item];
 
-    handlePostSubmitSuccess(e.currentTarget, updatedItems);
+    handlePostSubmitSuccess(e.currentTarget, item);
   };
 
   const handlePostSubmitSuccess = (
     form: HTMLFormElement,
-    updatedItems: Item[]
+    updatedItems: Item
   ) => {
     if (form) {
       form.reset();
@@ -75,7 +74,7 @@ export const useCreateItem = (
       ) as HTMLDialogElement;
       dialog.close();
     }
-    setItems(() => updatedItems);
+    setItems((prev) => [...prev, updatedItems]);
   };
 
   return {handleSubmit, setAddAnotherOne};

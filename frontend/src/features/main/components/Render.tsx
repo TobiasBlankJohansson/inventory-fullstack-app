@@ -61,13 +61,13 @@ export const renderTableItems = (
   const keys = getItemKeys(items[0]);
 
   return items.map((item) => {
-    const isChecked = checkedItems.includes(item.id + item.responsible);
+    const isChecked = checkedItems.includes(item.id);
 
     const handleCheckboxChange = () => {
       setCheckedItems((prev) =>
         isChecked
-          ? prev.filter((id) => id !== item.id + item.responsible)
-          : [...prev, item.id + item.responsible]
+          ? prev.filter((id) => id !== item.id)
+          : [...prev, item.id]
       );
     };
 
