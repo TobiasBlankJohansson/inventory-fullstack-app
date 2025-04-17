@@ -7,12 +7,12 @@ export const CreateCustomList = () => {
     <Navbar currentPage={2} currentPageName={'CreateCustomList'}/>
     <BodyContainer>
       <div className={"grid grid-cols-2 gap-10 h-full"}>
-        <section className={"w-full flex-col"}>
+        <section className={"w-full flex-col h-[calc(100vh-128px)]"}>
           <div className="h-10 grid grid-cols-2 gap-2">
             <Search setSearch={() => ""}/>
             <FullHeightButton onClick={() => openModal("filter")}>Filter</FullHeightButton>
           </div>
-          <section className="bg-white rounded-md shadow w-full h-[calc(100vh-174px)]">
+          <section className="bg-white rounded-md shadow w-full h-full mt-2">
             <div className="overflow-x-auto h-full">
               <header className="bg-primary rounded-t-md flex justify-between items-center">
                 <h2
@@ -31,12 +31,12 @@ export const CreateCustomList = () => {
             </div>
           </section>
         </section>
-        <section className={"w-full flex-col h-full"}>
+        <section className={"w-full flex-col h-[calc(100vh-128px)]"}>
           <div className="h-10 grid grid-cols-2 gap-2">
             <FullHeightButton>Go to custom list</FullHeightButton>
             <FullHeightButton>Save custom list</FullHeightButton>
           </div>
-          <section className="bg-white rounded-md shadow w-full h-[calc(100vh-174px)]">
+          <section className="bg-white rounded-md shadow w-full h-full mt-2">
             <div className="overflow-x-auto h-full">
               <header className="bg-primary rounded-t-md flex justify-between items-center">
                 <h2
