@@ -1,8 +1,39 @@
 import {BodyContainer, FullHeightButton, Navbar, ScreenContainer, Search} from "@/components";
-import {Filter} from "@/features";
+import {Filter, Item, useGetItems} from "@/features";
 import {openModal} from "@/lib";
 
 export const CreateCustomList = () => {
+  const {items} = useGetItems();
+
+  const InventoryItem = (item: Item) => {
+    return (
+      <tr key={item.id}>
+        <td className="p-1 py-3 pl-3">
+          {item.equipment.name}
+        </td>
+        <td className="p-1">{item.quantity}</td>
+        <td className="p-1">{item.storage}</td>
+        <td className="p-1">
+          <div className="tooltip tooltip-left w-full" data-tip={`Responsible: ${item.responsible}`}>
+            <label className="input input-bordered flex items-center gap-2 h-full rounded-full">
+              <input
+                type="number"
+                className="w-1 grow"
+                placeholder="All"
+                min={0}
+                max={item.quantity}
+              />
+            </label></div>
+        </td>
+        <td className="p-1 text-center">
+          <button className="btn btn-xs h-7 bg-button_secondary hover:bg-button_secondary_hover">
+            <span className="text-white">→</span>
+          </button>
+        </td>
+      </tr>
+    );
+  };
+
   return <ScreenContainer>
     <Navbar currentPage={2} currentPageName={'CreateCustomList'}/>
     <BodyContainer>
@@ -24,12 +55,15 @@ export const CreateCustomList = () => {
               <table className="table table-zebra table-pin-rows w-full">
                 <thead>
                 <tr>
-                  <th>Equipment</th>
-                  <th>Date</th>
-                  <th className="text-center">Action</th>
+                  <th className="p-1 py-3 pl-3">Equipment</th>
+                  <th className="p-1">Quantity</th>
+                  <th className="p-1">Storage</th>
+                  <th className="p-1 text-center">Amount</th>
+                  <th className="p-1 text-center">Action</th>
                 </tr>
                 </thead>
                 <tbody>
+                {items.map((item) => InventoryItem(item))}
                 </tbody>
               </table>
             </div>
@@ -52,12 +86,15 @@ export const CreateCustomList = () => {
               <table className="table table-zebra table-pin-rows w-full">
                 <thead>
                 <tr>
-                  <th>Equipment</th>
-                  <th>Date</th>
-                  <th className="text-center">Action</th>
+                  <th className="p-1 py-3 pl-3">Equipment</th>
+                  <th className="p-1">Quantity</th>
+                  <th className="p-1">Storage</th>
+                  <th className="p-1 text-center">Amount</th>
+                  <th className="p-1 text-center">Action</th>
                 </tr>
                 </thead>
                 <tbody>
+
                 </tbody>
               </table>
             </div>
