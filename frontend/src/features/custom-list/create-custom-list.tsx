@@ -1,11 +1,9 @@
 import {BodyContainer, Button, FullHeightButton, Navbar, ScreenContainer, Search} from "@/components";
-import {Filter, Item, useFilterItems, useGetItems, useResponsible, useStorage} from "@/features";
+import {Filter, Item, useFilterItems, useGetItems} from "@/features";
 import {openModal} from "@/lib";
 
 export const CreateCustomList = () => {
   const {items} = useGetItems();
-  const {asset: storage} = useStorage();
-  const {asset: responsible} = useResponsible();
   const {itemList, setSearch, setSelectedStorage, setSelectedResponsible} = useFilterItems(items);
 
   const InventoryItem = (item: Item, left = true) => {
@@ -113,9 +111,7 @@ export const CreateCustomList = () => {
     </BodyContainer>
     <Filter
       setStorage={setSelectedStorage}
-      storage={storage.map((storage) => storage.name)}
       setResponsible={setSelectedResponsible}
-      responsible={responsible.map((responsible) => responsible.name)}
     />
   </ScreenContainer>;
 }
